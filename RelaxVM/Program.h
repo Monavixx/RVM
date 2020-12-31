@@ -9,7 +9,7 @@ public:
 	Program(int argc, char* argv[]);
 
 	void Start();
-	bool isLaunch();
+	bool IsLaunch();
 
 private:
 	QStringList argv;

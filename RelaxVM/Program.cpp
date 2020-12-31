@@ -10,14 +10,14 @@ Program::Program(int argc, char* argv[])
 
 void Program::Start()
 {
-	if (isLaunch())
+	if (IsLaunch())
 	{
 		VirtualMachine virtualMachine(argv);
 		virtualMachine.Start();
 	}
 }
 
-bool Program::isLaunch()
+bool Program::IsLaunch()
 {
 	return !argv[1].startsWith("-");
 }

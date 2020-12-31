@@ -1,13 +1,21 @@
 #pragma once
 #include <QtCore>
 
+#include "../Libs/ByteArrayToNumber"
+#include "../Libs/ConsoleTextStream.h"
+
 class VirtualMachine
 {
 public:
-	VirtualMachine(QStringList& argv);
+	VirtualMachine(const QStringList& argv);
+	~VirtualMachine();
+	void Destructor();
 	void Start();
 
 private:
-	QStringList& argv;
+	QStringList arguments;
+	QString filename;
+	QFile executableFile;
+	QDataStream fout;
 };
 
