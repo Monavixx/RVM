@@ -11,10 +11,12 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="TestMethodSignature.h" />
     <ClInclude Include="TestProgram.h" />
     <ClInclude Include="TestVirtualMachine.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="TestMethodSignature.cpp" />
     <ClCompile Include="TestProgram.cpp" />
     <ClCompile Include="TestVirtualMachine.cpp" />
   </ItemGroup>
@@ -61,8 +63,8 @@
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
-      <AdditionalLibraryDirectories>..\RelaxVM\x64\Debug;$(VCInstallDir)UnitTest\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>VirtualMachine.obj;Program.obj;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(VCInstallDir)UnitTest\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>..\RelaxVM\x64\Debug\VirtualMachine.obj;..\RelaxVM\x64\Debug\Program.obj;..\RelaxVM\x64\Debug\Class.obj;..\RelaxVM\x64\Debug\Exit.obj;..\RelaxVM\x64\Debug\Method.obj;..\RelaxVM\x64\Debug\Parameter.obj;..\RelaxVM\x64\Debug\MethodSignature.obj;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="QtSettings">

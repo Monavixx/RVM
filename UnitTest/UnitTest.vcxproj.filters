@@ -26,12 +26,18 @@
     <ClInclude Include="TestProgram.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="TestMethodSignature.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="TestProgram.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="TestVirtualMachine.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TestMethodSignature.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

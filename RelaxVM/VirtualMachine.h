@@ -1,8 +1,10 @@
 #pragma once
 #include <QtCore>
 
-#include "../Libs/ByteArrayToNumber"
+#include "../Libs/ByteArrayLib.h"
 #include "../Libs/ConsoleTextStream.h"
+#include "Exceptions/ExitException.h"
+#include "Functions/Exit.h"
 
 class VirtualMachine
 {
@@ -11,11 +13,11 @@ public:
 	~VirtualMachine();
 	void Destructor();
 	void Start();
+	void ProcessInstruction(quint8 instruction);
 
 private:
 	QStringList arguments;
 	QString filename;
 	QFile executableFile;
-	QDataStream fout;
 };
 

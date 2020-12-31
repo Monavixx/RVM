@@ -1,6 +1,6 @@
 #include "VirtualMachine.h"
 
-VirtualMachine::VirtualMachine(const QStringList& argv) : arguments(argv), fout(&executableFile)
+VirtualMachine::VirtualMachine(const QStringList& argv) : arguments(argv)
 {
 	filename = argv[1];
 	executableFile.setFileName(filename);
@@ -9,6 +9,7 @@ VirtualMachine::VirtualMachine(const QStringList& argv) : arguments(argv), fout(
 VirtualMachine::~VirtualMachine()
 {
 	Destructor();
+	qout << "Dest vir";
 }
 
 void VirtualMachine::Destructor()
@@ -20,7 +21,27 @@ void VirtualMachine::Start()
 {
 	if (!executableFile.open(QIODevice::ReadOnly))
 	{
-		qout << "File open error!";
-		exit(0);
+		Exit("File open error!");
+	}
+
+	while (executableFile.bytesAvailable() > 0)
+	{
+		quint8 instruction = ByteArrayConvert::byteArrayToByte(executableFile.read(1));
+		ProcessInstruction(instruction);
+	}
+}
+
+void VirtualMachine::ProcessInstruction(quint8 instruction)
+{
+	switch (instruction)
+	{
+		case 1:
+		{
+			break;
+		}
+		case 2:
+		{
+			break;
+		}
 	}
 }
