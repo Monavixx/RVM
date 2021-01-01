@@ -2,19 +2,13 @@
 
 VirtualMachine::VirtualMachine(const QStringList& argv) : arguments(argv)
 {
-	filename = argv[1];
-	executableFile.setFileName(filename);
+	executableFile.setFileName(argv[1]);
 }
 
 VirtualMachine::~VirtualMachine()
 {
-	Destructor();
-	qout << "Dest vir";
-}
-
-void VirtualMachine::Destructor()
-{
 	executableFile.close();
+	qout << "Dest vir";
 }
 
 void VirtualMachine::Start()
