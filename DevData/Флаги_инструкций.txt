@@ -1,6 +1,0 @@
-Флаги call_method(<byte 0> или <byte 1>):
-1 - isStatic
-
-
-Флаги create_method(<byte 0> или <byte 1>):
-1 - isStatic
