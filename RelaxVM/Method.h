@@ -3,13 +3,23 @@
 #include "MethodSignature.h"
 #include "AccessModifier.h"
 
-class Method
+class Method : public MethodSignature
 {
 public:
-	Method();
+	Method(const MethodSignature& signature, const AccessModifier& accessModifier = AccessModifier::PRIVATE, bool isStatic = false);
+
+	Method(const QString& name, const QString& dataType, const QString& className, const QList<Parameter>& parameters = {},
+		const AccessModifier& accessModifier = AccessModifier::PRIVATE, bool isStatic = false);
+
+	bool IsStatic() const;
+	AccessModifier GetAccessModifier() const;
+
+	void SetIsStatic(bool isStatic);
+	void SetAccessModifier(const AccessModifier& accessModifier);
+
+	bool operator==(const Method& other) const;
 
 private:
-	MethodSignature signature;
 	AccessModifier accessModifier;
 	bool isStatic;
 };

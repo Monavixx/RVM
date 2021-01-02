@@ -11,11 +11,15 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="TestClass.h" />
+    <ClInclude Include="TestMethod.h" />
     <ClInclude Include="TestMethodSignature.h" />
     <ClInclude Include="TestProgram.h" />
     <ClInclude Include="TestVirtualMachine.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="TestClass.cpp" />
+    <ClCompile Include="TestMethod.cpp" />
     <ClCompile Include="TestMethodSignature.cpp" />
     <ClCompile Include="TestProgram.cpp" />
     <ClCompile Include="TestVirtualMachine.cpp" />

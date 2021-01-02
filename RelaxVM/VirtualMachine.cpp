@@ -8,12 +8,6 @@ VirtualMachine::VirtualMachine(const QStringList& argv) : arguments(argv)
 
 VirtualMachine::~VirtualMachine()
 {
-	Destructor();
-	qout << "Dest vir";
-}
-
-void VirtualMachine::Destructor()
-{
 	executableFile.close();
 }
 

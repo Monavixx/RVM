@@ -4,6 +4,12 @@ Parameter::Parameter(const QString& name, const QString& dataType) : name(name),
 {
 }
 
+Parameter::Parameter(const Parameter& other)
+{
+	this->name = other.GetName();
+	this->dataType = other.GetDataType();
+}
+
 QString Parameter::GetName() const
 {
 	return name;

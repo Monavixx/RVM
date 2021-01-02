@@ -94,5 +94,22 @@ namespace UnitTests
             Assert::IsTrue(methodSignature.GetParameters() == QList{ Parameter("First", "Relax.Int64"),Parameter("Second", "UpdateRelax.Int64"),Parameter("Test145___Fk", "MyDataType") });
         }
 
+        TEST_METHOD(TestAddParameter_1)
+        {
+            QString name = "Sum";
+            QString dataType = "Relax.Int64";
+            QString className = "Relax.Math";
+            QList<Parameter> parameters = {
+                Parameter("First", "Relax.Int64"),
+                Parameter("Second", "Relax.Int64")
+            };
+
+            MethodSignature methodSignature(name, dataType, className, parameters);
+
+            methodSignature.AddParameter(Parameter("TestDataType", "testName"));
+
+            Assert::IsTrue(methodSignature.GetParameters() == QList{ Parameter("First", "Relax.Int64"),Parameter("Second", "Relax.Int64"),Parameter("TestDataType", "testName") });
+        }
+
     };
 }

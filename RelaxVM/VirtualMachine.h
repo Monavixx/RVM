@@ -11,7 +11,6 @@ class VirtualMachine
 public:
 	VirtualMachine(const QStringList& argv);
 	~VirtualMachine();
-	void Destructor();
 	void Start();
 	void ProcessInstruction(quint8 instruction);
 

@@ -6,7 +6,8 @@
 class MethodSignature
 {
 public:
-	MethodSignature(const QString& name, const QString& dataType, const QString& className, const QList<Parameter>& parameters = {});
+	MethodSignature(const QString& name, const QString& dataType, const QString& nameClass, const QList<Parameter>& parameters = {});
+	MethodSignature(const MethodSignature& other);
 
 	QString GetName() const;
 	QString GetDataType() const;
@@ -18,12 +19,14 @@ public:
 
 	void SetName(const QString& name);
 	void SetDataType(const QString& dataType);
-	void SetNameClass(const QString& className);
+	void SetNameClass(const QString& nameClass);
 	void SetParameters(const QList<Parameter>& parameters);
-
 	void SetParameter(const quint64& index, const Parameter& parameter);
+	void AddParameter(const Parameter& parameter);
 
 	QString ToString() const;
+
+	bool operator==(const MethodSignature& other) const;
 
 private:
 	QString name;

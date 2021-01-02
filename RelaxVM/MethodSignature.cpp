@@ -5,6 +5,14 @@ MethodSignature::MethodSignature(const QString& name, const QString& dataType, c
 {
 }
 
+MethodSignature::MethodSignature(const MethodSignature& other)
+{
+	this->name = other.GetName();
+	this->nameClass = other.GetNameClass();
+	this->dataType = other.GetDataType();
+	this->parameters = other.GetParameters();
+}
+
 QString MethodSignature::GetName() const
 {
 	return name;
@@ -65,6 +73,11 @@ void MethodSignature::SetParameter(const quint64& index, const Parameter& parame
 	parameters[index] = parameter;
 }
 
+void MethodSignature::AddParameter(const Parameter& parameter)
+{
+	parameters.push_back(parameter);
+}
+
 QString MethodSignature::ToString() const
 {
 	QString signature = "";
@@ -77,4 +90,13 @@ QString MethodSignature::ToString() const
 	}
 	signature += ")";
 	return signature;
+}
+
+bool MethodSignature::operator==(const MethodSignature& other) const
+{
+	bool nameIsEqual = other.GetName() == name;
+	bool nameClassIsEqual = other.GetNameClass() == nameClass;
+	bool dataTypeIsEqual = other.GetDataType() == dataType;
+	bool parametersIsEqual = other.GetParameters() == parameters;
+	return nameIsEqual && nameClassIsEqual && dataTypeIsEqual && parametersIsEqual;
 }
