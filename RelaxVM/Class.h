@@ -13,7 +13,7 @@ public:
 
 	void SetName(const QString& name);
 	void SetMethods(const QList<Method>& methods);
-	void SetMethod(const quint64& index, const Method& method);
+	void SetMethod(int index, const Method& method);
 	void AddMethod(const Method& method);
 
 	bool operator==(const Class& other) const;

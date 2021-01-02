@@ -20,7 +20,9 @@ Method* Class::GetMethod(const QString& name)
 	auto methodIterator = std::find_if(methods.begin(), methods.end(), [&](const Method& method) {
 		return name == method.GetName();
 	});
-	return nullptr;
+	if(methodIterator == methods.end())
+		return nullptr;
+	return &(*methodIterator);
 }
 
 void Class::SetName(const QString& name)
@@ -33,7 +35,7 @@ void Class::SetMethods(const QList<Method>& methods)
 	this->methods = methods;
 }
 
-void Class::SetMethod(const quint64& index, const Method& method)
+void Class::SetMethod(int index, const Method& method)
 {
 	methods[index] = method;
 }
