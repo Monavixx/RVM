@@ -5,9 +5,9 @@ Method::Method(const MethodSignature& signature, const AccessModifier& accessMod
 {
 }
 
-Method::Method(const QString& name, const QString& dataType, const QString& className, const QList<Parameter>& parameters,
+Method::Method(const QString& name, const QString& dataType, const QString& nameClass, const QList<Parameter>& parameters,
 	const AccessModifier& accessModifier, bool isStatic)
-	: MethodSignature(name, dataType, className, parameters), accessModifier(accessModifier), isStatic(isStatic)
+	: MethodSignature(name, dataType, nameClass, parameters), accessModifier(accessModifier), isStatic(isStatic)
 {
 }
 

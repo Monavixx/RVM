@@ -74,12 +74,32 @@ public:
     }
 };
 
-class ByteArrayReadString
+class ByteArrayRead
 {
 public:
-    static QString ReadSizeAndString(QFile& file, short bytesSize = 8)
+    static QString ReadSizeAndString(QFile& file, short bytesSize = 4)
     {
         quint64 size = ByteArrayConvert::byteArrayToInt(file.read(bytesSize));
         return file.read(size);
+    }
+
+    static quint8 ReadByte(QFile& file)
+    {
+        return ByteArrayConvert::byteArrayToByte(file.read(1));
+    }
+
+    static short ReadShort(QFile& file)
+    {
+        return ByteArrayConvert::byteArrayToShort(file.read(2));
+    }
+
+    static int ReadInt(QFile& file)
+    {
+        return ByteArrayConvert::byteArrayToByte(file.read(4));
+    }
+
+    static long long ReadLongLong(QFile& file)
+    {
+        return ByteArrayConvert::byteArrayToByte(file.read(8));
     }
 };

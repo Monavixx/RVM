@@ -106,6 +106,7 @@
     <ClInclude Include="Exceptions\Exception.h" />
     <ClInclude Include="Exceptions\ExitException.h" />
     <ClInclude Include="Functions\Exit.h" />
+    <ClInclude Include="Instruction.h" />
     <ClInclude Include="Method.h" />
     <ClInclude Include="MethodSignature.h" />
     <ClInclude Include="Parameter.h" />

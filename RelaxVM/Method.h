@@ -8,7 +8,7 @@ class Method : public MethodSignature
 public:
 	Method(const MethodSignature& signature, const AccessModifier& accessModifier = AccessModifier::PRIVATE, bool isStatic = false);
 
-	Method(const QString& name, const QString& dataType, const QString& className, const QList<Parameter>& parameters = {},
+	Method(const QString& name, const QString& dataType, const QString& nameClass, const QList<Parameter>& parameters = {},
 		const AccessModifier& accessModifier = AccessModifier::PRIVATE, bool isStatic = false);
 
 	bool IsStatic() const;

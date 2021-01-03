@@ -1,0 +1,12 @@
+#pragma once
+enum Instruction
+{
+	CREATE_MAIN_CLASS = 1,
+	CREATE_CLASS = 3,
+	CREATE_METHOD,
+	CALL_METHOD,
+	PUSH,
+	PUSH_STR,
+	RETURN,
+	END_METHOD
+};

@@ -3,4 +3,11 @@
 
 
 Флаги create_method(<byte 0> или <byte 1>):
-1 - isStatic
+1 - isStatic:
+	<byte 0> - no static
+	<byte 1> - static
+
+2 - AccessModifier:
+	<byte 0> - PRIVATE
+	<byte 1> - PUBLIC
+	<byte 2> - PROTECTED
