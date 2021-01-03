@@ -6,4 +6,3 @@
 06 - push
 07 - push_str
 08 - return
-09 - end_method

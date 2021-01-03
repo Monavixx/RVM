@@ -9,6 +9,7 @@
 #include "Instruction.h"
 #include "ClassList.h"
 #include "Object.h"
+#include "String.h"
 
 class VirtualMachine
 {

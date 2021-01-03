@@ -101,6 +101,7 @@
     <ClCompile Include="Parameter.cpp" />
     <ClCompile Include="Program.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="String.cpp" />
     <ClCompile Include="Variable.cpp" />
     <ClCompile Include="VirtualMachine.cpp" />
   </ItemGroup>
@@ -118,6 +119,7 @@
     <ClInclude Include="Object.h" />
     <ClInclude Include="Parameter.h" />
     <ClInclude Include="Program.h" />
+    <ClInclude Include="String.h" />
     <ClInclude Include="Variable.h" />
     <ClInclude Include="VirtualMachine.h" />
   </ItemGroup>
