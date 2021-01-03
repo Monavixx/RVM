@@ -18,11 +18,12 @@ namespace UnitTests
             QList<Parameter> parameters = {
                 Parameter("text", "Relax.String")
             };
+            QByteArray code = {};
             bool isStatic = true;
             AccessModifier accessModifier = AccessModifier::PUBLIC;
 
 
-            Method method(name, dataType, nameClass, parameters, accessModifier, isStatic);
+            Method method(name, dataType, nameClass, parameters, code, accessModifier, isStatic);
 
 
             Assert::IsTrue(method.GetAccessModifier() == accessModifier);
@@ -36,9 +37,10 @@ namespace UnitTests
             QList<Parameter> parameters = {
                 Parameter("text", "Relax.String")
             };
+            QByteArray code = {};
             bool isStatic = true;
             AccessModifier accessModifier = AccessModifier::PUBLIC;
-            Method method(name, dataType, nameClass, parameters, accessModifier, isStatic);
+            Method method(name, dataType, nameClass, parameters, code, accessModifier, isStatic);
             
 
             isStatic = false;
@@ -58,10 +60,11 @@ namespace UnitTests
             QList<Parameter> parameters = {
                 Parameter("text", "Relax.String")
             };
+            QByteArray code = {};
             bool isStatic = true;
             AccessModifier accessModifier = AccessModifier::PUBLIC;
-            Method method(name, dataType, nameClass, parameters, accessModifier, isStatic);
-            Method method2(name, dataType, nameClass, parameters, accessModifier, isStatic);
+            Method method(name, dataType, nameClass, parameters, code, accessModifier, isStatic);
+            Method method2(name, dataType, nameClass, parameters, code, accessModifier, isStatic);
             
 
             bool result = method == method2;
@@ -77,10 +80,11 @@ namespace UnitTests
             QList<Parameter> parameters = {
                 Parameter("text", "Relax.String")
             };
+            QByteArray code = {};
             bool isStatic = true;
             AccessModifier accessModifier = AccessModifier::PUBLIC;
-            Method method(name, dataType, nameClass, parameters, accessModifier, isStatic);
-            Method method2("newName", dataType, nameClass, parameters, accessModifier, isStatic);
+            Method method(name, dataType, nameClass, parameters, code, accessModifier, isStatic);
+            Method method2("newName", dataType, nameClass, parameters, code, accessModifier, isStatic);
 
 
             bool result = method == method2;
@@ -96,10 +100,11 @@ namespace UnitTests
             QList<Parameter> parameters = {
                 Parameter("text", "Relax.String")
             };
+            QByteArray code = {};
             bool isStatic = true;
             AccessModifier accessModifier = AccessModifier::PUBLIC;
-            Method method(name, dataType, nameClass, parameters, accessModifier, isStatic);
-            Method method2(name, dataType, nameClass, parameters, accessModifier, false);
+            Method method(name, dataType, nameClass, parameters, code, accessModifier, isStatic);
+            Method method2(name, dataType, nameClass, parameters, code, accessModifier, false);
 
 
             bool result = method == method2;
@@ -115,10 +120,11 @@ namespace UnitTests
             QList<Parameter> parameters = {
                 Parameter("text", "Relax.String")
             };
+            QByteArray code = {};
             bool isStatic = true;
             AccessModifier accessModifier = AccessModifier::PUBLIC;
-            Method method(name, dataType, nameClass, parameters, accessModifier, isStatic);
-            Method method2(name, dataType, nameClass, {}, accessModifier, isStatic);
+            Method method(name, dataType, nameClass, parameters, code, accessModifier, isStatic);
+            Method method2(name, dataType, nameClass, {}, code, accessModifier, isStatic);
 
 
             bool result = method == method2;

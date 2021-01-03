@@ -6,10 +6,10 @@
 class Method : public MethodSignature
 {
 public:
-	Method(const MethodSignature& signature, const QByteArray& code, const AccessModifier& accessModifier = AccessModifier::PRIVATE, bool isStatic = false);
+	Method(const MethodSignature& signature, const QByteArray& code = {}, const AccessModifier& accessModifier = AccessModifier::PRIVATE, bool isStatic = false);
 
 	Method(const QString& name, const QString& dataType, const QString& nameClass, const QList<Parameter>& parameters = {},
-		const QByteArray& code, const AccessModifier& accessModifier = AccessModifier::PRIVATE, bool isStatic = false);
+		const QByteArray& code = {}, const AccessModifier& accessModifier = AccessModifier::PRIVATE, bool isStatic = false);
 
 	bool IsStatic() const;
 	AccessModifier GetAccessModifier() const;

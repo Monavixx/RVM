@@ -17,7 +17,7 @@ namespace UnitTests
             MethodSignature methodSignature2("NameMethod2", "DataTypeMethod2", name, {});
             QList<Method> methods = {
                 Method(methodSignature1),
-                Method(methodSignature2, AccessModifier::PUBLIC, true)
+                Method(methodSignature2,{}, AccessModifier::PUBLIC, true)
             };
             Class testingClass(name, methods);
 
@@ -36,7 +36,7 @@ namespace UnitTests
             MethodSignature methodSignature2("NameMethod2", "DataTypeMethod2", name, {});
             QList<Method> methods = {
                 Method(methodSignature1),
-                Method(methodSignature2, AccessModifier::PUBLIC, true)
+                Method(methodSignature2,{}, AccessModifier::PUBLIC, true)
             };
             Class testingClass(name, methods);
 
@@ -51,14 +51,14 @@ namespace UnitTests
             MethodSignature methodSignature2("NameMethod2", "DataTypeMethod2", name, {});
             QList<Method> methods = {
                 Method(methodSignature1),
-                Method(methodSignature2, AccessModifier::PUBLIC, true)
+                Method(methodSignature2,{}, AccessModifier::PUBLIC, true)
             };
             Class testingClass(name, methods);
 
 
             testingClass.SetName(name = "NewName");
             testingClass.SetMethods(methods = {
-                Method(methodSignature2, AccessModifier::PROTECTED, true)
+                Method(methodSignature2,{}, AccessModifier::PROTECTED, true)
             });
             QString getName = testingClass.GetName();
             QList<Method> getMethods = testingClass.GetMethods();
@@ -74,11 +74,11 @@ namespace UnitTests
             MethodSignature methodSignature2("NameMethod2", "DataTypeMethod2", name, {});
             QList<Method> methods = {
                 Method(methodSignature1),
-                Method(methodSignature2, AccessModifier::PUBLIC, true)
+                Method(methodSignature2,{}, AccessModifier::PUBLIC, true)
             };
             Class testingClass(name, methods);
             int testingIndex = 1;
-            Method newMethod = Method("NewMethod", "DataTypeMethod", name, {}, AccessModifier::PROTECTED);
+            Method newMethod = Method("NewMethod", "DataTypeMethod", name, {}, {}, AccessModifier::PROTECTED);
 
 
             testingClass.SetMethod(testingIndex, newMethod);
@@ -94,14 +94,14 @@ namespace UnitTests
             MethodSignature methodSignature2("NameMethod2", "DataTypeMethod2", name, {});
             QList<Method> methods = {
                 Method(methodSignature1),
-                Method(methodSignature2, AccessModifier::PUBLIC, true)
+                Method(methodSignature2, {},AccessModifier::PUBLIC, true)
             };
             Class testingClass(name, methods);
             int testingIndex = 1;
-            Method newMethod = Method("NewMethod", "DataTypeMethod", name, {}, AccessModifier::PROTECTED);
+            Method newMethod = Method("NewMethod", "DataTypeMethod", name, {}, {}, AccessModifier::PROTECTED);
             QList<Method> newMethodList = QList{
                 Method(methodSignature1),
-                Method(methodSignature2, AccessModifier::PUBLIC, true),
+                Method(methodSignature2,{}, AccessModifier::PUBLIC, true),
                 newMethod
             };
 
@@ -118,7 +118,7 @@ namespace UnitTests
             MethodSignature methodSignature2("NameMethod2", "DataTypeMethod2", name, {});
             QList<Method> methods = {
                 Method(methodSignature1),
-                Method(methodSignature2, AccessModifier::PUBLIC, true)
+                Method(methodSignature2,{}, AccessModifier::PUBLIC, true)
             };
             Class testingClass(name, methods);
             Class testingClass2(name, methods);
@@ -136,7 +136,7 @@ namespace UnitTests
             MethodSignature methodSignature2("NameMethod2", "DataTypeMethod2", name, {});
             QList<Method> methods = {
                 Method(methodSignature1),
-                Method(methodSignature2, AccessModifier::PUBLIC, true)
+                Method(methodSignature2,{}, AccessModifier::PUBLIC, true)
             };
             Class testingClass(name, methods);
             Class testingClass2("newName", methods);
@@ -154,7 +154,7 @@ namespace UnitTests
             MethodSignature methodSignature2("NameMethod2", "DataTypeMethod2", name, {});
             QList<Method> methods = {
                 Method(methodSignature1),
-                Method(methodSignature2, AccessModifier::PUBLIC, true)
+                Method(methodSignature2,{}, AccessModifier::PUBLIC, true)
             };
             Class testingClass(name, methods);
             methods[0].SetName("newNameMethod");

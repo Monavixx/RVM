@@ -65,8 +65,9 @@ void VirtualMachine::ProcessInstruction(Instruction instruction)
 				Parameter parameter(parameterName, parameterDataType);
 				parameters.push_back(parameter);
 			}
+
 			QByteArray code = ByteArrayRead::ReadSizeAndString(executableFile).toUtf8();
-			//Method method(name, dataType, nameClass, parameters, accessModifier, isStatic);
+			Method method(name, dataType, nameClass, parameters, code, accessModifier, isStatic);
 
 			classes.FindClassByName(nameClass)->AddMethod(method);
 
