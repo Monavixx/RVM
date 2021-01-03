@@ -40,7 +40,7 @@ namespace UnitTests
             QByteArray code = {};
             bool isStatic = true;
             AccessModifier accessModifier = AccessModifier::PUBLIC;
-            Method method(name, dataType, nameClass, parameters, code, accessModifier, isStatic);
+            Method method(name, dataType, nameClass, parameters,code, accessModifier, isStatic);
             
 
             isStatic = false;
@@ -84,7 +84,7 @@ namespace UnitTests
             bool isStatic = true;
             AccessModifier accessModifier = AccessModifier::PUBLIC;
             Method method(name, dataType, nameClass, parameters, code, accessModifier, isStatic);
-            Method method2("newName", dataType, nameClass, parameters, code, accessModifier, isStatic);
+            Method method2("newName", dataType, nameClass, parameters, code,accessModifier, isStatic);
 
 
             bool result = method == method2;

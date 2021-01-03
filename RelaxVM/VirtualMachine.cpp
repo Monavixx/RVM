@@ -10,11 +10,6 @@ VirtualMachine::~VirtualMachine()
 {
 	executableFile.close();
 	delete mainClass;
-
-	while (!stack.isEmpty()) 
-	{
-		delete stack.pop();
-	}
 }
 
 void VirtualMachine::Start()
@@ -53,7 +48,6 @@ void VirtualMachine::ProcessInstruction(Instruction instruction)
 			QString dataType = ByteArrayRead::ReadSizeAndString(executableFile);
 			QString nameClass = ByteArrayRead::ReadSizeAndString(executableFile);
 			QString name = ByteArrayRead::ReadSizeAndString(executableFile);
-			
 
 			int amountParameters = ByteArrayRead::ReadInt(executableFile);
 			QList<Parameter> parameters;
@@ -65,8 +59,8 @@ void VirtualMachine::ProcessInstruction(Instruction instruction)
 				Parameter parameter(parameterName, parameterDataType);
 				parameters.push_back(parameter);
 			}
-
 			QByteArray code = ByteArrayRead::ReadSizeAndString(executableFile).toUtf8();
+
 			Method method(name, dataType, nameClass, parameters, code, accessModifier, isStatic);
 
 			classes.FindClassByName(nameClass)->AddMethod(method);
@@ -83,13 +77,13 @@ void VirtualMachine::ProcessInstruction(Instruction instruction)
 		}
 		case PUSH_STR:
 		{
-			QString data = ByteArrayRead::ReadSizeAndString(executableFile);
-			String* str = new String(data);
-			stack.push(str);
-			
 			break;
 		}
 		case RETURN:
+		{
+			break;
+		}
+		case END_METHOD:
 		{
 			break;
 		}
