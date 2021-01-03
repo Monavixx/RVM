@@ -1,7 +1,7 @@
 #pragma once
 enum class AccessModifier
 {
-	PUBLIC,
 	PRIVATE,
+	PUBLIC,
 	PROTECTED
 };

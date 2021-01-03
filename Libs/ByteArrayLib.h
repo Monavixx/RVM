@@ -79,7 +79,7 @@ class ByteArrayRead
 public:
     static QString ReadSizeAndString(QFile& file, short bytesSize = 4)
     {
-        quint64 size = ByteArrayConvert::byteArrayToInt(file.read(bytesSize));
+        int size = ByteArrayConvert::byteArrayToInt(file.read(bytesSize));
         return file.read(size);
     }
 

@@ -30,6 +30,9 @@
     <Filter Include="Header Files\Enums">
       <UniqueIdentifier>{c21c916d-4638-4a42-a92d-67256f66c7ea}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Variable">
+      <UniqueIdentifier>{5a261131-ae00-4e33-beb3-5c3cd9d12291}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -54,6 +57,18 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Parameter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ClassList.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Object.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Int32.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Variable.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -90,6 +105,18 @@
     </ClInclude>
     <ClInclude Include="Instruction.h">
       <Filter>Header Files\Enums</Filter>
+    </ClInclude>
+    <ClInclude Include="ClassList.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Object.h">
+      <Filter>Header Files\Variable</Filter>
+    </ClInclude>
+    <ClInclude Include="Int32.h">
+      <Filter>Header Files\Variable</Filter>
+    </ClInclude>
+    <ClInclude Include="Variable.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -7,6 +7,8 @@
 #include "Functions/Exit.h"
 #include "Class.h"
 #include "Instruction.h"
+#include "ClassList.h"
+#include "Object.h"
 
 class VirtualMachine
 {
@@ -21,5 +23,7 @@ private:
 	QString filename;
 	QFile executableFile;
 	Class* mainClass;
+	ClassList classes;
+	QStack<Object*> stack;
 };
 
