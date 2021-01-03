@@ -71,6 +71,9 @@
     <ClCompile Include="Variable.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="RelaxString.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Program.h">
@@ -116,6 +119,9 @@
       <Filter>Header Files\Variable</Filter>
     </ClInclude>
     <ClInclude Include="Variable.h">
+      <Filter>Header Files\Variable</Filter>
+    </ClInclude>
+    <ClInclude Include="RelaxString.h">
       <Filter>Header Files\Variable</Filter>
     </ClInclude>
   </ItemGroup>

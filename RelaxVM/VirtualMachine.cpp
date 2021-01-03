@@ -10,6 +10,12 @@ VirtualMachine::~VirtualMachine()
 {
 	executableFile.close();
 	delete mainClass;
+
+	while (!stack.isEmpty()) 
+	{
+		delete stack.pop();
+	}
+
 }
 
 void VirtualMachine::Start()
@@ -77,13 +83,12 @@ void VirtualMachine::ProcessInstruction(Instruction instruction)
 		}
 		case PUSH_STR:
 		{
+			QString data = ByteArrayRead::ReadSizeAndString(executableFile);
+			RelaxString* str = new RelaxString(data);
+			stack.push(str);
 			break;
 		}
 		case RETURN:
-		{
-			break;
-		}
-		case END_METHOD:
 		{
 			break;
 		}
