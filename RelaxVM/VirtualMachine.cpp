@@ -28,11 +28,38 @@ void VirtualMachine::Start()
 	while (executableFile.bytesAvailable() > 0)
 	{
 		Instruction instruction = static_cast<Instruction>(ByteArrayRead::ReadByte(executableFile));
-		ProcessInstructionExecuting(instruction);
+		ProccesInstructionCreating(instruction);
 	}
+	
 }
 
 void VirtualMachine::ProcessInstructionExecuting(Instruction instruction)
+{
+	switch (instruction)
+	{
+		case CALL_METHOD:
+		{
+			break;
+		}
+		case PUSH:
+		{
+			break;
+		}
+		case PUSH_STR:
+		{
+			QString stringFromFile = ByteArrayRead::ReadSizeAndString(executableFile);
+			RelaxString* pushingString = new RelaxString(stringFromFile);
+			stack.push(pushingString);
+
+			break;
+		}
+		case RETURN:
+		{
+			break;
+		}
+	}
+}
+void VirtualMachine::ProccesInstructionCreating(Instruction instruction)
 {
 	switch (instruction)
 	{
@@ -73,30 +100,6 @@ void VirtualMachine::ProcessInstructionExecuting(Instruction instruction)
 
 			break;
 		}
-		case CALL_METHOD:
-		{
-			break;
-		}
-		case PUSH:
-		{
-			break;
-		}
-		case PUSH_STR:
-		{
-			QString stringFromFile = ByteArrayRead::ReadSizeAndString(executableFile);
-			RelaxString* pushingString = new RelaxString(stringFromFile);
-			stack.push(pushingString);
-
-			break;
-		}
-		case RETURN:
-		{
-			break;
-		}
 	}
-}
-void VirtualMachine::ProccesInstructionCreating(Instruction instruction)
-{
-
 }
 
