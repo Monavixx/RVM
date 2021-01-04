@@ -11,6 +11,7 @@
 #include "Object.h"
 #include "RelaxString.h"
 #include "Variable.h"
+#include "Heap.h"
 
 class VirtualMachine
 {
@@ -26,7 +27,7 @@ private:
 	QFile executableFile;
 	Class* mainClass;
 	ClassList classes;
-	QStack<Object*> stack;
-	QList<Variable> heap;
+	QStack<Variable> stack;
+	Heap heap;
 };
 

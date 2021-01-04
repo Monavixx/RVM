@@ -4,7 +4,7 @@
 class Variable
 {
 public:
-	Variable(int id, Object* data);
+	Variable(int id, Object* data = nullptr);
 	~Variable();
 
 	int GetId() const;

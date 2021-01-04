@@ -57,7 +57,21 @@ void VirtualMachine::ProcessInstructionExecuting(Instruction instruction, QIODev
 	{
 		case CREATE_VAR: 
 		{
-			int variableId = ByteArrayRead::ReadInt(executableFile);
+			int variableId = ByteArrayRead::ReadInt(device);
+			QString dataType = ByteArrayRead::ReadSizeAndString(device);
+
+			int amountParameters = ByteArrayRead::ReadInt(device);
+			QList<Parameter> parameters;
+			for (int i = 0; i < amountParameters; ++i)
+			{
+				QString parameterDataType = ByteArrayRead::ReadSizeAndString(device);
+				QString parameterName = ByteArrayRead::ReadSizeAndString(device);
+				Parameter parameter(parameterName, parameterDataType);
+				parameters.push_back(parameter);
+			}
+			//TODO: create constructors
+			Variable variable(variableId);
+			heap.push_back(variable);
 
 			break;
 		}
@@ -67,6 +81,12 @@ void VirtualMachine::ProcessInstructionExecuting(Instruction instruction, QIODev
 		}
 		case PUSH:
 		{
+			int variableId = ByteArrayRead::ReadInt(device);
+
+			Variable* variable = heap.FindVariableById(variableId);
+			if(variable!=nullptr)
+				stack.push(*variable);
+
 			break;
 		}
 		case PUSH_STR:
