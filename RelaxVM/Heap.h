@@ -2,7 +2,7 @@
 #include <QtCore>
 #include "Variable.h"
 
-class Heap : public QList<Variable>
+class Heap : public QList<Variable*>
 {
 public: 
 	Heap();

@@ -52,9 +52,10 @@ void VirtualMachine::ProcessInstructionExecuting(Instruction instruction, QIODev
 		case CREATE_VAR: 
 		{
 			int variableId = ByteArrayRead::ReadInt(device);
+			bool isStd = ByteArrayRead::ReadByte(device);
 			QString dataType = ByteArrayRead::ReadSizeAndString(device);
-
 			int amountParameters = ByteArrayRead::ReadInt(device);
+
 			QList<Parameter> parameters;
 			for (int i = 0; i < amountParameters; ++i)
 			{
@@ -63,8 +64,9 @@ void VirtualMachine::ProcessInstructionExecuting(Instruction instruction, QIODev
 				Parameter parameter(parameterName, parameterDataType);
 				parameters.push_back(parameter);
 			}
+
 			//TODO: create constructors
-			Variable variable(variableId);
+			Variable* variable = new Variable(variableId);
 			heap.push_back(variable);
 
 			break;
