@@ -1,6 +1,6 @@
 #include "RelaxString.h"
 
-RelaxString::RelaxString(QString data) : data(data)
+RelaxString::RelaxString(const QString& data) : data(data)
 {
 }
 
@@ -14,7 +14,7 @@ QString RelaxString::GetData()
     return this->data;
 }
 
-void RelaxString::SetData(QString data)
+void RelaxString::SetData(const QString& data)
 {
     this->data = data;
 }

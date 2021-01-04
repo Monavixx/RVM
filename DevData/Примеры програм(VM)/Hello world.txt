@@ -21,6 +21,8 @@ namespace TestNamespace
 create_main_class NameMainClass;
 create_method public static void NameMainClass.Main():
 	push_str "Hello world";
+	create_var 1 Relax.String(Relax.String);
+	push 1
 	call_method static void Relax.Console.Write(Relax.String);
 	
 

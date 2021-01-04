@@ -1,12 +1,16 @@
 #pragma once
 #include "Object.h"
+
 class RelaxString : public Object
 {
 public:
-	RelaxString(QString data);
+	RelaxString(const QString& data);
+
 	QString GetDataType() override;
 	QString GetData();
-	void SetData(QString data);
+
+	void SetData(const QString& data);
+
 private:
 	QString data;
 };

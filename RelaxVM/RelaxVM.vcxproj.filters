@@ -118,11 +118,11 @@
     <ClInclude Include="Int32.h">
       <Filter>Header Files\Variable</Filter>
     </ClInclude>
-    <ClInclude Include="Variable.h">
-      <Filter>Header Files\Variable</Filter>
-    </ClInclude>
     <ClInclude Include="RelaxString.h">
       <Filter>Header Files\Variable</Filter>
+    </ClInclude>
+    <ClInclude Include="Variable.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
