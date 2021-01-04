@@ -37,6 +37,12 @@ void VirtualMachine::ProcessInstructionExecuting(Instruction instruction)
 {
 	switch (instruction)
 	{
+		case CREATE_VAR: 
+		{
+			int variableId = ByteArrayRead::ReadInt(executableFile);
+
+			break;
+		}
 		case CALL_METHOD:
 		{
 			break;
@@ -100,6 +106,7 @@ void VirtualMachine::ProccesInstructionCreating(Instruction instruction)
 
 			break;
 		}
+		
 	}
 }
 
