@@ -43,7 +43,7 @@ void VirtualMachine::Start()
 		Exit("main method not found");
 	}
 
-	QBuffer bufferMainMethodCode(&mainMethod->GetCode());
+	QBuffer bufferMainMethodCode(&(mainMethod->GetCode()));
 	while (bufferMainMethodCode.bytesAvailable() > 0)
 	{
 		Instruction instruction = static_cast<Instruction>(ByteArrayRead::ReadByte(executableFile));
