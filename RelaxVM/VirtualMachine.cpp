@@ -83,9 +83,10 @@ void VirtualMachine::ProcessInstruction(Instruction instruction)
 		}
 		case PUSH_STR:
 		{
-			QString data = ByteArrayRead::ReadSizeAndString(executableFile);
-			RelaxString* str = new RelaxString(data);
-			stack.push(str);
+			QString stringFromFile = ByteArrayRead::ReadSizeAndString(executableFile);
+			RelaxString* pushingString = new RelaxString(stringFromFile);
+			stack.push(pushingString);
+
 			break;
 		}
 		case RETURN:
@@ -95,40 +96,3 @@ void VirtualMachine::ProcessInstruction(Instruction instruction)
 	}
 }
 
-
-/*
-	Relax-код:
-
-
-//test.re
-from Relax import *;
-namespace TestNamespace
-{
-	class Test
-	{
-		publ stat void Main()
-		{
-			Console.Write("hello world");
-		}
-	}
-}
-
-
-
-	Читаемый байт-код:
-
-create_main_class NameMainClass;
-create_method public static void NameMainClass.Main():
-	push_str "Hello world";
-	call_method static void Relax.Console.Write(Relax.String);
-	end;
-
-
-		Продакшен:
-
-<byte 1><int 13>NameMainClass
-<byte 4><byte 1><byte 1><int 4>void<int 13>NameMainClass<int 4>Main<int 0>
-	<byte 7><int 11>Hello world
-	<byte 5><byte 1><int 4>void<int 13>Relax.Console<int 5>Print<int 1><int 11>Relax.String
-	<byte 9>
-*/

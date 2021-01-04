@@ -1,5 +1,5 @@
 01 - create_main_class	(<byte 1><int 13>NameMainClass)
-02 - 
+02 - create_var
 03 - create_class 		(<byte 3><int 9>NameClass)
 04 - create_method		(<byte 4><byte 0><int 4>void<int 13>NameMainClass<int 5>myFunc<int 1><int 5>string<byte 9>)
 05 - call_method
