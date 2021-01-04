@@ -28,11 +28,11 @@ void VirtualMachine::Start()
 	while (executableFile.bytesAvailable() > 0)
 	{
 		Instruction instruction = static_cast<Instruction>(ByteArrayRead::ReadByte(executableFile));
-		ProcessInstruction(instruction);
+		ProcessInstructionExecuting(instruction);
 	}
 }
 
-void VirtualMachine::ProcessInstruction(Instruction instruction)
+void VirtualMachine::ProcessInstructionExecuting(Instruction instruction)
 {
 	switch (instruction)
 	{
@@ -95,26 +95,13 @@ void VirtualMachine::ProcessInstruction(Instruction instruction)
 	}
 }
 
-
-/*
-	Relax-код:
-
-
-//test.re
-from Relax import *;
-namespace TestNamespace
+void VirtualMachine::ProccesInstructionCreating(Instruction instruction)
 {
-	class Test
-	{
-		publ stat void Main()
-		{
-			Console.Write("hello world");
-		}
-	}
+
 }
 
 
-
+/*
 	Читаемый байт-код:
 
 create_main_class NameMainClass;

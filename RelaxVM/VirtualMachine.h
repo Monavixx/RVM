@@ -17,8 +17,8 @@ public:
 	VirtualMachine(const QStringList& argv);
 	~VirtualMachine();
 	void Start();
-	void ProcessInstruction(Instruction instruction);
-
+	void ProcessInstructionExecuting(Instruction instruction);
+	void ProccesInstructionCreating(Instruction instruction);
 private:
 	QStringList arguments;
 	QString filename;
