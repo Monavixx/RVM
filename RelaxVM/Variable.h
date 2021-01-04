@@ -4,10 +4,17 @@
 class Variable
 {
 public:
-	Variable(const QString& name, Object* data);
+	Variable(int id, Object* data);
 	~Variable();
+
+	int GetId() const;
+	Object* GetData() const;
+
+	void SetId(int id);
+	void SetData(Object* data);
+
 private:
 	Object* data;
-	QString name;
+	int id;
 };
 

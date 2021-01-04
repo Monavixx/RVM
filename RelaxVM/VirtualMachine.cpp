@@ -55,6 +55,12 @@ void VirtualMachine::ProcessInstructionExecuting(Instruction instruction, QIODev
 {
 	switch (instruction)
 	{
+		case CREATE_VAR: 
+		{
+			int variableId = ByteArrayRead::ReadInt(executableFile);
+
+			break;
+		}
 		case CALL_METHOD:
 		{
 			break;
@@ -118,6 +124,7 @@ void VirtualMachine::ProccesInstructionCreating(Instruction instruction, QIODevi
 
 			break;
 		}
+		
 	}
 }
 
