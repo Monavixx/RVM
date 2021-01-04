@@ -100,5 +100,3 @@ void VirtualMachine::ProccesInstructionCreating(Instruction instruction)
 
 }
 
-
-
