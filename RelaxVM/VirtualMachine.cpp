@@ -28,12 +28,30 @@ void VirtualMachine::Start()
 	while (executableFile.bytesAvailable() > 0)
 	{
 		Instruction instruction = static_cast<Instruction>(ByteArrayRead::ReadByte(executableFile));
-		ProccesInstructionCreating(instruction);
+		ProccesInstructionCreating(instruction, executableFile);
 	}
 	
+
+	if (mainClass == nullptr)
+	{
+		Exit("main class not found");
+	}
+
+	Method* mainMethod = mainClass->GetMethod("Main", "void", {});
+	if (mainMethod == nullptr)
+	{
+		Exit("main method not found");
+	}
+
+	QBuffer bufferMainMethodCode(&mainMethod->GetCode());
+	while (bufferMainMethodCode.bytesAvailable() > 0)
+	{
+		Instruction instruction = static_cast<Instruction>(ByteArrayRead::ReadByte(executableFile));
+		ProcessInstructionExecuting(instruction, bufferMainMethodCode);
+	}
 }
 
-void VirtualMachine::ProcessInstructionExecuting(Instruction instruction)
+void VirtualMachine::ProcessInstructionExecuting(Instruction instruction, QIODevice& device)
 {
 	switch (instruction)
 	{
@@ -47,7 +65,7 @@ void VirtualMachine::ProcessInstructionExecuting(Instruction instruction)
 		}
 		case PUSH_STR:
 		{
-			QString stringFromFile = ByteArrayRead::ReadSizeAndString(executableFile);
+			QString stringFromFile = ByteArrayRead::ReadSizeAndString(device);
 			RelaxString* pushingString = new RelaxString(stringFromFile);
 			stack.push(pushingString);
 
@@ -59,13 +77,13 @@ void VirtualMachine::ProcessInstructionExecuting(Instruction instruction)
 		}
 	}
 }
-void VirtualMachine::ProccesInstructionCreating(Instruction instruction)
+void VirtualMachine::ProccesInstructionCreating(Instruction instruction, QIODevice& device)
 {
 	switch (instruction)
 	{
 		case CREATE_MAIN_CLASS:
 		{
-			QString nameMainClass = ByteArrayRead::ReadSizeAndString(executableFile);
+			QString nameMainClass = ByteArrayRead::ReadSizeAndString(device);
 			mainClass = new Class(nameMainClass);
 			break;
 		}
@@ -75,24 +93,24 @@ void VirtualMachine::ProccesInstructionCreating(Instruction instruction)
 		}
 		case CREATE_METHOD:
 		{
-			AccessModifier accessModifier = static_cast<AccessModifier>(ByteArrayRead::ReadByte(executableFile));
-			bool isStatic = ByteArrayRead::ReadByte(executableFile);
+			AccessModifier accessModifier = static_cast<AccessModifier>(ByteArrayRead::ReadByte(device));
+			bool isStatic = ByteArrayRead::ReadByte(device);
 
-			QString dataType = ByteArrayRead::ReadSizeAndString(executableFile);
-			QString nameClass = ByteArrayRead::ReadSizeAndString(executableFile);
-			QString name = ByteArrayRead::ReadSizeAndString(executableFile);
+			QString dataType = ByteArrayRead::ReadSizeAndString(device);
+			QString nameClass = ByteArrayRead::ReadSizeAndString(device);
+			QString name = ByteArrayRead::ReadSizeAndString(device);
 
-			int amountParameters = ByteArrayRead::ReadInt(executableFile);
+			int amountParameters = ByteArrayRead::ReadInt(device);
 			QList<Parameter> parameters;
 
 			for (int i = 0; i < amountParameters; ++i)
 			{
-				QString parameterDataType = ByteArrayRead::ReadSizeAndString(executableFile);
-				QString parameterName = ByteArrayRead::ReadSizeAndString(executableFile);
+				QString parameterDataType = ByteArrayRead::ReadSizeAndString(device);
+				QString parameterName = ByteArrayRead::ReadSizeAndString(device);
 				Parameter parameter(parameterName, parameterDataType);
 				parameters.push_back(parameter);
 			}
-			QByteArray code = ByteArrayRead::ReadSizeAndString(executableFile).toUtf8();
+			QByteArray code = ByteArrayRead::ReadSizeAndString(device).toUtf8();
 
 			Method method(name, dataType, nameClass, parameters, code, accessModifier, isStatic);
 

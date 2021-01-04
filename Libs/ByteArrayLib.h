@@ -77,29 +77,29 @@ public:
 class ByteArrayRead
 {
 public:
-    static QString ReadSizeAndString(QFile& file, short bytesSize = 4)
+    static QString ReadSizeAndString(QIODevice& device, short bytesSize = 4)
     {
-        int size = ByteArrayConvert::byteArrayToInt(file.read(bytesSize));
-        return file.read(size);
+        int size = ByteArrayConvert::byteArrayToInt(device.read(bytesSize));
+        return device.read(size);
     }
 
-    static quint8 ReadByte(QFile& file)
+    static quint8 ReadByte(QIODevice& device)
     {
-        return ByteArrayConvert::byteArrayToByte(file.read(1));
+        return ByteArrayConvert::byteArrayToByte(device.read(1));
     }
 
-    static short ReadShort(QFile& file)
+    static short ReadShort(QIODevice& device)
     {
-        return ByteArrayConvert::byteArrayToShort(file.read(2));
+        return ByteArrayConvert::byteArrayToShort(device.read(2));
     }
 
-    static int ReadInt(QFile& file)
+    static int ReadInt(QIODevice& device)
     {
-        return ByteArrayConvert::byteArrayToByte(file.read(4));
+        return ByteArrayConvert::byteArrayToByte(device.read(4));
     }
 
-    static long long ReadLongLong(QFile& file)
+    static long long ReadLongLong(QIODevice& device)
     {
-        return ByteArrayConvert::byteArrayToByte(file.read(8));
+        return ByteArrayConvert::byteArrayToByte(device.read(8));
     }
 };

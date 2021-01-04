@@ -15,12 +15,25 @@ QList<Method> Class::GetMethods() const
 	return methods;
 }
 
-Method* Class::GetMethod(const QString& name)
+Method* Class::GetMethod(const QString& name, const QString& dataType, const QList<Parameter>& parameters)
 {
 	auto methodIterator = std::find_if(methods.begin(), methods.end(), [&](const Method& method) {
-		return name == method.GetName();
+		bool nameIsEqual = name == method.GetName();
+		bool dataTypeIsEqual = dataType == method.GetDataType();
+		bool parametersIsEqual = parameters == method.GetParameters();
+		return nameIsEqual && dataTypeIsEqual && parametersIsEqual;
 	});
 	if(methodIterator == methods.end())
+		return nullptr;
+	return &(*methodIterator);
+}
+
+Method* Class::GetMethod(const MethodSignature& signature)
+{
+	auto methodIterator = std::find_if(methods.begin(), methods.end(), [&](const Method& method) {
+		return signature == dynamic_cast<const MethodSignature&>(signature);
+	});
+	if (methodIterator == methods.end())
 		return nullptr;
 	return &(*methodIterator);
 }
