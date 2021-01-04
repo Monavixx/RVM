@@ -10,9 +10,6 @@ VirtualMachine::~VirtualMachine()
 {
 	executableFile.close();
 	delete mainClass;
-
-	stack.clear();
-
 }
 
 void VirtualMachine::Start()
@@ -81,8 +78,11 @@ void VirtualMachine::ProcessInstructionExecuting(Instruction instruction, QIODev
 			int variableId = ByteArrayRead::ReadInt(device);
 
 			Variable* variable = heap.FindVariableById(variableId);
-			if(variable!=nullptr)
-				stack.push(*variable);
+
+			if (variable == nullptr)
+				Exit("Push: id " + QString::number(variableId) + " not exitst");
+			
+			stack.push(variable);
 
 			break;
 		}
@@ -92,7 +92,7 @@ void VirtualMachine::ProcessInstructionExecuting(Instruction instruction, QIODev
 
 			QString stringFromFile = ByteArrayRead::ReadSizeAndString(device);
 			RelaxString* pushingString = new RelaxString(stringFromFile);
-			Variable pushingVariable(variableId, pushingString);
+			Variable* pushingVariable = new Variable(variableId, pushingString);
 
 			stack.push(pushingVariable);
 
