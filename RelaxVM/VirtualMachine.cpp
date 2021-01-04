@@ -65,8 +65,10 @@ void VirtualMachine::ProcessInstructionExecuting(Instruction instruction, QIODev
 				parameters.push_back(parameter);
 			}
 
-			//TODO: create constructors
-			Variable* variable = new Variable(variableId);
+			Object* object;
+			if(isStd) object = StdTypesConstructors::CreateObject(dataType, parameters, stack);
+
+			Variable* variable = new Variable(variableId, object);
 			heap.push_back(variable);
 
 			break;

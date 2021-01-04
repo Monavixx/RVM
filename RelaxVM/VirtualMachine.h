@@ -13,6 +13,7 @@
 #include "Variable.h"
 #include "Heap.h"
 #include "Stack.h"
+#include "StdTypesConstructors.h"
 
 class VirtualMachine
 {

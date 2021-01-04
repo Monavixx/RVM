@@ -104,6 +104,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="RelaxString.cpp" />
     <ClCompile Include="Stack.cpp" />
+    <ClCompile Include="StdTypesConstructors.cpp" />
     <ClCompile Include="Variable.cpp" />
     <ClCompile Include="VirtualMachine.cpp" />
   </ItemGroup>
@@ -124,6 +125,7 @@
     <ClInclude Include="Program.h" />
     <ClInclude Include="RelaxString.h" />
     <ClInclude Include="Stack.h" />
+    <ClInclude Include="StdTypesConstructors.h" />
     <ClInclude Include="Variable.h" />
     <ClInclude Include="VirtualMachine.h" />
   </ItemGroup>
