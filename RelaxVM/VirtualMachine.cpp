@@ -11,10 +11,7 @@ VirtualMachine::~VirtualMachine()
 	executableFile.close();
 	delete mainClass;
 
-	while (!stack.isEmpty()) 
-	{
-		delete stack.pop();
-	}
+	stack.clear();
 
 }
 
@@ -91,9 +88,13 @@ void VirtualMachine::ProcessInstructionExecuting(Instruction instruction, QIODev
 		}
 		case PUSH_STR:
 		{
+			int variableId = ByteArrayRead::ReadInt(device);
+
 			QString stringFromFile = ByteArrayRead::ReadSizeAndString(device);
 			RelaxString* pushingString = new RelaxString(stringFromFile);
-			stack.push(pushingString);
+			Variable pushingVariable(variableId, pushingString);
+
+			stack.push(pushingVariable);
 
 			break;
 		}

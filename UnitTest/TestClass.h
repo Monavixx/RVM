@@ -40,7 +40,7 @@ namespace UnitTests
             };
             Class testingClass(name, methods);
 
-            Method* getMethod = testingClass.GetMethod(methodSignature1.GetName());
+            Method* getMethod = testingClass.GetMethod(methodSignature1);
 
             Assert::IsTrue(*getMethod == methods[0]);
         }

@@ -68,7 +68,7 @@
     </ClCompile>
     <Link>
       <AdditionalLibraryDirectories>$(VCInstallDir)UnitTest\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>..\RelaxVM\x64\Debug\VirtualMachine.obj;..\RelaxVM\x64\Debug\Program.obj;..\RelaxVM\x64\Debug\Class.obj;..\RelaxVM\x64\Debug\Exit.obj;..\RelaxVM\x64\Debug\Method.obj;..\RelaxVM\x64\Debug\Parameter.obj;..\RelaxVM\x64\Debug\MethodSignature.obj;..\RelaxVM\x64\Debug\Variable.obj;..\RelaxVM\x64\Debug\Object.obj;..\RelaxVM\x64\Debug\Int32.obj;..\RelaxVM\x64\Debug\ClassList.obj;..\RelaxVM\x64\Debug\RelaxString.obj;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>..\RelaxVM\x64\Debug\VirtualMachine.obj;..\RelaxVM\x64\Debug\Program.obj;..\RelaxVM\x64\Debug\Class.obj;..\RelaxVM\x64\Debug\Exit.obj;..\RelaxVM\x64\Debug\Method.obj;..\RelaxVM\x64\Debug\Parameter.obj;..\RelaxVM\x64\Debug\MethodSignature.obj;..\RelaxVM\x64\Debug\Variable.obj;..\RelaxVM\x64\Debug\Object.obj;..\RelaxVM\x64\Debug\Int32.obj;..\RelaxVM\x64\Debug\ClassList.obj;..\RelaxVM\x64\Debug\RelaxString.obj;..\RelaxVM\x64\Debug\Heap.obj;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="QtSettings">

@@ -94,6 +94,7 @@
     <ClCompile Include="Class.cpp" />
     <ClCompile Include="ClassList.cpp" />
     <ClCompile Include="Functions\Exit.cpp" />
+    <ClCompile Include="Heap.cpp" />
     <ClCompile Include="Int32.cpp" />
     <ClCompile Include="Method.cpp" />
     <ClCompile Include="MethodSignature.cpp" />
@@ -112,6 +113,7 @@
     <ClInclude Include="Exceptions\Exception.h" />
     <ClInclude Include="Exceptions\ExitException.h" />
     <ClInclude Include="Functions\Exit.h" />
+    <ClInclude Include="Heap.h" />
     <ClInclude Include="Instruction.h" />
     <ClInclude Include="Int32.h" />
     <ClInclude Include="Method.h" />
