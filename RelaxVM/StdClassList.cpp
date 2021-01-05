@@ -2,24 +2,12 @@
 
 StdClassList::StdClassList()
 {
-}
-
-StdClassList::StdClassList(const QList<StdClass>& stdClassList)
-{
-	this->clear();
-	for (auto& item : stdClassList)
-	{
-		this->push_back(item);
-	}
-}
-
-StdClassList::StdClassList(const StdClassList& stdClassList)
-{
-	this->clear();
-	for (auto& item : stdClassList)
-	{
-		this->push_back(item);
-	}
+	push_back(StdClass("Relax.Console", {
+		StdMethod("Write", "void", "Relax.Console", QList<Parameter>{Parameter("text", "Relax.String")}, [&](Stack& stack)
+		{
+			qout << dynamic_cast<RelaxString*>(stack.pop()->GetData())->GetData();
+		},AccessModifier::PUBLIC, true)
+	}));
 }
 
 StdClass* StdClassList::FindClassByName(const QString& name)
@@ -33,7 +21,8 @@ StdClass* StdClassList::FindClassByName(const QString& name)
 	return &(*classIterator);
 }
 
-StdClassList& StdClassList::GetInstance()
+StdClassList* StdClassList::GetInstance()
 {
+	if (stdClassList == nullptr) stdClassList = new StdClassList;
 	return stdClassList;
 }

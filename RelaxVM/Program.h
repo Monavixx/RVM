@@ -7,6 +7,7 @@ class Program
 {
 public:
 	Program(int argc, char* argv[]);
+	~Program();
 
 	void Start();
 	bool IsLaunch();

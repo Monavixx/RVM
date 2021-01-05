@@ -3,6 +3,7 @@
 #include "Parameter.h"
 #include "Stack.h"
 #include "RelaxString.h"
+#include "Functions/Exit.h"
 
 class StdTypesConstructors
 {

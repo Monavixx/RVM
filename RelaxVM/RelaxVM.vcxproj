@@ -105,7 +105,7 @@
     <ClCompile Include="RelaxString.cpp" />
     <ClCompile Include="Stack.cpp" />
     <ClCompile Include="StdClass.cpp" />
-    <ClCompile Include="StdClassesList.cpp" />
+    <ClCompile Include="StdClassList.cpp" />
     <ClCompile Include="StdMethod.cpp" />
     <ClCompile Include="StdTypesConstructors.cpp" />
     <ClCompile Include="Variable.cpp" />
@@ -129,7 +129,7 @@
     <ClInclude Include="RelaxString.h" />
     <ClInclude Include="Stack.h" />
     <ClInclude Include="StdClass.h" />
-    <ClInclude Include="StdClassesList.h" />
+    <ClInclude Include="StdClassList.h" />
     <ClInclude Include="StdMethod.h" />
     <ClInclude Include="StdTypesConstructors.h" />
     <ClInclude Include="Variable.h" />

@@ -95,7 +95,7 @@
     <ClCompile Include="StdMethod.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="StdClassesList.cpp">
+    <ClCompile Include="StdClassList.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -163,7 +163,7 @@
     <ClInclude Include="StdMethod.h">
       <Filter>Header Files\Std</Filter>
     </ClInclude>
-    <ClInclude Include="StdClassesList.h">
+    <ClInclude Include="StdClassList.h">
       <Filter>Header Files\Std</Filter>
     </ClInclude>
   </ItemGroup>

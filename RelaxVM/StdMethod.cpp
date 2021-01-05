@@ -5,7 +5,7 @@ StdMethod::StdMethod(const MethodSignature& signature, std::function<void(Stack&
 {
 }
 
-StdMethod::StdMethod(const QString& name, const QString& dataType, const QString& nameClass, const QList<Parameter>& parameters, std::function<void(Stack&)> code, const AccessModifier& accessModifier, bool isStatic)
+StdMethod::StdMethod(const QString& name, const QString& dataType, const QString& nameClass, const QList<Parameter>& parameters, std::function<void(Stack&)> function, const AccessModifier& accessModifier, bool isStatic)
 	:MethodSignature(name, dataType, nameClass, parameters), function(function), accessModifier(accessModifier), isStatic(isStatic)
 {
 }

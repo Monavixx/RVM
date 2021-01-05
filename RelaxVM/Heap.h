@@ -6,7 +6,7 @@ class Heap : public QList<Variable*>
 {
 public: 
 	Heap();
-	Heap(const QList<Variable>& classList);
+	Heap(const QList<Variable*>& classList);
 	Heap(const Heap& classList);
 
 	Variable* FindVariableById(int id);

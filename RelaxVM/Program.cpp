@@ -8,6 +8,10 @@ Program::Program(int argc, char* argv[])
 	}
 }
 
+Program::~Program()
+{
+}
+
 void Program::Start()
 {
 	if (IsLaunch())

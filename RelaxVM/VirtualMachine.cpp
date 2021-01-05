@@ -9,7 +9,6 @@ VirtualMachine::VirtualMachine(const QStringList& argv) : arguments(argv), mainC
 VirtualMachine::~VirtualMachine()
 {
 	executableFile.close();
-	delete mainClass;
 }
 
 void VirtualMachine::Start()
@@ -38,9 +37,14 @@ void VirtualMachine::Start()
 	}
 
 	QBuffer bufferMainMethodCode(&(mainMethod->GetCode()));
+	if (!bufferMainMethodCode.open(QIODevice::ReadOnly))
+	{
+		Exit("buffer main method error!");
+	}
+
 	while (bufferMainMethodCode.bytesAvailable() > 0)
 	{
-		Instruction instruction = static_cast<Instruction>(ByteArrayRead::ReadByte(executableFile));
+		Instruction instruction = static_cast<Instruction>(ByteArrayRead::ReadByte(bufferMainMethodCode));
 		ProcessInstructionExecuting(instruction, bufferMainMethodCode);
 	}
 }
@@ -97,7 +101,7 @@ void VirtualMachine::ProcessInstructionExecuting(Instruction instruction, QIODev
 
 				if (isStd)
 				{
-					StdClass* stdClass = StdClassList::GetInstance().FindClassByName(nameClass);
+					StdClass* stdClass = StdClassList::GetInstance()->FindClassByName(nameClass);
 
 					if (stdClass == nullptr)
 						Exit("std class not exists");
@@ -124,11 +128,9 @@ void VirtualMachine::ProcessInstructionExecuting(Instruction instruction, QIODev
 		}
 		case PUSH_STR:
 		{
-			int variableId = ByteArrayRead::ReadInt(device);
-
 			QString stringFromFile = ByteArrayRead::ReadSizeAndString(device);
 			RelaxString* pushingString = new RelaxString(stringFromFile);
-			Variable* pushingVariable = new Variable(variableId, pushingString);
+			Variable* pushingVariable = new Variable(2, pushingString);
 
 			stack.push(pushingVariable);
 
@@ -147,7 +149,9 @@ void VirtualMachine::ProccesInstructionCreating(Instruction instruction, QIODevi
 		case CREATE_MAIN_CLASS:
 		{
 			QString nameMainClass = ByteArrayRead::ReadSizeAndString(device);
-			mainClass = new Class(nameMainClass);
+			classes.push_back(Class(nameMainClass));
+			mainClass = &classes.back();
+
 			break;
 		}
 		case CREATE_CLASS:
@@ -173,11 +177,12 @@ void VirtualMachine::ProccesInstructionCreating(Instruction instruction, QIODevi
 				Parameter parameter(parameterName, parameterDataType);
 				parameters.push_back(parameter);
 			}
-			QByteArray code = ByteArrayRead::ReadSizeAndString(device).toUtf8();
+			QByteArray code = ByteArrayRead::ReadSizeAndByteArray(device);
 
 			Method method(name, dataType, nameClass, parameters, code, accessModifier, isStatic);
 
-			classes.FindClassByName(nameClass)->AddMethod(method);
+			Class* _class = classes.FindClassByName(nameClass);
+			_class->AddMethod(method);
 
 			break;
 		}

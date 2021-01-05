@@ -4,7 +4,7 @@ Heap::Heap()
 {
 }
 
-Heap::Heap(const QList<Variable>& variableList)
+Heap::Heap(const QList<Variable*>& variableList)
 {
     this->clear();
     for(auto& item : variableList)
@@ -24,10 +24,10 @@ Heap::Heap(const Heap& variableList)
 
 Variable* Heap::FindVariableById(int id)
 {
-    auto heapIterator = std::find_if(this->begin(), this->end(), [&](const Variable& variable) {
-        return variable.GetId() == id;
+    auto heapIterator = std::find_if(this->begin(), this->end(), [&](Variable* variable) {
+        return variable->GetId() == id;
     });
     if(heapIterator == this->end())
         return nullptr;
-    return &(*heapIterator);
+    return *heapIterator;
 }

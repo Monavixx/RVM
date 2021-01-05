@@ -83,6 +83,12 @@ public:
         return device.read(size);
     }
 
+    static QByteArray ReadSizeAndByteArray(QIODevice& device, short bytesSize = 4)
+    {
+        int size = ByteArrayConvert::byteArrayToInt(device.read(bytesSize));
+        return device.read(size);
+    }
+
     static quint8 ReadByte(QIODevice& device)
     {
         return ByteArrayConvert::byteArrayToByte(device.read(1));
@@ -95,11 +101,11 @@ public:
 
     static int ReadInt(QIODevice& device)
     {
-        return ByteArrayConvert::byteArrayToByte(device.read(4));
+        return ByteArrayConvert::byteArrayToInt(device.read(4));
     }
 
     static long long ReadLongLong(QIODevice& device)
     {
-        return ByteArrayConvert::byteArrayToByte(device.read(8));
+        return ByteArrayConvert::byteArrayToLongLong(device.read(8));
     }
 };
