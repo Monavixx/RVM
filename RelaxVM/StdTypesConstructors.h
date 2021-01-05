@@ -20,6 +20,7 @@ public:
 
 		if(constructions.contains(signature))
 			return constructions[signature](stack);
+
 		Exit("Construction not exists");
 	}
 

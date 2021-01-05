@@ -9,6 +9,7 @@ public:
 	Heap(const QList<Variable*>& classList);
 	Heap(const Heap& classList);
 
+
 	Variable* FindVariableById(int id);
 };
 
