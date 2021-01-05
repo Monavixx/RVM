@@ -36,6 +36,9 @@
     <Filter Include="Header Files\Factory">
       <UniqueIdentifier>{fbb2645b-00d6-442b-a65b-766e7ef083a5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Std">
+      <UniqueIdentifier>{3f34ef4c-3994-4d1a-adb3-1c0d1cabd9c1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -84,6 +87,15 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="StdTypesConstructors.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="StdClass.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="StdMethod.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="StdClassesList.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -143,7 +155,16 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="StdTypesConstructors.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Std</Filter>
+    </ClInclude>
+    <ClInclude Include="StdClass.h">
+      <Filter>Header Files\Std</Filter>
+    </ClInclude>
+    <ClInclude Include="StdMethod.h">
+      <Filter>Header Files\Std</Filter>
+    </ClInclude>
+    <ClInclude Include="StdClassesList.h">
+      <Filter>Header Files\Std</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

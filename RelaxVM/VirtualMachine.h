@@ -14,6 +14,8 @@
 #include "Heap.h"
 #include "Stack.h"
 #include "StdTypesConstructors.h"
+#include "StdClass.h"
+#include "StdClassList.h"
 
 class VirtualMachine
 {

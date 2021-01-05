@@ -65,16 +65,48 @@ void VirtualMachine::ProcessInstructionExecuting(Instruction instruction, QIODev
 				parameters.push_back(parameter);
 			}
 
-			Object* object;
-			if(isStd) object = StdTypesConstructors::CreateObject(dataType, parameters, stack);
+			Object* object = nullptr;
+			if(isStd)
+				object = StdTypesConstructors::CreateObject(dataType, parameters, stack);
 
 			Variable* variable = new Variable(variableId, object);
 			heap.push_back(variable);
 
 			break;
 		}
+		//TODO: отделить call std от call noStd путём создания интрукций call и callstd
 		case CALL_METHOD:
 		{
+			bool isStatic = ByteArrayRead::ReadByte(device);
+			if (isStatic)
+			{
+				bool isStd = ByteArrayRead::ReadByte(device);
+				QString dataType = ByteArrayRead::ReadSizeAndString(device);
+				QString nameClass = ByteArrayRead::ReadSizeAndString(device);
+				QString nameMethod = ByteArrayRead::ReadSizeAndString(device);
+				int amountParameters = ByteArrayRead::ReadInt(device);
+
+				QList<Parameter> parameters;
+				for (int i = 0; i < amountParameters; ++i)
+				{
+					QString parameterDataType = ByteArrayRead::ReadSizeAndString(device);
+					QString parameterName = ByteArrayRead::ReadSizeAndString(device);
+					Parameter parameter(parameterName, parameterDataType);
+					parameters.push_back(parameter);
+				}
+
+				if (isStd)
+				{
+					StdClass* stdClass = StdClassList::GetInstance().FindClassByName(nameClass);
+
+					if (stdClass == nullptr)
+						Exit("std class not exists");
+
+					StdMethod* callableStdMethod = stdClass->GetMethod(nameMethod, dataType, parameters);
+
+					callableStdMethod->CallFunction(stack);
+				}
+			}
 			break;
 		}
 		case PUSH:

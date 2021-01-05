@@ -46,6 +46,6 @@ bool Method::operator==(const Method& other) const
 	bool signatureIsEqual = MethodSignature::operator==(dynamic_cast<const MethodSignature&>(other));
 	bool isStaticIsEqual = isStatic == other.IsStatic();
 	bool accessModifierIsEqual = accessModifier == other.GetAccessModifier();
-	bool isCodeEqual = code == other.GetCode();
-	return signatureIsEqual && isStaticIsEqual && accessModifierIsEqual && isCodeEqual;
+	bool codeIsEqual = code == other.GetCode();
+	return signatureIsEqual && isStaticIsEqual && accessModifierIsEqual && codeIsEqual;
 }
