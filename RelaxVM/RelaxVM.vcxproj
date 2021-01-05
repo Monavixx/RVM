@@ -112,7 +112,6 @@
     <ClCompile Include="StdClass.cpp" />
     <ClCompile Include="StdClassList.cpp" />
     <ClCompile Include="StdMethod.cpp" />
-    <ClCompile Include="StdTypesConstructors.cpp" />
     <ClCompile Include="Variable.cpp" />
     <ClCompile Include="VirtualMachine.cpp" />
   </ItemGroup>
@@ -136,7 +135,6 @@
     <ClInclude Include="StdClass.h" />
     <ClInclude Include="StdClassList.h" />
     <ClInclude Include="StdMethod.h" />
-    <ClInclude Include="StdTypesConstructors.h" />
     <ClInclude Include="Variable.h" />
     <ClInclude Include="VirtualMachine.h" />
   </ItemGroup>

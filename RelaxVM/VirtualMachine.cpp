@@ -171,10 +171,20 @@ void VirtualMachine::CreateVar(QIODevice& device)
 
 	Object* object = nullptr;
 	if (isStd)
-		object = StdTypesConstructors::CreateObject(dataType, parameters, stack);
+	{
+		StdClass* _class = StdClassList::GetInstance()->FindClassByName(dataType);
+		if (_class == nullptr)
+			Exit("Std class not exists");
 
-	Variable* variable = new Variable(variableId, object);
-	heap.push_back(variable);
+		StdMethod* construction = _class->GetMethod(dataType, dataType, parameters);
+		if (construction == nullptr)
+			Exit("Construction not exists");
+
+
+		construction->CallFunction(stack);
+		Variable* newVariable = new Variable(variableId, stack.pop());
+		heap.push_back(newVariable);
+	}
 }
 
 void VirtualMachine::CallMethod(QIODevice& device)
@@ -200,7 +210,6 @@ void VirtualMachine::CallMethod(QIODevice& device)
 		if (isStd)
 		{
 			StdClass* stdClass = StdClassList::GetInstance()->FindClassByName(nameClass);
-
 			if (stdClass == nullptr)
 				Exit("std class not exists");
 
@@ -220,16 +229,14 @@ void VirtualMachine::Push(QIODevice& device)
 	if (variable == nullptr)
 		Exit("Push: id " + QString::number(variableId) + " not exitst");
 
-	stack.push(variable);
+	stack.push(variable->GetData());
 }
 
 void VirtualMachine::PushStr(QIODevice& device)
 {
-	int id = ByteArrayRead::ReadInt(device);
 	QString stringFromFile = ByteArrayRead::ReadSizeAndString(device);
 	RelaxString* pushingString = new RelaxString(stringFromFile);
-	Variable* pushingVariable = new Variable(id, pushingString);
-	stack.push(pushingVariable);
+	stack.push(pushingString);
 }
 
 void VirtualMachine::Return(QIODevice& device)
