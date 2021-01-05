@@ -4,7 +4,7 @@ Stack::Stack()
 {
 }
 
-Stack::Stack(const QList<Variable*>& variableList)
+Stack::Stack(const QList<Object*>& variableList)
 {
 	this->clear();
 	for (auto& item : variableList)
