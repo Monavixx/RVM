@@ -25,6 +25,18 @@ public:
 	void Start();
 	void ProcessInstructionExecuting(Instruction instruction, QIODevice& device);
 	void ProccesInstructionCreating(Instruction instruction, QIODevice& device);
+
+
+	void CreateMainClass(QIODevice& device);
+	void CreateClass(QIODevice& device);
+	void CreateMethod(QIODevice& device);
+
+	void CreateVar(QIODevice& device);
+	void CallMethod(QIODevice& device);
+	void Push(QIODevice& device);
+	void PushStr(QIODevice& device);
+	void Return(QIODevice& device);
+
 private:
 	QStringList arguments;
 	QString filename;

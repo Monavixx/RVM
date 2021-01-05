@@ -33,9 +33,6 @@
     <Filter Include="Header Files\Variable">
       <UniqueIdentifier>{5a261131-ae00-4e33-beb3-5c3cd9d12291}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Factory">
-      <UniqueIdentifier>{fbb2645b-00d6-442b-a65b-766e7ef083a5}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\Std">
       <UniqueIdentifier>{3f34ef4c-3994-4d1a-adb3-1c0d1cabd9c1}</UniqueIdentifier>
     </Filter>
