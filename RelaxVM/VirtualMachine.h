@@ -35,6 +35,7 @@ public:
 	void Push(QIODevice& device);
 	void PushStr(QIODevice& device);
 	void Return(QIODevice& device);
+	void DeleteVar(QIODevice& device);
 
 private:
 	QStringList arguments;

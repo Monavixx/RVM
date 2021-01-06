@@ -8,5 +8,6 @@ enum Instruction
 	CALL_METHOD,
 	PUSH,
 	PUSH_STR,
-	RETURN
+	RETURN,
+	DELETE_VAR
 };

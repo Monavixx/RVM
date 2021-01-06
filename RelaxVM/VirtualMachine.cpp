@@ -91,6 +91,10 @@ void VirtualMachine::ProcessInstructionExecuting(Instruction instruction, QIODev
 			Return(device);
 			break;
 		}
+		case DELETE_VAR:
+		{
+
+		}
 	}
 }
 void VirtualMachine::ProccesInstructionCreating(Instruction instruction, QIODevice& device)
@@ -241,5 +245,11 @@ void VirtualMachine::PushStr(QIODevice& device)
 
 void VirtualMachine::Return(QIODevice& device)
 {
+}
+
+void VirtualMachine::DeleteVar(QIODevice& device)
+{
+	int variableId = ByteArrayRead::ReadInt(device);
+	heap.removeAll(heap.FindVariableById(variableId));
 }
 
