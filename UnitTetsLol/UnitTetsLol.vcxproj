@@ -11,23 +11,13 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="TestClass.h" />
-    <ClInclude Include="TestMethod.h" />
-    <ClInclude Include="TestMethodSignature.h" />
-    <ClInclude Include="TestProgram.h" />
-    <ClInclude Include="TestStdClass.h" />
-    <ClInclude Include="TestVirtualMachine.h" />
+    <ClInclude Include="Test.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="TestClass.cpp" />
-    <ClCompile Include="TestMethod.cpp" />
-    <ClCompile Include="TestMethodSignature.cpp" />
-    <ClCompile Include="TestProgram.cpp" />
-    <ClCompile Include="TestStdClass.cpp" />
-    <ClCompile Include="TestVirtualMachine.cpp" />
+    <ClCompile Include="Test.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{0375CEF8-D18E-48E3-AE6B-1925CC7F569B}</ProjectGuid>
+    <ProjectGuid>{A3C66F77-3AA0-40F9-A12E-E196D6EE223D}</ProjectGuid>
     <Keyword>QtVS_v303</Keyword>
     <WindowsTargetPlatformVersion Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">10.0.18362.0</WindowsTargetPlatformVersion>
     <WindowsTargetPlatformVersion Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">10.0.18362.0</WindowsTargetPlatformVersion>
@@ -59,18 +49,13 @@
     <Import Project="$(QtMsBuild)\qt_defaults.props" />
   </ImportGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
-    <IncludePath>../RelaxVM/;$(IncludePath)</IncludePath>
+    <IncludePath>$(VCInstallDir)UnitTest\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <ClCompile>
-      <AdditionalIncludeDirectories>$(VCInstallDir)UnitTest\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <LanguageStandard>stdcpp17</LanguageStandard>
-    </ClCompile>
     <Link>
       <AdditionalLibraryDirectories>$(VCInstallDir)UnitTest\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>..\RelaxVM\x64\Debug\VirtualMachine.obj;..\RelaxVM\x64\Debug\Program.obj;..\RelaxVM\x64\Debug\Class.obj;..\RelaxVM\x64\Debug\Exit.obj;..\RelaxVM\x64\Debug\Method.obj;..\RelaxVM\x64\Debug\Parameter.obj;..\RelaxVM\x64\Debug\MethodSignature.obj;..\RelaxVM\x64\Debug\Variable.obj;..\RelaxVM\x64\Debug\Object.obj;..\RelaxVM\x64\Debug\Int32.obj;..\RelaxVM\x64\Debug\ClassList.obj;..\RelaxVM\x64\Debug\RelaxString.obj;..\RelaxVM\x64\Debug\Heap.obj;..\RelaxVM\x64\Debug\StdClass.obj;..\RelaxVM\x64\Debug\StdClassList.obj;..\RelaxVM\x64\Debug\StdMethod.obj;..\RelaxVM\x64\Debug\main.obj;..\RelaxVM\x64\Debug\Stack.obj;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="QtSettings">
@@ -93,7 +78,7 @@
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
-      <PreprocessorDefinitions>UNITTEST_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>UNITTETSLOL_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -107,7 +92,7 @@
       <DebugInformationFormat>None</DebugInformationFormat>
       <Optimization>MaxSpeed</Optimization>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
-      <PreprocessorDefinitions>UNITTEST_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>UNITTETSLOL_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
