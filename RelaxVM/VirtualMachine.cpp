@@ -228,11 +228,10 @@ void VirtualMachine::CallMethod(QIODevice& device)
 void VirtualMachine::Push(QIODevice& device)
 {
 	int variableId = ByteArrayRead::ReadInt(device);
-
 	Variable* variable = heap.FindVariableById(variableId);
 
 	if (variable == nullptr)
-		Exit("Push: id " + QString::number(variableId) + " not exitst");
+		Exit("Push: id " + QString::number(variableId) + " not exists");
 
 	stack.push(variable->GetData());
 }
