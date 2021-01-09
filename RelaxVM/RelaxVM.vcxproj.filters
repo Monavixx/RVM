@@ -92,6 +92,12 @@
     <ClCompile Include="Stack.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Frame.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="VariableList.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Program.h">
@@ -155,6 +161,12 @@
       <Filter>Header Files\Std</Filter>
     </ClInclude>
     <ClInclude Include="Stack.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Frame.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="VariableList.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

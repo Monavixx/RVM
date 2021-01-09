@@ -286,14 +286,16 @@ void VirtualMachine::New(QIODevice& device)
 		if (construction == nullptr)
 			Exit("Construction not exists");
 
-		construction->CallFunction(stack);
-		
-		//heap.push_back(newVariable);
+		Object* newObject = construction->CallFunction(stack);
+		heap.push_back(newObject);
+		stack.push(newObject);
 	}
 }
 
 void VirtualMachine::Set(QIODevice& device)
 {
+	int id = ByteArrayRead::ReadInt(device);
+	Object* data = stack.pop();
 }
 
 void VirtualMachine::Get(QIODevice& device)

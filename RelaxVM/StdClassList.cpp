@@ -6,6 +6,7 @@ StdClassList::StdClassList()
 		StdMethod("Write", "void", "Relax.Console", QList<Parameter>{Parameter("text", "Relax.String")}, [&](Stack& stack)
 		{
 			qout << dynamic_cast<RelaxString*>(stack.pop())->GetData();
+			return nullptr;
 		},AccessModifier::PUBLIC, true)
 	}));
 
@@ -14,7 +15,7 @@ StdClassList::StdClassList()
 		{
 			RelaxString* data = dynamic_cast<RelaxString*>(stack.pop());
 			RelaxString* newData = new RelaxString(data->GetData());
-			stack.push(newData);
+			return newData;
 		},AccessModifier::PUBLIC, false)
 	}));
 }

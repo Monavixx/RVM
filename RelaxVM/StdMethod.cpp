@@ -1,11 +1,11 @@
 #include "StdMethod.h"
 
-StdMethod::StdMethod(const MethodSignature& signature, std::function<void(Stack&)> function, const AccessModifier& accessModifier, bool isStatic)
+StdMethod::StdMethod(const MethodSignature& signature, std::function<Object*(Stack&)> function, const AccessModifier& accessModifier, bool isStatic)
 	: MethodSignature(signature), function(function), accessModifier(accessModifier), isStatic(isStatic)
 {
 }
 
-StdMethod::StdMethod(const QString& name, const QString& dataType, const QString& nameClass, const QList<Parameter>& parameters, std::function<void(Stack&)> function, const AccessModifier& accessModifier, bool isStatic)
+StdMethod::StdMethod(const QString& name, const QString& dataType, const QString& nameClass, const QList<Parameter>& parameters, std::function<Object*(Stack&)> function, const AccessModifier& accessModifier, bool isStatic)
 	:MethodSignature(name, dataType, nameClass, parameters), function(function), accessModifier(accessModifier), isStatic(isStatic)
 {
 }
@@ -20,7 +20,7 @@ AccessModifier StdMethod::GetAccessModifier() const
 	return accessModifier;
 }
 
-std::function<void(Stack&)> StdMethod::GetFunction() const
+std::function<Object*(Stack&)> StdMethod::GetFunction() const
 {
 	return function;
 }
@@ -35,14 +35,14 @@ void StdMethod::SetAccessModifier(const AccessModifier& accessModifier)
 	this->accessModifier = accessModifier;
 }
 
-void StdMethod::SetFunction(std::function<void(Stack&)> function)
+void StdMethod::SetFunction(std::function<Object*(Stack&)> function)
 {
 	this->function = function;
 }
 
-void StdMethod::CallFunction(Stack& stack)
+Object* StdMethod::CallFunction(Stack& stack)
 {
-	function(stack);
+	return function(stack);
 }
 
 bool StdMethod::operator==(const StdMethod& other) const

@@ -12,9 +12,9 @@
 #include "RelaxString.h"
 #include "Variable.h"
 #include "Heap.h"
-#include "Stack.h"
 #include "StdClass.h"
 #include "StdClassList.h"
+#include "Stack.h"
 
 class VirtualMachine
 {

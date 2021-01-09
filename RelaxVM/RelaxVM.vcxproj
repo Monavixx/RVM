@@ -98,6 +98,7 @@
   <ItemGroup>
     <ClCompile Include="Class.cpp" />
     <ClCompile Include="ClassList.cpp" />
+    <ClCompile Include="Frame.cpp" />
     <ClCompile Include="Functions\Exit.cpp" />
     <ClCompile Include="Heap.cpp" />
     <ClCompile Include="Int32.cpp" />
@@ -113,6 +114,7 @@
     <ClCompile Include="StdClassList.cpp" />
     <ClCompile Include="StdMethod.cpp" />
     <ClCompile Include="Variable.cpp" />
+    <ClCompile Include="VariableList.cpp" />
     <ClCompile Include="VirtualMachine.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -121,6 +123,7 @@
     <ClInclude Include="ClassList.h" />
     <ClInclude Include="Exceptions\Exception.h" />
     <ClInclude Include="Exceptions\ExitException.h" />
+    <ClInclude Include="Frame.h" />
     <ClInclude Include="Functions\Exit.h" />
     <ClInclude Include="Heap.h" />
     <ClInclude Include="Instruction.h" />
@@ -136,6 +139,7 @@
     <ClInclude Include="StdClassList.h" />
     <ClInclude Include="StdMethod.h" />
     <ClInclude Include="Variable.h" />
+    <ClInclude Include="VariableList.h" />
     <ClInclude Include="VirtualMachine.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

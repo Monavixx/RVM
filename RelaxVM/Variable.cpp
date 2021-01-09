@@ -6,7 +6,6 @@ Variable::Variable(int id, Object* data) : id(id), data(data)
 
 Variable::~Variable()
 {
-	delete data;
 }
 
 int Variable::GetId() const

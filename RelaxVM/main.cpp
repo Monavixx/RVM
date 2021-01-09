@@ -1,4 +1,5 @@
 #include "Program.h"
+#include "Frame.h"
 
 int main(int argc, char *argv[])
 {
@@ -11,18 +12,13 @@ int main(int argc, char *argv[])
     {
         qout << e.What();
     }*/
-    Stack s, s1;
+    Frame f;
+    f.SetVariableList(VariableList({Variable(10, new RelaxString("Lol"))}));
 
-    RelaxString* data = new RelaxString("Lol");
-
-    s.push(data);
-    s1.push(data);
-
-    RelaxString* poped = dynamic_cast<RelaxString*>(s.pop());
-    poped = new RelaxString("Kek");
-    
-    qout << data->GetData();
-    qout << dynamic_cast<RelaxString*>(s1.pop())->GetData();
-
+    Variable* v = f.FindVariableById(10);
+    qout << dynamic_cast<RelaxString*>(v->GetData())->GetData();
+    v->SetData(new RelaxString("Kek"));
+    Variable* v2 = f.FindVariableById(10);
+    qout << dynamic_cast<RelaxString*>(v2->GetData())->GetData();
     return 0;
 }
