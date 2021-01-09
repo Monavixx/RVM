@@ -21,6 +21,12 @@
     <Filter Include="Header Files\Exceptions">
       <UniqueIdentifier>{18a5b0ee-2c8d-4557-b4a0-d42d9b025643}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\functions">
+      <UniqueIdentifier>{8561fbdb-891d-44b2-aef5-cc8a98ef7c4b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\functions">
+      <UniqueIdentifier>{2d70c17e-acbf-4be6-bfdd-b2f310404074}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -34,6 +40,12 @@
     </ClCompile>
     <ClCompile Include="Exit.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Line.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="split.cpp">
+      <Filter>Source Files\functions</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -51,6 +63,12 @@
     </ClInclude>
     <ClInclude Include="Exit.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Line.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="split.h">
+      <Filter>Header Files\functions</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
