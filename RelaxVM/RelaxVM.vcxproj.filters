@@ -80,9 +80,6 @@
     <ClCompile Include="Heap.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Stack.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="StdClass.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -90,6 +87,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="StdClassList.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Stack.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -145,9 +145,6 @@
     <ClInclude Include="Heap.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Stack.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="StdClass.h">
       <Filter>Header Files\Std</Filter>
     </ClInclude>
@@ -156,6 +153,9 @@
     </ClInclude>
     <ClInclude Include="StdClassList.h">
       <Filter>Header Files\Std</Filter>
+    </ClInclude>
+    <ClInclude Include="Stack.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -2,14 +2,11 @@
 #include <QtCore>
 #include "Variable.h"
 
-class Heap : public QList<Variable*>
+class Heap : public QList<Object*>
 {
 public: 
 	Heap();
-	Heap(const QList<Variable*>& classList);
+	Heap(const QList<Object*>& classList);
 	Heap(const Heap& classList);
-
-
-	Variable* FindVariableById(int id);
 };
 

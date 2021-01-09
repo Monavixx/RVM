@@ -30,13 +30,16 @@ public:
 	void CreateClass(QIODevice& device);
 	void CreateMethod(QIODevice& device);
 
-	void CreateVar(QIODevice& device);
+	//void CreateVar(QIODevice& device);		// del
 	void CallMethod(QIODevice& device);
-	void Push(QIODevice& device);
+	//void Push(QIODevice& device);
 	void PushStr(QIODevice& device);
 	void Return(QIODevice& device);
-	void DeleteVar(QIODevice& device);
-
+	//void DeleteVar(QIODevice& device);		// del
+	void New(QIODevice& device);
+	void Set(QIODevice& device);
+	void Get(QIODevice& device);
+	void Local(QIODevice& device);
 private:
 	QStringList arguments;
 	QString filename;

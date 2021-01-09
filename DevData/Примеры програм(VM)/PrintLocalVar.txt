@@ -9,7 +9,8 @@ namespace TestNamespace
 	{
 		public stat void Main()
 		{
-			Console.Write("hello world");
+			string myVar = "hello world";
+			Console.Write(myVar);
 		}
 	}
 }
@@ -20,7 +21,10 @@ namespace TestNamespace
 
 create_main_class NameMainClass;
 create_method public static void NameMainClass.Main():
+	local 1 Relax.String;
 	push_str "Hello world";
+	new Relax.String(Relax.String)
+	set 1
 	call_method static std void Relax.Console.Write(Relax.String);
 	
 
@@ -30,5 +34,7 @@ create_method public static void NameMainClass.Main():
 <byte 1><int 13>NameMainClass
 <byte 4><byte 1><byte 1><int 4>void<int 13>NameMainClass<int 4>Main<int 0><int 105>
 	<byte 7><int 11>Hello world
+	<byte 2><int 1><byte 1><int 11>Relax.String<int 1><int 11>Relax.String<int 4>data
+	<byte 6><int 1>
 	<byte 5><byte 1><byte 1><int 4>void<int 13>Relax.Console<int 5>Write<int 1><int 11>Relax.String<int 4>text
 	
