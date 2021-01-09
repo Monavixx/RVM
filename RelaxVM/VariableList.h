@@ -2,7 +2,7 @@
 #include <QtCore>
 #include "Variable.h"
 
-class VariableList : QList<Variable>
+class VariableList : public QList<Variable>
 {
 public:
 	VariableList();

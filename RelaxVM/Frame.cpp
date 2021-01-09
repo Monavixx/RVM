@@ -28,3 +28,8 @@ void Frame::SetVariableList(const VariableList& variables)
 {
     this->variables = variables;
 }
+
+void Frame::CreateVariable(int id)
+{
+    variables.push_back(Variable(id));
+}

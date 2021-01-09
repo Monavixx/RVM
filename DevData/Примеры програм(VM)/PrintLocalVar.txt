@@ -23,8 +23,8 @@ create_main_class NameMainClass;
 create_method public static void NameMainClass.Main():
 	local 1 Relax.String;
 	push_str "Hello world";
-	new Relax.String(Relax.String)
 	set 1
+	get 1
 	call_method static std void Relax.Console.Write(Relax.String);
 	
 

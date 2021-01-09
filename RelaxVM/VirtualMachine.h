@@ -15,6 +15,7 @@
 #include "StdClass.h"
 #include "StdClassList.h"
 #include "Stack.h"
+#include "Frame.h"
 
 class VirtualMachine
 {
@@ -22,7 +23,7 @@ public:
 	VirtualMachine(const QStringList& argv);
 	~VirtualMachine();
 	void Start();
-	void ProcessInstructionExecuting(Instruction instruction, QIODevice& device);
+	void ProcessInstructionExecuting(Instruction instruction, QIODevice& device, Frame& frame);
 	void ProccesInstructionCreating(Instruction instruction, QIODevice& device);
 
 
@@ -37,9 +38,9 @@ public:
 	void Return(QIODevice& device);
 	//void DeleteVar(QIODevice& device);		// del
 	void New(QIODevice& device);
-	void Set(QIODevice& device);
-	void Get(QIODevice& device);
-	void Local(QIODevice& device);
+	void Set(QIODevice& device, Frame& currentFrame);
+	void Get(QIODevice& device, Frame& currentFrame);
+	void Local(QIODevice& device, Frame& currentFrame);
 private:
 	QStringList arguments;
 	QString filename;

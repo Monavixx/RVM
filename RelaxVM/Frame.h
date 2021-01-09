@@ -16,6 +16,8 @@ public:
 	void SetMethod(Method* method);
 	void SetVariableList(const VariableList& variables);
 
+	void CreateVariable(int id);
+
 private:
 	VariableList variables;
 	Method* method;

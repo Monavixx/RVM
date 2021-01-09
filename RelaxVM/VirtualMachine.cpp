@@ -47,6 +47,7 @@ void VirtualMachine::Start()
 	{
 		Exit("main method not found");
 	}
+	Frame mainFrame(mainMethod);
 
 	QBuffer bufferMainMethodCode(&(mainMethod->GetCode()));
 	if (!bufferMainMethodCode.open(QIODevice::ReadOnly))
@@ -57,11 +58,11 @@ void VirtualMachine::Start()
 	while (bufferMainMethodCode.bytesAvailable() > 0)
 	{
 		Instruction instruction = static_cast<Instruction>(ByteArrayRead::ReadByte(bufferMainMethodCode));
-		ProcessInstructionExecuting(instruction, bufferMainMethodCode);
+		ProcessInstructionExecuting(instruction, bufferMainMethodCode, mainFrame);
 	}
 }
 
-void VirtualMachine::ProcessInstructionExecuting(Instruction instruction, QIODevice& device)
+void VirtualMachine::ProcessInstructionExecuting(Instruction instruction, QIODevice& device, Frame& frame)
 {
 	switch (instruction)
 	{
@@ -83,22 +84,22 @@ void VirtualMachine::ProcessInstructionExecuting(Instruction instruction, QIODev
 		}
 		case NEW:
 		{
-			Return(device);
+			New(device);
 			break;
 		}
 		case SET:
 		{
-			Return(device);
+			Set(device, frame);
 			break;
 		}
 		case GET:
 		{
-			Return(device);
+			Get(device, frame);
 			break;
 		}
 		case LOCAL:
 		{
-			Return(device);
+			Local(device, frame);
 			break;
 		}
 	}
@@ -292,16 +293,32 @@ void VirtualMachine::New(QIODevice& device)
 	}
 }
 
-void VirtualMachine::Set(QIODevice& device)
+void VirtualMachine::Set(QIODevice& device, Frame& currentFrame)
 {
 	int id = ByteArrayRead::ReadInt(device);
 	Object* data = stack.pop();
+
+	Variable* variable = currentFrame.FindVariableById(id);
+	if (variable == nullptr)
+		Exit("set: local variable with id " + QString::number(id) + " not exists");
+
+	variable->SetData(data);
 }
 
-void VirtualMachine::Get(QIODevice& device)
+void VirtualMachine::Get(QIODevice& device, Frame& currentFrame)
 {
+	int id = ByteArrayRead::ReadInt(device);
+	Variable* variable = currentFrame.FindVariableById(id);
+
+	if (variable == nullptr)
+		Exit("get: local variable with id " + QString::number(id) + " not exists");
+
+	Object* data = variable->GetData();
+	stack.push(data);
 }
 
-void VirtualMachine::Local(QIODevice& device)
+void VirtualMachine::Local(QIODevice& device, Frame& currentFrame)
 {
+	int id = ByteArrayRead::ReadInt(device);
+	currentFrame.CreateVariable(id);
 }
