@@ -1,8 +1,11 @@
 01 - create_main_class	(<byte 1><int 13>NameMainClass)
-02 - create_var
+02 - new
 03 - create_class 		(<byte 3><int 9>NameClass)
 04 - create_method
 05 - call_method
-06 - push
+06 - get
 07 - push_str
-08 - return
+08 - push_int32
+09 - return
+10 - set
+11 - local
