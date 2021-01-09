@@ -10,7 +10,7 @@ Compiler::~Compiler()
 {
 	compilableFile.close();
 }
-
+ 
 void Compiler::Start()
 {
 	if (!compilableFile.open(QIODevice::ReadOnly))
