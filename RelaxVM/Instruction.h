@@ -11,5 +11,8 @@ enum Instruction
 	PUSH_INT32,
 	RETURN,
 	SET,
-	LOCAL
+	LOCAL,
+	DUP,
+	ADD,
+	JMP
 };

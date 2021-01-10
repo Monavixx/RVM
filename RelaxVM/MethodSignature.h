@@ -14,7 +14,6 @@ public:
 	QString GetNameClass() const;
 	const QList<Parameter>& GetParameters() const;
 
-	Parameter* GetParameter(const QString& name);
 	Parameter* GetParameter(const quint64& index);
 
 	void SetName(const QString& name);

@@ -33,16 +33,6 @@ const QList<Parameter>& MethodSignature::GetParameters() const
 	return parameters;
 }
 
-Parameter* MethodSignature::GetParameter(const QString& name)
-{
-	auto parameterIterator = std::find_if(parameters.begin(), parameters.end(), [&](Parameter& parameter) {
-		return parameter.GetName() == name;
-	});
-	if(parameterIterator == parameters.end())
-		return nullptr;
-	return &(*parameterIterator);
-}
-
 Parameter* MethodSignature::GetParameter(const quint64& index)
 {
 	return &(parameters[index]);

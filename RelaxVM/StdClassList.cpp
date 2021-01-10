@@ -3,7 +3,7 @@
 StdClassList::StdClassList()
 {
 	push_back(StdClass("Relax.Console", {
-		StdMethod("Write", "void", "Relax.Console", QList<Parameter>{Parameter("text", "Relax.String")}, [&](Stack& stack)
+		StdMethod("Write", "void", "Relax.Console", QList<Parameter>{Parameter("Relax.String")}, [&](Stack& stack) -> Object*
 		{
 			qout << dynamic_cast<RelaxString*>(stack.pop())->GetData();
 			return nullptr;
@@ -11,7 +11,7 @@ StdClassList::StdClassList()
 	}));
 
 	push_back(StdClass("Relax.String", {
-		StdMethod("Relax.String", "Relax.String", "Relax.String", QList<Parameter>{Parameter("other", "Relax.String")}, [&](Stack& stack)
+		StdMethod("Relax.String", "Relax.String", "Relax.String", QList<Parameter>{Parameter("Relax.String")}, [&](Stack& stack) -> Object*
 		{
 			RelaxString* data = dynamic_cast<RelaxString*>(stack.pop());
 			RelaxString* newData = new RelaxString(data->GetData());

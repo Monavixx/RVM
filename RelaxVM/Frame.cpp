@@ -1,6 +1,6 @@
 #include "Frame.h"
 
-Frame::Frame(Method* method, const VariableList& variableList)
+Frame::Frame(Method* method, const VariableList& variableList) : method(method), variables(variableList)
 {
 }
 

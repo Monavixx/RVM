@@ -152,8 +152,7 @@ void VirtualMachine::CreateMethod(QIODevice& device)
 	for (int i = 0; i < amountParameters; ++i)
 	{
 		QString parameterDataType = ByteArrayRead::ReadSizeAndString(device);
-		QString parameterName = ByteArrayRead::ReadSizeAndString(device);
-		Parameter parameter(parameterName, parameterDataType);
+		Parameter parameter(parameterDataType);
 		parameters.push_back(parameter);
 	}
 	QByteArray code = ByteArrayRead::ReadSizeAndByteArray(device);
@@ -163,41 +162,7 @@ void VirtualMachine::CreateMethod(QIODevice& device)
 	Class* _class = classes.FindClassByName(nameClass);
 	_class->AddMethod(method);
 }
-/*
-void VirtualMachine::CreateVar(QIODevice& device)
-{
-	int variableId = ByteArrayRead::ReadInt(device);
-	bool isStd = ByteArrayRead::ReadByte(device);
-	QString dataType = ByteArrayRead::ReadSizeAndString(device);
-	int amountParameters = ByteArrayRead::ReadInt(device);
 
-	QList<Parameter> parameters;
-	for (int i = 0; i < amountParameters; ++i)
-	{
-		QString parameterDataType = ByteArrayRead::ReadSizeAndString(device);
-		QString parameterName = ByteArrayRead::ReadSizeAndString(device);
-		Parameter parameter(parameterName, parameterDataType);
-		parameters.push_back(parameter);
-	}
-
-	Object* object = nullptr;
-	if (isStd)
-	{
-		StdClass* _class = StdClassList::GetInstance()->FindClassByName(dataType);
-		if (_class == nullptr)
-			Exit("Std class not exists");
-
-		StdMethod* construction = _class->GetMethod(dataType, dataType, parameters);
-		if (construction == nullptr)
-			Exit("Construction not exists");
-
-
-		construction->CallFunction(stack);
-		Variable* newVariable = new Variable(variableId, stack.pop());
-		heap.push_back(newVariable);
-	}
-}
-*/
 void VirtualMachine::CallMethod(QIODevice& device)
 {
 	bool isStatic = ByteArrayRead::ReadByte(device);
@@ -213,8 +178,7 @@ void VirtualMachine::CallMethod(QIODevice& device)
 		for (int i = 0; i < amountParameters; ++i)
 		{
 			QString parameterDataType = ByteArrayRead::ReadSizeAndString(device);
-			QString parameterName = ByteArrayRead::ReadSizeAndString(device);
-			Parameter parameter(parameterName, parameterDataType);
+			Parameter parameter(parameterDataType);
 			parameters.push_back(parameter);
 		}
 
@@ -230,18 +194,7 @@ void VirtualMachine::CallMethod(QIODevice& device)
 		}
 	}
 }
-/*
-void VirtualMachine::Push(QIODevice& device)
-{
-	int variableId = ByteArrayRead::ReadInt(device);
-	Variable* variable = heap.FindVariableById(variableId);
 
-	if (variable == nullptr)
-		Exit("Push: id " + QString::number(variableId) + " not exists");
-
-	stack.push(variable->GetData());
-}
-*/
 void VirtualMachine::PushStr(QIODevice& device)
 {
 	QString stringFromFile = ByteArrayRead::ReadSizeAndString(device);
@@ -252,15 +205,6 @@ void VirtualMachine::PushStr(QIODevice& device)
 void VirtualMachine::Return(QIODevice& device)
 {
 }
-/*
-void VirtualMachine::DeleteVar(QIODevice& device)
-{
-	int variableId = ByteArrayRead::ReadInt(device);
-	Variable* variable = heap.FindVariableById(variableId);
-	heap.removeAll(variable);
-	delete variable;
-}
-*/
 void VirtualMachine::New(QIODevice& device)
 {
 	bool isStd = ByteArrayRead::ReadByte(device);
@@ -271,8 +215,7 @@ void VirtualMachine::New(QIODevice& device)
 	for (int i = 0; i < amountParameters; ++i)
 	{
 		QString parameterDataType = ByteArrayRead::ReadSizeAndString(device);
-		QString parameterName = ByteArrayRead::ReadSizeAndString(device);
-		Parameter parameter(parameterName, parameterDataType);
+		Parameter parameter(parameterDataType);
 		parameters.push_back(parameter);
 	}
 
@@ -321,4 +264,16 @@ void VirtualMachine::Local(QIODevice& device, Frame& currentFrame)
 {
 	int id = ByteArrayRead::ReadInt(device);
 	currentFrame.CreateVariable(id);
+}
+
+void VirtualMachine::Dup(QIODevice& device)
+{
+}
+
+void VirtualMachine::Add(QIODevice& device)
+{
+}
+
+void VirtualMachine::Jmp(QIODevice& device)
+{
 }
