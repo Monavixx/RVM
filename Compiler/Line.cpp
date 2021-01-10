@@ -198,7 +198,8 @@ void Line::SplitStringByOperators(const QList<QString>& operators, const QList<Q
 	for (const auto& item : temp)
 	{
 		this->_lines.push_back(item);
-	}
+	} 
+	
 }
 
 QList<quint32> Line::ProcessNumberLines(const QList<QString>& line, const quint32& startNumberLine)
