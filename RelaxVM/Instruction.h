@@ -12,7 +12,8 @@ enum Instruction
 	RETURN,
 	SET,
 	LOCAL,
-	DUP,
 	ADD,
-	JMP
+	DUP,
+	JMP,
+	TAG
 };

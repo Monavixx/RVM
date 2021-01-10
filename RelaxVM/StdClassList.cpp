@@ -7,6 +7,12 @@ StdClassList::StdClassList()
 		{
 			qout << dynamic_cast<RelaxString*>(stack.pop())->GetData();
 			return nullptr;
+		},AccessModifier::PUBLIC, true),
+
+		StdMethod("Write", "void", "Relax.Console", QList<Parameter>{Parameter("Relax.Int32")}, [&](Stack& stack) -> Object*
+		{
+			qout << QString::number(dynamic_cast<RelaxInt32*>(stack.pop())->GetData());
+			return nullptr;
 		},AccessModifier::PUBLIC, true)
 	}));
 
