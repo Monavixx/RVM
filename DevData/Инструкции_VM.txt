@@ -9,3 +9,7 @@
 09 - return
 10 - set
 11 - local
+12 - add
+13 - dup
+14 - jmp
+15 - tag

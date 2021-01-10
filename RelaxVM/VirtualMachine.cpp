@@ -77,6 +77,11 @@ void VirtualMachine::ProcessInstructionExecuting(Instruction instruction, QIODev
 			PushStr(device);
 			break;
 		}
+		case PUSH_INT32:
+		{
+			PushInt32(device);
+			break;
+		}
 		case RETURN:
 		{
 			Return(device);
@@ -100,6 +105,26 @@ void VirtualMachine::ProcessInstructionExecuting(Instruction instruction, QIODev
 		case LOCAL:
 		{
 			Local(device, frame);
+			break;
+		}
+		case DUP:
+		{
+			Dup(device);
+			break;
+		}
+		case ADD:
+		{
+			Add(device);
+			break;
+		}
+		case JMP:
+		{
+			Jmp(device, frame);
+			break;
+		}
+		case TAG:
+		{
+			Tag(device, frame);
 			break;
 		}
 	}
@@ -199,7 +224,16 @@ void VirtualMachine::PushStr(QIODevice& device)
 {
 	QString stringFromFile = ByteArrayRead::ReadSizeAndString(device);
 	RelaxString* pushingString = new RelaxString(stringFromFile);
+	heap.push_back(pushingString);
 	stack.push(pushingString);
+}
+
+void VirtualMachine::PushInt32(QIODevice& device)
+{
+	int numberFromFile = ByteArrayRead::ReadInt(device);
+	RelaxInt32* pushingInt32 = new RelaxInt32(numberFromFile);
+	heap.push_back(pushingInt32);
+	stack.push(pushingInt32);
 }
 
 void VirtualMachine::Return(QIODevice& device)
@@ -268,12 +302,38 @@ void VirtualMachine::Local(QIODevice& device, Frame& currentFrame)
 
 void VirtualMachine::Dup(QIODevice& device)
 {
+	Object* data = stack.pop();
+	stack.push(data);
+	stack.push(data);
 }
 
 void VirtualMachine::Add(QIODevice& device)
 {
+	Object* secondData = stack.pop();
+	Object* firstData = stack.pop();
+	if (firstData->GetDataType() == "Relax.Int32" && secondData->GetDataType() == "Relax.Int32")
+	{
+		RelaxInt32* firstNumber = dynamic_cast<RelaxInt32*>(firstData);
+		RelaxInt32* secondNumber = dynamic_cast<RelaxInt32*>(secondData);
+		int result = firstNumber->GetData() + secondNumber->GetData();
+		RelaxInt32* resultNumber = new RelaxInt32(result);
+		heap.push_back(resultNumber);
+		stack.push(resultNumber);
+	}
+	else
+	{
+		Exit("add: on stack non number value");
+	}
 }
 
-void VirtualMachine::Jmp(QIODevice& device)
+void VirtualMachine::Jmp(QIODevice& device, Frame& currentFrame)
 {
+	QString tag = ByteArrayRead::ReadSizeAndString(device);
+	device.seek(currentFrame.GetIndexTagByTag(tag));
+}
+
+void VirtualMachine::Tag(QIODevice& device, Frame& currentFrame)
+{
+	QString tag = ByteArrayRead::ReadSizeAndString(device);
+	currentFrame.AddTag(tag, device.pos());
 }

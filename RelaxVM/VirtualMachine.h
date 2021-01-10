@@ -10,6 +10,7 @@
 #include "ClassList.h"
 #include "Object.h"
 #include "RelaxString.h"
+#include "RelaxInt32.h"
 #include "Variable.h"
 #include "Heap.h"
 #include "StdClass.h"
@@ -33,6 +34,7 @@ public:
 
 	void CallMethod(QIODevice& device);
 	void PushStr(QIODevice& device);
+	void PushInt32(QIODevice& device);
 	void Return(QIODevice& device);
 	void New(QIODevice& device);
 	void Set(QIODevice& device, Frame& currentFrame);
@@ -40,7 +42,8 @@ public:
 	void Local(QIODevice& device, Frame& currentFrame);
 	void Dup(QIODevice& device);
 	void Add(QIODevice& device);
-	void Jmp(QIODevice& device);
+	void Jmp(QIODevice& device, Frame& currentFrame);
+	void Tag(QIODevice& device, Frame& currentFrame);
 private:
 	QStringList arguments;
 	QString filename;

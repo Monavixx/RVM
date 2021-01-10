@@ -30,11 +30,14 @@
     <Filter Include="Header Files\Enums">
       <UniqueIdentifier>{c21c916d-4638-4a42-a92d-67256f66c7ea}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Variable">
-      <UniqueIdentifier>{5a261131-ae00-4e33-beb3-5c3cd9d12291}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\Std">
       <UniqueIdentifier>{3f34ef4c-3994-4d1a-adb3-1c0d1cabd9c1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\DataTypes">
+      <UniqueIdentifier>{d437b325-5072-4b5f-90fb-bedafb00206c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\DataTypes">
+      <UniqueIdentifier>{5a261131-ae00-4e33-beb3-5c3cd9d12291}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -65,16 +68,7 @@
     <ClCompile Include="ClassList.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Object.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Int32.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Variable.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="RelaxString.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Heap.cpp">
@@ -97,6 +91,15 @@
     </ClCompile>
     <ClCompile Include="VariableList.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Object.cpp">
+      <Filter>Source Files\DataTypes</Filter>
+    </ClCompile>
+    <ClCompile Include="RelaxInt32.cpp">
+      <Filter>Source Files\DataTypes</Filter>
+    </ClCompile>
+    <ClCompile Include="RelaxString.cpp">
+      <Filter>Source Files\DataTypes</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -137,13 +140,10 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Object.h">
-      <Filter>Header Files\Variable</Filter>
-    </ClInclude>
-    <ClInclude Include="Int32.h">
-      <Filter>Header Files\Variable</Filter>
+      <Filter>Header Files\DataTypes</Filter>
     </ClInclude>
     <ClInclude Include="RelaxString.h">
-      <Filter>Header Files\Variable</Filter>
+      <Filter>Header Files\DataTypes</Filter>
     </ClInclude>
     <ClInclude Include="Variable.h">
       <Filter>Header Files</Filter>
@@ -168,6 +168,9 @@
     </ClInclude>
     <ClInclude Include="VariableList.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="RelaxInt32.h">
+      <Filter>Header Files\DataTypes</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
