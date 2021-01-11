@@ -1,13 +1,9 @@
 #pragma once
 #include <QtCore>
-#include "Variable.h"
+#include "Object.h"
+
 
 class Stack : public QStack<Object*>
 {
-public:
-	Stack();
-	Stack(const QList<Object*>& variableList);
-	Stack(const Stack& stack);
-	~Stack();
 };
 

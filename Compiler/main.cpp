@@ -1,6 +1,6 @@
 #include "Program.h"
-#include "Frame.h"
-
+#include <QtCore>
+#include "../Libs/ConsoleTextStream.h"
 int main(int argc, char *argv[])
 {
     Program program(argc, argv);
@@ -12,5 +12,6 @@ int main(int argc, char *argv[])
     {
         qout << e.What();
     }
+
     return 0;
 }

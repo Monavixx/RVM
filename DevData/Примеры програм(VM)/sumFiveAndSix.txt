@@ -1,0 +1,6 @@
+create_main_class NameMainClass;
+create_method public static void NameMainClass.Main():
+	push_int32 6;
+	push_int32 5;
+	add;
+	call_method static std void Relax.Console.Write(Relax.Int32);

@@ -10,11 +10,13 @@
 #include "ClassList.h"
 #include "Object.h"
 #include "RelaxString.h"
+#include "RelaxInt32.h"
 #include "Variable.h"
 #include "Heap.h"
-#include "Stack.h"
 #include "StdClass.h"
 #include "StdClassList.h"
+#include "Stack.h"
+#include "Frame.h"
 
 class VirtualMachine
 {
@@ -22,7 +24,7 @@ public:
 	VirtualMachine(const QStringList& argv);
 	~VirtualMachine();
 	void Start();
-	void ProcessInstructionExecuting(Instruction instruction, QIODevice& device);
+	void ProcessInstructionExecuting(Instruction instruction, QIODevice& device, Frame& frame);
 	void ProccesInstructionCreating(Instruction instruction, QIODevice& device);
 
 
@@ -30,12 +32,18 @@ public:
 	void CreateClass(QIODevice& device);
 	void CreateMethod(QIODevice& device);
 
-	void CreateVar(QIODevice& device);
 	void CallMethod(QIODevice& device);
-	void Push(QIODevice& device);
 	void PushStr(QIODevice& device);
+	void PushInt32(QIODevice& device);
 	void Return(QIODevice& device);
-
+	void New(QIODevice& device);
+	void Set(QIODevice& device, Frame& currentFrame);
+	void Get(QIODevice& device, Frame& currentFrame);
+	void Local(QIODevice& device, Frame& currentFrame);
+	void Dup(QIODevice& device);
+	void Add(QIODevice& device);
+	void Jmp(QIODevice& device, Frame& currentFrame);
+	void Tag(QIODevice& device, Frame& currentFrame);
 private:
 	QStringList arguments;
 	QString filename;

@@ -35,6 +35,9 @@
     <ClInclude Include="TestClass.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="TestStdClass.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="TestProgram.cpp">
@@ -50,6 +53,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="TestClass.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TestStdClass.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
