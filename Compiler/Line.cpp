@@ -198,7 +198,8 @@ void Line::SplitStringByOperators(const QList<QString>& operators, const QList<Q
 	for (const auto& item : temp)
 	{
 		this->_lines.push_back(item);
-	}
+	} 
+	
 }
 
 QList<quint32> Line::ProcessNumberLines(const QList<QString>& line, const quint32& startNumberLine)
@@ -259,6 +260,19 @@ void Line::RemoveSpaces()
 	}
 
 	_lines.removeAll("");
+}
+
+QList<QString> Core::Line::TestSplitStringByOperators(const QString& str, const QList<QString>& operators, const QList<QString>& keywords)
+{
+	
+}
+
+QList<QString> Core::Line::TestSplitOutQuotes(const QString& str)
+{
+	bool isCurrentWordInQuotes = false;
+	QList<QString> output;
+	QString word = "";
+
 }
 
 

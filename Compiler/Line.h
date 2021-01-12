@@ -29,6 +29,12 @@ namespace Core
 		QList<quint32>& ProcessNumberLines(const quint32& startNumberLine = 1);
 		void RemoveSpaces();
 		
+		/* -------- TESTING -------- */
+
+		 QList<QString> TestSplitStringByOperators(const QString& str, const QList<QString>& operators, const QList<QString>& keywords);
+		 QList<QString> TestSplitOutQuotes(const QString& str);
+		/*-----------------------------*/
+
 		const QList<quint32>& GetNumbersLines() const;
 		const QList<QString>& GetLines() const;
 		const QString& GetLine(const quint32& index) const;

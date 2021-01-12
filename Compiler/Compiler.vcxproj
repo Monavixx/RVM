@@ -97,6 +97,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Compiler.cpp" />
+    <ClCompile Include="Element.cpp" />
     <ClCompile Include="Exit.cpp" />
     <ClCompile Include="Line.cpp" />
     <ClCompile Include="main.cpp" />
@@ -105,6 +106,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Compiler.h" />
+    <ClInclude Include="Element.h" />
     <ClInclude Include="Exception.h" />
     <ClInclude Include="Exit.h" />
     <ClInclude Include="ExitException.h" />
