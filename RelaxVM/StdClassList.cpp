@@ -16,12 +16,17 @@ StdClassList::StdClassList()
 		},AccessModifier::PUBLIC, true)
 	}));
 
-	push_back(StdClass("Relax.String", {
-		StdMethod("Relax.String", "Relax.String", "Relax.String", QList<Parameter>{Parameter("Relax.String")}, [&](Stack& stack) -> Object*
+	push_back(StdClass("Relax.String", {}));
+
+	push_back(StdClass("Relax.Int32", {
+		StdMethod("operator==", "Relax.Bool", "Relax.Int32", QList<Parameter>{Parameter("Relax.Int32")}, [&](Stack& stack) -> Object*
 		{
-			RelaxString* data = dynamic_cast<RelaxString*>(stack.pop());
-			RelaxString* newData = new RelaxString(data->GetData());
-			return newData;
+			RelaxInt32* other = dynamic_cast<RelaxInt32*>(stack.pop());
+			RelaxInt32* thisObject = dynamic_cast<RelaxInt32*>(stack.pop());
+			
+			bool isEqual = thisObject->GetData() == other->GetData();
+			RelaxBool* returnValue = new RelaxBool(thisObject->GetData() == other->GetData());
+			return returnValue;
 		},AccessModifier::PUBLIC, false)
 	}));
 }

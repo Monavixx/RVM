@@ -45,14 +45,30 @@ void whileTrue(QDataStream& ds)
     ds << quint8(1) << QString("NameMainClass").toUtf8();
     ds << quint8(4) << quint8(1) << quint8(1) << QString("void").toUtf8() << QString("NameMainClass").toUtf8() << QString("Main").toUtf8() << int(0) << int(999);
     ds << quint8(8) << int(0);
-    ds << quint8(15) << QString("next").toUtf8();
     ds << quint8(8) << int(1);
     ds << quint8(12);
     ds << quint8(13);
     ds << quint8(5) << quint8(1) << quint8(1) << QString("void").toUtf8() << QString("Relax.Console").toUtf8() << QString("Write").toUtf8() << int(1) << QString("Relax.Int32").toUtf8();
     ds << quint8(7) << QString("\n").toUtf8();
     ds << quint8(5) << quint8(1) << quint8(1) << QString("void").toUtf8() << QString("Relax.Console").toUtf8() << QString("Write").toUtf8() << int(1) << QString("Relax.String").toUtf8();
-    ds << quint8(14) << QString("next").toUtf8();
+    ds << quint8(14) << int(3);
+}
+
+void From1To10(QDataStream& ds)
+{
+    ds << quint8(1) << QString("NameMainClass").toUtf8();
+    ds << quint8(4) << quint8(1) << quint8(1) << QString("void").toUtf8() << QString("NameMainClass").toUtf8() << QString("Main").toUtf8() << int(0) << int(999);
+    ds << quint8(8) << int(0);
+
+    ds << quint8(8) << int(1);
+    ds << quint8(12);
+    ds << quint8(13);
+    ds << quint8(13);
+    ds << quint8(5) << quint8(1) << quint8(1) << QString("void").toUtf8() << QString("Relax.Console").toUtf8() << QString("Write").toUtf8() << int(1) << QString("Relax.Int32").toUtf8();
+    ds << quint8(8) << int(10000);
+    ds << quint8(5) << quint8(0) << quint8(1) << QString("Relax.Bool").toUtf8() << QString("Relax.Int32").toUtf8() << QString("operator==").toUtf8() << int(1) << QString("Relax.Int32").toUtf8();
+    ds << quint8(15) << int(149);
+    ds << quint8(14) << int(5);
 }
 
 int main()
@@ -62,7 +78,7 @@ int main()
     file.open(QIODevice::WriteOnly);
     QDataStream ds(&file);
 
-    whileTrue(ds);
+    From1To10(ds);
 
     file.close();
     return 0;

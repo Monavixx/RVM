@@ -1,5 +1,6 @@
 #pragma once
 #include "Object.h"
+
 class RelaxInt32 : public Object
 {
 public:

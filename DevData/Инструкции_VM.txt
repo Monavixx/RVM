@@ -12,4 +12,4 @@
 12 - add
 13 - dup
 14 - jmp
-15 - tag
+15 - jmpif

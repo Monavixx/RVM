@@ -101,6 +101,9 @@
     <ClCompile Include="RelaxString.cpp">
       <Filter>Source Files\DataTypes</Filter>
     </ClCompile>
+    <ClCompile Include="RelaxBool.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Program.h">
@@ -171,6 +174,9 @@
     </ClInclude>
     <ClInclude Include="RelaxInt32.h">
       <Filter>Header Files\DataTypes</Filter>
+    </ClInclude>
+    <ClInclude Include="RelaxBool.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

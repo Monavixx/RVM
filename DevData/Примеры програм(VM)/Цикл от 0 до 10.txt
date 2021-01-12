@@ -1,8 +1,16 @@
 create_main_class NameMainClass;
 create_method public static void NameMainClass.Main():
 	push_int32 0;
+
+	for:
 	push_int32 1;
 	add;
 	dup;
+	dup;
 	call_method static std void Relax.Console.Write(Relax.Int32);
-	jmp 3;
+	push_int32 10;
+	call_method noStatic std Relax.Bool Relax.Int32.operator==(Relax.Int32);
+	jmpif end;
+	jmp for;
+
+	end:

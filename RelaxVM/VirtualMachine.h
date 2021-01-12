@@ -11,6 +11,7 @@
 #include "Object.h"
 #include "RelaxString.h"
 #include "RelaxInt32.h"
+#include "RelaxBool.h"
 #include "Variable.h"
 #include "Heap.h"
 #include "StdClass.h"
@@ -42,8 +43,8 @@ public:
 	void Local(QIODevice& device, Frame& currentFrame);
 	void Dup(QIODevice& device);
 	void Add(QIODevice& device);
-	void Jmp(QIODevice& device, Frame& currentFrame);
-	void Tag(QIODevice& device, Frame& currentFrame);
+	void Jmp(QIODevice& device);
+	void Jmpif(QIODevice& device);
 private:
 	QStringList arguments;
 	QString filename;
