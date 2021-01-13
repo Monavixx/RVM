@@ -27,8 +27,11 @@
     <Filter Include="Source Files\functions">
       <UniqueIdentifier>{2d70c17e-acbf-4be6-bfdd-b2f310404074}</UniqueIdentifier>
     </Filter>
-    <Filter Include="NewFilter1">
-      <UniqueIdentifier>{2e9abf11-67b0-4d8d-8d4a-ed4ffe4a401e}</UniqueIdentifier>
+    <Filter Include="Header Files\Relax">
+      <UniqueIdentifier>{0649bbc6-cba5-4c3e-bc1f-fec983f2bb54}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\RelaxAssembly">
+      <UniqueIdentifier>{9e6a2314-7bc7-457a-8b71-e59447582ce9}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -41,9 +44,6 @@
     <ClCompile Include="Compiler.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Exit.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Line.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -51,6 +51,12 @@
       <Filter>Source Files\functions</Filter>
     </ClCompile>
     <ClCompile Include="Element.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Exit.cpp">
+      <Filter>Source Files\functions</Filter>
+    </ClCompile>
+    <ClCompile Include="AsmCompiler.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -64,19 +70,22 @@
     <ClInclude Include="ExitException.h">
       <Filter>Header Files\Exceptions</Filter>
     </ClInclude>
-    <ClInclude Include="Compiler.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Exit.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Line.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="split.h">
       <Filter>Header Files\functions</Filter>
     </ClInclude>
+    <ClInclude Include="Exit.h">
+      <Filter>Header Files\functions</Filter>
+    </ClInclude>
+    <ClInclude Include="Compiler.h">
+      <Filter>Header Files\Relax</Filter>
+    </ClInclude>
     <ClInclude Include="Element.h">
+      <Filter>Header Files\Relax</Filter>
+    </ClInclude>
+    <ClInclude Include="Line.h">
+      <Filter>Header Files\Relax</Filter>
+    </ClInclude>
+    <ClInclude Include="AsmCompiler.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

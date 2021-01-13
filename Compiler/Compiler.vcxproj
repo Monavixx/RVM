@@ -96,6 +96,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AsmCompiler.cpp" />
     <ClCompile Include="Compiler.cpp" />
     <ClCompile Include="Element.cpp" />
     <ClCompile Include="Exit.cpp" />
@@ -105,6 +106,7 @@
     <ClCompile Include="split.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AsmCompiler.h" />
     <ClInclude Include="Compiler.h" />
     <ClInclude Include="Element.h" />
     <ClInclude Include="Exception.h" />

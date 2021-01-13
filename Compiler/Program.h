@@ -1,6 +1,7 @@
 #pragma once
 #include <QtCore>
 #include "Compiler.h"
+#include "AsmCompiler.h"
 
 class Program
 {

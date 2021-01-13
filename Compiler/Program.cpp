@@ -16,8 +16,17 @@ void Program::Start()
 {
 	if (IsLaunch())
 	{
-		Compiler compiler(argv);
-		compiler.Start();
+		if (argv.contains("-a"))
+		{
+			AsmCompiler asmCompiler(argv);
+			asmCompiler.Start();
+		}
+		else
+		{
+			Compiler compiler(argv);
+			compiler.Start();
+		}
+		
 	}
 }
 
