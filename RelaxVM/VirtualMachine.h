@@ -45,6 +45,7 @@ public:
 	void Add(QIODevice& device);
 	void Jmp(QIODevice& device);
 	void Jmpif(QIODevice& device);
+	void Gc(QIODevice& device);
 private:
 	QStringList arguments;
 	QString filename;

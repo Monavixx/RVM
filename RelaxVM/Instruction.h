@@ -15,5 +15,6 @@ enum Instruction
 	ADD,
 	DUP,
 	JMP,
-	JMPIF
+	JMPIF,
+	GC
 };

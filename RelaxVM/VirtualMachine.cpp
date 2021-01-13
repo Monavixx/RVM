@@ -130,6 +130,11 @@ void VirtualMachine::ProcessInstructionExecuting(Instruction instruction, QIODev
 			Jmpif(device);
 			break;
 		}
+		case GC:
+		{
+			Gc(device);
+			break;
+		}
 	}
 }
 void VirtualMachine::ProccesInstructionCreating(Instruction instruction, QIODevice& device)
@@ -286,6 +291,7 @@ void VirtualMachine::Set(QIODevice& device, Frame& currentFrame)
 	if (variable == nullptr)
 		Exit("set: local variable with id " + QString::number(id) + " not exists");
 
+	data->IncAmountUsers();
 	variable->SetData(data);
 }
 
@@ -347,4 +353,17 @@ void VirtualMachine::Jmpif(QIODevice& device)
 	{
 		device.seek(offset);
 	}
+}
+
+void VirtualMachine::Gc(QIODevice& device)
+{
+	for (auto& item : heap)
+	{
+		if (item->GetAmountUsers() <= 0)
+		{
+			delete item;
+			item = nullptr;
+		}
+	}
+	heap.removeAll(nullptr);
 }

@@ -3,17 +3,17 @@
 using namespace std;
 int main()
 {
-	clock_t start, end, result;
+	clock_t start, end, ReResult, PyResult;
 
 	start = clock();
 	system("RelaxVM test.ree");
 	end = clock();
-	result = end - start;
-	cout << "\nRelax: " << result << "ms\n\n\n";
+	ReResult = end - start;
 
 	start = clock();
 	system("python piton.py");
 	end = clock();
-	result = end - start;
-	cout << "\nPython: " << result << "ms\n\n\n";
+	PyResult = end - start;
+	cout << "\n\n\nRelax: " << ReResult << "ms\n";
+	cout << "Python: " << PyResult << "ms\n";
 }

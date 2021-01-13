@@ -13,3 +13,4 @@
 13 - dup
 14 - jmp
 15 - jmpif
+16 - gc
