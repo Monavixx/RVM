@@ -31,8 +31,8 @@ namespace Core
 		
 		/* -------- TESTING -------- */
 
-		 QList<QString> TestSplitStringByOperators(const QString& str, const QList<QString>& operators, const QList<QString>& keywords);
-		 QList<QString> TestSplitOutQuotes(const QString& str);
+		// QList<QString> TestSplitStringByOperators(const QString& str, const QList<QString>& operators, const QList<QString>& keywords);
+		 //QList<QString> TestSplitOutQuotes(const QString& str);
 		/*-----------------------------*/
 
 		const QList<quint32>& GetNumbersLines() const;

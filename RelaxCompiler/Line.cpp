@@ -261,7 +261,7 @@ void Line::RemoveSpaces()
 
 	_lines.removeAll("");
 }
-
+/*
 QList<QString> Core::Line::TestSplitStringByOperators(const QString& str, const QList<QString>& operators, const QList<QString>& keywords)
 {
 	
@@ -274,7 +274,7 @@ QList<QString> Core::Line::TestSplitOutQuotes(const QString& str)
 	QString word = "";
 
 }
-
+*/
 
 const QList<quint32>& Line::GetNumbersLines() const
 {

@@ -59,6 +59,9 @@
     <ClCompile Include="AsmCompiler.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Instruction.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Program.h">
@@ -86,6 +89,9 @@
       <Filter>Header Files\Relax</Filter>
     </ClInclude>
     <ClInclude Include="AsmCompiler.h">
+      <Filter>Header Files\RelaxAssembly</Filter>
+    </ClInclude>
+    <ClInclude Include="Instruction.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -14,7 +14,7 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TestGenerateCompileFile", "
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TimeTest", "TimeTest\TimeTest.vcxproj", "{BC7D534A-BD65-4CAB-8B61-9F27629A2162}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Compiler", "Compiler\Compiler.vcxproj", "{1A409E20-4607-44C8-99E0-D048622A11A9}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "RelaxCompiler", "RelaxCompiler\RelaxCompiler.vcxproj", "{1A409E20-4607-44C8-99E0-D048622A11A9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

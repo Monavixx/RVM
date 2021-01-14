@@ -1,0 +1,4 @@
+cmclass Test
+cmethod void Test.Main():
+	push.str "hello world"
+	callm Relax.Console.Write(Relax.String)
