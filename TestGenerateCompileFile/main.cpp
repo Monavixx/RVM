@@ -4,8 +4,8 @@
 void helloWorld(QDataStream& ds)
 {
     ds << quint8(1) << QString("NameMainClass").toUtf8();
-    ds << quint8(4) << quint8(1) << quint8(1) << QString("void").toUtf8() << QString("NameMainClass").toUtf8() << QString("Main").toUtf8() << int(0) << int(283);
-    ds << quint8(7) << QString("hello world\n").toUtf8();
+    ds << quint8(4) << quint8(1) << quint8(1) << QString("void").toUtf8() << QString("NameMainClass").toUtf8() << QString("Main").toUtf8() << int(0) << int(73);
+    ds << quint8(7) << QString("hello world").toUtf8();
     ds << quint8(5) << quint8(1) << quint8(1) << QString("void").toUtf8() << QString("Relax.Console").toUtf8() << QString("Write").toUtf8() << int(1) << QString("Relax.String").toUtf8();
 }
 
@@ -59,7 +59,7 @@ void From1To10(QDataStream& ds)
     ds << quint8(1) << QString("NameMainClass").toUtf8();
     ds << quint8(4) << quint8(1) << quint8(1) << QString("void").toUtf8() << QString("NameMainClass").toUtf8() << QString("Main").toUtf8() << int(0) << int(999);
     ds << quint8(11) << int(1);
-    ds << quint8(8) << int(10000);
+    ds << quint8(8) << int(10);
     ds << quint8(10) << int(1);
     ds << quint8(8) << int(0);
 
@@ -81,7 +81,7 @@ int main()
     file.open(QIODevice::WriteOnly);
     QDataStream ds(&file);
 
-    From1To10(ds);
+    helloWorld(ds);
 
     file.close();
     return 0;

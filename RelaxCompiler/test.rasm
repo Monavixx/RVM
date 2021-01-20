@@ -1,4 +1,4 @@
-cmclass Test
-cmethod void Test.Main():
+cmclass NameMainClass
+method public static void NameMainClass.Main():
 	push.str "hello world"
-	callm Relax.Console.Write(Relax.String)
+	callm std static void Relax.Console.Write(Relax.String)

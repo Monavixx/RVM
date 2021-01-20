@@ -10,18 +10,26 @@ public:
 	AsmCompiler(const QStringList& arguments);
 	~AsmCompiler();
 	void Start();
-	void RemoveSpaces();
+	void RemoveSpaces(QStringList& code);
+	quint8 AccessModifierToByte(const QString& accessModifier);
+	quint8 IsStaticToByte(const QString& isStatic);
+	quint8 StdToByte(const QString& std);
+	QStringList CreateCodeFromString(const QString& stringCode);
+	QList<Instruction> CreateInstructionsFromCode(const QStringList& code);
+	void ExecuteCode(const QList<Instruction>& instructions, QDataStream& dataStream);
 
-	void CreateMainClass(const QStringList& args);
+	void CreateMainClass(const QStringList& args, QDataStream& dataStream);
+	void CreateMethod(const QStringList& args, QDataStream& dataStream);
+	void PushStr(const QStringList& args, QDataStream& dataStream);
+	void CallMethod(const QStringList& args, QDataStream& dataStream);
 
 private:
 	QStringList arguments;
-	QString code;
+	QString allCode;
 	QFile outputFile;
 	QDataStream output;
-	QStringList lines;
+	//QStringList lines;
 
-
-	QMap<QString, std::function<void (const QStringList&)>> instructionsMethod;
+	QMap<QString, std::function<void (const QStringList&, QDataStream&)>> instructionsMethod;
 };
 
