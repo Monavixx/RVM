@@ -1,0 +1,9 @@
+mclass NameMainClass
+method public static void NameMainClass.Main():
+	push.int32 1
+	push.int32 1
+	callm std instance Relax.Bool Relax.Int32.operator==(Relax.Int32)
+	jmpif End
+	push.str "hello world"
+	callm std static void Relax.Console.Write(Relax.String) 
+	End:

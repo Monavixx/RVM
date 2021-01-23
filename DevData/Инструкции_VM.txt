@@ -1,0 +1,16 @@
+01 - mclass
+02 - new
+03 - class
+04 - method
+05 - callm
+06 - get
+07 - push.str
+08 - push.int32
+09 - return
+10 - set
+11 - local
+12 - add
+13 - dup
+14 - jmp
+15 - jmpif
+16 - gc
