@@ -3,12 +3,12 @@
 Parameter::Parameter(const QString& dataType) : dataType(dataType)
 {
 }
-
+/*
 Parameter::Parameter(const Parameter& other)
 {
 	this->dataType = other.GetDataType();
 }
-
+*/
 
 QString Parameter::GetDataType() const
 {

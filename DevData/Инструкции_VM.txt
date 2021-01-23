@@ -1,11 +1,11 @@
-01 - create_main_class	(<byte 1><int 13>NameMainClass)
+01 - mclass
 02 - new
-03 - create_class 		(<byte 3><int 9>NameClass)
-04 - create_method
-05 - call_method
+03 - class
+04 - method
+05 - callm
 06 - get
-07 - push_str
-08 - push_int32
+07 - push.str
+08 - push.int32
 09 - return
 10 - set
 11 - local

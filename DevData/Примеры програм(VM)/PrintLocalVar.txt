@@ -25,7 +25,7 @@ create_method public static void NameMainClass.Main():
 	push_str "Hello world";
 	set 1
 	get 1
-	call_method static std void Relax.Console.Write(Relax.String);
+	call_method std static void Relax.Console.Write(Relax.String);
 	
 
 
