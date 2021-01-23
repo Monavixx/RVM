@@ -1,9 +1,0 @@
-create_main_class NameMainClass;
-create_method public static void NameMainClass.Main():
-	push_int32 2;
-	push_int32 2;
-	call_method noStatic std Relax.Bool Relax.Int32.operator==(Relax.Int32);
-	jmpif equal;
-	push_str "not equal";
-	call_method static std void Relax.Console.Write(Relax.Int32);
-	equal:
