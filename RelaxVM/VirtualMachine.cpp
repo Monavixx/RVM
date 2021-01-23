@@ -359,10 +359,13 @@ void VirtualMachine::Gc(QIODevice& device)
 {
 	for (auto& item : heap)
 	{
-		if (item->GetAmountUsers() <= 0)
+		if (item != nullptr)
 		{
-			delete item;
-			item = nullptr;
+			if (item->GetAmountUsers() <= 0)
+			{
+				delete item;
+				item = nullptr;
+			}
 		}
 	}
 	heap.removeAll(nullptr);

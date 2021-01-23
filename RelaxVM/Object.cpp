@@ -1,15 +1,15 @@
 #include "Object.h"
 
-Object::Object(quint64 amountUsers) : amountUsers(amountUsers)
+Object::Object(int amountUsers) : amountUsers(amountUsers)
 {
 }
 
-void Object::SetAmountUsers(quint64 amountUsers)
+void Object::SetAmountUsers(int amountUsers)
 {
 	this->amountUsers = amountUsers;
 }
 
-quint64 Object::GetAmountUsers() const
+int Object::GetAmountUsers() const
 {
 	return amountUsers;
 }

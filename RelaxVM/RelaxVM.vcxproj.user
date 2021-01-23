@@ -4,4 +4,8 @@
     <LocalDebuggerCommandArguments>../RelaxCompiler/testRabotaet.ree $(QmlDebug)</LocalDebuggerCommandArguments>
     <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LocalDebuggerCommandArguments>../RelaxCompiler/testRabotaet.ree $(QmlDebug)</LocalDebuggerCommandArguments>
+    <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
+  </PropertyGroup>
 </Project>
