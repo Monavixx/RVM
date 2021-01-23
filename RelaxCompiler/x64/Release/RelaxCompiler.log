@@ -1,0 +1,11 @@
+﻿  Reading Qt configuration (D:/Programs/qt/5.15.2/msvc2019_64/bin/qmake)
+  AsmCompiler.cpp
+  Compiler.cpp
+  Element.cpp
+  Exit.cpp
+  Instruction.cpp
+  Line.cpp
+  main.cpp
+  Program.cpp
+  split.cpp
+  RelaxCompiler.vcxproj -> D:\Projects\C++\Relax\x64\Release\RelaxCompiler.exe
