@@ -168,6 +168,8 @@ void VirtualMachine::CreateMainClass(QIODevice& device)
 
 void VirtualMachine::CreateClass(QIODevice& device)
 {
+	QString nameClass = ByteArrayRead::ReadSizeAndString(device);
+	classes.push_back(Class(nameClass));
 }
 
 void VirtualMachine::CreateMethod(QIODevice& device)
@@ -185,7 +187,9 @@ void VirtualMachine::CreateMethod(QIODevice& device)
 	for (int i = 0; i < amountParameters; ++i)
 	{
 		QString parameterDataType = ByteArrayRead::ReadSizeAndString(device);
+		QString parameterName = ByteArrayRead::ReadSizeAndString(device);
 		Parameter parameter(parameterDataType);
+		parameter.SetName(parameterName);
 		parameters.push_back(parameter);
 	}
 	QByteArray code = ByteArrayRead::ReadSizeAndByteArray(device);
@@ -251,6 +255,7 @@ void VirtualMachine::PushInt32(QIODevice& device)
 void VirtualMachine::Return(QIODevice& device)
 {
 }
+
 void VirtualMachine::New(QIODevice& device)
 {
 	bool isStd = ByteArrayRead::ReadByte(device);
