@@ -2,7 +2,7 @@
 <Project>
   <ProjectOutputs>
     <ProjectOutput>
-      <FullPath>D:\Projects\C++\Relax\x64\Release\RelaxVM.exe</FullPath>
+      <FullPath>D:\Projects\C++\Relax\RelaxVM\x64\Release\RelaxVM.exe</FullPath>
     </ProjectOutput>
   </ProjectOutputs>
   <ContentFiles />

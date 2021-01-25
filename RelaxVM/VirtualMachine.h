@@ -1,8 +1,8 @@
 #pragma once
 #include <QtCore>
 
-#include "../Libs/ByteArrayLib.h"
-#include "../Libs/ConsoleTextStream.h"
+#include "ByteArrayLib.h"
+#include "ConsoleTextStream.h"
 #include "Exceptions/ExitException.h"
 #include "Functions/Exit.h"
 #include "Class.h"

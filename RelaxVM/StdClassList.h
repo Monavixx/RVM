@@ -3,7 +3,7 @@
 #include "RelaxString.h"
 #include "RelaxInt32.h"
 #include "RelaxBool.h"
-#include "../Libs/ConsoleTextStream.h"
+#include "ConsoleTextStream.h"
 
 class StdClassList : public QList<StdClass>
 {

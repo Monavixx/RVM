@@ -53,7 +53,8 @@ void VirtualMachine::Start()
 	}
 	Frame mainFrame(mainMethod);
 
-	QBuffer bufferMainMethodCode(&(mainMethod->GetCode()));
+	QByteArray mainMethodCode = mainMethod->GetCode();
+	QBuffer bufferMainMethodCode(&mainMethodCode);
 	if (!bufferMainMethodCode.open(QIODevice::ReadOnly))
 	{
 		Exit("buffer main method error!");
