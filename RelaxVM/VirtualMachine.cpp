@@ -1,8 +1,8 @@
 #include "VirtualMachine.h"
 
-VirtualMachine::VirtualMachine(const QStringList& argv) : arguments(argv), mainClass(nullptr)
+VirtualMachine::VirtualMachine() : mainClass(nullptr)
 {
-	filename = argv[1];
+	filename = Args::args[1];
 	executableFile.setFileName(filename);
 }
 
@@ -38,6 +38,7 @@ void VirtualMachine::Start()
 	{
 		Instruction instruction = static_cast<Instruction>(ByteArrayRead::ReadByte(executableFile));
 		ProccesInstructionCreating(instruction, executableFile);
+		
 	}
 	
 

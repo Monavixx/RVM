@@ -5,7 +5,10 @@ StdClassList::StdClassList()
 	push_back(StdClass("Relax.Console", {
 		StdMethod("Write", "void", "Relax.Console", QList<Parameter>{Parameter("Relax.String")}, [&](Stack& stack) -> Object*
 		{
-			qout << dynamic_cast<RelaxString*>(stack.pop())->GetData();
+			if(Args::args.contains("-iostd"))
+				std::cout << dynamic_cast<RelaxString*>(stack.pop())->GetData().toStdString();
+			else
+				qout << dynamic_cast<RelaxString*>(stack.pop())->GetData();
 			return nullptr;
 		},AccessModifier::PUBLIC, true),
 

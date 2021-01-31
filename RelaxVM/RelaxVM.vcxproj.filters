@@ -178,5 +178,8 @@
     <ClInclude Include="RelaxBool.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Args.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

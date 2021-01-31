@@ -18,11 +18,12 @@
 #include "StdClassList.h"
 #include "Stack.h"
 #include "Frame.h"
+#include "Args.h"
 
 class VirtualMachine
 {
 public:
-	VirtualMachine(const QStringList& argv);
+	VirtualMachine();
 	~VirtualMachine();
 	void Start();
 	void ProcessInstructionExecuting(Instruction instruction, QIODevice& device, Frame& frame);
@@ -47,7 +48,6 @@ public:
 	void Jmpif(QIODevice& device);
 	void Gc(QIODevice& device);
 private:
-	QStringList arguments;
 	QString filename;
 	QFile executableFile;
 	Class* mainClass;

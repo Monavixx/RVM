@@ -2,7 +2,9 @@
 
 int main(int argc, char *argv[])
 {
-    Program program(argc, argv);
+    for (int i = 0; i < argc; ++i)
+        Args::args << argv[i];
+    Program program;
     try
     {
         program.Start();

@@ -4,6 +4,7 @@
 #include "RelaxInt32.h"
 #include "RelaxBool.h"
 #include "ConsoleTextStream.h"
+#include "Args.h"
 
 class StdClassList : public QList<StdClass>
 {

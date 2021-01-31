@@ -6,12 +6,9 @@
 class Program
 {
 public:
-	Program(int argc, char* argv[]);
+	Program();
 	~Program();
 
 	void Start();
 	bool IsLaunch();
-
-private:
-	QStringList argv;
 };

@@ -131,6 +131,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AccessModifier.h" />
+    <ClInclude Include="Args.h" />
     <ClInclude Include="Class.h" />
     <ClInclude Include="ClassList.h" />
     <ClInclude Include="Exceptions\Exception.h" />
