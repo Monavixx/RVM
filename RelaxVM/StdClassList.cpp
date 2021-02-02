@@ -14,12 +14,17 @@ StdClassList::StdClassList()
 
 		StdMethod("Write", "void", "Relax.Console", QList<Parameter>{Parameter("Relax.Int32")}, [&](Stack& stack) -> Object*
 		{
-			qout << QString::number(dynamic_cast<RelaxInt32*>(stack.pop())->GetData());
+			if (Args::args.contains("-iostd"))
+				std::cout << dynamic_cast<RelaxInt32*>(stack.pop())->GetData();
+			else
+				qout << QString::number(dynamic_cast<RelaxInt32*>(stack.pop())->GetData());
 			return nullptr;
 		},AccessModifier::PUBLIC, true)
 	}));
 
 	push_back(StdClass("Relax.String", {}));
+
+	push_back(StdClass("Relax.Array", {}));
 
 	push_back(StdClass("Relax.Int32", {
 		StdMethod("operator==", "Relax.Bool", "Relax.Int32", QList<Parameter>{Parameter("Relax.Int32")}, [&](Stack& stack) -> Object*

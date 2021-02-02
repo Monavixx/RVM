@@ -16,5 +16,9 @@ enum Instruction
 	DUP,
 	JMP,
 	JMPIF,
-	GC
+	GC,
+	NEWARR,
+	GETARR,
+	SETARR,
+	PUSH_BOOL
 };

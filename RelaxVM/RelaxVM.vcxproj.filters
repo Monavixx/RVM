@@ -36,7 +36,7 @@
     <Filter Include="Source Files\DataTypes">
       <UniqueIdentifier>{d437b325-5072-4b5f-90fb-bedafb00206c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\DataTypes">
+    <Filter Include="Header Files\Std\DataTypes">
       <UniqueIdentifier>{5a261131-ae00-4e33-beb3-5c3cd9d12291}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -104,6 +104,9 @@
     <ClCompile Include="RelaxBool.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="RelaxArray.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Program.h">
@@ -143,10 +146,10 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Object.h">
-      <Filter>Header Files\DataTypes</Filter>
+      <Filter>Header Files\Std\DataTypes</Filter>
     </ClInclude>
     <ClInclude Include="RelaxString.h">
-      <Filter>Header Files\DataTypes</Filter>
+      <Filter>Header Files\Std\DataTypes</Filter>
     </ClInclude>
     <ClInclude Include="Variable.h">
       <Filter>Header Files</Filter>
@@ -173,13 +176,16 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="RelaxInt32.h">
-      <Filter>Header Files\DataTypes</Filter>
-    </ClInclude>
-    <ClInclude Include="RelaxBool.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Std\DataTypes</Filter>
     </ClInclude>
     <ClInclude Include="Args.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="RelaxArray.h">
+      <Filter>Header Files\Std\DataTypes</Filter>
+    </ClInclude>
+    <ClInclude Include="RelaxBool.h">
+      <Filter>Header Files\Std\DataTypes</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

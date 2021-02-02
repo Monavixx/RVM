@@ -14,3 +14,6 @@
 14 - jmp
 15 - jmpif
 16 - gc
+17 - newarr
+18 - getarr
+19 - setarr

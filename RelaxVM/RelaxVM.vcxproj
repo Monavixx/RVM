@@ -112,6 +112,7 @@
     <ClCompile Include="Frame.cpp" />
     <ClCompile Include="Functions\Exit.cpp" />
     <ClCompile Include="Heap.cpp" />
+    <ClCompile Include="RelaxArray.cpp" />
     <ClCompile Include="RelaxBool.cpp" />
     <ClCompile Include="RelaxInt32.cpp" />
     <ClCompile Include="Method.cpp" />
@@ -140,6 +141,7 @@
     <ClInclude Include="Functions\Exit.h" />
     <ClInclude Include="Heap.h" />
     <ClInclude Include="Instruction.h" />
+    <ClInclude Include="RelaxArray.h" />
     <ClInclude Include="RelaxBool.h" />
     <ClInclude Include="RelaxInt32.h" />
     <ClInclude Include="Method.h" />

@@ -137,6 +137,26 @@ void VirtualMachine::ProcessInstructionExecuting(Instruction instruction, QIODev
 			Gc(device);
 			break;
 		}
+		case NEWARR:
+		{
+			Newarr(device);
+			break;
+		}
+		case GETARR:
+		{
+			Getarr(device, frame);
+			break;
+		}
+		case SETARR:
+		{
+			Setarr(device, frame);
+			break;
+		}
+		case PUSH_BOOL:
+		{
+			PushBool(device);
+			break;
+		}
 	}
 }
 void VirtualMachine::ProccesInstructionCreating(Instruction instruction, QIODevice& device)
@@ -376,4 +396,24 @@ void VirtualMachine::Gc(QIODevice& device)
 		}
 	}
 	heap.removeAll(nullptr);
+}
+
+void VirtualMachine::Newarr(QIODevice& device)
+{
+}
+
+void VirtualMachine::Getarr(QIODevice& device, Frame& currentFrame)
+{
+}
+
+void VirtualMachine::Setarr(QIODevice& device, Frame& currentFrame)
+{
+}
+
+void VirtualMachine::PushBool(QIODevice& device)
+{
+	bool data = (bool)ByteArrayRead::ReadByte(device);
+	RelaxBool* pushingData = new RelaxBool(data);
+	heap.push_back(pushingData);
+	stack.push(pushingData);
 }

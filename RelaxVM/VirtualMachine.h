@@ -47,6 +47,11 @@ public:
 	void Jmp(QIODevice& device);
 	void Jmpif(QIODevice& device);
 	void Gc(QIODevice& device);
+	void Newarr(QIODevice& device);
+	void Getarr(QIODevice& device, Frame& currentFrame);
+	void Setarr(QIODevice& device, Frame& currentFrame);
+	void PushBool(QIODevice& device);
+
 private:
 	QString filename;
 	QFile executableFile;
