@@ -10,6 +10,7 @@
 #include "ClassList.h"
 #include "Object.h"
 #include "RelaxString.h"
+#include "RelaxArray.h"
 #include "RelaxInt32.h"
 #include "RelaxBool.h"
 #include "Variable.h"

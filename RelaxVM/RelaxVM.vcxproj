@@ -149,6 +149,7 @@
     <ClInclude Include="Object.h" />
     <ClInclude Include="Parameter.h" />
     <ClInclude Include="Program.h" />
+    <ClInclude Include="RelaxNull.h" />
     <ClInclude Include="RelaxString.h" />
     <ClInclude Include="Stack.h" />
     <ClInclude Include="StdClass.h" />

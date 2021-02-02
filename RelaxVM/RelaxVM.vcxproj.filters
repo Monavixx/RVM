@@ -187,5 +187,8 @@
     <ClInclude Include="RelaxBool.h">
       <Filter>Header Files\Std\DataTypes</Filter>
     </ClInclude>
+    <ClInclude Include="RelaxNull.h">
+      <Filter>Header Files\Std</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

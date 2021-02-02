@@ -2,6 +2,7 @@
 #include <QtCore>
 #include "Method.h"
 #include "VariableList.h"
+#include "RelaxNull.h"
 
 class Frame
 {
@@ -15,7 +16,7 @@ public:
 
 	void SetMethod(Method* method);
 	void SetVariableList(const VariableList& variables);
-	void CreateVariable(int id);
+	void CreateVariable(int id, const QString& dataType);
 
 private:
 	VariableList variables;

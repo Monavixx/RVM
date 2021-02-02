@@ -17,3 +17,4 @@
 17 - newarr
 18 - getarr
 19 - setarr
+20 - push.bool

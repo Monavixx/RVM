@@ -38,7 +38,6 @@ void VirtualMachine::Start()
 	{
 		Instruction instruction = static_cast<Instruction>(ByteArrayRead::ReadByte(executableFile));
 		ProccesInstructionCreating(instruction, executableFile);
-		
 	}
 	
 
@@ -313,13 +312,15 @@ void VirtualMachine::Set(QIODevice& device, Frame& currentFrame)
 {
 	int id = ByteArrayRead::ReadInt(device);
 	Object* data = stack.pop();
-
 	Variable* variable = currentFrame.FindVariableById(id);
 	if (variable == nullptr)
 		Exit("set: local variable with id " + QString::number(id) + " not exists");
 
-	data->IncAmountUsers();
-	variable->SetData(data);
+	if (data->GetDataType() == variable->GetData()->GetDataType()) // <-----
+	{
+		data->IncAmountUsers();
+		variable->SetData(data);
+	}
 }
 
 void VirtualMachine::Get(QIODevice& device, Frame& currentFrame)
@@ -337,7 +338,8 @@ void VirtualMachine::Get(QIODevice& device, Frame& currentFrame)
 void VirtualMachine::Local(QIODevice& device, Frame& currentFrame)
 {
 	int id = ByteArrayRead::ReadInt(device);
-	currentFrame.CreateVariable(id);
+	QString dataType = ByteArrayRead::ReadSizeAndString(device);
+	currentFrame.CreateVariable(id, dataType);
 }
 
 void VirtualMachine::Dup(QIODevice& device)
@@ -400,14 +402,26 @@ void VirtualMachine::Gc(QIODevice& device)
 
 void VirtualMachine::Newarr(QIODevice& device)
 {
+	int arraySize = dynamic_cast<RelaxInt32*>(stack.pop())->GetData();
+	QString dataType = ByteArrayRead::ReadSizeAndString(device);
+	RelaxArray* newArray = new RelaxArray(dataType, arraySize);
+	heap.push_back(newArray);
+	stack.push(newArray);
 }
 
 void VirtualMachine::Getarr(QIODevice& device, Frame& currentFrame)
 {
+	int index = dynamic_cast<RelaxInt32*>(stack.pop())->GetData();
+	RelaxArray* arr = dynamic_cast<RelaxArray*>(stack.pop());
+	stack.push(arr->GetByIndex(index));
 }
 
 void VirtualMachine::Setarr(QIODevice& device, Frame& currentFrame)
 {
+	Object* data = stack.pop();
+	int index = dynamic_cast<RelaxInt32*>(stack.pop())->GetData();
+	RelaxArray* arr = dynamic_cast<RelaxArray*>(stack.pop());
+	arr->SetByIndex(index, data);
 }
 
 void VirtualMachine::PushBool(QIODevice& device)

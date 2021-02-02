@@ -4,17 +4,13 @@ RelaxArray::RelaxArray(const QString& dataType, int size) : dataType(dataType), 
 {
 	for (int i = 0; i < size; ++i)
 	{
-		//data = new
+		data[i] = new RelaxNull;
 		data[i]->IncAmountUsers();
 	}
 }
 
 RelaxArray::~RelaxArray()
 {
-	for (int i = 0; i < size; ++i)
-	{
-		delete data[i];
-	}
 	delete[] data;
 }
 
@@ -40,4 +36,11 @@ void RelaxArray::SetByIndex(int index, Object* data)
 		data->IncAmountUsers();
 		this->data[index] = data;
 	}
+}
+
+Object* RelaxArray::GetByIndex(int index)
+{
+	if (index >= size)
+		Exit("array index out of range");
+	return data[index];
 }

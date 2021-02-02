@@ -29,7 +29,7 @@ void Frame::SetVariableList(const VariableList& variables)
     this->variables = variables;
 }
 
-void Frame::CreateVariable(int id)
+void Frame::CreateVariable(int id, const QString& dataType)
 {
-    variables.push_back(Variable(id));
+    variables.push_back(Variable(id, new RelaxNull(dataType)));
 }
