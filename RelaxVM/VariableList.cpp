@@ -4,31 +4,10 @@ VariableList::VariableList()
 {
 }
 
-VariableList::VariableList(const QList<Variable>& variables)
+VariableList::VariableList(const QHash<int, Variable>& variables) : QHash<int, Variable>(variables)
 {
-    this->clear();
-    for (auto& item : variables)
-    {
-        this->push_back(item);
-    }
 }
 
-VariableList::VariableList(const VariableList& variables)
+VariableList::VariableList(const VariableList& variables) : QHash<int, Variable>(variables)
 {
-    this->clear();
-    for (auto& item : variables)
-    {
-        this->push_back(item);
-    }
 }
-
-Variable* VariableList::FindVariableById(int id)
-{
-    auto variableIterator = std::find_if(this->begin(), this->end(), [&](const Variable& variable) {
-        return variable.GetId() == id;
-    });
-    if(variableIterator == this->end())
-        return nullptr;
-    return &(*variableIterator);
-}
-

@@ -1,5 +1,6 @@
 #include "Program.h"
 
+
 int main(int argc, char *argv[])
 {
     for (int i = 0; i < argc; ++i)
@@ -13,5 +14,6 @@ int main(int argc, char *argv[])
     {
         qout << e.What();
     }
+
     return 0;
 }

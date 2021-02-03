@@ -2,13 +2,11 @@
 #include <QtCore>
 #include "Variable.h"
 
-class VariableList : public QList<Variable>
+class VariableList : public QHash<int, Variable>
 {
 public:
 	VariableList();
-	VariableList(const QList<Variable>& variables);
+	VariableList(const QHash<int, Variable>& variables);
 	VariableList(const VariableList& variables);
-
-	Variable* FindVariableById(int id);
 };
 

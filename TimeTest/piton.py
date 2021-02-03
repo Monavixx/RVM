@@ -1,2 +1,5 @@
+arr = []
 for i in range(10000):
-	pass
+	arr.append(i)
+for i in arr:
+	print(i)

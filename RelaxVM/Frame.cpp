@@ -6,7 +6,7 @@ Frame::Frame(Method* method, const VariableList& variableList) : method(method),
 
 Variable* Frame::FindVariableById(int id)
 {
-    return variables.FindVariableById(id);
+    return &variables[id];
 }
 
 Method* Frame::GetMethod() const
@@ -31,5 +31,5 @@ void Frame::SetVariableList(const VariableList& variables)
 
 void Frame::CreateVariable(int id, const QString& dataType)
 {
-    variables.push_back(Variable(id, new RelaxNull(dataType)));
+    variables[id] = Variable(new RelaxNull(dataType));
 }

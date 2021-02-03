@@ -2,7 +2,7 @@
 <Project>
   <ProjectOutputs>
     <ProjectOutput>
-      <FullPath>D:\Projects\C++\Relax\RelaxVM\x64\Release\TimeTest.exe</FullPath>
+      <FullPath>D:\Projects\C++\Relax\Relasm\x64\Debug\TimeTest.exe</FullPath>
     </ProjectOutput>
   </ProjectOutputs>
   <ContentFiles />
