@@ -33,3 +33,8 @@ void Frame::CreateVariable(int id, const QString& dataType)
 {
     variables[id] = Variable(new RelaxNull(dataType));
 }
+
+Stack& Frame::GetStack()
+{
+    return stack;
+}

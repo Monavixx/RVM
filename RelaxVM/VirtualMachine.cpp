@@ -9,16 +9,7 @@ VirtualMachine::VirtualMachine() : mainClass(nullptr)
 VirtualMachine::~VirtualMachine()
 {
 	executableFile.close();
-	
-	while(!stack.isEmpty())
-	{
-		auto item = stack.pop();
-		heap.removeAll(item);
-		if (item != nullptr)
-		{
-			delete item;
-		}
-	}
+
 	for (auto& item : heap)
 	{
 		if(item != nullptr)
@@ -47,24 +38,11 @@ void VirtualMachine::Start()
 	}
 
 	Method* mainMethod = mainClass->GetMethod("Main", "void", {});
-	if (mainMethod == nullptr)
-	{
-		Exit("main method not found");
-	}
-	Frame mainFrame(mainMethod);
+	Frame* frame = new Frame(mainMethod);
+	frame->GetStack().SetMaxSize(30);
+	frameStack.push(frame);
+	ExecuteMethod();
 
-	QByteArray mainMethodCode = mainMethod->GetCode();
-	QBuffer bufferMainMethodCode(&mainMethodCode);
-	if (!bufferMainMethodCode.open(QIODevice::ReadOnly))
-	{
-		Exit("buffer main method error!");
-	}
-
-	while (bufferMainMethodCode.bytesAvailable() > 0)
-	{
-		Instruction instruction = static_cast<Instruction>(ByteArrayRead::ReadByte(bufferMainMethodCode));
-		ProcessInstructionExecuting(instruction, bufferMainMethodCode, mainFrame);
-	}
 }
 
 void VirtualMachine::ProcessInstructionExecuting(Instruction instruction, QIODevice& device, Frame& frame)
@@ -73,27 +51,27 @@ void VirtualMachine::ProcessInstructionExecuting(Instruction instruction, QIODev
 	{
 		case CALL_METHOD:
 		{
-			CallMethod(device);
+			CallMethod(device, frame);
 			break;
 		}
 		case PUSH_STR:
 		{
-			PushStr(device);
+			PushStr(device, frame);
 			break;
 		}
 		case PUSH_INT32:
 		{
-			PushInt32(device);
+			PushInt32(device, frame);
 			break;
 		}
 		case RETURN:
 		{
-			Return(device);
+			Return(device, frame);
 			break;
 		}
 		case NEW:
 		{
-			New(device);
+			New(device, frame);
 			break;
 		}
 		case SET:
@@ -113,32 +91,32 @@ void VirtualMachine::ProcessInstructionExecuting(Instruction instruction, QIODev
 		}
 		case DUP:
 		{
-			Dup(device);
+			Dup(device, frame);
 			break;
 		}
 		case ADD:
 		{
-			Add(device);
+			Add(device, frame);
 			break;
 		}
 		case JMP:
 		{
-			Jmp(device);
+			Jmp(device, frame);
 			break;
 		}
 		case JMPIF:
 		{
-			Jmpif(device);
+			Jmpif(device, frame);
 			break;
 		}
 		case GC:
 		{
-			Gc(device);
+			Gc(device, frame);
 			break;
 		}
 		case NEWARR:
 		{
-			Newarr(device);
+			Newarr(device, frame);
 			break;
 		}
 		case GETARR:
@@ -153,7 +131,7 @@ void VirtualMachine::ProcessInstructionExecuting(Instruction instruction, QIODev
 		}
 		case PUSH_BOOL:
 		{
-			PushBool(device);
+			PushBool(device, frame);
 			break;
 		}
 	}
@@ -178,6 +156,31 @@ void VirtualMachine::ProccesInstructionCreating(Instruction instruction, QIODevi
 			break;
 		}
 	}
+}
+
+void VirtualMachine::ExecuteMethod()
+{
+	Frame* frame = frameStack.top();
+	Method* method = frame->GetMethod();
+
+	if (method == nullptr)
+	{
+		Exit("main method not found");
+	}
+
+	QByteArray mainMethodCode = method->GetCode();
+	QBuffer bufferMainMethodCode(&mainMethodCode);
+	if (!bufferMainMethodCode.open(QIODevice::ReadOnly))
+	{
+		Exit("buffer main method error!");
+	}
+
+	while (bufferMainMethodCode.bytesAvailable() > 0)
+	{
+		Instruction instruction = static_cast<Instruction>(ByteArrayRead::ReadByte(bufferMainMethodCode));
+		ProcessInstructionExecuting(instruction, bufferMainMethodCode, *frame);
+	}
+	delete frameStack.pop();
 }
 
 void VirtualMachine::CreateMainClass(QIODevice& device)
@@ -221,7 +224,7 @@ void VirtualMachine::CreateMethod(QIODevice& device)
 	_class->AddMethod(method);
 }
 
-void VirtualMachine::CallMethod(QIODevice& device)
+void VirtualMachine::CallMethod(QIODevice& device, Frame& currentFrame)
 {
 	bool isStatic = ByteArrayRead::ReadByte(device);
 	bool isStd = ByteArrayRead::ReadByte(device);
@@ -248,36 +251,51 @@ void VirtualMachine::CallMethod(QIODevice& device)
 		if (callableStdMethod == nullptr)
 			Exit("std method not exists");
 
-		Object* returnedObject = callableStdMethod->CallFunction(stack);
+		Object* returnedObject = callableStdMethod->CallFunction(currentFrame.GetStack());
 		if (returnedObject != nullptr)
 		{
 			heap.push_back(returnedObject);
-			stack.push(returnedObject);
+			currentFrame.GetStack().push(returnedObject);
 		}
+	}
+	else
+	{
+		Class* declClass = classes.FindClassByName(nameClass);
+		if (declClass == nullptr)
+			Exit("Callm: class not found");
+
+		Method* callableMethod = declClass->GetMethod(nameMethod, dataType, parameters);
+		if (callableMethod == nullptr)
+			Exit("Callm: method not found");
+
+		Frame* frame = new Frame(callableMethod);
+		frame->GetStack().SetMaxSize(30);
+		frameStack.push(frame);
+		ExecuteMethod();
 	}
 }
 
-void VirtualMachine::PushStr(QIODevice& device)
+void VirtualMachine::PushStr(QIODevice& device, Frame& currentFrame)
 {
 	QString stringFromFile = ByteArrayRead::ReadSizeAndString(device);
 	RelaxString* pushingString = new RelaxString(stringFromFile);
 	heap.push_back(pushingString);
-	stack.push(pushingString);
+	currentFrame.GetStack().push(pushingString);
 }
 
-void VirtualMachine::PushInt32(QIODevice& device)
+void VirtualMachine::PushInt32(QIODevice& device, Frame& currentFrame)
 {
 	int numberFromFile = ByteArrayRead::ReadInt(device);
 	RelaxInt32* pushingInt32 = new RelaxInt32(numberFromFile);
 	heap.push_back(pushingInt32);
-	stack.push(pushingInt32);
+	currentFrame.GetStack().push(pushingInt32);
 }
 
-void VirtualMachine::Return(QIODevice& device)
+void VirtualMachine::Return(QIODevice& device, Frame& currentFrame)
 {
 }
 
-void VirtualMachine::New(QIODevice& device)
+void VirtualMachine::New(QIODevice& device, Frame& currentFrame)
 {
 	bool isStd = ByteArrayRead::ReadByte(device);
 	QString dataType = ByteArrayRead::ReadSizeAndString(device);
@@ -302,16 +320,16 @@ void VirtualMachine::New(QIODevice& device)
 		if (construction == nullptr)
 			Exit("Construction not exists");
 
-		Object* newObject = construction->CallFunction(stack);
+		Object* newObject = construction->CallFunction(currentFrame.GetStack());
 		heap.push_back(newObject);
-		stack.push(newObject);
+		currentFrame.GetStack().push(newObject);
 	}
 }
 
 void VirtualMachine::Set(QIODevice& device, Frame& currentFrame)
 {
 	int id = ByteArrayRead::ReadInt(device);
-	Object* data = stack.pop();
+	Object* data = currentFrame.GetStack().pop();
 	Variable* variable = currentFrame.FindVariableById(id);
 	if (variable == nullptr)
 		Exit("set: local variable with id " + QString::number(id) + " not exists");
@@ -332,7 +350,7 @@ void VirtualMachine::Get(QIODevice& device, Frame& currentFrame)
 		Exit("get: local variable with id " + QString::number(id) + " not exists");
 
 	Object* data = variable->GetData();
-	stack.push(data);
+	currentFrame.GetStack().push(data);
 }
 
 void VirtualMachine::Local(QIODevice& device, Frame& currentFrame)
@@ -342,17 +360,17 @@ void VirtualMachine::Local(QIODevice& device, Frame& currentFrame)
 	currentFrame.CreateVariable(id, dataType);
 }
 
-void VirtualMachine::Dup(QIODevice& device)
+void VirtualMachine::Dup(QIODevice& device, Frame& currentFrame)
 {
-	Object* data = stack.pop();
-	stack.push(data);
-	stack.push(data);
+	Object* data = currentFrame.GetStack().pop();
+	currentFrame.GetStack().push(data);
+	currentFrame.GetStack().push(data);
 }
 
-void VirtualMachine::Add(QIODevice& device)
+void VirtualMachine::Add(QIODevice& device, Frame& currentFrame)
 {
-	Object* secondData = stack.pop();
-	Object* firstData = stack.pop();
+	Object* secondData = currentFrame.GetStack().pop();
+	Object* firstData = currentFrame.GetStack().pop();
 	if (firstData->GetDataType() == "Relax.Int32" && secondData->GetDataType() == "Relax.Int32")
 	{
 		RelaxInt32* firstNumber = dynamic_cast<RelaxInt32*>(firstData);
@@ -360,7 +378,7 @@ void VirtualMachine::Add(QIODevice& device)
 		int result = firstNumber->GetData() + secondNumber->GetData();
 		RelaxInt32* resultNumber = new RelaxInt32(result);
 		heap.push_back(resultNumber);
-		stack.push(resultNumber);
+		currentFrame.GetStack().push(resultNumber);
 	}
 	else
 	{
@@ -368,23 +386,23 @@ void VirtualMachine::Add(QIODevice& device)
 	}
 }
 
-void VirtualMachine::Jmp(QIODevice& device)
+void VirtualMachine::Jmp(QIODevice& device, Frame& currentFrame)
 {
 	int offset = ByteArrayRead::ReadInt(device);
 	device.seek(offset);
 }
 
-void VirtualMachine::Jmpif(QIODevice& device)
+void VirtualMachine::Jmpif(QIODevice& device, Frame& currentFrame)
 {
 	int offset = ByteArrayRead::ReadInt(device);
-	bool isTrue = dynamic_cast<RelaxBool*>(stack.pop())->GetData();
+	bool isTrue = dynamic_cast<RelaxBool*>(currentFrame.GetStack().pop())->GetData();
 	if(isTrue)
 	{
 		device.seek(offset);
 	}
 }
 
-void VirtualMachine::Gc(QIODevice& device)
+void VirtualMachine::Gc(QIODevice& device, Frame& currentFrame)
 {
 	for (auto& item : heap)
 	{
@@ -400,34 +418,34 @@ void VirtualMachine::Gc(QIODevice& device)
 	heap.removeAll(nullptr);
 }
 
-void VirtualMachine::Newarr(QIODevice& device)
+void VirtualMachine::Newarr(QIODevice& device, Frame& currentFrame)
 {
-	int arraySize = dynamic_cast<RelaxInt32*>(stack.pop())->GetData();
+	int arraySize = dynamic_cast<RelaxInt32*>(currentFrame.GetStack().pop())->GetData();
 	QString dataType = ByteArrayRead::ReadSizeAndString(device);
 	RelaxArray* newArray = new RelaxArray(dataType, arraySize);
 	heap.push_back(newArray);
-	stack.push(newArray);
+	currentFrame.GetStack().push(newArray);
 }
 
 void VirtualMachine::Getarr(QIODevice& device, Frame& currentFrame)
 {
-	int index = dynamic_cast<RelaxInt32*>(stack.pop())->GetData();
-	RelaxArray* arr = dynamic_cast<RelaxArray*>(stack.pop());
-	stack.push(arr->GetByIndex(index));
+	int index = dynamic_cast<RelaxInt32*>(currentFrame.GetStack().pop())->GetData();
+	RelaxArray* arr = dynamic_cast<RelaxArray*>(currentFrame.GetStack().pop());
+	currentFrame.GetStack().push(arr->GetByIndex(index));
 }
 
 void VirtualMachine::Setarr(QIODevice& device, Frame& currentFrame)
 {
-	Object* data = stack.pop();
-	int index = dynamic_cast<RelaxInt32*>(stack.pop())->GetData();
-	RelaxArray* arr = dynamic_cast<RelaxArray*>(stack.pop());
+	Object* data = currentFrame.GetStack().pop();
+	int index = dynamic_cast<RelaxInt32*>(currentFrame.GetStack().pop())->GetData();
+	RelaxArray* arr = dynamic_cast<RelaxArray*>(currentFrame.GetStack().pop());
 	arr->SetByIndex(index, data);
 }
 
-void VirtualMachine::PushBool(QIODevice& device)
+void VirtualMachine::PushBool(QIODevice& device, Frame& currentFrame)
 {
 	bool data = (bool)ByteArrayRead::ReadByte(device);
 	RelaxBool* pushingData = new RelaxBool(data);
 	heap.push_back(pushingData);
-	stack.push(pushingData);
+	currentFrame.GetStack().push(pushingData);
 }

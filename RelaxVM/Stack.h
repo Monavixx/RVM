@@ -7,15 +7,16 @@
 class Stack
 {
 public:
-	Stack(int maxSize) : maxSize(maxSize) {}
+	Stack() : stack(nullptr) {}
 	void push(Object* object);
 	Object* pop();
 	bool isEmpty();
 	~Stack();
+	void SetMaxSize(int maxSize);
 
 private:
 	int currentSize = 0;
-	const int maxSize;
-	Object** stack = new Object*[maxSize];
+	int maxSize = 0;
+	Object** stack;
 };
 

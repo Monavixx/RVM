@@ -3,6 +3,7 @@
 #include "Method.h"
 #include "VariableList.h"
 #include "RelaxNull.h"
+#include "Stack.h"
 
 class Frame
 {
@@ -18,8 +19,11 @@ public:
 	void SetVariableList(const VariableList& variables);
 	void CreateVariable(int id, const QString& dataType);
 
+	Stack& GetStack();
+
 private:
 	VariableList variables;
 	Method* method;
+	Stack stack;
 };
 

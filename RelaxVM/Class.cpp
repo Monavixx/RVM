@@ -17,11 +17,18 @@ QList<Method> Class::GetMethods() const
 
 Method* Class::GetMethod(const QString& name, const QString& dataType, const QList<Parameter>& parameters)
 {
-	auto methodIterator = std::find_if(methods.begin(), methods.end(), [&](const Method& method) {
+	auto methodIterator = std::find_if(methods.begin(), methods.end(), [&](Method& method) {
 		bool nameIsEqual = name == method.GetName();
+		if (!nameIsEqual)return false;
+
 		bool dataTypeIsEqual = dataType == method.GetDataType();
+		if (!dataTypeIsEqual)return false;
+
 		bool parametersIsEqual = parameters == method.GetParameters();
-		return nameIsEqual && dataTypeIsEqual && parametersIsEqual;
+		if (!parametersIsEqual)return false;
+
+		
+		return true;
 	});
 	if(methodIterator == methods.end())
 		return nullptr;
