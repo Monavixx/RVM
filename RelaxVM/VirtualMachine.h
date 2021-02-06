@@ -66,6 +66,6 @@ private:
 	Heap heap;
 	QStack<Frame*> frameStack;
 
-	int version = 1;
+	int version = 2;
 };
 

@@ -1,7 +1,8 @@
 #include "RelaxArray.h"
 
-RelaxArray::RelaxArray(const QString& dataType, int size) : dataType(dataType), size(size), data(new Object*[size])
+RelaxArray::RelaxArray(const QString& dataType, int size) : dataType(dataType), size(size)
 {
+	data = new Object*[size];
 	for (int i = 0; i < size; ++i)
 	{
 		data[i] = new RelaxNull;
@@ -31,6 +32,8 @@ void RelaxArray::SetData(Object** data)
 
 void RelaxArray::SetByIndex(int index, Object* data)
 {
+	if (index >= size)
+		Exit("array index out of range");
 	if (data->GetDataType() == dataType)
 	{
 		data->IncAmountUsers();

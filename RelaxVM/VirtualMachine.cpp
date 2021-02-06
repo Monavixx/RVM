@@ -249,8 +249,8 @@ void VirtualMachine::CreateMethod(QIODevice& device)
 
 void VirtualMachine::CallMethod(QIODevice& device, Frame& currentFrame)
 {
-	bool isStatic = ByteArrayRead::ReadByte(device);
 	bool isStd = ByteArrayRead::ReadByte(device);
+	bool isStatic = ByteArrayRead::ReadByte(device);
 	QString nameClass = ByteArrayRead::ReadSizeAndString(device);
 	QString nameMethod = ByteArrayRead::ReadSizeAndString(device);
 	int amountParameters = ByteArrayRead::ReadInt(device);
@@ -470,16 +470,17 @@ void VirtualMachine::Newarr(QIODevice& device, Frame& currentFrame)
 
 void VirtualMachine::Getarr(QIODevice& device, Frame& currentFrame)
 {
-	int index = dynamic_cast<RelaxInt32*>(currentFrame.GetStack().pop())->GetData();
 	RelaxArray* arr = dynamic_cast<RelaxArray*>(currentFrame.GetStack().pop());
+	int index = dynamic_cast<RelaxInt32*>(currentFrame.GetStack().pop())->GetData();
 	currentFrame.GetStack().push(arr->GetByIndex(index));
 }
 
 void VirtualMachine::Setarr(QIODevice& device, Frame& currentFrame)
 {
-	Object* data = currentFrame.GetStack().pop();
-	int index = dynamic_cast<RelaxInt32*>(currentFrame.GetStack().pop())->GetData();
 	RelaxArray* arr = dynamic_cast<RelaxArray*>(currentFrame.GetStack().pop());
+	int index = dynamic_cast<RelaxInt32*>(currentFrame.GetStack().pop())->GetData();
+	Object* data = currentFrame.GetStack().pop();
+	
 	arr->SetByIndex(index, data);
 }
 
