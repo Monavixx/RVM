@@ -139,6 +139,21 @@ void VirtualMachine::ProcessInstructionExecuting(Instruction instruction, QIODev
 			PushFloat(device, frame);
 			break;
 		}
+		case SUB:
+		{
+			Sub(device, frame);
+			break;
+		}
+		case MUL:
+		{
+			Mul(device, frame);
+			break;
+		}
+		case DIV:
+		{
+			Div(device, frame);
+			break;
+		}
 	}
 }
 void VirtualMachine::ProccesInstructionCreating(Instruction instruction, QIODevice& device)
@@ -479,4 +494,70 @@ void VirtualMachine::PushFloat(QIODevice& device, Frame& currentFrame)
 	RelaxFloat* pushingData = new RelaxFloat(data);
 	heap.push_back(pushingData);
 	currentFrame.GetStack().push(pushingData);
+}
+
+void VirtualMachine::Sub(QIODevice& device, Frame& currentFrame)
+{
+	Object* firstData = currentFrame.GetStack().pop();
+	Object* secondData = currentFrame.GetStack().pop();
+	currentFrame.GetStack().push(secondData);
+	currentFrame.GetStack().push(firstData);
+
+	StdClass* declClass = StdClassList::GetInstance()->FindClassByName(firstData->GetDataType());
+	if (declClass == nullptr)
+		Exit("Add: decl class not found");
+	StdMethod* operatorAdd = declClass->GetMethod("operator-", firstData->GetDataType(), { Parameter(secondData->GetDataType()) });
+	if (operatorAdd == nullptr)
+		Exit("Add: operator+ not found");
+
+	Object* returnedObject = operatorAdd->CallFunction(currentFrame.GetStack());
+	if (returnedObject != nullptr)
+	{
+		heap.push_back(returnedObject);
+		currentFrame.GetStack().push(returnedObject);
+	}
+}
+
+void VirtualMachine::Mul(QIODevice& device, Frame& currentFrame)
+{
+	Object* firstData = currentFrame.GetStack().pop();
+	Object* secondData = currentFrame.GetStack().pop();
+	currentFrame.GetStack().push(secondData);
+	currentFrame.GetStack().push(firstData);
+
+	StdClass* declClass = StdClassList::GetInstance()->FindClassByName(firstData->GetDataType());
+	if (declClass == nullptr)
+		Exit("Add: decl class not found");
+	StdMethod* operatorAdd = declClass->GetMethod("operator*", firstData->GetDataType(), { Parameter(secondData->GetDataType()) });
+	if (operatorAdd == nullptr)
+		Exit("Add: operator+ not found");
+
+	Object* returnedObject = operatorAdd->CallFunction(currentFrame.GetStack());
+	if (returnedObject != nullptr)
+	{
+		heap.push_back(returnedObject);
+		currentFrame.GetStack().push(returnedObject);
+	}
+}
+
+void VirtualMachine::Div(QIODevice& device, Frame& currentFrame)
+{
+	Object* firstData = currentFrame.GetStack().pop();
+	Object* secondData = currentFrame.GetStack().pop();
+	currentFrame.GetStack().push(secondData);
+	currentFrame.GetStack().push(firstData);
+
+	StdClass* declClass = StdClassList::GetInstance()->FindClassByName(firstData->GetDataType());
+	if (declClass == nullptr)
+		Exit("Add: decl class not found");
+	StdMethod* operatorAdd = declClass->GetMethod("operator/", firstData->GetDataType(), { Parameter(secondData->GetDataType()) });
+	if (operatorAdd == nullptr)
+		Exit("Add: operator+ not found");
+
+	Object* returnedObject = operatorAdd->CallFunction(currentFrame.GetStack());
+	if (returnedObject != nullptr)
+	{
+		heap.push_back(returnedObject);
+		currentFrame.GetStack().push(returnedObject);
+	}
 }

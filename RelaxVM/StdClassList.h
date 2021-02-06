@@ -5,6 +5,7 @@
 #include "RelaxBool.h"
 #include "RelaxFloat.h"
 #include "RelaxArray.h"
+#include "RelaxRandom.h"
 #include "ConsoleTextStream.h"
 #include "Args.h"
 

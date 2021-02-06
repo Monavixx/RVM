@@ -19,3 +19,6 @@
 19 - setarr
 20 - push.bool
 21 - push.float
+22 - sub
+23 - mul
+24 - div

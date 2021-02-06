@@ -21,5 +21,8 @@ enum Instruction
 	GETARR,
 	SETARR,
 	PUSH_BOOL,
-	PUSH_FLOAT
+	PUSH_FLOAT,
+	SUB,
+	MUL,
+	DIV
 };

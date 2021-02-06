@@ -110,6 +110,9 @@
     <ClCompile Include="RelaxFloat.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="RelaxRandom.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Program.h">
@@ -195,6 +198,9 @@
     </ClInclude>
     <ClInclude Include="RelaxFloat.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="RelaxRandom.h">
+      <Filter>Header Files\Std\DataTypes</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

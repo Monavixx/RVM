@@ -122,6 +122,7 @@
     <ClCompile Include="Parameter.cpp" />
     <ClCompile Include="Program.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="RelaxRandom.cpp" />
     <ClCompile Include="RelaxString.cpp" />
     <ClCompile Include="Stack.cpp" />
     <ClCompile Include="StdClass.cpp" />
@@ -152,6 +153,7 @@
     <ClInclude Include="Parameter.h" />
     <ClInclude Include="Program.h" />
     <ClInclude Include="RelaxNull.h" />
+    <ClInclude Include="RelaxRandom.h" />
     <ClInclude Include="RelaxString.h" />
     <ClInclude Include="Stack.h" />
     <ClInclude Include="StdClass.h" />
