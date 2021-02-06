@@ -50,6 +50,14 @@ public:
 
         return res;
     }
+
+    static float byteArrayToFloat(const QByteArray& ba)
+    {
+        float res;
+        QDataStream ds(ba);
+        ds >> res;
+        return res;
+    }
 };
 
 class ByteArrayReader
@@ -102,6 +110,11 @@ public:
     static int ReadInt(QIODevice& device)
     {
         return ByteArrayConvert::byteArrayToInt(device.read(4));
+    }
+
+    static float ReadFloat(QIODevice& device)
+    {
+        return ByteArrayConvert::byteArrayToFloat(device.read(8));
     }
 
     static long long ReadLongLong(QIODevice& device)

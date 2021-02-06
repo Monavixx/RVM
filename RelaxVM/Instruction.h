@@ -20,5 +20,6 @@ enum Instruction
 	NEWARR,
 	GETARR,
 	SETARR,
-	PUSH_BOOL
+	PUSH_BOOL,
+	PUSH_FLOAT
 };

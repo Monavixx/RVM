@@ -18,3 +18,4 @@
 18 - getarr
 19 - setarr
 20 - push.bool
+21 - push.float

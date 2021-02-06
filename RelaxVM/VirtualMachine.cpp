@@ -134,6 +134,11 @@ void VirtualMachine::ProcessInstructionExecuting(Instruction instruction, QIODev
 			PushBool(device, frame);
 			break;
 		}
+		case PUSH_FLOAT:
+		{
+			PushFloat(device, frame);
+			break;
+		}
 	}
 }
 void VirtualMachine::ProccesInstructionCreating(Instruction instruction, QIODevice& device)
@@ -180,7 +185,6 @@ void VirtualMachine::ExecuteMethod()
 		Instruction instruction = static_cast<Instruction>(ByteArrayRead::ReadByte(bufferMainMethodCode));
 		ProcessInstructionExecuting(instruction, bufferMainMethodCode, *frame);
 	}
-	delete frameStack.pop();
 }
 
 void VirtualMachine::CreateMainClass(QIODevice& device)
@@ -270,6 +274,17 @@ void VirtualMachine::CallMethod(QIODevice& device, Frame& currentFrame)
 
 		Frame* frame = new Frame(callableMethod);
 		frame->GetStack().SetMaxSize(30);
+
+		/* parameters */
+		for (auto& item : callableMethod->GetParameters())
+		{
+			Object* data = currentFrame.GetStack().pop();
+			if (data->GetDataType() != item.GetDataType())
+				Exit("Error parameters type");
+			frame->GetStack().push(data);
+		}
+
+
 		frameStack.push(frame);
 		ExecuteMethod();
 	}
@@ -293,6 +308,11 @@ void VirtualMachine::PushInt32(QIODevice& device, Frame& currentFrame)
 
 void VirtualMachine::Return(QIODevice& device, Frame& currentFrame)
 {
+	Object* data = currentFrame.GetStack().pop();
+	if (currentFrame.GetMethod()->GetDataType() != data->GetDataType())
+		Exit("Error return data type");
+	delete frameStack.pop();
+	frameStack.top()->GetStack().push(data);
 }
 
 void VirtualMachine::New(QIODevice& device, Frame& currentFrame)
@@ -369,20 +389,23 @@ void VirtualMachine::Dup(QIODevice& device, Frame& currentFrame)
 
 void VirtualMachine::Add(QIODevice& device, Frame& currentFrame)
 {
-	Object* secondData = currentFrame.GetStack().pop();
 	Object* firstData = currentFrame.GetStack().pop();
-	if (firstData->GetDataType() == "Relax.Int32" && secondData->GetDataType() == "Relax.Int32")
+	Object* secondData = currentFrame.GetStack().pop();
+	currentFrame.GetStack().push(secondData);
+	currentFrame.GetStack().push(firstData);
+
+	StdClass* declClass = StdClassList::GetInstance()->FindClassByName(firstData->GetDataType());
+	if (declClass == nullptr)
+		Exit("Add: decl class not found");
+	StdMethod* operatorAdd = declClass->GetMethod("operator+", firstData->GetDataType(), { Parameter(secondData->GetDataType()) });
+	if (operatorAdd == nullptr)
+		Exit("Add: operator+ not found");
+	
+	Object* returnedObject = operatorAdd->CallFunction(currentFrame.GetStack());
+	if (returnedObject != nullptr)
 	{
-		RelaxInt32* firstNumber = dynamic_cast<RelaxInt32*>(firstData);
-		RelaxInt32* secondNumber = dynamic_cast<RelaxInt32*>(secondData);
-		int result = firstNumber->GetData() + secondNumber->GetData();
-		RelaxInt32* resultNumber = new RelaxInt32(result);
-		heap.push_back(resultNumber);
-		currentFrame.GetStack().push(resultNumber);
-	}
-	else
-	{
-		Exit("add: on stack non number value");
+		heap.push_back(returnedObject);
+		currentFrame.GetStack().push(returnedObject);
 	}
 }
 
@@ -446,6 +469,14 @@ void VirtualMachine::PushBool(QIODevice& device, Frame& currentFrame)
 {
 	bool data = (bool)ByteArrayRead::ReadByte(device);
 	RelaxBool* pushingData = new RelaxBool(data);
+	heap.push_back(pushingData);
+	currentFrame.GetStack().push(pushingData);
+}
+
+void VirtualMachine::PushFloat(QIODevice& device, Frame& currentFrame)
+{
+	float data = ByteArrayRead::ReadFloat(device);
+	RelaxFloat* pushingData = new RelaxFloat(data);
 	heap.push_back(pushingData);
 	currentFrame.GetStack().push(pushingData);
 }

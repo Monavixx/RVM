@@ -53,6 +53,7 @@ public:
 	void Getarr(QIODevice& device, Frame& currentFrame);
 	void Setarr(QIODevice& device, Frame& currentFrame);
 	void PushBool(QIODevice& device, Frame& currentFrame);
+	void PushFloat(QIODevice& device, Frame& currentFrame);
 
 private:
 	QString filename;

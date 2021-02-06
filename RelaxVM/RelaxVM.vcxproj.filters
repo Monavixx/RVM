@@ -107,6 +107,9 @@
     <ClCompile Include="RelaxArray.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="RelaxFloat.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Program.h">
@@ -189,6 +192,9 @@
     </ClInclude>
     <ClInclude Include="RelaxNull.h">
       <Filter>Header Files\Std</Filter>
+    </ClInclude>
+    <ClInclude Include="RelaxFloat.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
