@@ -26,13 +26,12 @@ StdMethod* StdClass::GetMethod(const MethodSignature& signature)
 	return &(*methodIterator);
 }
 
-StdMethod* StdClass::GetMethod(const QString& name, const QString& dataType, const QList<Parameter>& parameters)
+StdMethod* StdClass::GetMethod(const QString& name, const QList<Parameter>& parameters)
 {
 	auto methodIterator = std::find_if(methods.begin(), methods.end(), [&](const StdMethod& method) {
-		bool nameIsEqual = name == method.GetName();
-		bool dataTypeIsEqual = dataType == method.GetDataType();
-		bool parametersIsEqual = parameters == method.GetParameters();
-		return nameIsEqual && dataTypeIsEqual && parametersIsEqual;
+		if (name != method.GetName()) return false;
+		if (parameters != method.GetParameters()) return false;
+		return true;
 	});
 	if (methodIterator == methods.end())
 		return nullptr;

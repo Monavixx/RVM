@@ -65,5 +65,7 @@ private:
 	ClassList classes;
 	Heap heap;
 	QStack<Frame*> frameStack;
+
+	int version = 1;
 };
 

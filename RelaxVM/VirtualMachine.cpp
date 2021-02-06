@@ -25,6 +25,10 @@ void VirtualMachine::Start()
 		Exit("File open error!");
 	}
 
+	int versionCode = ByteArrayRead::ReadInt(executableFile);
+	if (versionCode != version)
+		Exit("version " + QString::number(version) + " is required to run this code");
+
 	while (executableFile.bytesAvailable() > 0)
 	{
 		Instruction instruction = static_cast<Instruction>(ByteArrayRead::ReadByte(executableFile));
@@ -37,7 +41,7 @@ void VirtualMachine::Start()
 		Exit("main class not found");
 	}
 
-	Method* mainMethod = mainClass->GetMethod("Main", "void", {});
+	Method* mainMethod = mainClass->GetMethod("Main", {});
 	Frame* frame = new Frame(mainMethod);
 	frame->GetStack().SetMaxSize(30);
 	frameStack.push(frame);
@@ -247,7 +251,6 @@ void VirtualMachine::CallMethod(QIODevice& device, Frame& currentFrame)
 {
 	bool isStatic = ByteArrayRead::ReadByte(device);
 	bool isStd = ByteArrayRead::ReadByte(device);
-	QString dataType = ByteArrayRead::ReadSizeAndString(device);
 	QString nameClass = ByteArrayRead::ReadSizeAndString(device);
 	QString nameMethod = ByteArrayRead::ReadSizeAndString(device);
 	int amountParameters = ByteArrayRead::ReadInt(device);
@@ -266,7 +269,7 @@ void VirtualMachine::CallMethod(QIODevice& device, Frame& currentFrame)
 		if (stdClass == nullptr)
 			Exit("std class not exists");
 
-		StdMethod* callableStdMethod = stdClass->GetMethod(nameMethod, dataType, parameters);
+		StdMethod* callableStdMethod = stdClass->GetMethod(nameMethod, parameters);
 		if (callableStdMethod == nullptr)
 			Exit("std method not exists");
 
@@ -283,7 +286,7 @@ void VirtualMachine::CallMethod(QIODevice& device, Frame& currentFrame)
 		if (declClass == nullptr)
 			Exit("Callm: class not found");
 
-		Method* callableMethod = declClass->GetMethod(nameMethod, dataType, parameters);
+		Method* callableMethod = declClass->GetMethod(nameMethod, parameters);
 		if (callableMethod == nullptr)
 			Exit("Callm: method not found");
 
@@ -351,7 +354,7 @@ void VirtualMachine::New(QIODevice& device, Frame& currentFrame)
 		if (_class == nullptr)
 			Exit("Std class not exists");
 
-		StdMethod* construction = _class->GetMethod(dataType, dataType, parameters);
+		StdMethod* construction = _class->GetMethod(dataType, parameters);
 		if (construction == nullptr)
 			Exit("Construction not exists");
 
@@ -412,7 +415,7 @@ void VirtualMachine::Add(QIODevice& device, Frame& currentFrame)
 	StdClass* declClass = StdClassList::GetInstance()->FindClassByName(firstData->GetDataType());
 	if (declClass == nullptr)
 		Exit("Add: decl class not found");
-	StdMethod* operatorAdd = declClass->GetMethod("operator+", firstData->GetDataType(), { Parameter(secondData->GetDataType()) });
+	StdMethod* operatorAdd = declClass->GetMethod("operator+", { Parameter(secondData->GetDataType()) });
 	if (operatorAdd == nullptr)
 		Exit("Add: operator+ not found");
 	
@@ -506,7 +509,7 @@ void VirtualMachine::Sub(QIODevice& device, Frame& currentFrame)
 	StdClass* declClass = StdClassList::GetInstance()->FindClassByName(firstData->GetDataType());
 	if (declClass == nullptr)
 		Exit("Add: decl class not found");
-	StdMethod* operatorAdd = declClass->GetMethod("operator-", firstData->GetDataType(), { Parameter(secondData->GetDataType()) });
+	StdMethod* operatorAdd = declClass->GetMethod("operator-", { Parameter(secondData->GetDataType()) });
 	if (operatorAdd == nullptr)
 		Exit("Add: operator+ not found");
 
@@ -528,7 +531,7 @@ void VirtualMachine::Mul(QIODevice& device, Frame& currentFrame)
 	StdClass* declClass = StdClassList::GetInstance()->FindClassByName(firstData->GetDataType());
 	if (declClass == nullptr)
 		Exit("Add: decl class not found");
-	StdMethod* operatorAdd = declClass->GetMethod("operator*", firstData->GetDataType(), { Parameter(secondData->GetDataType()) });
+	StdMethod* operatorAdd = declClass->GetMethod("operator*", { Parameter(secondData->GetDataType()) });
 	if (operatorAdd == nullptr)
 		Exit("Add: operator+ not found");
 
@@ -550,7 +553,7 @@ void VirtualMachine::Div(QIODevice& device, Frame& currentFrame)
 	StdClass* declClass = StdClassList::GetInstance()->FindClassByName(firstData->GetDataType());
 	if (declClass == nullptr)
 		Exit("Add: decl class not found");
-	StdMethod* operatorAdd = declClass->GetMethod("operator/", firstData->GetDataType(), { Parameter(secondData->GetDataType()) });
+	StdMethod* operatorAdd = declClass->GetMethod("operator/", { Parameter(secondData->GetDataType()) });
 	if (operatorAdd == nullptr)
 		Exit("Add: operator+ not found");
 

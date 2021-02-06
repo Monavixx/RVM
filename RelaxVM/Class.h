@@ -9,7 +9,7 @@ public:
 
 	QString GetName() const;
 	QList<Method> GetMethods() const;
-	Method* GetMethod(const QString& name, const QString& dataType, const QList<Parameter>& parameters);
+	Method* GetMethod(const QString& name, const QList<Parameter>& parameters);
 	Method* GetMethod(const MethodSignature& signature);
 
 	void SetName(const QString& name);

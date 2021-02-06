@@ -11,7 +11,7 @@ public:
 	QList<StdMethod> GetMethods() const;
 
 	StdMethod* GetMethod(const MethodSignature& signature);
-	StdMethod* GetMethod(const QString& name, const QString& dataType, const QList<Parameter>& parameters);
+	StdMethod* GetMethod(const QString& name, const QList<Parameter>& parameters);
 	StdMethod* GetMethod(int index);
 
 	void SetName(const QString& name);
