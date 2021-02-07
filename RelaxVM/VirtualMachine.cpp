@@ -203,6 +203,7 @@ void VirtualMachine::ExecuteMethod()
 	{
 		Instruction instruction = static_cast<Instruction>(ByteArrayRead::ReadByte(bufferMainMethodCode));
 		ProcessInstructionExecuting(instruction, bufferMainMethodCode, *frame);
+		if (instruction == Instruction::RETURN) return;
 	}
 }
 
