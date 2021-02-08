@@ -1,5 +1,7 @@
+import time
+start_time = time.time()
 arr = []
-for i in range(10000):
+for i in range(1, 100000):
 	arr.append(i)
-for i in arr:
-	print(i)
+print()
+print((time.time() - start_time) * 1000)

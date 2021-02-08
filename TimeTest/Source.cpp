@@ -3,10 +3,10 @@
 using namespace std;
 int main()
 {
-	clock_t start, end, ReResult, PyResult, JavaResult;
+	clock_t start, end, ReResult, PyResult;
 
 	start = clock();
-	system("RelaxVM test.ree");
+	system("..\\x64\\Release\\RelaxVM ..\\..\\Relasm\\Relasm\\test.ree");
 	end = clock();
 	ReResult = end - start;
 
@@ -15,12 +15,6 @@ int main()
 	end = clock();
 	PyResult = end - start;
 
-	start = clock();
-	system("java -jar main.jar");
-	end = clock();
-	JavaResult = end - start;
-
 	cout << "\n\n\nRelax: " << ReResult << "ms\n";
 	cout << "Python: " << PyResult << "ms\n";
-	cout << "Java: " << JavaResult << "ms\n";
 }

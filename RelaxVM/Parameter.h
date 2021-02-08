@@ -4,7 +4,7 @@
 class Parameter
 {
 public:
-	Parameter(const QString& dataType);
+	Parameter(const QString& dataType, const QString& name = "");
 
 	QString GetDataType() const;
 	QString GetName() const;

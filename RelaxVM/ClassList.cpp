@@ -4,7 +4,7 @@ ClassList::ClassList()
 {
 }
 
-ClassList::ClassList(const QList<Class>& classList)
+ClassList::ClassList(const QList<Class*>& classList)
 {
 	this->clear();
 	for (auto& item : classList)
@@ -24,10 +24,10 @@ ClassList::ClassList(const ClassList& classList)
 
 Class* ClassList::FindClassByName(const QString& name)
 {
-	auto classIterator = std::find_if(this->begin(), this->end(), [&](const Class& _class) {
-		return _class.GetName() == name;
+	auto classIterator = std::find_if(this->begin(), this->end(), [&](Class* _class) {
+		return _class->GetName() == name;
 	});
 	if(classIterator == this->end())
 		return nullptr;
-	return &(*classIterator);
+	return *classIterator;
 }

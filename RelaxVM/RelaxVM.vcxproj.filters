@@ -39,6 +39,12 @@
     <Filter Include="Header Files\Std\DataTypes">
       <UniqueIdentifier>{5a261131-ae00-4e33-beb3-5c3cd9d12291}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\OpCodes">
+      <UniqueIdentifier>{58244fc3-efc0-4962-bff0-85652f460552}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Core">
+      <UniqueIdentifier>{003f4439-1439-4e70-b478-ad4960e3b78c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -113,6 +119,81 @@
     <ClCompile Include="RelaxRandom.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="OpBase.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="OpMclass.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="OpClass.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="OpMethod.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="OpPushStr.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="OpCallm.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="OpNew.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="OpGet.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="OpPushInt32.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="OpReturn.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="OpSet.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="OpLocal.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="OpAdd.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="OpDup.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="OpJmp.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="OpJmpif.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="OpGc.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="OpNewarr.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="OpGetarr.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="OpSetarr.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="OpPushBool.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="OpPushFloat.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="OpSub.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="OpMul.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="OpDiv.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Program.h">
@@ -130,38 +211,17 @@
     <ClInclude Include="Functions\Exit.h">
       <Filter>Header Files\Functions</Filter>
     </ClInclude>
-    <ClInclude Include="Class.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Method.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="MethodSignature.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Parameter.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="AccessModifier.h">
       <Filter>Header Files\Enums</Filter>
     </ClInclude>
     <ClInclude Include="Instruction.h">
       <Filter>Header Files\Enums</Filter>
     </ClInclude>
-    <ClInclude Include="ClassList.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Object.h">
       <Filter>Header Files\Std\DataTypes</Filter>
     </ClInclude>
     <ClInclude Include="RelaxString.h">
       <Filter>Header Files\Std\DataTypes</Filter>
-    </ClInclude>
-    <ClInclude Include="Variable.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Heap.h">
-      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="StdClass.h">
       <Filter>Header Files\Std</Filter>
@@ -171,15 +231,6 @@
     </ClInclude>
     <ClInclude Include="StdClassList.h">
       <Filter>Header Files\Std</Filter>
-    </ClInclude>
-    <ClInclude Include="Stack.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Frame.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="VariableList.h">
-      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="RelaxInt32.h">
       <Filter>Header Files\Std\DataTypes</Filter>
@@ -196,11 +247,119 @@
     <ClInclude Include="RelaxNull.h">
       <Filter>Header Files\Std</Filter>
     </ClInclude>
-    <ClInclude Include="RelaxFloat.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="RelaxRandom.h">
       <Filter>Header Files\Std\DataTypes</Filter>
+    </ClInclude>
+    <ClInclude Include="OpBase.h">
+      <Filter>Header Files\OpCodes</Filter>
+    </ClInclude>
+    <ClInclude Include="RelaxFloat.h">
+      <Filter>Header Files\Std\DataTypes</Filter>
+    </ClInclude>
+    <ClInclude Include="Parameter.h">
+      <Filter>Header Files\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Method.h">
+      <Filter>Header Files\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="MethodSignature.h">
+      <Filter>Header Files\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Class.h">
+      <Filter>Header Files\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="ClassList.h">
+      <Filter>Header Files\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Variable.h">
+      <Filter>Header Files\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="VariableList.h">
+      <Filter>Header Files\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Heap.h">
+      <Filter>Header Files\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Stack.h">
+      <Filter>Header Files\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Frame.h">
+      <Filter>Header Files\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="GlobalVariables.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="OpMclass.h">
+      <Filter>Header Files\OpCodes</Filter>
+    </ClInclude>
+    <ClInclude Include="OpMethod.h">
+      <Filter>Header Files\OpCodes</Filter>
+    </ClInclude>
+    <ClInclude Include="OpClass.h">
+      <Filter>Header Files\OpCodes</Filter>
+    </ClInclude>
+    <ClInclude Include="OpPushStr.h">
+      <Filter>Header Files\OpCodes</Filter>
+    </ClInclude>
+    <ClInclude Include="OpNew.h">
+      <Filter>Header Files\OpCodes</Filter>
+    </ClInclude>
+    <ClInclude Include="OpCallm.h">
+      <Filter>Header Files\OpCodes</Filter>
+    </ClInclude>
+    <ClInclude Include="OpAdd.h">
+      <Filter>Header Files\OpCodes</Filter>
+    </ClInclude>
+    <ClInclude Include="OpDup.h">
+      <Filter>Header Files\OpCodes</Filter>
+    </ClInclude>
+    <ClInclude Include="OpGet.h">
+      <Filter>Header Files\OpCodes</Filter>
+    </ClInclude>
+    <ClInclude Include="OpLocal.h">
+      <Filter>Header Files\OpCodes</Filter>
+    </ClInclude>
+    <ClInclude Include="OpPushInt32.h">
+      <Filter>Header Files\OpCodes</Filter>
+    </ClInclude>
+    <ClInclude Include="OpReturn.h">
+      <Filter>Header Files\OpCodes</Filter>
+    </ClInclude>
+    <ClInclude Include="OpSet.h">
+      <Filter>Header Files\OpCodes</Filter>
+    </ClInclude>
+    <ClInclude Include="OpGc.h">
+      <Filter>Header Files\OpCodes</Filter>
+    </ClInclude>
+    <ClInclude Include="OpGetarr.h">
+      <Filter>Header Files\OpCodes</Filter>
+    </ClInclude>
+    <ClInclude Include="OpJmp.h">
+      <Filter>Header Files\OpCodes</Filter>
+    </ClInclude>
+    <ClInclude Include="OpJmpif.h">
+      <Filter>Header Files\OpCodes</Filter>
+    </ClInclude>
+    <ClInclude Include="OpNewarr.h">
+      <Filter>Header Files\OpCodes</Filter>
+    </ClInclude>
+    <ClInclude Include="OpPushBool.h">
+      <Filter>Header Files\OpCodes</Filter>
+    </ClInclude>
+    <ClInclude Include="OpPushFloat.h">
+      <Filter>Header Files\OpCodes</Filter>
+    </ClInclude>
+    <ClInclude Include="OpSetarr.h">
+      <Filter>Header Files\OpCodes</Filter>
+    </ClInclude>
+    <ClInclude Include="OpDiv.h">
+      <Filter>Header Files\OpCodes</Filter>
+    </ClInclude>
+    <ClInclude Include="OpMul.h">
+      <Filter>Header Files\OpCodes</Filter>
+    </ClInclude>
+    <ClInclude Include="OpSub.h">
+      <Filter>Header Files\OpCodes</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

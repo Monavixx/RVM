@@ -38,3 +38,18 @@ Stack& Frame::GetStack()
 {
     return stack;
 }
+
+OpBase* Frame::Next()
+{
+    return method->GetCode()[index++];
+}
+
+bool Frame::IsEnd()
+{
+    return index >= method->GetCode().size();
+}
+
+void Frame::SetIndex(int index)
+{
+    this->index = index;
+}

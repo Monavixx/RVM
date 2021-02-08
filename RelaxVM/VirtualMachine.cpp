@@ -1,16 +1,17 @@
 #include "VirtualMachine.h"
 
-VirtualMachine::VirtualMachine() : mainClass(nullptr)
+VirtualMachine::VirtualMachine() : gv(new GlobalVariables)
 {
-	filename = Args::args[1];
-	executableFile.setFileName(filename);
+	gv->mainClass = nullptr;
+	gv->filename = Args::args[1];
+	gv->executableFile.setFileName(gv->filename);
 }
 
 VirtualMachine::~VirtualMachine()
 {
-	executableFile.close();
+	gv->executableFile.close();
 
-	for (auto& item : heap)
+	for (auto& item : gv->heap)
 	{
 		if(item != nullptr)
 			delete item;
@@ -20,193 +21,89 @@ VirtualMachine::~VirtualMachine()
 
 void VirtualMachine::Start()
 {
-	if (!executableFile.open(QIODevice::ReadOnly))
+	if (!gv->executableFile.open(QIODevice::ReadOnly))
 	{
 		Exit("File open error!");
 	}
 
-	int versionCode = ByteArrayRead::ReadInt(executableFile);
-	if (versionCode != version)
-		Exit("version " + QString::number(version) + " is required to run this code");
+	int versionCode = ByteArrayRead::ReadInt(gv->executableFile);
+	if (versionCode != gv->version)
+		Exit("version " + QString::number(gv->version) + " is required to run this code");
 
-	while (executableFile.bytesAvailable() > 0)
+	while (gv->executableFile.bytesAvailable() > 0)
 	{
-		Instruction instruction = static_cast<Instruction>(ByteArrayRead::ReadByte(executableFile));
-		ProccesInstructionCreating(instruction, executableFile);
+		Instruction instruction = static_cast<Instruction>(ByteArrayRead::ReadByte(gv->executableFile));
+		ParseCode(instruction);
 	}
-	
 
-	if (mainClass == nullptr)
+	if (gv->mainClass == nullptr)
 	{
 		Exit("main class not found");
 	}
 
-	Method* mainMethod = mainClass->GetMethod("Main", {});
+	Method* mainMethod = gv->mainClass->GetMethod("Main", {});
 	Frame* frame = new Frame(mainMethod);
-	frame->GetStack().SetMaxSize(30);
-	frameStack.push(frame);
+	gv->frameStack.push(frame);
 	ExecuteMethod();
 
 }
 
-void VirtualMachine::ProcessInstructionExecuting(Instruction instruction, QIODevice& device, Frame& frame)
+void VirtualMachine::ParseCode(Instruction instruction)
 {
+	OpBase* op;
 	switch (instruction)
 	{
-		case CALL_METHOD:
-		{
-			CallMethod(device, frame);
-			break;
-		}
-		case PUSH_STR:
-		{
-			PushStr(device, frame);
-			break;
-		}
-		case PUSH_INT32:
-		{
-			PushInt32(device, frame);
-			break;
-		}
-		case RETURN:
-		{
-			Return(device, frame);
-			break;
-		}
-		case NEW:
-		{
-			New(device, frame);
-			break;
-		}
-		case SET:
-		{
-			Set(device, frame);
-			break;
-		}
-		case GET:
-		{
-			Get(device, frame);
-			break;
-		}
-		case LOCAL:
-		{
-			Local(device, frame);
-			break;
-		}
-		case DUP:
-		{
-			Dup(device, frame);
-			break;
-		}
-		case ADD:
-		{
-			Add(device, frame);
-			break;
-		}
-		case JMP:
-		{
-			Jmp(device, frame);
-			break;
-		}
-		case JMPIF:
-		{
-			Jmpif(device, frame);
-			break;
-		}
-		case GC:
-		{
-			Gc(device, frame);
-			break;
-		}
-		case NEWARR:
-		{
-			Newarr(device, frame);
-			break;
-		}
-		case GETARR:
-		{
-			Getarr(device, frame);
-			break;
-		}
-		case SETARR:
-		{
-			Setarr(device, frame);
-			break;
-		}
-		case PUSH_BOOL:
-		{
-			PushBool(device, frame);
-			break;
-		}
-		case PUSH_FLOAT:
-		{
-			PushFloat(device, frame);
-			break;
-		}
-		case SUB:
-		{
-			Sub(device, frame);
-			break;
-		}
-		case MUL:
-		{
-			Mul(device, frame);
-			break;
-		}
-		case DIV:
-		{
-			Div(device, frame);
-			break;
-		}
-	}
-}
-void VirtualMachine::ProccesInstructionCreating(Instruction instruction, QIODevice& device)
-{
-	switch (instruction)
+	case CREATE_MAIN_CLASS:
 	{
-		case CREATE_MAIN_CLASS:
-		{
-			CreateMainClass(device);
-			break;
-		}
-		case CREATE_CLASS:
-		{
-			CreateClass(device);
-			break;
-		}
-		case CREATE_METHOD:
-		{
-			CreateMethod(device);
-			break;
-		}
+		op = new OpMclass;
+		break;
 	}
+	case CREATE_CLASS:
+	{
+		op = new OpClass;
+		break;
+	}
+	case CREATE_METHOD:
+	{
+		op = new OpMethod;
+		break;
+	}
+	default:
+		Exit("Opcode not exists!");
+	}
+
+	op->SetGlobalVariables(gv);
+	op->Parse(gv->executableFile);
+	op->Run();
+	opCodes.push_back(op);
 }
+
 
 void VirtualMachine::ExecuteMethod()
 {
-	Frame* frame = frameStack.top();
+	Frame* frame = gv->frameStack.top();
 	Method* method = frame->GetMethod();
-
 	if (method == nullptr)
 	{
 		Exit("main method not found");
 	}
 
-	QByteArray mainMethodCode = method->GetCode();
-	QBuffer bufferMainMethodCode(&mainMethodCode);
-	if (!bufferMainMethodCode.open(QIODevice::ReadOnly))
-	{
-		Exit("buffer main method error!");
-	}
+	frame->GetStack().SetMaxSize(30);
 
-	while (bufferMainMethodCode.bytesAvailable() > 0)
+	clock_t start, end, ReResult;
+	start = clock();
+	while(!frame->IsEnd())
 	{
-		Instruction instruction = static_cast<Instruction>(ByteArrayRead::ReadByte(bufferMainMethodCode));
-		ProcessInstructionExecuting(instruction, bufferMainMethodCode, *frame);
-		if (instruction == Instruction::RETURN) return;
+		OpBase* op = frame->Next();
+		op->SetFrame(frame);
+		op->Run();
+		if (dynamic_cast<OpReturn*>(op) != nullptr) return;
 	}
+	end = clock();
+	ReResult = end - start;
+	std::cout << "\n\n\nRelax: " << ReResult << "ms\n";
 }
-
+/*
 void VirtualMachine::CreateMainClass(QIODevice& device)
 {
 	QString nameMainClass = ByteArrayRead::ReadSizeAndString(device);
@@ -294,7 +191,7 @@ void VirtualMachine::CallMethod(QIODevice& device, Frame& currentFrame)
 		Frame* frame = new Frame(callableMethod);
 		frame->GetStack().SetMaxSize(30);
 
-		/* parameters */
+		// parameters 
 		for (auto& item : callableMethod->GetParameters())
 		{
 			Object* data = currentFrame.GetStack().pop();
@@ -566,3 +463,4 @@ void VirtualMachine::Div(QIODevice& device, Frame& currentFrame)
 		currentFrame.GetStack().push(returnedObject);
 	}
 }
+*/

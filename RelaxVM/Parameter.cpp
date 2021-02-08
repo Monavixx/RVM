@@ -1,14 +1,8 @@
 #include "Parameter.h"
 
-Parameter::Parameter(const QString& dataType) : dataType(dataType)
+Parameter::Parameter(const QString& dataType, const QString& name) : dataType(dataType), name(name)
 {
 }
-/*
-Parameter::Parameter(const Parameter& other)
-{
-	this->dataType = other.GetDataType();
-}
-*/
 
 QString Parameter::GetDataType() const
 {

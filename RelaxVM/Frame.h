@@ -20,10 +20,16 @@ public:
 	void CreateVariable(int id, const QString& dataType);
 
 	Stack& GetStack();
+	
+	class OpBase* Next();
+	bool IsEnd();
+	void SetIndex(int index);
 
 private:
 	VariableList variables;
 	Method* method;
 	Stack stack;
+
+	int index = 0;
 };
 
