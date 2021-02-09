@@ -5,20 +5,20 @@
 class StdClass
 {
 public:
-	StdClass(const QString& name, const vector<StdMethod>& methods = {});
+	StdClass(const QString& name, const QList<StdMethod>& methods = {});
 
 	QString GetName() const;
-	vector<StdMethod>& GetMethods();
+	QList<StdMethod> GetMethods() const;
 
-	StdMethod* GetMethod(MethodSignature& signature);
-	StdMethod* GetMethod(const QString& name, const vector<Parameter>& parameters);
+	StdMethod* GetMethod(const MethodSignature& signature);
+	StdMethod* GetMethod(const QString& name, const QList<Parameter>& parameters);
 	StdMethod* GetMethod(int index);
 
 	void SetName(const QString& name);
-	void SetMethods(const vector<StdMethod>& methods);
+	void SetMethods(const QList<StdMethod>& methods);
 	void SetMethod(int index, const StdMethod& method);
 private:
 	QString name;
-	vector<StdMethod> methods;
+	QList<StdMethod> methods;
 };
 

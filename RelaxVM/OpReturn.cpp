@@ -5,8 +5,7 @@ void OpReturn::Run()
 	Object* data = frame->GetStack().pop();
 	if (frame->GetMethod()->GetDataType() != data->GetDataType())
 		Exit("Error return data type");
-	gv->frameStack.pop();
-	delete gv->frameStack.top();
+	delete gv->frameStack.pop();
 	gv->frameStack.top()->GetStack().push(data);
 }
 

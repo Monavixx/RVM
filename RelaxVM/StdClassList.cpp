@@ -4,27 +4,27 @@ StdClassList::StdClassList()
 {
 	/* Console */
 	push_back(StdClass("Relax.Console", {
-		StdMethod("Write", "void", "Relax.Console", {Parameter("Relax.String")}, [&](Stack& stack) -> Object*
+		StdMethod("Write", "void", "Relax.Console", QList<Parameter>{Parameter("Relax.String")}, [&](Stack& stack) -> Object*
 		{
-			if(Args::contains("-iostd"))
+			if(Args::args.contains("-iostd"))
 				std::cout << dynamic_cast<RelaxString*>(stack.pop())->GetData().toStdString();
 			else
 				qout << dynamic_cast<RelaxString*>(stack.pop())->GetData();
 			return nullptr;
 		},AccessModifier::PUBLIC, true),
 
-		StdMethod("Write", "void", "Relax.Console", {Parameter("Relax.Int32")}, [&](Stack& stack) -> Object*
+		StdMethod("Write", "void", "Relax.Console", QList<Parameter>{Parameter("Relax.Int32")}, [&](Stack& stack) -> Object*
 		{
-			if (Args::contains("-iostd"))
+			if (Args::args.contains("-iostd"))
 				std::cout << dynamic_cast<RelaxInt32*>(stack.pop())->GetData();
 			else
 				qout << QString::number(dynamic_cast<RelaxInt32*>(stack.pop())->GetData());
 			return nullptr;
 		},AccessModifier::PUBLIC, true),
 		
-		StdMethod("Write", "void", "Relax.Console", {Parameter("Relax.Float")}, [&](Stack& stack) -> Object*
+		StdMethod("Write", "void", "Relax.Console", QList<Parameter>{Parameter("Relax.Float")}, [&](Stack& stack) -> Object*
 		{
-			if (Args::contains("-iostd"))
+			if (Args::args.contains("-iostd"))
 				std::cout << dynamic_cast<RelaxFloat*>(stack.pop())->GetData();
 			else
 				qout << QString::number(dynamic_cast<RelaxFloat*>(stack.pop())->GetData());
@@ -48,7 +48,7 @@ StdClassList::StdClassList()
 	/* Int32 */
 	push_back(StdClass("Relax.Int32", {
 		/* operator== */
-		StdMethod("operator==", "Relax.Bool", "Relax.Int32", {Parameter("Relax.Int32")}, [&](Stack& stack) -> Object*
+		StdMethod("operator==", "Relax.Bool", "Relax.Int32", QList<Parameter>{Parameter("Relax.Int32")}, [&](Stack& stack) -> Object*
 		{
 			RelaxInt32* thisObject = dynamic_cast<RelaxInt32*>(stack.pop());
 			RelaxInt32* other = dynamic_cast<RelaxInt32*>(stack.pop());
@@ -59,7 +59,7 @@ StdClassList::StdClassList()
 		},AccessModifier::PUBLIC, false),
 
 		/* operator+ */
-		StdMethod("operator+", "Relax.Int32", "Relax.Int32", {Parameter("Relax.Int32")}, [&](Stack& stack) -> Object*
+		StdMethod("operator+", "Relax.Int32", "Relax.Int32", QList<Parameter>{Parameter("Relax.Int32")}, [&](Stack& stack) -> Object*
 		{
 			RelaxInt32* thisObject = dynamic_cast<RelaxInt32*>(stack.pop());
 			RelaxInt32* other = dynamic_cast<RelaxInt32*>(stack.pop());
@@ -69,7 +69,7 @@ StdClassList::StdClassList()
 			return returnValue;
 		},AccessModifier::PUBLIC, false),
 
-		StdMethod("operator+", "Relax.Int32", "Relax.Int32", {Parameter("Relax.Float")}, [&](Stack& stack) -> Object*
+		StdMethod("operator+", "Relax.Int32", "Relax.Int32", QList<Parameter>{Parameter("Relax.Float")}, [&](Stack& stack) -> Object*
 		{
 			RelaxInt32* thisObject = dynamic_cast<RelaxInt32*>(stack.pop());
 			RelaxFloat* other = dynamic_cast<RelaxFloat*>(stack.pop());
@@ -80,7 +80,7 @@ StdClassList::StdClassList()
 		},AccessModifier::PUBLIC, false),
 
 		/* operator- */
-		StdMethod("operator-", "Relax.Int32", "Relax.Int32", {Parameter("Relax.Int32")}, [&](Stack& stack) -> Object*
+		StdMethod("operator-", "Relax.Int32", "Relax.Int32", QList<Parameter>{Parameter("Relax.Int32")}, [&](Stack& stack) -> Object*
 		{
 			RelaxInt32* thisObject = dynamic_cast<RelaxInt32*>(stack.pop());
 			RelaxInt32* other = dynamic_cast<RelaxInt32*>(stack.pop());
@@ -90,7 +90,7 @@ StdClassList::StdClassList()
 			return returnValue;
 		},AccessModifier::PUBLIC, false),
 
-		StdMethod("operator-", "Relax.Int32", "Relax.Int32", {Parameter("Relax.Float")}, [&](Stack& stack) -> Object*
+		StdMethod("operator-", "Relax.Int32", "Relax.Int32", QList<Parameter>{Parameter("Relax.Float")}, [&](Stack& stack) -> Object*
 		{
 			RelaxInt32* thisObject = dynamic_cast<RelaxInt32*>(stack.pop());
 			RelaxFloat* other = dynamic_cast<RelaxFloat*>(stack.pop());
@@ -101,7 +101,7 @@ StdClassList::StdClassList()
 		},AccessModifier::PUBLIC, false),
 		
 		/* operator* */
-		StdMethod("operator*", "Relax.Int32", "Relax.Int32", {Parameter("Relax.Int32")}, [&](Stack& stack) -> Object*
+		StdMethod("operator*", "Relax.Int32", "Relax.Int32", QList<Parameter>{Parameter("Relax.Int32")}, [&](Stack& stack) -> Object*
 		{
 			RelaxInt32* thisObject = dynamic_cast<RelaxInt32*>(stack.pop());
 			RelaxInt32* other = dynamic_cast<RelaxInt32*>(stack.pop());
@@ -111,7 +111,7 @@ StdClassList::StdClassList()
 			return returnValue;
 		},AccessModifier::PUBLIC, false),
 
-		StdMethod("operator*", "Relax.Int32", "Relax.Int32", {Parameter("Relax.Float")}, [&](Stack& stack) -> Object*
+		StdMethod("operator*", "Relax.Int32", "Relax.Int32", QList<Parameter>{Parameter("Relax.Float")}, [&](Stack& stack) -> Object*
 		{
 			RelaxInt32* thisObject = dynamic_cast<RelaxInt32*>(stack.pop());
 			RelaxFloat* other = dynamic_cast<RelaxFloat*>(stack.pop());
@@ -122,7 +122,7 @@ StdClassList::StdClassList()
 		},AccessModifier::PUBLIC, false),
 
 		/* operator/ */
-		StdMethod("operator/", "Relax.Int32", "Relax.Int32", {Parameter("Relax.Int32")}, [&](Stack& stack) -> Object*
+		StdMethod("operator/", "Relax.Int32", "Relax.Int32", QList<Parameter>{Parameter("Relax.Int32")}, [&](Stack& stack) -> Object*
 		{
 			RelaxInt32* thisObject = dynamic_cast<RelaxInt32*>(stack.pop());
 			RelaxInt32* other = dynamic_cast<RelaxInt32*>(stack.pop());
@@ -132,7 +132,7 @@ StdClassList::StdClassList()
 			return returnValue;
 		},AccessModifier::PUBLIC, false),
 
-		StdMethod("operator/", "Relax.Int32", "Relax.Int32", {Parameter("Relax.Float")}, [&](Stack& stack) -> Object*
+		StdMethod("operator/", "Relax.Int32", "Relax.Int32", QList<Parameter>{Parameter("Relax.Float")}, [&](Stack& stack) -> Object*
 		{
 			RelaxInt32* thisObject = dynamic_cast<RelaxInt32*>(stack.pop());
 			RelaxFloat* other = dynamic_cast<RelaxFloat*>(stack.pop());
@@ -147,7 +147,7 @@ StdClassList::StdClassList()
 	push_back(StdClass("Relax.Float", {
 		
 		/* operator== */
-		StdMethod("operator==", "Relax.Bool", "Relax.Float", {Parameter("Relax.Float")}, [&](Stack& stack) -> Object*
+		StdMethod("operator==", "Relax.Bool", "Relax.Float", QList<Parameter>{Parameter("Relax.Float")}, [&](Stack& stack) -> Object*
 		{
 			RelaxFloat* thisObject = dynamic_cast<RelaxFloat*>(stack.pop());
 			RelaxFloat* other = dynamic_cast<RelaxFloat*>(stack.pop());
@@ -158,7 +158,7 @@ StdClassList::StdClassList()
 		},AccessModifier::PUBLIC, false),
 
 		/* operator+ */
-		StdMethod("operator+", "Relax.Float", "Relax.Float", {Parameter("Relax.Float")}, [&](Stack& stack) -> Object*
+		StdMethod("operator+", "Relax.Float", "Relax.Float", QList<Parameter>{Parameter("Relax.Float")}, [&](Stack& stack) -> Object*
 		{
 			RelaxFloat* thisObject = dynamic_cast<RelaxFloat*>(stack.pop());
 			RelaxFloat* other = dynamic_cast<RelaxFloat*>(stack.pop());
@@ -168,7 +168,7 @@ StdClassList::StdClassList()
 			return returnValue;
 		},AccessModifier::PUBLIC, false),
 
-		StdMethod("operator+", "Relax.Float", "Relax.Float", {Parameter("Relax.Int32")}, [&](Stack& stack) -> Object*
+		StdMethod("operator+", "Relax.Float", "Relax.Float", QList<Parameter>{Parameter("Relax.Int32")}, [&](Stack& stack) -> Object*
 		{
 			RelaxFloat* thisObject = dynamic_cast<RelaxFloat*>(stack.pop());
 			RelaxInt32* other = dynamic_cast<RelaxInt32*>(stack.pop());
@@ -179,7 +179,7 @@ StdClassList::StdClassList()
 		},AccessModifier::PUBLIC, false),
 
 		/* operator- */
-		StdMethod("operator-", "Relax.Float", "Relax.Float", {Parameter("Relax.Float")}, [&](Stack& stack) -> Object*
+		StdMethod("operator-", "Relax.Float", "Relax.Float", QList<Parameter>{Parameter("Relax.Float")}, [&](Stack& stack) -> Object*
 		{
 			RelaxFloat* thisObject = dynamic_cast<RelaxFloat*>(stack.pop());
 			RelaxFloat* other = dynamic_cast<RelaxFloat*>(stack.pop());
@@ -189,7 +189,7 @@ StdClassList::StdClassList()
 			return returnValue;
 		},AccessModifier::PUBLIC, false),
 
-		StdMethod("operator-", "Relax.Float", "Relax.Float", {Parameter("Relax.Int32")}, [&](Stack& stack) -> Object*
+		StdMethod("operator-", "Relax.Float", "Relax.Float", QList<Parameter>{Parameter("Relax.Int32")}, [&](Stack& stack) -> Object*
 		{
 			RelaxFloat* thisObject = dynamic_cast<RelaxFloat*>(stack.pop());
 			RelaxInt32* other = dynamic_cast<RelaxInt32*>(stack.pop());
@@ -200,7 +200,7 @@ StdClassList::StdClassList()
 		},AccessModifier::PUBLIC, false),
 
 		/* operator* */
-		StdMethod("operator*", "Relax.Float", "Relax.Float", {Parameter("Relax.Float")}, [&](Stack& stack) -> Object*
+		StdMethod("operator*", "Relax.Float", "Relax.Float", QList<Parameter>{Parameter("Relax.Float")}, [&](Stack& stack) -> Object*
 		{
 			RelaxFloat* thisObject = dynamic_cast<RelaxFloat*>(stack.pop());
 			RelaxFloat* other = dynamic_cast<RelaxFloat*>(stack.pop());
@@ -210,7 +210,7 @@ StdClassList::StdClassList()
 			return returnValue;
 		},AccessModifier::PUBLIC, false),
 
-		StdMethod("operator*", "Relax.Float", "Relax.Float", {Parameter("Relax.Int32")}, [&](Stack& stack) -> Object*
+		StdMethod("operator*", "Relax.Float", "Relax.Float", QList<Parameter>{Parameter("Relax.Int32")}, [&](Stack& stack) -> Object*
 		{
 			RelaxFloat* thisObject = dynamic_cast<RelaxFloat*>(stack.pop());
 			RelaxInt32* other = dynamic_cast<RelaxInt32*>(stack.pop());
@@ -221,7 +221,7 @@ StdClassList::StdClassList()
 		},AccessModifier::PUBLIC, false),
 
 		/* operator/ */
-		StdMethod("operator/", "Relax.Float", "Relax.Float", {Parameter("Relax.Float")}, [&](Stack& stack) -> Object*
+		StdMethod("operator/", "Relax.Float", "Relax.Float", QList<Parameter>{Parameter("Relax.Float")}, [&](Stack& stack) -> Object*
 		{
 			RelaxFloat* thisObject = dynamic_cast<RelaxFloat*>(stack.pop());
 			RelaxFloat* other = dynamic_cast<RelaxFloat*>(stack.pop());
@@ -231,7 +231,7 @@ StdClassList::StdClassList()
 			return returnValue;
 		},AccessModifier::PUBLIC, false),
 
-		StdMethod("operator/", "Relax.Float", "Relax.Float", {Parameter("Relax.Int32")}, [&](Stack& stack) -> Object*
+		StdMethod("operator/", "Relax.Float", "Relax.Float", QList<Parameter>{Parameter("Relax.Int32")}, [&](Stack& stack) -> Object*
 		{
 			RelaxFloat* thisObject = dynamic_cast<RelaxFloat*>(stack.pop());
 			RelaxInt32* other = dynamic_cast<RelaxInt32*>(stack.pop());
@@ -251,7 +251,7 @@ StdClassList::StdClassList()
 			return RelaxRandom::GenerateInt32();
 		},AccessModifier::PUBLIC, true),
 
-		StdMethod("GenerateInt32", "Relax.Int32", "Relax.Random", {Parameter("Relax.Int32"), Parameter("Relax.Int32")}, [&](Stack& stack)->Object*
+		StdMethod("GenerateInt32", "Relax.Int32", "Relax.Random", QList<Parameter>{Parameter("Relax.Int32"), Parameter("Relax.Int32")}, [&](Stack& stack)->Object*
 		{
 			RelaxInt32* min = dynamic_cast<RelaxInt32*>(stack.pop());
 			RelaxInt32* max = dynamic_cast<RelaxInt32*>(stack.pop());

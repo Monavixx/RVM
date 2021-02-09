@@ -9,7 +9,7 @@
 #include "ConsoleTextStream.h"
 #include "Args.h"
 
-class StdClassList : public vector<StdClass>
+class StdClassList : public QList<StdClass>
 {
 public:
 	StdClass* FindClassByName(const QString& name);

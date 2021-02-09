@@ -11,6 +11,6 @@ public:
 private:
 	bool isStd;
 	QString className;
-	vector<Parameter> parameters;
+	QList<Parameter> parameters;
 };
 

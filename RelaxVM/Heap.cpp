@@ -4,7 +4,7 @@ Heap::Heap()
 {
 }
 
-Heap::Heap(const list<Object*>& variableList)
+Heap::Heap(const QList<Object*>& variableList)
 {
     this->clear();
     for(auto& item : variableList)

@@ -42,7 +42,7 @@ private:
 	QString dataType;
 	QString declClassName;
 	QString name;
-	vector<Parameter> parameters;
-	vector<OpBase*> methodCode;
+	QList<Parameter> parameters;
+	QList<OpBase*> methodCode;
 };
 

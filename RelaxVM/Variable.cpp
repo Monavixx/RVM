@@ -15,5 +15,5 @@ Object* Variable::GetData() const
 
 void Variable::SetData(Object* data)
 {
-	this->data = data;
+	this->data= data;
 }

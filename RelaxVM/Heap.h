@@ -1,13 +1,12 @@
 #pragma once
 #include <QtCore>
 #include "Variable.h"
-using std::list;
 
-class Heap : public list<Object*>
+class Heap : public QList<Object*>
 {
 public: 
 	Heap();
-	Heap(const list<Object*>& classList);
+	Heap(const QList<Object*>& classList);
 	Heap(const Heap& classList);
 };
 

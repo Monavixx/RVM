@@ -9,7 +9,7 @@ class StdMethod : public MethodSignature
 public:
 	StdMethod(const MethodSignature& signature, std::function<Object* (Stack&)> function = {}, const AccessModifier& accessModifier = AccessModifier::PRIVATE, bool isStatic = false);
 
-	StdMethod(const QString& name, const QString& dataType, const QString& nameClass, const vector<Parameter>& parameters = {},
+	StdMethod(const QString& name, const QString& dataType, const QString& nameClass, const QList<Parameter>& parameters = {},
 		std::function<Object*(Stack&)> code = {}, const AccessModifier& accessModifier = AccessModifier::PRIVATE, bool isStatic = false);
 
 	bool IsStatic() const;
@@ -22,7 +22,7 @@ public:
 
 	Object* CallFunction(Stack& stack);
 
-	bool operator==(StdMethod& other);
+	bool operator==(const StdMethod& other) const;
 private:
 	std::function<Object*(Stack&)> function;
 	AccessModifier accessModifier;

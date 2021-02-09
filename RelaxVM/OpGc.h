@@ -1,6 +1,5 @@
 #pragma once
 #include "OpBase.h"
-#include <algorithm>
 
 class OpGc : public OpBase
 {

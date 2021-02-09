@@ -1,21 +1,20 @@
 #pragma once
 #include <QtCore>
 #include "Method.h"
-using std::vector;
 
 class Class
 {
 public:
-	Class(const QString& name, const vector<Method*>& methods = {});
+	Class(const QString& name, const QList<Method*>& methods = {});
 	~Class();
 
 	QString GetName() const;
-	vector<Method*> GetMethods() const;
-	Method* GetMethod(const QString& name, const vector<Parameter>& parameters);
+	QList<Method*> GetMethods() const;
+	Method* GetMethod(const QString& name, const QList<Parameter>& parameters);
 	Method* GetMethod(MethodSignature* signature);
 
 	void SetName(const QString& name);
-	void SetMethods(const vector<Method*>& methods);
+	void SetMethods(const QList<Method*>& methods);
 	void SetMethod(int index, Method* method);
 	void AddMethod(Method* method);
 
@@ -23,6 +22,6 @@ public:
 
 private:
 	QString name;
-	vector<Method*> methods;
+	QList<Method*> methods;
 };
 
