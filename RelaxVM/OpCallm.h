@@ -3,7 +3,7 @@
 #include "StdClassList.h"
 #include "Instruction.h"
 #include "OpReturn.h"
-
+using std::vector;
 
 class OpCallm : public OpBase
 {
@@ -17,7 +17,7 @@ private:
 	bool isStatic;
 	QString declClassName;
 	QString name;
-	QList<Parameter> parameters;
+	vector<Parameter> parameters;
 };
 
 

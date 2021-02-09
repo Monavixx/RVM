@@ -1,6 +1,6 @@
 #include "MethodSignature.h"
 
-MethodSignature::MethodSignature(const QString& name, const QString& dataType, const QString& className, const QList<Parameter>& parameters)
+MethodSignature::MethodSignature(const QString& name, const QString& dataType, const QString& className, const vector<Parameter>& parameters)
 	: name(name), dataType(dataType), nameClass(className), parameters(parameters)
 {
 }
@@ -28,7 +28,7 @@ QString MethodSignature::GetNameClass() const
 	return nameClass;
 }
 
-const QList<Parameter>& MethodSignature::GetParameters() const
+vector<Parameter> MethodSignature::GetParameters() const
 {
 	return parameters;
 }
@@ -53,7 +53,7 @@ void MethodSignature::SetNameClass(const QString& className)
 	this->nameClass = className;
 }
 
-void MethodSignature::SetParameters(const QList<Parameter>& parameters)
+void MethodSignature::SetParameters(const vector<Parameter>& parameters)
 {
 	this->parameters = parameters;
 }
@@ -82,10 +82,10 @@ QString MethodSignature::ToString() const
 	return signature;
 }
 
-bool MethodSignature::operator==(const MethodSignature& other) const
+bool MethodSignature::operator==(MethodSignature& other)
 {
-	bool nameIsEqual = other.GetName() == name;
-	bool nameClassIsEqual = other.GetNameClass() == nameClass;
-	bool parametersIsEqual = other.GetParameters() == parameters;
-	return nameIsEqual && nameClassIsEqual && parametersIsEqual;
+	if (other.GetName() != name) return false;
+	if (other.GetNameClass() != nameClass) return false;
+	if (other.GetParameters() != parameters) return false;
+	return true;
 }

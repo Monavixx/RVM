@@ -5,7 +5,7 @@ StdMethod::StdMethod(const MethodSignature& signature, std::function<Object*(Sta
 {
 }
 
-StdMethod::StdMethod(const QString& name, const QString& dataType, const QString& nameClass, const QList<Parameter>& parameters, std::function<Object*(Stack&)> function, const AccessModifier& accessModifier, bool isStatic)
+StdMethod::StdMethod(const QString& name, const QString& dataType, const QString& nameClass, const vector<Parameter>& parameters, std::function<Object*(Stack&)> function, const AccessModifier& accessModifier, bool isStatic)
 	:MethodSignature(name, dataType, nameClass, parameters), function(function), accessModifier(accessModifier), isStatic(isStatic)
 {
 }
@@ -45,10 +45,10 @@ Object* StdMethod::CallFunction(Stack& stack)
 	return function(stack);
 }
 
-bool StdMethod::operator==(const StdMethod& other) const
+bool StdMethod::operator==(StdMethod& other)
 {
-	bool signatureIsEqual = MethodSignature::operator==(dynamic_cast<const MethodSignature&>(other));
-	bool isStaticIsEqual = isStatic == other.IsStatic();
-	bool accessModifierIsEqual = accessModifier == other.GetAccessModifier();
-	return signatureIsEqual && isStaticIsEqual && accessModifierIsEqual;
+	if (!MethodSignature::operator==(dynamic_cast<MethodSignature&>(other))) return false;
+	if(isStatic != other.IsStatic()) return false;
+	if(accessModifier != other.GetAccessModifier()) return false;
+	return true;
 }

@@ -2,6 +2,7 @@
 #include "Frame.h"
 #include "Heap.h"
 #include "ClassList.h"
+#include <stack>
 struct GlobalVariables
 {
 	QString filename;
@@ -9,7 +10,7 @@ struct GlobalVariables
 	Class* mainClass;
 	ClassList classes;
 	Heap heap;
-	QStack<Frame*> frameStack;
+	std::stack<Frame*> frameStack;
 
 	const int version = 3;
 };

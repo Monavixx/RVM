@@ -1,6 +1,6 @@
 #include "Class.h"
 
-Class::Class(const QString& name, const QList<Method*>& methods)
+Class::Class(const QString& name, const vector<Method*>& methods)
 	:name(name), methods(methods)
 {
 }
@@ -18,20 +18,16 @@ QString Class::GetName() const
 	return name;
 }
 
-QList<Method*> Class::GetMethods() const
+vector<Method*> Class::GetMethods() const
 {
 	return methods;
 }
 
-Method* Class::GetMethod(const QString& name, const QList<Parameter>& parameters)
+Method* Class::GetMethod(const QString& name, const vector<Parameter>& parameters)
 {
 	auto methodIterator = std::find_if(methods.begin(), methods.end(), [&](Method* method) {
-		bool nameIsEqual = name == method->GetName();
-		if (!nameIsEqual)return false;
-
-		bool parametersIsEqual = parameters == method->GetParameters();
-		if (!parametersIsEqual)return false;
-
+		if (name != method->GetName()) return false;
+		if (parameters != method->GetParameters()) return false;
 		return true;
 	});
 	if(methodIterator == methods.end())
@@ -41,7 +37,7 @@ Method* Class::GetMethod(const QString& name, const QList<Parameter>& parameters
 
 Method* Class::GetMethod(MethodSignature* signature)
 {
-	auto methodIterator = std::find_if(methods.begin(), methods.end(), [&](Method* method) {
+	auto methodIterator = std::find_if(methods.begin(), methods.end(), [&](Method* method) -> bool {
 		return signature == dynamic_cast<MethodSignature*>(method);
 	});
 	if (methodIterator == methods.end())
@@ -54,7 +50,7 @@ void Class::SetName(const QString& name)
 	this->name = name;
 }
 
-void Class::SetMethods(const QList<Method*>& methods)
+void Class::SetMethods(const vector<Method*>& methods)
 {
 	this->methods = methods;
 }
@@ -71,8 +67,7 @@ void Class::AddMethod(Method* method)
 
 bool Class::operator==(const Class& other) const
 {
-	bool nameIsEqual = other.GetName() == name;
-	bool methodsIsEqual = other.GetMethods() == methods;
-
-	return nameIsEqual && methodsIsEqual;
+	if (other.GetName() != name) return false;
+	if(other.GetMethods() != methods) return false;
+	return true;
 }

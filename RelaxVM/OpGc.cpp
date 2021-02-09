@@ -13,7 +13,7 @@ void OpGc::Run()
 			}
 		}
 	}
-	gv->heap.removeAll(nullptr);
+	std::erase(gv->heap, nullptr);
 }
 
 void OpGc::Parse(QIODevice& device)

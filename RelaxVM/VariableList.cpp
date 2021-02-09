@@ -4,10 +4,10 @@ VariableList::VariableList()
 {
 }
 
-VariableList::VariableList(const QHash<int, Variable>& variables) : QHash<int, Variable>(variables)
+VariableList::VariableList(const unordered_map<int, Variable>& variables) : unordered_map<int, Variable>(variables)
 {
 }
 
-VariableList::VariableList(const VariableList& variables) : QHash<int, Variable>(variables)
+VariableList::VariableList(const VariableList& variables) : unordered_map<int, Variable>(variables)
 {
 }
