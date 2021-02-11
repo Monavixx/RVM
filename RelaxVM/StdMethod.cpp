@@ -47,8 +47,8 @@ Object* StdMethod::CallFunction(Stack& stack)
 
 bool StdMethod::operator==(const StdMethod& other) const
 {
-	bool signatureIsEqual = MethodSignature::operator==(dynamic_cast<const MethodSignature&>(other));
-	bool isStaticIsEqual = isStatic == other.IsStatic();
-	bool accessModifierIsEqual = accessModifier == other.GetAccessModifier();
-	return signatureIsEqual && isStaticIsEqual && accessModifierIsEqual;
+	if (!MethodSignature::operator==(dynamic_cast<const MethodSignature&>(other))) return false;
+	if (isStatic != other.IsStatic()) return false;
+	if (accessModifier != other.GetAccessModifier()) return false;
+	return true;
 }

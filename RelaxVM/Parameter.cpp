@@ -27,6 +27,5 @@ void Parameter::SetName(const QString& name)
 
 bool Parameter::operator==(const Parameter& other)
 {
-	bool dataTypeIsEqual = other.GetDataType() == dataType;
-	return dataTypeIsEqual;
+	return other.GetDataType() == dataType;
 }

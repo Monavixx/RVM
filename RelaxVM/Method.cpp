@@ -43,9 +43,8 @@ void Method::SetCode(const QList<OpBase*>& code)
 
 bool Method::operator==(Method& other) const
 {
-	bool signatureIsEqual = MethodSignature::operator==(dynamic_cast<const MethodSignature&>(other));
-	bool isStaticIsEqual = isStatic == other.IsStatic();
-	bool accessModifierIsEqual = accessModifier == other.GetAccessModifier();
-	bool codeIsEqual = code == other.GetCode();
-	return signatureIsEqual && isStaticIsEqual && accessModifierIsEqual && codeIsEqual;
+	if (!MethodSignature::operator==(dynamic_cast<const MethodSignature&>(other))) return false;
+	if (isStatic != other.IsStatic()) return false;
+	if (accessModifier != other.GetAccessModifier()) return false;
+	return true;
 }

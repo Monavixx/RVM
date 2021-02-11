@@ -26,12 +26,8 @@ QList<Method*> Class::GetMethods() const
 Method* Class::GetMethod(const QString& name, const QList<Parameter>& parameters)
 {
 	auto methodIterator = std::find_if(methods.begin(), methods.end(), [&](Method* method) {
-		bool nameIsEqual = name == method->GetName();
-		if (!nameIsEqual)return false;
-
-		bool parametersIsEqual = parameters == method->GetParameters();
-		if (!parametersIsEqual)return false;
-
+		if (name != method->GetName()) return false;
+		if (parameters != method->GetParameters()) return false;
 		return true;
 	});
 	if(methodIterator == methods.end())
@@ -71,8 +67,7 @@ void Class::AddMethod(Method* method)
 
 bool Class::operator==(const Class& other) const
 {
-	bool nameIsEqual = other.GetName() == name;
-	bool methodsIsEqual = other.GetMethods() == methods;
-
-	return nameIsEqual && methodsIsEqual;
+	if (other.GetName() != name) return false;
+	if (other.GetMethods() != methods) return false;
+	return true;
 }

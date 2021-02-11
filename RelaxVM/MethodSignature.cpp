@@ -84,8 +84,8 @@ QString MethodSignature::ToString() const
 
 bool MethodSignature::operator==(const MethodSignature& other) const
 {
-	bool nameIsEqual = other.GetName() == name;
-	bool nameClassIsEqual = other.GetNameClass() == nameClass;
-	bool parametersIsEqual = other.GetParameters() == parameters;
-	return nameIsEqual && nameClassIsEqual && parametersIsEqual;
+	if (other.GetName() != name) return false;
+	if (other.GetNameClass() != nameClass) return false;
+	if (other.GetParameters() != parameters) return false;
+	return  true;
 }
