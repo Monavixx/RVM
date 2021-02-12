@@ -25,6 +25,7 @@
 #include "OpMclass.h"
 #include "OpClass.h"
 #include "OpMethod.h"
+#include "OpCast.h"
 
 class VirtualMachine
 {
@@ -33,7 +34,6 @@ public:
 	~VirtualMachine();
 	void Start();
 	void ParseCode(Instruction instruction);
-	void ExecuteMethod();
 
 private:
 	GlobalVariables* gv;

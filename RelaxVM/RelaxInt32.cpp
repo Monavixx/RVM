@@ -1,4 +1,5 @@
 #include "RelaxInt32.h"
+#include "RelaxFloat.h"
 
 RelaxInt32::RelaxInt32(int data) : data(data)
 {
@@ -21,60 +22,30 @@ void RelaxInt32::SetData(int data)
 
 RelaxBool* RelaxInt32::operator==(RelaxInt32* other)
 {
-    bool isEqual = this->GetData() == other->GetData();
-    return new RelaxBool(isEqual);
-}
-
-RelaxBool* RelaxInt32::operator==(RelaxFloat* other)
-{
-    bool isEqual = this->GetData() == static_cast<int>(other->GetData());
-    return new RelaxBool(isEqual);
+    return new RelaxBool(this->GetData() == other->GetData());
 }
 
 RelaxInt32* RelaxInt32::operator+(RelaxInt32* other)
 {
-	int result = this->GetData() + other->GetData();
-	return new RelaxInt32(result);
+	return new RelaxInt32(this->GetData() + other->GetData());
 }
 
 RelaxInt32* RelaxInt32::operator-(RelaxInt32* other)
 {
-    int result = this->GetData() - other->GetData();
-    return new RelaxInt32(result);
+    return new RelaxInt32(this->GetData() - other->GetData());
 }
 
 RelaxInt32* RelaxInt32::operator*(RelaxInt32* other)
 {
-    int result = this->GetData() * other->GetData();
-    return new RelaxInt32(result);
+    return new RelaxInt32(this->GetData() * other->GetData());
 }
 
 RelaxInt32* RelaxInt32::operator/(RelaxInt32* other)
 {
-    int result = this->GetData() / other->GetData();
-    return new RelaxInt32(result);
+    return new RelaxInt32(this->GetData() / other->GetData());
 }
 
-RelaxInt32* RelaxInt32::operator+(RelaxFloat* other)
+RelaxInt32* RelaxInt32::cast(RelaxFloat* data)
 {
-    int result = this->GetData() + other->GetData();
-    return new RelaxInt32(result);
-}
-
-RelaxInt32* RelaxInt32::operator-(RelaxFloat* other)
-{
-    int result = this->GetData() - other->GetData();
-    return new RelaxInt32(result);
-}
-
-RelaxInt32* RelaxInt32::operator*(RelaxFloat* other)
-{
-    int result = this->GetData() * other->GetData();
-    return new RelaxInt32(result);
-}
-
-RelaxInt32* RelaxInt32::operator/(RelaxFloat* other)
-{
-    int result = this->GetData() / other->GetData();
-    return new RelaxInt32(result);
+    return new RelaxInt32(data->GetData());
 }

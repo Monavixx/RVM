@@ -48,12 +48,6 @@ StdClassList::StdClassList()
 			return *thisObject == dynamic_cast<RelaxInt32*>(stack.pop());
 		},AccessModifier::PUBLIC, false),
 
-		StdMethod("operator==", "Relax.Bool", "Relax.Int32", QVector<Parameter>{Parameter("Relax.Float")}, [&](Stack& stack) -> Object*
-		{
-			RelaxInt32* thisObject = dynamic_cast<RelaxInt32*>(stack.pop());
-			return *thisObject == dynamic_cast<RelaxFloat*>(stack.pop());
-		},AccessModifier::PUBLIC, false),
-
 		/* operator+ */
 		StdMethod("operator+", "Relax.Int32", "Relax.Int32", QVector<Parameter>{Parameter("Relax.Int32")}, [&](Stack& stack) -> Object*
 		{
@@ -61,78 +55,35 @@ StdClassList::StdClassList()
 			return *thisObject + dynamic_cast<RelaxInt32*>(stack.pop());
 		},AccessModifier::PUBLIC, false),
 
-		StdMethod("operator+", "Relax.Int32", "Relax.Int32", QVector<Parameter>{Parameter("Relax.Float")}, [&](Stack& stack) -> Object*
-		{
-			RelaxInt32* thisObject = dynamic_cast<RelaxInt32*>(stack.pop());
-			RelaxFloat* other = dynamic_cast<RelaxFloat*>(stack.pop());
-
-			int result = thisObject->GetData() + other->GetData();
-			RelaxInt32* returnValue = new RelaxInt32(result);
-			return returnValue;
-		},AccessModifier::PUBLIC, false),
-
+		
 		/* operator- */
 		StdMethod("operator-", "Relax.Int32", "Relax.Int32", QVector<Parameter>{Parameter("Relax.Int32")}, [&](Stack& stack) -> Object*
 		{
 			RelaxInt32* thisObject = dynamic_cast<RelaxInt32*>(stack.pop());
-			RelaxInt32* other = dynamic_cast<RelaxInt32*>(stack.pop());
-
-			int result = thisObject->GetData() - other->GetData();
-			RelaxInt32* returnValue = new RelaxInt32(result);
-			return returnValue;
+			return *thisObject - dynamic_cast<RelaxInt32*>(stack.pop());
 		},AccessModifier::PUBLIC, false),
 
-		StdMethod("operator-", "Relax.Int32", "Relax.Int32", QVector<Parameter>{Parameter("Relax.Float")}, [&](Stack& stack) -> Object*
-		{
-			RelaxInt32* thisObject = dynamic_cast<RelaxInt32*>(stack.pop());
-			RelaxFloat* other = dynamic_cast<RelaxFloat*>(stack.pop());
-
-			int result = thisObject->GetData() - other->GetData();
-			RelaxInt32* returnValue = new RelaxInt32(result);
-			return returnValue;
-		},AccessModifier::PUBLIC, false),
-		
 		/* operator* */
 		StdMethod("operator*", "Relax.Int32", "Relax.Int32", QVector<Parameter>{Parameter("Relax.Int32")}, [&](Stack& stack) -> Object*
 		{
 			RelaxInt32* thisObject = dynamic_cast<RelaxInt32*>(stack.pop());
-			RelaxInt32* other = dynamic_cast<RelaxInt32*>(stack.pop());
-
-			int result = thisObject->GetData() * other->GetData();
-			RelaxInt32* returnValue = new RelaxInt32(result);
-			return returnValue;
+			return *thisObject * dynamic_cast<RelaxInt32*>(stack.pop());
 		},AccessModifier::PUBLIC, false),
 
-		StdMethod("operator*", "Relax.Int32", "Relax.Int32", QVector<Parameter>{Parameter("Relax.Float")}, [&](Stack& stack) -> Object*
-		{
-			RelaxInt32* thisObject = dynamic_cast<RelaxInt32*>(stack.pop());
-			RelaxFloat* other = dynamic_cast<RelaxFloat*>(stack.pop());
-
-			int result = thisObject->GetData() * other->GetData();
-			RelaxInt32* returnValue = new RelaxInt32(result);
-			return returnValue;
-		},AccessModifier::PUBLIC, false),
-
+		
 		/* operator/ */
 		StdMethod("operator/", "Relax.Int32", "Relax.Int32", QVector<Parameter>{Parameter("Relax.Int32")}, [&](Stack& stack) -> Object*
 		{
 			RelaxInt32* thisObject = dynamic_cast<RelaxInt32*>(stack.pop());
-			RelaxInt32* other = dynamic_cast<RelaxInt32*>(stack.pop());
-
-			int result = thisObject->GetData() / other->GetData();
-			RelaxInt32* returnValue = new RelaxInt32(result);
-			return returnValue;
+			return *thisObject / dynamic_cast<RelaxInt32*>(stack.pop());
 		},AccessModifier::PUBLIC, false),
 
-		StdMethod("operator/", "Relax.Int32", "Relax.Int32", QVector<Parameter>{Parameter("Relax.Float")}, [&](Stack& stack) -> Object*
+		/* cast */
+		StdMethod("cast", "Relax.Int32", "Relax.Int32", QVector<Parameter>{Parameter("Relax.Float")}, [&](Stack& stack) -> Object*
 		{
-			RelaxInt32* thisObject = dynamic_cast<RelaxInt32*>(stack.pop());
-			RelaxFloat* other = dynamic_cast<RelaxFloat*>(stack.pop());
-
-			int result = thisObject->GetData() / other->GetData();
-			RelaxInt32* returnValue = new RelaxInt32(result);
-			return returnValue;
-		},AccessModifier::PUBLIC, false),
+			RelaxFloat* data = dynamic_cast<RelaxFloat*>(stack.pop());
+			return RelaxInt32::cast(data);
+		},AccessModifier::PUBLIC, true),
 	}));
 
 	/* Float */
@@ -142,96 +93,43 @@ StdClassList::StdClassList()
 		StdMethod("operator==", "Relax.Bool", "Relax.Float", QVector<Parameter>{Parameter("Relax.Float")}, [&](Stack& stack) -> Object*
 		{
 			RelaxFloat* thisObject = dynamic_cast<RelaxFloat*>(stack.pop());
-			RelaxFloat* other = dynamic_cast<RelaxFloat*>(stack.pop());
-
-			bool isEqual = thisObject->GetData() == other->GetData();
-			RelaxBool* returnValue = new RelaxBool(thisObject->GetData() == other->GetData());
-			return returnValue;
+			return *thisObject == dynamic_cast<RelaxFloat*>(stack.pop());
 		},AccessModifier::PUBLIC, false),
 
 		/* operator+ */
 		StdMethod("operator+", "Relax.Float", "Relax.Float", QVector<Parameter>{Parameter("Relax.Float")}, [&](Stack& stack) -> Object*
 		{
 			RelaxFloat* thisObject = dynamic_cast<RelaxFloat*>(stack.pop());
-			RelaxFloat* other = dynamic_cast<RelaxFloat*>(stack.pop());
-
-			float result = thisObject->GetData() + other->GetData();
-			RelaxFloat* returnValue = new RelaxFloat(result);
-			return returnValue;
-		},AccessModifier::PUBLIC, false),
-
-		StdMethod("operator+", "Relax.Float", "Relax.Float", QVector<Parameter>{Parameter("Relax.Int32")}, [&](Stack& stack) -> Object*
-		{
-			RelaxFloat* thisObject = dynamic_cast<RelaxFloat*>(stack.pop());
-			RelaxInt32* other = dynamic_cast<RelaxInt32*>(stack.pop());
-
-			float result = thisObject->GetData() + other->GetData();
-			RelaxFloat* returnValue = new RelaxFloat(result);
-			return returnValue;
+			return *thisObject + dynamic_cast<RelaxFloat*>(stack.pop());
 		},AccessModifier::PUBLIC, false),
 
 		/* operator- */
 		StdMethod("operator-", "Relax.Float", "Relax.Float", QVector<Parameter>{Parameter("Relax.Float")}, [&](Stack& stack) -> Object*
 		{
 			RelaxFloat* thisObject = dynamic_cast<RelaxFloat*>(stack.pop());
-			RelaxFloat* other = dynamic_cast<RelaxFloat*>(stack.pop());
-
-			float result = thisObject->GetData() - other->GetData();
-			RelaxFloat* returnValue = new RelaxFloat(result);
-			return returnValue;
-		},AccessModifier::PUBLIC, false),
-
-		StdMethod("operator-", "Relax.Float", "Relax.Float", QVector<Parameter>{Parameter("Relax.Int32")}, [&](Stack& stack) -> Object*
-		{
-			RelaxFloat* thisObject = dynamic_cast<RelaxFloat*>(stack.pop());
-			RelaxInt32* other = dynamic_cast<RelaxInt32*>(stack.pop());
-
-			float result = thisObject->GetData() - other->GetData();
-			RelaxFloat* returnValue = new RelaxFloat(result);
-			return returnValue;
+			return *thisObject - dynamic_cast<RelaxFloat*>(stack.pop());
 		},AccessModifier::PUBLIC, false),
 
 		/* operator* */
 		StdMethod("operator*", "Relax.Float", "Relax.Float", QVector<Parameter>{Parameter("Relax.Float")}, [&](Stack& stack) -> Object*
 		{
 			RelaxFloat* thisObject = dynamic_cast<RelaxFloat*>(stack.pop());
-			RelaxFloat* other = dynamic_cast<RelaxFloat*>(stack.pop());
-
-			float result = thisObject->GetData() * other->GetData();
-			RelaxFloat* returnValue = new RelaxFloat(result);
-			return returnValue;
-		},AccessModifier::PUBLIC, false),
-
-		StdMethod("operator*", "Relax.Float", "Relax.Float", QVector<Parameter>{Parameter("Relax.Int32")}, [&](Stack& stack) -> Object*
-		{
-			RelaxFloat* thisObject = dynamic_cast<RelaxFloat*>(stack.pop());
-			RelaxInt32* other = dynamic_cast<RelaxInt32*>(stack.pop());
-
-			float result = thisObject->GetData() * other->GetData();
-			RelaxFloat* returnValue = new RelaxFloat(result);
-			return returnValue;
+			return *thisObject * dynamic_cast<RelaxFloat*>(stack.pop());
 		},AccessModifier::PUBLIC, false),
 
 		/* operator/ */
 		StdMethod("operator/", "Relax.Float", "Relax.Float", QVector<Parameter>{Parameter("Relax.Float")}, [&](Stack& stack) -> Object*
 		{
 			RelaxFloat* thisObject = dynamic_cast<RelaxFloat*>(stack.pop());
-			RelaxFloat* other = dynamic_cast<RelaxFloat*>(stack.pop());
-
-			float result = thisObject->GetData() / other->GetData();
-			RelaxFloat* returnValue = new RelaxFloat(result);
-			return returnValue;
+			return *thisObject / dynamic_cast<RelaxFloat*>(stack.pop());
 		},AccessModifier::PUBLIC, false),
 
-		StdMethod("operator/", "Relax.Float", "Relax.Float", QVector<Parameter>{Parameter("Relax.Int32")}, [&](Stack& stack) -> Object*
+		/* cast */
+		StdMethod("cast", "Relax.Float", "Relax.Float", QVector<Parameter>{Parameter("Relax.Int32")}, [&](Stack& stack) -> Object*
 		{
-			RelaxFloat* thisObject = dynamic_cast<RelaxFloat*>(stack.pop());
-			RelaxInt32* other = dynamic_cast<RelaxInt32*>(stack.pop());
-
-			float result = thisObject->GetData() / other->GetData();
-			RelaxFloat* returnValue = new RelaxFloat(result);
-			return returnValue;
-		},AccessModifier::PUBLIC, false),
+			RelaxInt32* data = dynamic_cast<RelaxInt32*>(stack.pop());
+			return RelaxFloat::cast(data);
+		},AccessModifier::PUBLIC, true),
 	}));
 
 

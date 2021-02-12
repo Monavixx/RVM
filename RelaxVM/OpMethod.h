@@ -26,6 +26,7 @@
 #include "OpSet.h"
 #include "OpSetarr.h"
 #include "OpSub.h"
+#include "OpCast.h"
 
 class OpMethod : public OpBase
 {

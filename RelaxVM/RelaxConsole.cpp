@@ -11,7 +11,7 @@ Object* RelaxConsole::Write(RelaxString* data)
 		std::cout << data->GetData().toStdString();
 	else
 		qout << data->GetData();
-	return new RelaxNull;
+	return nullptr;
 }
 
 Object* RelaxConsole::Write(RelaxInt32* data)
@@ -20,7 +20,7 @@ Object* RelaxConsole::Write(RelaxInt32* data)
 		std::cout << data->GetData();
 	else
 		qout << QString::number(data->GetData());
-	return new RelaxNull;
+	return nullptr;
 }
 
 Object* RelaxConsole::Write(RelaxFloat* data)
@@ -29,7 +29,7 @@ Object* RelaxConsole::Write(RelaxFloat* data)
 		std::cout << data->GetData();
 	else
 		qout << QString::number(data->GetData());
-	return new RelaxNull;
+	return nullptr;
 }
 
 Object* RelaxConsole::Write(RelaxBool* data)
@@ -38,7 +38,7 @@ Object* RelaxConsole::Write(RelaxBool* data)
 		std::cout << (data->GetData() ? "true" : "false");
 	else
 		qout << (data->GetData() ? "true" : "false");
-	return new RelaxNull;
+	return nullptr;
 }
 
 RelaxString* RelaxConsole::Read()

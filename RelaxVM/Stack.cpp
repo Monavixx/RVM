@@ -20,6 +20,11 @@ Object* Stack::pop()
 	return poppedObject;
 }
 
+Object* Stack::top()
+{
+	return stack[currentSize-1];
+}
+
 bool Stack::isEmpty()
 {
 	return currentSize == 0;

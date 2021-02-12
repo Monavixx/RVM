@@ -153,11 +153,16 @@ void OpMethod::ParseOpCode(Instruction instruction, QIODevice& device)
 		op = new OpDiv;
 		break;
 	}
+	case CAST:
+	{
+		op = new OpCast;
+		break;
+	}
 	default:
 		Exit("Opcode not exists!");
 	}
 
-	op->Parse(device);
 	op->SetGlobalVariables(gv);
+	op->Parse(device);
 	methodCode.push_back(op);
 }

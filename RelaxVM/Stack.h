@@ -10,6 +10,7 @@ public:
 	Stack() : stack(nullptr) {}
 	void push(Object* object);
 	Object* pop();
+	Object* top();
 	bool isEmpty();
 	~Stack();
 	void SetMaxSize(int maxSize);

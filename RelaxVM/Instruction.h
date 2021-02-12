@@ -24,5 +24,6 @@ enum Instruction
 	PUSH_FLOAT,
 	SUB,
 	MUL,
-	DIV
+	DIV,
+	CAST
 };

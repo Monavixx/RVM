@@ -1,5 +1,6 @@
 #pragma once
 #include "Object.h"
+#include "RelaxBool.h"
 
 class RelaxFloat : public Object
 {
@@ -8,6 +9,14 @@ public:
 	QString GetDataType() override;
 	float GetData();
 	void SetData(float data);
+
+	RelaxFloat* operator+(RelaxFloat* other);
+	RelaxFloat* operator-(RelaxFloat* other);
+	RelaxFloat* operator*(RelaxFloat* other);
+	RelaxFloat* operator/(RelaxFloat* other);
+	RelaxBool* operator==(RelaxFloat* other);
+
+	static RelaxFloat* cast(class RelaxInt32* data);
 private:
 	float data;
 };

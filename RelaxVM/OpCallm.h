@@ -2,7 +2,7 @@
 #include "OpBase.h"
 #include "StdClassList.h"
 #include "Instruction.h"
-#include "OpReturn.h"
+#include "ExecuteMethod.h"
 
 
 class OpCallm : public OpBase
@@ -12,8 +12,6 @@ public:
 	void Parse(QIODevice& device) override;
 
 private:
-	void ExecuteMethod();
-
 	bool isStd;
 	bool isStatic;
 	QString declClassName;
@@ -21,8 +19,6 @@ private:
 	QVector<Parameter> parameters;
 	StdClass* stdClass;
 	StdMethod* callableStdMethod;
-	Class* declClass;
-	Method* callableMethod;
 };
 
 

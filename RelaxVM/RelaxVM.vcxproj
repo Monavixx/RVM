@@ -109,12 +109,14 @@
   <ItemGroup>
     <ClCompile Include="Class.cpp" />
     <ClCompile Include="ClassList.cpp" />
+    <ClCompile Include="ExecuteMethod.cpp" />
     <ClCompile Include="Frame.cpp" />
     <ClCompile Include="Functions\Exit.cpp" />
     <ClCompile Include="Heap.cpp" />
     <ClCompile Include="OpAdd.cpp" />
     <ClCompile Include="OpBase.cpp" />
     <ClCompile Include="OpCallm.cpp" />
+    <ClCompile Include="OpCast.cpp" />
     <ClCompile Include="OpClass.cpp" />
     <ClCompile Include="OpDiv.cpp" />
     <ClCompile Include="OpDup.cpp" />
@@ -165,6 +167,7 @@
     <ClInclude Include="ClassList.h" />
     <ClInclude Include="Exceptions\Exception.h" />
     <ClInclude Include="Exceptions\ExitException.h" />
+    <ClInclude Include="ExecuteMethod.h" />
     <ClInclude Include="Frame.h" />
     <ClInclude Include="Functions\Exit.h" />
     <ClInclude Include="GlobalVariables.h" />
@@ -173,6 +176,7 @@
     <ClInclude Include="OpAdd.h" />
     <ClInclude Include="OpBase.h" />
     <ClInclude Include="OpCallm.h" />
+    <ClInclude Include="OpCast.h" />
     <ClInclude Include="OpClass.h" />
     <ClInclude Include="OpDiv.h" />
     <ClInclude Include="OpDup.h" />

@@ -22,3 +22,4 @@
 22 - sub
 23 - mul
 24 - div
+25 - cast

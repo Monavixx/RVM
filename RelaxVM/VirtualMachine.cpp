@@ -43,9 +43,15 @@ void VirtualMachine::Start()
 
 	Method* mainMethod = gv->mainClass->GetMethod("Main", {});
 	Frame* frame = new Frame(mainMethod);
+	frame->GetStack().SetMaxSize(30);
 	gv->frameStack.push(frame);
-	ExecuteMethod();
 
+	clock_t start, end, ReResult;
+	start = clock();
+	ExecuteMethod(gv);
+	end = clock();
+	ReResult = end - start;
+	std::cout << "\n\n\nRelax: " << ReResult << "ms\n";
 }
 
 void VirtualMachine::ParseCode(Instruction instruction)
@@ -76,30 +82,4 @@ void VirtualMachine::ParseCode(Instruction instruction)
 	op->Parse(gv->executableFile);
 	op->Run();
 	opCodes.push_back(op);
-}
-
-
-void VirtualMachine::ExecuteMethod()
-{
-	Frame* frame = gv->frameStack.top();
-	Method* method = frame->GetMethod();
-	if (method == nullptr)
-	{
-		Exit("main method not found");
-	}
-
-	frame->GetStack().SetMaxSize(30);
-
-	clock_t start, end, ReResult;
-	start = clock();
-	while(!frame->IsEnd())
-	{
-		OpBase* op = frame->Next();
-		op->SetFrame(frame);
-		op->Run();
-		if (dynamic_cast<OpReturn*>(op) != nullptr) return;
-	}
-	end = clock();
-	ReResult = end - start;
-	std::cout << "\n\n\nRelax: " << ReResult << "ms\n";
 }
