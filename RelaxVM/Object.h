@@ -7,7 +7,6 @@ public:
 	Object(int amountUsers = 0);
 	virtual QString GetDataType() = 0;
 	virtual ~Object() {}
-	static int GetSizeDataType();
 
 	void SetAmountUsers(int amountUsers);
 	int GetAmountUsers() const;

@@ -9,5 +9,5 @@ void OpPushFloat::Run()
 
 void OpPushFloat::Parse(QIODevice& device)
 {
-	float data = ByteArrayRead::ReadFloat(device);
+	data = ByteArrayRead::ReadFloat(device);
 }

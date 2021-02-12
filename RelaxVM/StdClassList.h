@@ -6,10 +6,11 @@
 #include "RelaxFloat.h"
 #include "RelaxArray.h"
 #include "RelaxRandom.h"
+#include "RelaxConsole.h"
 #include "ConsoleTextStream.h"
 #include "Args.h"
 
-class StdClassList : public QList<StdClass>
+class StdClassList : public QVector<StdClass>
 {
 public:
 	StdClass* FindClassByName(const QString& name);

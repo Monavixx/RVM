@@ -37,6 +37,6 @@ public:
 
 private:
 	GlobalVariables* gv;
-	QList<OpBase*> opCodes;
+	QVector<OpBase*> opCodes;
 };
 

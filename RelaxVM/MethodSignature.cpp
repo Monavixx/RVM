@@ -1,6 +1,6 @@
 #include "MethodSignature.h"
 
-MethodSignature::MethodSignature(const QString& name, const QString& dataType, const QString& className, const QList<Parameter>& parameters)
+MethodSignature::MethodSignature(const QString& name, const QString& dataType, const QString& className, const QVector<Parameter>& parameters)
 	: name(name), dataType(dataType), nameClass(className), parameters(parameters)
 {
 }
@@ -28,7 +28,7 @@ QString MethodSignature::GetNameClass() const
 	return nameClass;
 }
 
-const QList<Parameter>& MethodSignature::GetParameters() const
+const QVector<Parameter>& MethodSignature::GetParameters() const
 {
 	return parameters;
 }
@@ -53,7 +53,7 @@ void MethodSignature::SetNameClass(const QString& className)
 	this->nameClass = className;
 }
 
-void MethodSignature::SetParameters(const QList<Parameter>& parameters)
+void MethodSignature::SetParameters(const QVector<Parameter>& parameters)
 {
 	this->parameters = parameters;
 }

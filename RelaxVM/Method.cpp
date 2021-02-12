@@ -1,12 +1,12 @@
 #include "Method.h"
 
-Method::Method(const MethodSignature& signature, const QList<OpBase*>& code, const AccessModifier& accessModifier, bool isStatic)
+Method::Method(const MethodSignature& signature, const QVector<OpBase*>& code, const AccessModifier& accessModifier, bool isStatic)
 	: MethodSignature(signature), accessModifier(accessModifier), isStatic(isStatic), code(code)
 {
 }
 
-Method::Method(const QString& name, const QString& dataType, const QString& nameClass, const QList<Parameter>& parameters,
-	const QList<OpBase*>& code, const AccessModifier& accessModifier, bool isStatic)
+Method::Method(const QString& name, const QString& dataType, const QString& nameClass, const QVector<Parameter>& parameters,
+	const QVector<OpBase*>& code, const AccessModifier& accessModifier, bool isStatic)
 	: MethodSignature(name, dataType, nameClass, parameters), accessModifier(accessModifier), isStatic(isStatic), code(code)
 {
 }
@@ -21,7 +21,7 @@ AccessModifier Method::GetAccessModifier() const
 	return accessModifier;
 }
 
-QList<OpBase*>& Method::GetCode()
+QVector<OpBase*>& Method::GetCode()
 {
 	return (this->code);
 }
@@ -36,7 +36,7 @@ void Method::SetAccessModifier(const AccessModifier& accessModifier)
 	this->accessModifier = accessModifier;
 }
 
-void Method::SetCode(const QList<OpBase*>& code)
+void Method::SetCode(const QVector<OpBase*>& code)
 {
 	this->code = code;
 }

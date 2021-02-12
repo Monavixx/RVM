@@ -1,6 +1,6 @@
 #include "Class.h"
 
-Class::Class(const QString& name, const QList<Method*>& methods)
+Class::Class(const QString& name, const QVector<Method*>& methods)
 	:name(name), methods(methods)
 {
 }
@@ -18,12 +18,12 @@ QString Class::GetName() const
 	return name;
 }
 
-QList<Method*> Class::GetMethods() const
+QVector<Method*> Class::GetMethods() const
 {
 	return methods;
 }
 
-Method* Class::GetMethod(const QString& name, const QList<Parameter>& parameters)
+Method* Class::GetMethod(const QString& name, const QVector<Parameter>& parameters)
 {
 	auto methodIterator = std::find_if(methods.begin(), methods.end(), [&](Method* method) {
 		if (name != method->GetName()) return false;
@@ -50,7 +50,7 @@ void Class::SetName(const QString& name)
 	this->name = name;
 }
 
-void Class::SetMethods(const QList<Method*>& methods)
+void Class::SetMethods(const QVector<Method*>& methods)
 {
 	this->methods = methods;
 }

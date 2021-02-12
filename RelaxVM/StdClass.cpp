@@ -1,6 +1,6 @@
 #include "StdClass.h"
 
-StdClass::StdClass(const QString& name, const QList<StdMethod>& methods)
+StdClass::StdClass(const QString& name, const QVector<StdMethod>& methods)
 	:name(name), methods(methods)
 {
 
@@ -11,7 +11,7 @@ QString StdClass::GetName() const
 	return name;
 }
 
-QList<StdMethod> StdClass::GetMethods() const
+QVector<StdMethod> StdClass::GetMethods() const
 {
 	return methods;
 }
@@ -26,7 +26,7 @@ StdMethod* StdClass::GetMethod(const MethodSignature& signature)
 	return &(*methodIterator);
 }
 
-StdMethod* StdClass::GetMethod(const QString& name, const QList<Parameter>& parameters)
+StdMethod* StdClass::GetMethod(const QString& name, const QVector<Parameter>& parameters)
 {
 	auto methodIterator = std::find_if(methods.begin(), methods.end(), [&](const StdMethod& method) {
 		if (name != method.GetName()) return false;
@@ -50,7 +50,7 @@ void StdClass::SetName(const QString& name)
 	this->name = name;
 }
 
-void StdClass::SetMethods(const QList<StdMethod>& methods)
+void StdClass::SetMethods(const QVector<StdMethod>& methods)
 {
 	this->methods = methods;
 }

@@ -4,7 +4,7 @@ ClassList::ClassList()
 {
 }
 
-ClassList::ClassList(const QList<Class*>& classList)
+ClassList::ClassList(const QVector<Class*>& classList)
 {
 	this->clear();
 	for (auto& item : classList)

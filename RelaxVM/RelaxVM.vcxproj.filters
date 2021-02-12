@@ -194,6 +194,9 @@
     <ClCompile Include="OpDiv.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="RelaxConsole.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Program.h">
@@ -360,6 +363,9 @@
     </ClInclude>
     <ClInclude Include="OpSub.h">
       <Filter>Header Files\OpCodes</Filter>
+    </ClInclude>
+    <ClInclude Include="RelaxConsole.h">
+      <Filter>Header Files\Std\DataTypes</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

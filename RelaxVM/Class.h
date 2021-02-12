@@ -5,16 +5,16 @@
 class Class
 {
 public:
-	Class(const QString& name, const QList<Method*>& methods = {});
+	Class(const QString& name, const QVector<Method*>& methods = {});
 	~Class();
 
 	QString GetName() const;
-	QList<Method*> GetMethods() const;
-	Method* GetMethod(const QString& name, const QList<Parameter>& parameters);
+	QVector<Method*> GetMethods() const;
+	Method* GetMethod(const QString& name, const QVector<Parameter>& parameters);
 	Method* GetMethod(MethodSignature* signature);
 
 	void SetName(const QString& name);
-	void SetMethods(const QList<Method*>& methods);
+	void SetMethods(const QVector<Method*>& methods);
 	void SetMethod(int index, Method* method);
 	void AddMethod(Method* method);
 
@@ -22,6 +22,6 @@ public:
 
 private:
 	QString name;
-	QList<Method*> methods;
+	QVector<Method*> methods;
 };
 

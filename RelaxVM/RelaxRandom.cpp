@@ -12,5 +12,5 @@ RelaxInt32* RelaxRandom::GenerateInt32()
 
 RelaxInt32* RelaxRandom::GenerateInt32(int min, int max)
 {
-    return new RelaxInt32(QRandomGenerator::global()->generate() % (max+1) + min);
+    return new RelaxInt32(QRandomGenerator::global()->generate() % (max - min) + min);
 }

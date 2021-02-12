@@ -13,11 +13,16 @@ public:
 
 private:
 	void ExecuteMethod();
+
 	bool isStd;
 	bool isStatic;
 	QString declClassName;
 	QString name;
-	QList<Parameter> parameters;
+	QVector<Parameter> parameters;
+	StdClass* stdClass;
+	StdMethod* callableStdMethod;
+	Class* declClass;
+	Method* callableMethod;
 };
 
 

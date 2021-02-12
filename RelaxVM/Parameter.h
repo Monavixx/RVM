@@ -12,7 +12,9 @@ public:
 	void SetDataType(const QString& dataType);
 	void SetName(const QString& name);
 
-	bool operator==(const Parameter& other);
+	bool operator==(const Parameter& other) const;
+	bool operator!=(const Parameter& other) const;
+
 
 private:
 	QString dataType;

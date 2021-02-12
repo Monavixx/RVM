@@ -25,7 +25,12 @@ void Parameter::SetName(const QString& name)
 	this->name = name;
 }
 
-bool Parameter::operator==(const Parameter& other)
+bool Parameter::operator==(const Parameter& other) const
 {
 	return other.GetDataType() == dataType;
+}
+
+bool Parameter::operator!=(const Parameter& other) const
+{
+	return other.GetDataType() != dataType;
 }

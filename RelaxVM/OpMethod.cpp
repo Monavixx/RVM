@@ -23,7 +23,6 @@ void OpMethod::Parse(QIODevice& device)
 	name = ByteArrayRead::ReadSizeAndString(device);
 
 	int amountParameters = ByteArrayRead::ReadInt(device);
-	QList<Parameter> parameters;
 
 	for (int i = 0; i < amountParameters; ++i)
 	{
