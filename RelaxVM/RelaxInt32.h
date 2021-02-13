@@ -9,7 +9,7 @@ public:
 	QString GetDataType() override;
 	int GetData();
 	void SetData(int data);
-
+	
 	RelaxBool* operator==(RelaxInt32* other);
 
 	RelaxInt32* operator+(RelaxInt32* other);

@@ -4,12 +4,7 @@ void OpCallm::Run()
 {
 	if (isStd)
 	{
-		Object* returnedObject = callableStdMethod->CallFunction(frame->GetStack());
-		if (returnedObject != nullptr)
-		{
-			gv->heap.push_back(returnedObject);
-			frame->GetStack().push(returnedObject);
-		}
+		callableStdMethod->CallFunction(gv, frame);
 	}
 	else
 	{
@@ -21,20 +16,7 @@ void OpCallm::Run()
 		if (callableMethod == nullptr)
 			Exit("Callm: method not found");
 
-		Frame* newFrame = new Frame(callableMethod);
-		newFrame->GetStack().SetMaxSize(30);
-
-		// parameters 
-		for (auto& item : callableMethod->GetParameters())
-		{
-			Object* data = frame->GetStack().pop();
-			if (data->GetDataType() != item.GetDataType())
-				Exit("Error parameters type");
-			newFrame->GetStack().push(data);
-		}
-
-		gv->frameStack.push(newFrame);
-		ExecuteMethod(gv);
+		callableMethod->CallMethod(gv, frame);
 	}
 }
 

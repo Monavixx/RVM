@@ -14,6 +14,8 @@ void Stack::push(Object* object)
 
 Object* Stack::pop()
 {
+	if (currentSize <= 0)
+		Exit("Stack is empty");
 	Object* poppedObject = stack[--currentSize];
 	stack[currentSize] = nullptr;
 	poppedObject->DecAmountUsers();
@@ -22,12 +24,14 @@ Object* Stack::pop()
 
 Object* Stack::top()
 {
+	if (currentSize <= 0)
+		Exit("Stack is empty");
 	return stack[currentSize-1];
 }
 
 bool Stack::isEmpty()
 {
-	return currentSize == 0;
+	return currentSize <= 0;
 }
 
 Stack::~Stack()

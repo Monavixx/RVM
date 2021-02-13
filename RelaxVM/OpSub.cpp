@@ -9,17 +9,12 @@ void OpSub::Run()
 
 	StdClass* declClass = StdClassList::GetInstance()->FindClassByName(firstData->GetDataType());
 	if (declClass == nullptr)
-		Exit("Add: decl class not found");
-	StdMethod* operatorAdd = declClass->GetMethod("operator-", { Parameter(secondData->GetDataType()) });
-	if (operatorAdd == nullptr)
-		Exit("Add: operator- not found");
+		Exit("Sub: decl class not found");
+	StdMethod* operatorSub = declClass->GetMethod("operator-", { Parameter(secondData->GetDataType()) });
+	if (operatorSub == nullptr)
+		Exit("Sub: operator- not found");
 
-	Object* returnedObject = operatorAdd->CallFunction(frame->GetStack());
-	if (returnedObject != nullptr)
-	{
-		gv->heap.push_back(returnedObject);
-		frame->GetStack().push(returnedObject);
-	}
+	operatorSub->CallFunction(gv, frame);
 }
 
 void OpSub::Parse(QIODevice& device)

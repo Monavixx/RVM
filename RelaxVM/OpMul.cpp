@@ -9,17 +9,12 @@ void OpMul::Run()
 
 	StdClass* declClass = StdClassList::GetInstance()->FindClassByName(firstData->GetDataType());
 	if (declClass == nullptr)
-		Exit("Add: decl class not found");
-	StdMethod* operatorAdd = declClass->GetMethod("operator*", { Parameter(secondData->GetDataType()) });
-	if (operatorAdd == nullptr)
-		Exit("Add: operator* not found");
+		Exit("Mul: decl class not found");
+	StdMethod* operatorMul = declClass->GetMethod("operator*", { Parameter(secondData->GetDataType()) });
+	if (operatorMul == nullptr)
+		Exit("Mul: operator* not found");
 
-	Object* returnedObject = operatorAdd->CallFunction(frame->GetStack());
-	if (returnedObject != nullptr)
-	{
-		gv->heap.push_back(returnedObject);
-		frame->GetStack().push(returnedObject);
-	}
+	operatorMul->CallFunction(gv, frame);
 }
 
 void OpMul::Parse(QIODevice& device)

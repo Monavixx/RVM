@@ -4,7 +4,7 @@ Frame::Frame(Method* method, const VariableList& variableList) : method(method),
 {
 }
 
-Variable* Frame::FindVariableById(int id)
+Variable* Frame::GetVariable(int id)
 {
     return &variables[id];
 }

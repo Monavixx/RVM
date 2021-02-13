@@ -34,7 +34,22 @@ StdClassList::StdClassList()
 	}));
 
 	/* String */
-	push_back(StdClass("Relax.String", {}));
+	push_back(StdClass("Relax.String", {
+
+		/* Concat */
+		StdMethod("Concat", "Relax.String", "Relax.String", QVector<Parameter>{Parameter("Relax.String")}, [&](Stack& stack) -> Object*
+		{
+			RelaxString* thisObject = dynamic_cast<RelaxString*>(stack.pop());
+			return thisObject->Concat(dynamic_cast<RelaxString*>(stack.pop()));
+		},AccessModifier::PUBLIC, false),
+
+		StdMethod("operator+", "Relax.String", "Relax.String", QVector<Parameter>{Parameter("Relax.String")}, [&](Stack& stack) -> Object*
+		{
+			RelaxString* thisObject = dynamic_cast<RelaxString*>(stack.pop());
+			return *thisObject + dynamic_cast<RelaxString*>(stack.pop());
+		},AccessModifier::PUBLIC, false)
+		
+	}));
 
 	/* Array */
 	push_back(StdClass("Relax.Array", {}));

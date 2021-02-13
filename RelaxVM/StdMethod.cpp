@@ -1,4 +1,6 @@
 #include "StdMethod.h"
+#include "Frame.h"
+#include "GlobalVariables.h"
 
 StdMethod::StdMethod(const MethodSignature& signature, std::function<Object*(Stack&)> function, const AccessModifier& accessModifier, bool isStatic)
 	: MethodSignature(signature), function(function), accessModifier(accessModifier), isStatic(isStatic)
@@ -40,9 +42,14 @@ void StdMethod::SetFunction(std::function<Object*(Stack&)> function)
 	this->function = function;
 }
 
-Object* StdMethod::CallFunction(Stack& stack)
+void StdMethod::CallFunction(GlobalVariables* gv, Frame* frame)
 {
-	return function(stack);
+	Object* returnedObject = function(frame->GetStack());
+	if (returnedObject != nullptr)
+	{
+		gv->heap.push_back(returnedObject);
+		frame->GetStack().push(returnedObject);
+	}
 }
 
 bool StdMethod::operator==(const StdMethod& other) const

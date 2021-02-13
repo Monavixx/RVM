@@ -14,12 +14,7 @@ void OpAdd::Run()
 	if (operatorAdd == nullptr)
 		Exit("Add: operator+ not found");
 
-	Object* returnedObject = operatorAdd->CallFunction(frame->GetStack());
-	if (returnedObject != nullptr)
-	{
-		gv->heap.push_back(returnedObject);
-		frame->GetStack().push(returnedObject);
-	}
+	operatorAdd->CallFunction(gv, frame);
 }
 
 void OpAdd::Parse(QIODevice& device)

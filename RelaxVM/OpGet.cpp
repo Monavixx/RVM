@@ -2,7 +2,7 @@
 
 void OpGet::Run()
 {
-	Variable* variable = frame->FindVariableById(id);
+	Variable* variable = frame->GetVariable(id);
 	if (variable == nullptr)
 		Exit("get: local variable with id " + QString::number(id) + " not exists");
 

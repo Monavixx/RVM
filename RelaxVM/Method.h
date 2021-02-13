@@ -23,6 +23,8 @@ public:
 
 	bool operator==(Method& other) const;
 
+	void CallMethod(class GlobalVariables* gv, class Frame* frame);
+
 private:
 	AccessModifier accessModifier;
 	bool isStatic;

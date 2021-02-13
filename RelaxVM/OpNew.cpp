@@ -7,15 +7,13 @@ void OpNew::Run()
 	{
 		StdClass* _class = StdClassList::GetInstance()->FindClassByName(className);
 		if (_class == nullptr)
-			Exit("Std class not exists");
+			Exit("new: Std class not exists");
 
 		StdMethod* construction = _class->GetMethod(className, parameters);
 		if (construction == nullptr)
-			Exit("Construction not exists");
+			Exit("new: Construction not exists");
 
-		Object* newObject = construction->CallFunction(frame->GetStack());
-		gv->heap.push_back(newObject);
-		frame->GetStack().push(newObject);
+		construction->CallFunction(gv, frame);
 	}
 }
 

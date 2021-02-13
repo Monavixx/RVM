@@ -13,12 +13,7 @@ void OpCast::Run()
 		if (cast == nullptr)
 			Exit("cast: cast not found");
 
-		Object* returnedObject = cast->CallFunction(frame->GetStack());
-		if (returnedObject != nullptr)
-		{
-			gv->heap.push_back(returnedObject);
-			frame->GetStack().push(returnedObject);
-		}
+		cast->CallFunction(gv, frame);
 	}
 	else
 	{
@@ -30,20 +25,7 @@ void OpCast::Run()
 			Exit("cast: cast not found");
 
 
-		Frame* newFrame = new Frame(cast);
-		newFrame->GetStack().SetMaxSize(30);
-
-		// parameters 
-		for (auto& item : cast->GetParameters())
-		{
-			Object* data = frame->GetStack().pop();
-			if (data->GetDataType() != item.GetDataType())
-				Exit("Error parameters type");
-			newFrame->GetStack().push(data);
-		}
-
-		gv->frameStack.push(newFrame);
-		ExecuteMethod(gv);
+		cast->CallMethod(gv, frame);
 	}
 }
 

@@ -1,4 +1,6 @@
 #include "Method.h"
+#include "ExecuteMethod.h"
+#include "Frame.h"
 
 Method::Method(const MethodSignature& signature, const QVector<OpBase*>& code, const AccessModifier& accessModifier, bool isStatic)
 	: MethodSignature(signature), accessModifier(accessModifier), isStatic(isStatic), code(code)
@@ -47,4 +49,25 @@ bool Method::operator==(Method& other) const
 	if (isStatic != other.IsStatic()) return false;
 	if (accessModifier != other.GetAccessModifier()) return false;
 	return true;
+}
+
+void Method::CallMethod(GlobalVariables* gv, Frame* frame)
+{
+	Frame* newFrame = new Frame(this);
+	newFrame->GetStack().SetMaxSize(30);
+
+	// parameters
+	int i = 0;
+	for (auto& item : this->GetParameters())
+	{
+		Object* data = frame->GetStack().pop();
+		if (data->GetDataType() != item.GetDataType())
+			Exit("Error parameters type");
+		newFrame->CreateVariable(i, item.GetDataType());
+		newFrame->GetVariable(i)->SetData(data);
+		++i;
+	}
+
+	gv->frameStack.push(newFrame);
+	ExecuteMethod(gv);
 }

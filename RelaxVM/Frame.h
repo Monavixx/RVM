@@ -10,7 +10,7 @@ class Frame
 public:
 	Frame(Method* method = nullptr, const VariableList& variableList = {});
 
-	Variable* FindVariableById(int id);
+	Variable* GetVariable(int id);
 
 	Method* GetMethod() const;
 	VariableList GetVariableList() const;
