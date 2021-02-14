@@ -45,12 +45,12 @@ void VirtualMachine::Start()
 	Frame* frame = new Frame(mainMethod);
 	gv->frameStack.push(frame);
 
-	clock_t start, end, ReResult;
-	start = clock();
+	//clock_t start, end, ReResult;
+	//start = clock();
 	ExecuteMethod(gv);
-	end = clock();
-	ReResult = end - start;
-	std::cout << "\n\n\nRelax: " << ReResult << "ms\n";
+	//end = clock();
+	//ReResult = end - start;
+	//std::cout << "\n\n\nRelax: " << ReResult << "ms\n";
 }
 
 void VirtualMachine::ParseCode(Instruction instruction)
