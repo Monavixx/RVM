@@ -1,7 +1,8 @@
 #pragma once
-#include "Frame.h"
-#include "Heap.h"
-#include "ClassList.h"
+#include "Core/Frame.h"
+#include "Core/Heap.h"
+#include "Core/ClassList.h"
+
 struct GlobalVariables
 {
 	QString filename;

@@ -1,6 +1,5 @@
 #pragma once
 #include <QtCore>
-
 #include "VirtualMachine.h"
 
 class Program
