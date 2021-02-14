@@ -43,10 +43,18 @@ StdClassList::StdClassList()
 			return thisObject->Concat(dynamic_cast<RelaxString*>(stack.pop()));
 		},AccessModifier::PUBLIC, false),
 
+		/* operator+ */
 		StdMethod("operator+", "Relax.String", "Relax.String", QVector<Parameter>{Parameter("Relax.String")}, [&](Stack& stack) -> Object*
 		{
 			RelaxString* thisObject = dynamic_cast<RelaxString*>(stack.pop());
 			return *thisObject + dynamic_cast<RelaxString*>(stack.pop());
+		},AccessModifier::PUBLIC, false),
+
+		/* operator== */
+		StdMethod("operator==", "Relax.Bool", "Relax.String", QVector<Parameter>{Parameter("Relax.String")}, [&](Stack& stack) -> Object*
+		{
+			RelaxString* thisObject = dynamic_cast<RelaxString*>(stack.pop());
+			return *thisObject == dynamic_cast<RelaxString*>(stack.pop());
 		},AccessModifier::PUBLIC, false)
 		
 	}));
