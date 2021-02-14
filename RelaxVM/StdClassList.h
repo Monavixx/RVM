@@ -7,6 +7,7 @@
 #include "RelaxArray.h"
 #include "RelaxRandom.h"
 #include "RelaxConsole.h"
+#include "RelaxConverter.h"
 #include "ConsoleTextStream.h"
 #include "Args.h"
 

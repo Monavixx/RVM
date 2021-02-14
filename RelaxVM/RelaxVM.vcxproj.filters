@@ -203,6 +203,12 @@
     <ClCompile Include="ExecuteMethod.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="RelaxPointer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="RelaxConverter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Program.h">
@@ -378,6 +384,12 @@
     </ClInclude>
     <ClInclude Include="OpCast.h">
       <Filter>Header Files\OpCodes</Filter>
+    </ClInclude>
+    <ClInclude Include="RelaxPointer.h">
+      <Filter>Header Files\Std\DataTypes</Filter>
+    </ClInclude>
+    <ClInclude Include="RelaxConverter.h">
+      <Filter>Header Files\Std\DataTypes</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

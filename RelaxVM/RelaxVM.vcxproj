@@ -142,6 +142,7 @@
     <ClCompile Include="RelaxArray.cpp" />
     <ClCompile Include="RelaxBool.cpp" />
     <ClCompile Include="RelaxConsole.cpp" />
+    <ClCompile Include="RelaxConverter.cpp" />
     <ClCompile Include="RelaxFloat.cpp" />
     <ClCompile Include="RelaxInt32.cpp" />
     <ClCompile Include="Method.cpp" />
@@ -150,6 +151,7 @@
     <ClCompile Include="Parameter.cpp" />
     <ClCompile Include="Program.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="RelaxPointer.cpp" />
     <ClCompile Include="RelaxRandom.cpp" />
     <ClCompile Include="RelaxString.cpp" />
     <ClCompile Include="Stack.cpp" />
@@ -202,6 +204,7 @@
     <ClInclude Include="RelaxArray.h" />
     <ClInclude Include="RelaxBool.h" />
     <ClInclude Include="RelaxConsole.h" />
+    <ClInclude Include="RelaxConverter.h" />
     <ClInclude Include="RelaxFloat.h" />
     <ClInclude Include="RelaxInt32.h" />
     <ClInclude Include="Method.h" />
@@ -210,6 +213,7 @@
     <ClInclude Include="Parameter.h" />
     <ClInclude Include="Program.h" />
     <ClInclude Include="RelaxNull.h" />
+    <ClInclude Include="RelaxPointer.h" />
     <ClInclude Include="RelaxRandom.h" />
     <ClInclude Include="RelaxString.h" />
     <ClInclude Include="Stack.h" />

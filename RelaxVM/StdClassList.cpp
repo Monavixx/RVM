@@ -147,7 +147,6 @@ StdClassList::StdClassList()
 		},AccessModifier::PUBLIC, true),
 	}));
 
-
 	/* Random */
 	push_back(StdClass("Relax.Random", {
 		/* GererateInt32 */
@@ -161,6 +160,21 @@ StdClassList::StdClassList()
 			RelaxInt32* min = dynamic_cast<RelaxInt32*>(stack.pop());
 			RelaxInt32* max = dynamic_cast<RelaxInt32*>(stack.pop());
 			return RelaxRandom::GenerateInt32(min->GetData(), max->GetData());
+		},AccessModifier::PUBLIC, true)
+	}));
+
+	/* Converter */
+	push_back(StdClass("Relax.Converter", {
+		/* Int32ToString */
+		StdMethod("Int32ToString", "Relax.String", "Relax.Converter", QVector<Parameter>{Parameter("Relax.Int32")}, [&](Stack& stack) -> Object*
+		{
+			return RelaxConverter::Int32ToString(dynamic_cast<RelaxInt32*>(stack.pop()));
+		},AccessModifier::PUBLIC, true),
+
+		/* StringToInt32 */
+		StdMethod("StringToInt32", "Relax.Int32", "Relax.Converter", QVector<Parameter>{Parameter("Relax.String")}, [&](Stack& stack) -> Object*
+		{
+			return RelaxConverter::StringToInt32(dynamic_cast<RelaxString*>(stack.pop()));
 		},AccessModifier::PUBLIC, true)
 	}));
 }
