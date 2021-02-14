@@ -2,6 +2,7 @@
 #include "Object.h"
 #include "RelaxInt32.h"
 #include "RelaxString.h"
+#include "Functions/Exit.h"
 
 class RelaxConverter : public Object
 {

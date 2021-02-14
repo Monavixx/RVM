@@ -25,5 +25,6 @@ enum Instruction
 	SUB,
 	MUL,
 	DIV,
-	CAST
+	CAST,
+	MAX_STACK
 };

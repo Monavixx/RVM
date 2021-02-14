@@ -11,5 +11,5 @@ struct GlobalVariables
 	Heap heap;
 	QStack<Frame*> frameStack;
 
-	const int version = 3;
+	const int version = 4;
 };

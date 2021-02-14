@@ -54,7 +54,6 @@ bool Method::operator==(Method& other) const
 void Method::CallMethod(GlobalVariables* gv, Frame* frame)
 {
 	Frame* newFrame = new Frame(this);
-	newFrame->GetStack().SetMaxSize(30);
 
 	// parameters
 	int i = 0;

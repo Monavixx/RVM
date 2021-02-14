@@ -126,6 +126,7 @@
     <ClCompile Include="OpJmp.cpp" />
     <ClCompile Include="OpJmpif.cpp" />
     <ClCompile Include="OpLocal.cpp" />
+    <ClCompile Include="OpMaxStack.cpp" />
     <ClCompile Include="OpMclass.cpp" />
     <ClCompile Include="OpMethod.cpp" />
     <ClCompile Include="OpMul.cpp" />
@@ -188,6 +189,7 @@
     <ClInclude Include="OpJmp.h" />
     <ClInclude Include="OpJmpif.h" />
     <ClInclude Include="OpLocal.h" />
+    <ClInclude Include="OpMaxStack.h" />
     <ClInclude Include="OpMclass.h" />
     <ClInclude Include="OpMethod.h" />
     <ClInclude Include="OpMul.h" />

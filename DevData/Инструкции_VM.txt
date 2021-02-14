@@ -23,3 +23,4 @@
 23 - mul
 24 - div
 25 - cast
+26 - .maxstack

@@ -7,7 +7,11 @@ QString RelaxConverter::GetDataType()
 
 RelaxInt32* RelaxConverter::StringToInt32(RelaxString* data)
 {
-    return new RelaxInt32(data->GetData().toInt());
+    bool isOk;
+    int num = data->GetData().toInt(&isOk);
+    if (!isOk)
+        Exit("StringToInt32: error convertation");
+    return new RelaxInt32(num);
 }
 
 RelaxString* RelaxConverter::Int32ToString(RelaxInt32* data)

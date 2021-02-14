@@ -27,6 +27,7 @@
 #include "OpSetarr.h"
 #include "OpSub.h"
 #include "OpCast.h"
+#include "OpMaxStack.h"
 
 class OpMethod : public OpBase
 {

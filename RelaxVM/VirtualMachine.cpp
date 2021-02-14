@@ -43,7 +43,6 @@ void VirtualMachine::Start()
 
 	Method* mainMethod = gv->mainClass->GetMethod("Main", {});
 	Frame* frame = new Frame(mainMethod);
-	frame->GetStack().SetMaxSize(30);
 	gv->frameStack.push(frame);
 
 	clock_t start, end, ReResult;

@@ -209,6 +209,9 @@
     <ClCompile Include="RelaxConverter.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="OpMaxStack.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Program.h">
@@ -390,6 +393,9 @@
     </ClInclude>
     <ClInclude Include="RelaxConverter.h">
       <Filter>Header Files\Std\DataTypes</Filter>
+    </ClInclude>
+    <ClInclude Include="OpMaxStack.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
