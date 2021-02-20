@@ -20,7 +20,7 @@ public:
 	void SetAccessModifier(const AccessModifier& accessModifier);
 	void SetFunction(std::function<Object*(Stack&)> function);
 
-	void CallFunction(class GlobalVariables* gv, class Frame* frame);
+	void CallFunction(class Frame* frame);
 
 	bool operator==(const StdMethod& other) const;
 private:

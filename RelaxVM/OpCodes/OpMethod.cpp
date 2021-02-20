@@ -4,7 +4,7 @@ void OpMethod::Run()
 {
 	Method* method = new Method(name, dataType, declClassName, parameters, methodCode, accessModifier, isStatic);
 
-	Class* _class = gv->classes.FindClassByName(declClassName);
+	Class* _class = GlobalVariables::classes.FindClassByName(declClassName);
 	if (_class == nullptr)
 	{
 		Exit("method: decl class not found");
@@ -167,7 +167,6 @@ void OpMethod::ParseOpCode(Instruction instruction, QIODevice& device)
 		Exit("Opcode not exists!");
 	}
 
-	op->SetGlobalVariables(gv);
 	op->Parse(device);
 	methodCode.push_back(op);
 }

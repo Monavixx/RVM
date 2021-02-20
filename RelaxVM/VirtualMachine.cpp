@@ -1,17 +1,17 @@
 #include "VirtualMachine.h"
 
-VirtualMachine::VirtualMachine() : gv(new GlobalVariables)
+VirtualMachine::VirtualMachine()
 {
-	gv->mainClass = nullptr;
-	gv->filename = Args::args[1];
-	gv->executableFile.setFileName(gv->filename);
+	GlobalVariables::mainClass = nullptr;
+	GlobalVariables::filename = Args::args[1];
+	GlobalVariables::executableFile.setFileName(GlobalVariables::filename);
 }
 
 VirtualMachine::~VirtualMachine()
 {
-	gv->executableFile.close();
+	GlobalVariables::executableFile.close();
 
-	for (auto& item : gv->heap)
+	for (auto& item : GlobalVariables::heap)
 	{
 		if(item != nullptr)
 			delete item;
@@ -21,36 +21,41 @@ VirtualMachine::~VirtualMachine()
 
 void VirtualMachine::Start()
 {
-	if (!gv->executableFile.open(QIODevice::ReadOnly))
+	if (!GlobalVariables::executableFile.open(QIODevice::ReadOnly))
 	{
 		Exit("File open error!");
 	}
 
-	int versionCode = ByteArrayRead::ReadInt(gv->executableFile);
-	if (versionCode != gv->version)
-		Exit("version " + QString::number(gv->version) + " is required to run this code");
+	int versionCode = ByteArrayRead::ReadInt(GlobalVariables::executableFile);
+	if (versionCode != GlobalVariables::version)
+		Exit("version " + QString::number(GlobalVariables::version) + " is required to run this code");
 
-	while (gv->executableFile.bytesAvailable() > 0)
+	while (GlobalVariables::executableFile.bytesAvailable() > 0)
 	{
-		Instruction instruction = static_cast<Instruction>(ByteArrayRead::ReadByte(gv->executableFile));
+		Instruction instruction = static_cast<Instruction>(ByteArrayRead::ReadByte(GlobalVariables::executableFile));
 		ParseCode(instruction);
 	}
+	for (auto& item : opCodes)
+	{
+		delete item;
+	}
+	opCodes.clear();
 
-	if (gv->mainClass == nullptr)
+	if (GlobalVariables::mainClass == nullptr)
 	{
 		Exit("main class not found");
 	}
 
-	Method* mainMethod = gv->mainClass->GetMethod("Main", {});
+	Method* mainMethod = GlobalVariables::mainClass->GetMethod("Main", {});
 	Frame* frame = new Frame(mainMethod);
-	gv->frameStack.push(frame);
+	GlobalVariables::frameStack.push(frame);
 
-	//clock_t start, end, ReResult;
-	//start = clock();
-	ExecuteMethod(gv);
-	//end = clock();
-	//ReResult = end - start;
-	//std::cout << "\n\n\nRelax: " << ReResult << "ms\n";
+	clock_t start, end, ReResult;
+	start = clock();
+	ExecuteMethod();
+	end = clock();
+	ReResult = end - start;
+	std::cout << "\n\n\nRelax: " << ReResult << "ms\n";
 }
 
 void VirtualMachine::ParseCode(Instruction instruction)
@@ -77,8 +82,7 @@ void VirtualMachine::ParseCode(Instruction instruction)
 		Exit("Opcode not exists!");
 	}
 
-	op->SetGlobalVariables(gv);
-	op->Parse(gv->executableFile);
+	op->Parse(GlobalVariables::executableFile);
 	op->Run();
 	opCodes.push_back(op);
 }

@@ -12,5 +12,9 @@ private:
 	bool isStd;
 	QString className;
 	QVector<Parameter> parameters;
+	StdClass* stdClass;
+	StdMethod* stdMethodConstruction;
+	Class* usrClass;
+	Method* methodConstruction;
 };
 

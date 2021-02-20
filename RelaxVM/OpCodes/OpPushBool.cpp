@@ -3,7 +3,7 @@
 void OpPushBool::Run()
 {
 	RelaxBool* pushingData = new RelaxBool(data);
-	gv->heap.push_back(pushingData);
+	GlobalVariables::heap.push_back(pushingData);
 	frame->GetStack().push(pushingData);
 }
 

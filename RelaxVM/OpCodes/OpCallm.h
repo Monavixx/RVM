@@ -19,6 +19,8 @@ private:
 	QVector<Parameter> parameters;
 	StdClass* stdClass;
 	StdMethod* callableStdMethod;
+	Class* declClass;
+	Method* callableMethod;
 };
 
 

@@ -51,11 +51,10 @@ bool Method::operator==(Method& other) const
 	return true;
 }
 
-void Method::CallMethod(GlobalVariables* gv, Frame* frame)
+void Method::CallMethod(Frame* frame)
 {
 	Frame* newFrame = new Frame(this);
 
-	// parameters
 	int i = 0;
 	for (auto& item : this->GetParameters())
 	{
@@ -67,6 +66,6 @@ void Method::CallMethod(GlobalVariables* gv, Frame* frame)
 		++i;
 	}
 
-	gv->frameStack.push(newFrame);
-	ExecuteMethod(gv);
+	GlobalVariables::frameStack.push(newFrame);
+	ExecuteMethod();
 }

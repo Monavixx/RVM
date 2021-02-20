@@ -6,26 +6,20 @@ void OpCast::Run()
 	
 	if (isStd)
 	{
-		StdClass* declClass = (*StdClassList::GetInstance())[dataType];
-		if (declClass == nullptr)
-			Exit("cast: decl class not found");
-		StdMethod* cast = declClass->GetMethod("cast", { Parameter(data->GetDataType()) });
-		if (cast == nullptr)
+		StdMethod* stdMethodCast = declStdClass->GetMethod("cast", { Parameter(data->GetDataType()) });
+		if (stdMethodCast == nullptr)
 			Exit("cast: cast not found");
 
-		cast->CallFunction(gv, frame);
+		stdMethodCast->CallFunction(frame);
 	}
 	else
 	{
-		Class* declClass = gv->classes.FindClassByName(dataType);
-		if (declClass == nullptr)
-			Exit("cast: decl class not found");
-		Method* cast = declClass->GetMethod("cast", { Parameter(data->GetDataType()) });
-		if (cast == nullptr)
+		Method* methodCast = declClass->GetMethod("cast", { Parameter(data->GetDataType()) });
+		if (methodCast == nullptr)
 			Exit("cast: cast not found");
 
 
-		cast->CallMethod(gv, frame);
+		methodCast->CallMethod(frame);
 	}
 }
 
@@ -33,4 +27,17 @@ void OpCast::Parse(QIODevice& device)
 {
 	isStd = ByteArrayRead::ReadByte(device);
 	dataType = ByteArrayRead::ReadSizeAndString(device);
+
+	if (isStd)
+	{
+		declStdClass = (*StdClassList::GetInstance())[dataType];
+		if (declStdClass == nullptr)
+			Exit("cast: decl class not found");
+	}
+	else
+	{
+		declClass = GlobalVariables::classes.FindClassByName(dataType);
+		if (declClass == nullptr)
+			Exit("cast: decl class not found");
+	}
 }

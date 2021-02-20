@@ -12,7 +12,6 @@ public:
 	void ParseCode(Instruction instruction);
 
 private:
-	GlobalVariables* gv;
 	QVector<OpBase*> opCodes;
 };
 

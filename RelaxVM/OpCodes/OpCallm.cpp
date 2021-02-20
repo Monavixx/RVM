@@ -4,19 +4,11 @@ void OpCallm::Run()
 {
 	if (isStd)
 	{
-		callableStdMethod->CallFunction(gv, frame);
+		callableStdMethod->CallFunction(frame);
 	}
 	else
 	{
-		Class* declClass = gv->classes.FindClassByName(declClassName);
-		if (declClass == nullptr)
-			Exit("Callm: class not found");
-
-		Method* callableMethod = declClass->GetMethod(name, parameters);
-		if (callableMethod == nullptr)
-			Exit("Callm: method not found");
-
-		callableMethod->CallMethod(gv, frame);
+		callableMethod->CallMethod(frame);
 	}
 }
 
@@ -44,5 +36,15 @@ void OpCallm::Parse(QIODevice& device)
 		callableStdMethod = stdClass->GetMethod(name, parameters);
 		if (callableStdMethod == nullptr)
 			Exit("std method not exists");
+	}
+	else
+	{
+		declClass = GlobalVariables::classes.FindClassByName(declClassName);
+		if (declClass == nullptr)
+			Exit("Callm: class not found");
+
+		callableMethod = declClass->GetMethod(name, parameters);
+		if (callableMethod == nullptr)
+			Exit("Callm: method not found");
 	}
 }

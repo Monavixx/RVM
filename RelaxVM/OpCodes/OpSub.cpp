@@ -14,7 +14,7 @@ void OpSub::Run()
 	if (operatorSub == nullptr)
 		Exit("Sub: operator- not found");
 
-	operatorSub->CallFunction(gv, frame);
+	operatorSub->CallFunction(frame);
 }
 
 void OpSub::Parse(QIODevice& device)

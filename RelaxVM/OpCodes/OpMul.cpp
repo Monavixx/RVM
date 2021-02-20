@@ -14,7 +14,7 @@ void OpMul::Run()
 	if (operatorMul == nullptr)
 		Exit("Mul: operator* not found");
 
-	operatorMul->CallFunction(gv, frame);
+	operatorMul->CallFunction(frame);
 }
 
 void OpMul::Parse(QIODevice& device)

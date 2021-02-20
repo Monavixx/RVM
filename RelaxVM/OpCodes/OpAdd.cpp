@@ -14,7 +14,7 @@ void OpAdd::Run()
 	if (operatorAdd == nullptr)
 		Exit("Add: operator+ not found");
 
-	operatorAdd->CallFunction(gv, frame);
+	operatorAdd->CallFunction(frame);
 }
 
 void OpAdd::Parse(QIODevice& device)

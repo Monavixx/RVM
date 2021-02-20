@@ -42,12 +42,12 @@ void StdMethod::SetFunction(std::function<Object*(Stack&)> function)
 	this->function = function;
 }
 
-void StdMethod::CallFunction(GlobalVariables* gv, Frame* frame)
+void StdMethod::CallFunction(Frame* frame)
 {
 	Object* returnedObject = function(frame->GetStack());
 	if (returnedObject != nullptr)
 	{
-		gv->heap.push_back(returnedObject);
+		GlobalVariables::heap.push_back(returnedObject);
 		frame->GetStack().push(returnedObject);
 	}
 }

@@ -3,8 +3,8 @@
 void OpMclass::Run()
 {
 	Class* newClass = new Class(className);
-	gv->classes.push_back(newClass);
-	gv->mainClass = newClass;
+	GlobalVariables::classes.push_back(newClass);
+	GlobalVariables::mainClass = newClass;
 }
 
 void OpMclass::Parse(QIODevice& device)

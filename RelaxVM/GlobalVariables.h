@@ -5,12 +5,12 @@
 
 struct GlobalVariables
 {
-	QString filename;
-	QFile executableFile;
-	Class* mainClass;
-	ClassList classes;
-	Heap heap;
-	QStack<Frame*> frameStack;
+	static inline QString filename;
+	static inline QFile executableFile;
+	static inline Class* mainClass = nullptr;
+	static inline ClassList classes;
+	static inline Heap heap;
+	static inline QStack<Frame*> frameStack;
 
-	const int version = 4;
+	static inline const int version = 4;
 };

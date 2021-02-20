@@ -3,7 +3,7 @@
 void OpPushFloat::Run()
 {
 	RelaxFloat* pushingData = new RelaxFloat(data);
-	gv->heap.push_back(pushingData);
+	GlobalVariables::heap.push_back(pushingData);
 	frame->GetStack().push(pushingData);
 }
 

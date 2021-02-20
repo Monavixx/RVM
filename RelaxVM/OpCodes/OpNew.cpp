@@ -5,15 +5,11 @@ void OpNew::Run()
 	Object* object = nullptr;
 	if (isStd)
 	{
-		StdClass* _class = (*StdClassList::GetInstance())[className];
-		if (_class == nullptr)
-			Exit("new: Std class not exists");
-
-		StdMethod* construction = _class->GetMethod(className, parameters);
-		if (construction == nullptr)
-			Exit("new: Construction not exists");
-
-		construction->CallFunction(gv, frame);
+		stdMethodConstruction->CallFunction(frame);
+	}
+	else
+	{
+		methodConstruction->CallMethod(frame);
 	}
 }
 
@@ -28,5 +24,26 @@ void OpNew::Parse(QIODevice& device)
 		QString parameterDataType = ByteArrayRead::ReadSizeAndString(device);
 		Parameter parameter(parameterDataType);
 		parameters.push_back(parameter);
+	}
+
+	if (isStd)
+	{
+		stdClass = (*StdClassList::GetInstance())[className];
+		if (stdClass == nullptr)
+			Exit("new: Std class not exists");
+
+		stdMethodConstruction = stdClass->GetMethod(className, parameters);
+		if (stdMethodConstruction == nullptr)
+			Exit("new: Construction not exists");
+	}
+	else
+	{
+		usrClass = GlobalVariables::classes.FindClassByName(className);
+		if (stdClass == nullptr)
+			Exit("new: Std class not exists");
+
+		methodConstruction = usrClass->GetMethod(className, parameters);
+		if (stdMethodConstruction == nullptr)
+			Exit("new: Construction not exists");
 	}
 }

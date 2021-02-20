@@ -14,7 +14,7 @@ void OpDiv::Run()
 	if (operatorDiv == nullptr)
 		Exit("Div: operator/ not found");
 
-	operatorDiv->CallFunction(gv, frame);
+	operatorDiv->CallFunction(frame);
 }
 
 void OpDiv::Parse(QIODevice& device)

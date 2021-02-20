@@ -3,7 +3,7 @@
 void OpPushStr::Run()
 {
 	RelaxString* pushingString = new RelaxString(data);
-	gv->heap.push_back(pushingString);
+	GlobalVariables::heap.push_back(pushingString);
 	frame->GetStack().push(pushingString);
 }
 

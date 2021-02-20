@@ -1,9 +1,9 @@
 #include "ExecuteMethod.h"
 #include "../Libs/ConsoleTextStream.h"
 
-void ExecuteMethod(GlobalVariables* gv)
+void ExecuteMethod()
 {
-	Frame* frame = gv->frameStack.top();
+	Frame* frame = GlobalVariables::frameStack.top();
 	Method* method = frame->GetMethod();
 
 	if (method == nullptr)

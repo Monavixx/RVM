@@ -12,4 +12,6 @@ public:
 private:
 	QString dataType;
 	bool isStd;
+	Class* declClass;
+	StdClass* declStdClass;
 };
