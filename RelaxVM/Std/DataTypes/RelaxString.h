@@ -14,6 +14,9 @@ public:
 
 	RelaxString* operator+(RelaxString* other);
 	RelaxBool* operator==(RelaxString* other);
+	
+	static void GenerateMetaInfo();
+	static inline class StdClass* metaClass = nullptr;
 
 private:
 	QString data;

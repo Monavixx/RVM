@@ -45,6 +45,11 @@ StdMethod* StdClass::GetMethod(int index)
 	return &(methods[index]);
 }
 
+void StdClass::AddMethod(const StdMethod& method)
+{
+	methods.push_back(method);
+}
+
 void StdClass::SetName(const QString& name)
 {
 	this->name = name;

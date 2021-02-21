@@ -14,6 +14,9 @@ public:
 	void SetByIndex(int index, Object* data);
 	Object* GetByIndex(int index);
 
+	static void GenerateMetaInfo();
+	static inline class StdClass* metaClass = nullptr;
+
 private:
 	QString dataType;
 	int size;

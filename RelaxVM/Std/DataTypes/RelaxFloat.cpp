@@ -49,3 +49,50 @@ RelaxFloat* RelaxFloat::cast(RelaxInt32* data)
 {
 	return new RelaxFloat(data->GetData());
 }
+
+void RelaxFloat::GenerateMetaInfo()
+{
+	metaClass = new StdClass("Relax.Float", {
+		// operator==
+		StdMethod("operator==", "Relax.Bool", "Relax.Float", QVector<Parameter>{Parameter("Relax.Float")}, [&](Stack& stack) -> Object*
+		{
+			RelaxFloat* thisObject = dynamic_cast<RelaxFloat*>(stack.pop());
+			return *thisObject == dynamic_cast<RelaxFloat*>(stack.pop());
+		},AccessModifier::PUBLIC, false),
+
+		// operator+
+		StdMethod("operator+", "Relax.Float", "Relax.Float", QVector<Parameter>{Parameter("Relax.Float")}, [&](Stack& stack) -> Object*
+		{
+			RelaxFloat* thisObject = dynamic_cast<RelaxFloat*>(stack.pop());
+			return *thisObject + dynamic_cast<RelaxFloat*>(stack.pop());
+		},AccessModifier::PUBLIC, false),
+
+		// operator-
+		StdMethod("operator-", "Relax.Float", "Relax.Float", QVector<Parameter>{Parameter("Relax.Float")}, [&](Stack& stack) -> Object*
+		{
+			RelaxFloat* thisObject = dynamic_cast<RelaxFloat*>(stack.pop());
+			return *thisObject - dynamic_cast<RelaxFloat*>(stack.pop());
+		},AccessModifier::PUBLIC, false),
+
+		// operator*
+		StdMethod("operator*", "Relax.Float", "Relax.Float", QVector<Parameter>{Parameter("Relax.Float")}, [&](Stack& stack) -> Object*
+		{
+			RelaxFloat* thisObject = dynamic_cast<RelaxFloat*>(stack.pop());
+			return *thisObject * dynamic_cast<RelaxFloat*>(stack.pop());
+		},AccessModifier::PUBLIC, false),
+
+		// operator/
+		StdMethod("operator/", "Relax.Float", "Relax.Float", QVector<Parameter>{Parameter("Relax.Float")}, [&](Stack& stack) -> Object*
+		{
+			RelaxFloat* thisObject = dynamic_cast<RelaxFloat*>(stack.pop());
+			return *thisObject / dynamic_cast<RelaxFloat*>(stack.pop());
+		},AccessModifier::PUBLIC, false),
+
+		// cast
+		StdMethod("cast", "Relax.Float", "Relax.Float", QVector<Parameter>{Parameter("Relax.Int32")}, [&](Stack& stack) -> Object*
+		{
+			RelaxInt32* data = dynamic_cast<RelaxInt32*>(stack.pop());
+			return RelaxFloat::cast(data);
+		},AccessModifier::PUBLIC, true),
+	});
+}

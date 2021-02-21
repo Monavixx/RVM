@@ -1,4 +1,5 @@
 #include "RelaxArray.h"
+#include "../StdClass.h"
 
 RelaxArray::RelaxArray(const QString& dataType, int size) : dataType(dataType), size(size)
 {
@@ -46,4 +47,9 @@ Object* RelaxArray::GetByIndex(int index)
 	if (index >= size)
 		Exit("array index out of range");
 	return data[index];
+}
+
+void RelaxArray::GenerateMetaInfo()
+{
+	metaClass = new StdClass("Relax.Array");
 }

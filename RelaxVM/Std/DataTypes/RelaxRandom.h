@@ -9,5 +9,8 @@ public:
 	QString GetDataType() override;
 	static RelaxInt32* GenerateInt32();
 	static RelaxInt32* GenerateInt32(int min, int max);
+
+	static void GenerateMetaInfo();
+	static inline class StdClass* metaClass = nullptr;
 };
 

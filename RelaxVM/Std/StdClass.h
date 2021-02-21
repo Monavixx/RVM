@@ -14,6 +14,8 @@ public:
 	StdMethod* GetMethod(const QString& name, const QVector<Parameter>& parameters);
 	StdMethod* GetMethod(int index);
 
+	void AddMethod(const StdMethod& method);
+
 	void SetName(const QString& name);
 	void SetMethods(const QVector<StdMethod>& methods);
 	void SetMethod(int index, const StdMethod& method);

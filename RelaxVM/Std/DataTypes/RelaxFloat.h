@@ -17,6 +17,9 @@ public:
 	RelaxBool* operator==(RelaxFloat* other);
 
 	static RelaxFloat* cast(class RelaxInt32* data);
+
+	static void GenerateMetaInfo();
+	static inline class StdClass* metaClass = nullptr;
 private:
 	float data;
 };

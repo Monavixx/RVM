@@ -18,3 +18,7 @@ void RelaxBool::SetData(bool data)
 {
 	this->data = data;
 }
+
+void RelaxBool::GenerateMetaInfo()
+{
+}
