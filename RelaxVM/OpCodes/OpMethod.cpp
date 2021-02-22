@@ -163,6 +163,21 @@ void OpMethod::ParseOpCode(Instruction instruction, QIODevice& device)
 		op = new OpMaxStack;
 		break;
 	}
+	case REF:
+	{
+		op = new OpRef;
+		break;
+	}
+	case DEREF:
+	{
+		op = new OpDeref;
+		break;
+	}
+	case SETPD:
+	{
+		op = new OpSetpd;
+		break;
+	}
 	default:
 		Exit("Opcode not exists!");
 	}

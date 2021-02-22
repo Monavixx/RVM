@@ -62,7 +62,7 @@ void Method::CallMethod(Frame* frame)
 		if (data->GetDataType() != item.GetDataType())
 			Exit("Error parameters type");
 		newFrame->CreateVariable(i, item.GetDataType());
-		newFrame->GetVariable(i)->SetData(data);
+		newFrame->GetVariable(i)->SetAddress(data->GetAddress());
 		++i;
 	}
 

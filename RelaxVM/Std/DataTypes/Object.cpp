@@ -1,4 +1,5 @@
 #include "Object.h"
+#include "../StdClass.h"
 
 Object::Object(int amountUsers) : amountUsers(amountUsers)
 {
@@ -22,4 +23,19 @@ void Object::IncAmountUsers()
 void Object::DecAmountUsers()
 {
 	--amountUsers;
+}
+
+void Object::SetAddress(int address)
+{
+	this->address = address;
+}
+
+int Object::GetAddress() const
+{
+	return address;
+}
+
+void Object::GenerateMetaInfo()
+{
+	metaClass = new StdClass("Relax.Object");
 }

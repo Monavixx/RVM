@@ -1,4 +1,5 @@
 #include "OpSet.h"
+#include "../Libs/ConsoleTextStream.h"
 
 void OpSet::Run()
 {
@@ -7,10 +8,12 @@ void OpSet::Run()
 	if (variable == nullptr)
 		Exit("set: local variable with id " + QString::number(id) + " not exists");
 
-	if (data->GetDataType() == variable->GetData()->GetDataType())
+	/*QString f = variable->GetDataType();
+	qout << f;*/
+	if (data->GetDataType() == variable->GetDataType() || data->GetDataType() == "Relax.Null")
 	{
 		data->IncAmountUsers();
-		variable->SetData(data);
+		variable->SetAddress(data->GetAddress());
 	}
 }
 

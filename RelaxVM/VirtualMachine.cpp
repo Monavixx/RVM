@@ -10,13 +10,6 @@ VirtualMachine::VirtualMachine()
 VirtualMachine::~VirtualMachine()
 {
 	GlobalVariables::executableFile.close();
-
-	for (auto& item : GlobalVariables::heap)
-	{
-		if(item != nullptr)
-			delete item;
-	}
-	
 }
 
 void VirtualMachine::Start()

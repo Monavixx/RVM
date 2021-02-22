@@ -3,8 +3,7 @@
 void OpPushFloat::Run()
 {
 	RelaxFloat* pushingData = new RelaxFloat(data);
-	GlobalVariables::heap.push_back(pushingData);
-	frame->GetStack().push(pushingData);
+	frame->GetStack().push(GlobalVariables::heap.push_back(pushingData));
 }
 
 void OpPushFloat::Parse(QIODevice& device)

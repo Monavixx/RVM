@@ -224,6 +224,15 @@
     <ClCompile Include="Std\DataTypes\RelaxRandom.cpp">
       <Filter>Source Files\Std\DataTypes</Filter>
     </ClCompile>
+    <ClCompile Include="OpCodes\OpRef.cpp">
+      <Filter>Source Files\OpCodes</Filter>
+    </ClCompile>
+    <ClCompile Include="OpCodes\OpDeref.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="OpCodes\OpSetpd.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Program.h">
@@ -408,6 +417,15 @@
     </ClInclude>
     <ClInclude Include="Std\DataTypes\RelaxString.h">
       <Filter>Header Files\Std\DataTypes</Filter>
+    </ClInclude>
+    <ClInclude Include="OpCodes\OpRef.h">
+      <Filter>Header Files\OpCodes</Filter>
+    </ClInclude>
+    <ClInclude Include="OpCodes\OpDeref.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="OpCodes\OpSetpd.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

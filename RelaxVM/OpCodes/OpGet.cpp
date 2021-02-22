@@ -6,7 +6,7 @@ void OpGet::Run()
 	if (variable == nullptr)
 		Exit("get: local variable with id " + QString::number(id) + " not exists");
 
-	frame->GetStack().push(variable->GetData());
+	frame->GetStack().push(variable->GetAddress());
 }
 
 void OpGet::Parse(QIODevice& device)

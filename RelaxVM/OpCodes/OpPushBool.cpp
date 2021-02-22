@@ -3,8 +3,7 @@
 void OpPushBool::Run()
 {
 	RelaxBool* pushingData = new RelaxBool(data);
-	GlobalVariables::heap.push_back(pushingData);
-	frame->GetStack().push(pushingData);
+	frame->GetStack().push(GlobalVariables::heap.push_back(pushingData));
 }
 
 void OpPushBool::Parse(QIODevice& device)

@@ -4,14 +4,17 @@
 class Variable
 {
 public:
-	Variable(Object* data = nullptr);
+	Variable(int address = 0, const QString& dataType = "Relax.Null");
 	~Variable();
 
-	Object* GetData() const;
+	int GetAddress() const;
+	void SetAddress(int address);
 
-	void SetData(Object* data);
+	QString GetDataType() const;
+	void SetDataType(const QString& dataType);
 
 private:
-	Object* data;
+	int address;
+	QString dataType;
 };
 

@@ -6,7 +6,7 @@ void OpReturn::Run()
 	if (frame->GetMethod()->GetDataType() != data->GetDataType())
 		Exit("Error return data type");
 	delete GlobalVariables::frameStack.pop();
-	GlobalVariables::frameStack.top()->GetStack().push(data);
+	GlobalVariables::frameStack.top()->GetStack().push(data->GetAddress());
 }
 
 void OpReturn::Parse(QIODevice& device)

@@ -9,10 +9,10 @@ public:
 	RelaxArray(const QString& dataType, int size);
 	~RelaxArray();
 	QString GetDataType() override;
-	Object** GetData();
-	void SetData(Object** data);
-	void SetByIndex(int index, Object* data);
-	Object* GetByIndex(int index);
+	int* GetArr();
+	void SetArr(int* arr);
+	void SetByIndex(int index, int address);
+	int GetByIndex(int index);
 
 	static void GenerateMetaInfo();
 	static inline class StdClass* metaClass = nullptr;
@@ -20,6 +20,6 @@ public:
 private:
 	QString dataType;
 	int size;
-	Object** data;
+	int* arr;
 };
 

@@ -9,6 +9,7 @@ StdClassList::StdClassList()
 	RelaxFloat::GenerateMetaInfo();
 	RelaxRandom::GenerateMetaInfo();
 	RelaxConverter::GenerateMetaInfo();
+	Object::GenerateMetaInfo();
 
 	AddClass(RelaxConsole::metaClass);
 	AddClass(RelaxString::metaClass);
@@ -17,6 +18,7 @@ StdClassList::StdClassList()
 	AddClass(RelaxFloat::metaClass);
 	AddClass(RelaxRandom::metaClass);
 	AddClass(RelaxConverter::metaClass);
+	AddClass(Object::metaClass);
 }
 
 

@@ -24,3 +24,6 @@
 24 - div
 25 - cast
 26 - .maxstack
+27 - ref
+28 - deref
+29 - setpd

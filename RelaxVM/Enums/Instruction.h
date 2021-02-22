@@ -26,5 +26,8 @@ enum Instruction
 	MUL,
 	DIV,
 	CAST,
-	MAX_STACK
+	MAX_STACK,
+	REF,
+	DEREF,
+	SETPD
 };

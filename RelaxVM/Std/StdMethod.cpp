@@ -48,7 +48,7 @@ void StdMethod::CallFunction(Frame* frame)
 	if (returnedObject != nullptr)
 	{
 		GlobalVariables::heap.push_back(returnedObject);
-		frame->GetStack().push(returnedObject);
+		frame->GetStack().push(returnedObject->GetAddress());
 	}
 }
 

@@ -6,7 +6,7 @@ void OpSetarr::Run()
 	int index = dynamic_cast<RelaxInt32*>(frame->GetStack().pop())->GetData();
 	Object* data = frame->GetStack().pop();
 
-	arr->SetByIndex(index, data);
+	arr->SetByIndex(index, data->GetAddress());
 }
 
 void OpSetarr::Parse(QIODevice& device)

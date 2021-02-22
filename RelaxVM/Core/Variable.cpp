@@ -1,6 +1,6 @@
 #include "Variable.h"
 
-Variable::Variable(Object* data) : data(data)
+Variable::Variable(int address, const QString& dataType) : address(address), dataType(dataType)
 {
 }
 
@@ -8,12 +8,22 @@ Variable::~Variable()
 {
 }
 
-Object* Variable::GetData() const
+int Variable::GetAddress() const
 {
-	return this->data;
+	return address;
 }
 
-void Variable::SetData(Object* data)
+void Variable::SetAddress(int address)
 {
-	this->data = data;
+	this->address = address;
+}
+
+QString Variable::GetDataType() const
+{
+	return dataType;
+}
+
+void Variable::SetDataType(const QString& dataType)
+{
+	this->dataType = dataType;
 }

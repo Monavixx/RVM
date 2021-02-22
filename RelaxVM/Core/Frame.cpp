@@ -1,4 +1,5 @@
 #include "Frame.h"
+#include "../GlobalVariables.h"
 
 Frame::Frame(Method* method, const VariableList& variableList) : method(method), variables(variableList)
 {
@@ -31,7 +32,7 @@ void Frame::SetVariableList(const VariableList& variables)
 
 void Frame::CreateVariable(int id, const QString& dataType)
 {
-    variables[id] = Variable(new RelaxNull(dataType));
+    variables[id] = Variable(GlobalVariables::heap.push_back(new RelaxNull), dataType);
 }
 
 Stack& Frame::GetStack()

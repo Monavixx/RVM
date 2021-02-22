@@ -4,12 +4,16 @@
 class RelaxPointer : public Object
 {
 public:
-	RelaxPointer(Object** data);
+	RelaxPointer(int pointerAddress, const QString& dataType);
 	QString GetDataType() override;
-	Object** GetData();
-	void SetData(Object** data);
-
+	int GetPointerAddress();
+	void SetPointerAddress(int pointerAddress);
+	void SetPointerData(Object* data);
+	Object* GetPointerData();
+	void SetPointerDataType(const QString& dataType);
+	QString GetPointerDataType();
 private:
-	Object** data;
+	int pointerAddress;
+	QString dataType;
 };
 

@@ -4,20 +4,10 @@ Heap::Heap()
 {
 }
 
-Heap::Heap(const QList<Object*>& variableList)
+Heap::Heap(const QVector<Object*>& variableList) : QVector<Object*>(variableList)
 {
-    this->clear();
-    for(auto& item : variableList)
-    {
-        this->push_back(item);
-    }
 }
 
-Heap::Heap(const Heap& variableList)
+Heap::Heap(const Heap& variableList) : QVector<Object*>(variableList)
 {
-    this->clear();
-    for (auto& item : variableList)
-    {
-        this->push_back(item);
-    }
 }

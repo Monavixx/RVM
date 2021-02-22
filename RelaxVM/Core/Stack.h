@@ -8,9 +8,11 @@ class Stack
 {
 public:
 	Stack() : stack(nullptr) {}
-	void push(Object* object);
+	void push(int index);
 	Object* pop();
+	int popIndex();
 	Object* top();
+	int& topIndex();
 	bool isEmpty();
 	~Stack();
 	void SetMaxSize(int maxSize);
@@ -18,6 +20,6 @@ public:
 private:
 	int currentSize = 0;
 	int maxSize = 0;
-	Object** stack;
+	int* stack;
 };
 

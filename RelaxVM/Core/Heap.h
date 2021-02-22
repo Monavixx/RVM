@@ -2,11 +2,18 @@
 #include <QtCore>
 #include "Variable.h"
 
-class Heap : public QList<Object*>
+class Heap : public QVector<Object*>
 {
 public: 
 	Heap();
-	Heap(const QList<Object*>& classList);
+	Heap(const QVector<Object*>& classList);
 	Heap(const Heap& classList);
+
+	int push_back(Object* const &data)
+	{
+		data->SetAddress(size());
+		QVector<Object*>::push_back(data);
+		return size() - 1;
+	}
 };
 

@@ -4,18 +4,12 @@
 class RelaxNull : public Object
 {
 public:
-	RelaxNull(const QString& dataType = "") : dataType(dataType)
+	RelaxNull()
 	{
 
 	}
 	QString GetDataType() override
 	{
-		return dataType;
+		return "Relax.Null";
 	}
-	QString GetData()
-	{
-		return "null";
-	}
-private:
-	QString dataType;
 };
