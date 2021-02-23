@@ -2,28 +2,12 @@
 
 void OpGc::Run()
 {
-	/*for (auto& item : GlobalVariables::heap)
+	for (int i = 0; i < GlobalVariables::heap.GetSize(); ++i)
 	{
-		if (item != nullptr)
+		if(GlobalVariables::heap[i] != nullptr)
+		if (GlobalVariables::heap[i]->GetAmountUsers() <= 0)
 		{
-			if (item->GetAmountUsers() <= 0)
-			{
-				delete item;
-				item = nullptr;
-			}
-		}
-	}
-	GlobalVariables::heap.removeAll(nullptr);*/
-	for (int i = 0; i < GlobalVariables::heap.size(); ++i)
-	{
-		if (GlobalVariables::heap[i] == nullptr)
-		{
-			GlobalVariables::heap.removeAt(i);
-		}
-		else if (GlobalVariables::heap[i]->GetAmountUsers() <= 0)
-		{
-			delete GlobalVariables::heap[i];
-			GlobalVariables::heap.removeAt(i);
+			GlobalVariables::heap.Delete(i);
 		}
 	}
 }

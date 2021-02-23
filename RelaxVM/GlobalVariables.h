@@ -9,8 +9,9 @@ struct GlobalVariables
 	static inline QFile executableFile;
 	static inline Class* mainClass = nullptr;
 	static inline ClassList classes;
-	static inline Heap heap;
+	static inline Heap heap = Heap(10);
 	static inline QStack<Frame*> frameStack;
 
 	static inline const int version = 4;
+	static inline const int opCodesForGC = 20;
 };

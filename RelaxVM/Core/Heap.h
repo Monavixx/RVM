@@ -2,18 +2,20 @@
 #include <QtCore>
 #include "Variable.h"
 
-class Heap : public QVector<Object*>
+class Heap
 {
 public: 
-	Heap();
-	Heap(const QVector<Object*>& classList);
-	Heap(const Heap& classList);
+	Heap(int maxSize);
 
-	int push_back(Object* const &data)
-	{
-		data->SetAddress(size());
-		QVector<Object*>::push_back(data);
-		return size() - 1;
-	}
+	int push_back(Object* const& data);
+	Object*& operator[](int index);
+	int GetSize() { return size; }
+	void Delete(int address);
+
+private:
+	int currentIndex;
+	int size;
+	int maxSize;
+	Object** heap;
 };
 

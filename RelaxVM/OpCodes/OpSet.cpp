@@ -8,13 +8,15 @@ void OpSet::Run()
 	if (variable == nullptr)
 		Exit("set: local variable with id " + QString::number(id) + " not exists");
 
-	/*QString f = variable->GetDataType();
-	qout << f;*/
-	if (data->GetDataType() == variable->GetDataType() || data->GetDataType() == "Relax.Null")
-	{
-		data->IncAmountUsers();
-		variable->SetAddress(data->GetAddress());
-	}
+	
+	if (data->GetDataType() != variable->GetDataType() && data->GetDataType() != "Relax.Null")
+		Exit("set: data types do not match");
+
+	Object* oldData = GlobalVariables::heap[variable->GetAddress()];
+	if(oldData != nullptr) oldData->DecAmountUsers();
+
+	data->IncAmountUsers();
+	variable->SetAddress(data->GetAddress());
 }
 
 void OpSet::Parse(QIODevice& device)

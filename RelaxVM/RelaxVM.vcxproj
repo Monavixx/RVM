@@ -119,6 +119,7 @@
     <ClCompile Include="Core\VariableList.cpp" />
     <ClCompile Include="Functions\ExecuteMethod.cpp" />
     <ClCompile Include="Functions\Exit.cpp" />
+    <ClCompile Include="Functions\GC.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="OpCodes\OpAdd.cpp" />
     <ClCompile Include="OpCodes\OpBase.cpp" />
@@ -185,6 +186,7 @@
     <ClInclude Include="Exceptions\ExitException.h" />
     <ClInclude Include="Functions\ExecuteMethod.h" />
     <ClInclude Include="Functions\Exit.h" />
+    <ClInclude Include="Functions\GC.h" />
     <ClInclude Include="GlobalVariables.h" />
     <ClInclude Include="OpCodes\OpAdd.h" />
     <ClInclude Include="OpCodes\OpBase.h" />

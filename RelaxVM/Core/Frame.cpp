@@ -32,7 +32,9 @@ void Frame::SetVariableList(const VariableList& variables)
 
 void Frame::CreateVariable(int id, const QString& dataType)
 {
-    variables[id] = Variable(GlobalVariables::heap.push_back(new RelaxNull), dataType);
+    Object* data = new RelaxNull;
+    data->IncAmountUsers();
+    variables[id] = Variable(GlobalVariables::heap.push_back(data), dataType);
 }
 
 Stack& Frame::GetStack()

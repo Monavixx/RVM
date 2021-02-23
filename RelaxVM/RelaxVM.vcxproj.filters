@@ -227,10 +227,13 @@
     <ClCompile Include="OpCodes\OpRef.cpp">
       <Filter>Source Files\OpCodes</Filter>
     </ClCompile>
-    <ClCompile Include="OpCodes\OpDeref.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="OpCodes\OpSetpd.cpp">
+      <Filter>Source Files\OpCodes</Filter>
+    </ClCompile>
+    <ClCompile Include="OpCodes\OpDeref.cpp">
+      <Filter>Source Files\OpCodes</Filter>
+    </ClCompile>
+    <ClCompile Include="Functions\GC.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -422,9 +425,12 @@
       <Filter>Header Files\OpCodes</Filter>
     </ClInclude>
     <ClInclude Include="OpCodes\OpDeref.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\OpCodes</Filter>
     </ClInclude>
     <ClInclude Include="OpCodes\OpSetpd.h">
+      <Filter>Header Files\OpCodes</Filter>
+    </ClInclude>
+    <ClInclude Include="Functions\GC.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

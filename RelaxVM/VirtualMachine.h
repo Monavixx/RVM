@@ -1,6 +1,5 @@
 #pragma once
 #include <QtCore>
-
 #include "OpCodes/OpMethod.h"
 
 class VirtualMachine

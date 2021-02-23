@@ -3,4 +3,4 @@
 #include "../Core/Frame.h"
 #include "../OpCodes/OpReturn.h"
 
-void ExecuteMethod();
+void ExecuteMethod(bool gc = false);
