@@ -16,22 +16,7 @@ void ExecuteMethod(bool gc)
 		OpBase* op = frame->Next();
 		op->SetFrame(frame);
 
-		for (int i = 0; i < GlobalVariables::heap.GetSize(); ++i)
-		{
-			Object* data = GlobalVariables::heap[i];
-			int a = 4;
-		}
-
 		op->Run();
 		if (dynamic_cast<OpReturn*>(op) != nullptr) return;
-		/*if (gc && i == GlobalVariables::opCodesForGC)
-		{
-
-		}*/
-		for (int i = 0; i < GlobalVariables::heap.GetSize(); ++i)
-		{
-			Object* data = GlobalVariables::heap[i];
-			int a = 4;
-		}
 	}
 }

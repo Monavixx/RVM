@@ -1,6 +1,7 @@
 #include "Heap.h"
+#include "../Functions/GC.h"
 
-Heap::Heap(int maxSize) : maxSize(maxSize)
+Heap::Heap(int maxSize) : maxSize(maxSize), size(0), currentIndex(0)
 {
 	heap = new Object*[maxSize] {nullptr};
 }
@@ -11,6 +12,11 @@ int Heap::push_back(Object* const& data)
 	{
 		if (heap[currentIndex] == nullptr)
 			break;
+		else if (heap[currentIndex]->GetAmountUsers() <= 0)
+		{
+			Delete(currentIndex);
+			break;
+		}
 		++currentIndex;
 		if (currentIndex >= maxSize)
 		{
