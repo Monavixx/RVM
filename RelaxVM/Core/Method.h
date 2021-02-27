@@ -20,6 +20,7 @@ public:
 	void SetIsStatic(bool isStatic);
 	void SetAccessModifier(const AccessModifier& accessModifier);
 	void SetCode(const QVector<OpBase*>& code);
+	void AddOpCode(OpBase* opCode);
 
 	bool operator==(Method& other) const;
 

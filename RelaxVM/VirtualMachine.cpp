@@ -28,8 +28,12 @@ void VirtualMachine::Start()
 		Instruction instruction = static_cast<Instruction>(ByteArrayRead::ReadByte(GlobalVariables::executableFile));
 		ParseCode(instruction);
 	}
+
 	for (auto& item : opCodes)
 	{
+		OpMethod* method = dynamic_cast<OpMethod*>(item);
+		if (method != nullptr)
+			method->ParseCode();
 		delete item;
 	}
 	opCodes.clear();

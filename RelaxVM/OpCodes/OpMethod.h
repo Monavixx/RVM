@@ -37,9 +37,9 @@ class OpMethod : public OpBase
 public:
 	void Run() override;
 	void Parse(QIODevice& device) override;
+	void ParseCode();
 
 private:
-
 	void ParseOpCode(Instruction instruction, QIODevice& device);
 
 	AccessModifier accessModifier;
@@ -49,5 +49,7 @@ private:
 	QString name;
 	QVector<Parameter> parameters;
 	QVector<OpBase*> methodCode;
+	QByteArray code;
+	Method* method;
 };
 

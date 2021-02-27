@@ -2,7 +2,7 @@
 
 void OpMethod::Run()
 {
-	Method* method = new Method(name, dataType, declClassName, parameters, methodCode, accessModifier, isStatic);
+	method = new Method(name, dataType, declClassName, parameters, {}, accessModifier, isStatic);
 
 	Class* _class = GlobalVariables::classes.FindClassByName(declClassName);
 	if (_class == nullptr)
@@ -32,7 +32,11 @@ void OpMethod::Parse(QIODevice& device)
 		parameter.SetName(parameterName);
 		parameters.push_back(parameter);
 	}
-	QByteArray code = ByteArrayRead::ReadSizeAndByteArray(device);
+	code = ByteArrayRead::ReadSizeAndByteArray(device);
+}
+
+void OpMethod::ParseCode()
+{
 	QBuffer buffer(&code);
 	buffer.open(QIODevice::ReadOnly);
 
@@ -41,6 +45,7 @@ void OpMethod::Parse(QIODevice& device)
 		Instruction instruction = static_cast<Instruction>(ByteArrayRead::ReadByte(buffer));
 		ParseOpCode(instruction, buffer);
 	}
+	method->SetCode(methodCode);
 }
 
 void OpMethod::ParseOpCode(Instruction instruction, QIODevice& device)

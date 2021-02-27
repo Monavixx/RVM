@@ -43,6 +43,11 @@ void Method::SetCode(const QVector<OpBase*>& code)
 	this->code = code;
 }
 
+void Method::AddOpCode(OpBase* opCode)
+{
+	this->code.push_back(opCode);
+}
+
 bool Method::operator==(Method& other) const
 {
 	if (!MethodSignature::operator==(dynamic_cast<const MethodSignature&>(other))) return false;
