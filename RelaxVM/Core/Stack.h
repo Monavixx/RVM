@@ -11,11 +11,22 @@ public:
 	void push(int index);
 	Object* pop();
 	int popIndex();
+
 	Object* top();
+
 	int& topIndex();
-	bool isEmpty();
+
+	inline bool isEmpty()
+	{
+		return currentSize <= 0;
+	}
+
 	~Stack();
-	void SetMaxSize(int maxSize);
+
+	inline void SetMaxSize(int maxSize)
+	{
+		this->maxSize = maxSize;
+	}
 
 private:
 	int currentSize = 0;

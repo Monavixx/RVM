@@ -1,19 +1,19 @@
 #pragma once
 
-#include <QtCore>
+#include <string>
 
 class Exception
 {
 public:
-	Exception(const QString& message) : message(message)
+	Exception(const std::string& message) : message(message)
 	{
 	}
 
-	const QString& What() const
+	const std::string& What() const
 	{
 		return message;
 	}
 
 protected:
-	QString message;
+	std::string message;
 };

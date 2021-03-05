@@ -1,4 +1,4 @@
 #pragma once
 #include "../Exceptions/ExitException.h"
 
-void Exit(const QString& message);
+void Exit(const std::string& message);

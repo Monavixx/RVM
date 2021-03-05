@@ -1,27 +1,26 @@
 #pragma once
-#include <QtCore>
 #include "Method.h"
 
 class Class
 {
 public:
-	Class(const QString& name, const QVector<Method*>& methods = {});
+	Class(const String& name, const vector<Method*>& methods = {});
 	~Class();
 
-	QString GetName() const;
-	QVector<Method*> GetMethods() const;
-	Method* GetMethod(const QString& name, const QVector<Parameter>& parameters);
+	String GetName() const;
+	vector<Method*> GetMethods() const;
+	Method* GetMethod(const String& name, const vector<Parameter>& parameters);
 	Method* GetMethod(MethodSignature* signature);
 
-	void SetName(const QString& name);
-	void SetMethods(const QVector<Method*>& methods);
+	void SetName(const String& name);
+	void SetMethods(const vector<Method*>& methods);
 	void SetMethod(int index, Method* method);
 	void AddMethod(Method* method);
 
 	bool operator==(const Class& other) const;
 
 private:
-	QString name;
-	QVector<Method*> methods;
+	String name;
+	vector<Method*> methods;
 };
 

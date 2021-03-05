@@ -2,10 +2,10 @@
 #include "../StdClass.h"
 #include "../../GlobalVariables.h"
 
-RelaxArray::RelaxArray(const QString& dataType, int size) : dataType(dataType), size(size)
+RelaxArray::RelaxArray(const QString& dataType, asizet size) : dataType(dataType), size(size)
 {
 	arr = new int[size];
-	for (int i = 0; i < size; ++i)
+	for (asizet i = 0; i < size; ++i)
 	{
 		Object* data = new RelaxNull;
 		data->IncAmountUsers();
@@ -33,7 +33,7 @@ void RelaxArray::SetArr(int* arr)
 	this->arr = arr;
 }
 
-void RelaxArray::SetByIndex(int index, int address)
+void RelaxArray::SetByIndex(asizet index, int address)
 {
 	if (index >= size)
 		Exit("array index out of range");
@@ -45,7 +45,7 @@ void RelaxArray::SetByIndex(int index, int address)
 	}
 }
 
-int RelaxArray::GetByIndex(int index)
+int RelaxArray::GetByIndex(asizet index)
 {
 	if (index >= size)
 		Exit("array index out of range");
@@ -54,5 +54,10 @@ int RelaxArray::GetByIndex(int index)
 
 void RelaxArray::GenerateMetaInfo()
 {
-	metaClass = new StdClass("Relax.Array");
+	metaClass = new StdClass("Relax.Array", {
+		StdMethod("Size", "Relax.Int32", "Relax.Array", {}, [&](Stack& stack) -> Object*
+		{
+			return dynamic_cast<RelaxArray*>(stack.pop())->GetSize();
+		},AccessModifier::PUBLIC, false),
+	});
 }

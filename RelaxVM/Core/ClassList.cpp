@@ -4,25 +4,15 @@ ClassList::ClassList()
 {
 }
 
-ClassList::ClassList(const QVector<Class*>& classList)
+ClassList::ClassList(const vector<Class*>& classList) : std::vector<Class*>(classList)
 {
-	this->clear();
-	for (auto& item : classList)
-	{
-		this->push_back(item);
-	}
 }
 
-ClassList::ClassList(const ClassList& classList)
+ClassList::ClassList(const ClassList& classList) : std::vector<Class*>(classList)
 {
-	this->clear();
-	for (auto& item : classList)
-	{
-		this->push_back(item);
-	}
 }
 
-Class* ClassList::FindClassByName(const QString& name)
+Class* ClassList::FindClassByName(const String& name)
 {
 	auto classIterator = std::find_if(this->begin(), this->end(), [&](Class* _class) {
 		return _class->GetName() == name;

@@ -30,10 +30,6 @@ int Heap::push_back(Object* const& data)
 	return currentIndex;
 }
 
-Object*& Heap::operator[](int index)
-{
-	return heap[index];
-}
 
 void Heap::Delete(int address)
 {

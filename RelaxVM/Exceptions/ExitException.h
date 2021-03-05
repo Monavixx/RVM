@@ -4,5 +4,5 @@
 class ExitException : public Exception
 {
 public:
-	ExitException(const QString& message) : Exception(message) {}
+	ExitException(const std::string& message) : Exception(message) {}
 };

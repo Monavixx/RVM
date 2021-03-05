@@ -1,5 +1,4 @@
 #pragma once
-#include <QtCore>
 #include "MethodSignature.h"
 #include "../Enums/AccessModifier.h"
 
@@ -8,19 +7,21 @@ class OpBase;
 class Method : public MethodSignature
 {
 public:
-	Method(const MethodSignature& signature, const QVector<OpBase*>& code = {}, const AccessModifier & accessModifier = AccessModifier::PRIVATE, bool isStatic = false);
+	Method(const MethodSignature& signature, const vector<OpBase*>& code = {}, const AccessModifier & accessModifier = AccessModifier::PRIVATE, bool isStatic = false);
 
-	Method(const QString& name, const QString& dataType, const QString& nameClass, const QVector<Parameter>& parameters = {},
-		const QVector<OpBase*>& code = {}, const AccessModifier& accessModifier = AccessModifier::PRIVATE, bool isStatic = false);
+	Method(const String& name, const String& dataType, const String& nameClass, const vector<Parameter>& parameters = {},
+		const vector<OpBase*>& code = {}, const AccessModifier& accessModifier = AccessModifier::PRIVATE, bool isStatic = false);
 
-	bool IsStatic() const;
-	AccessModifier GetAccessModifier() const;
-	QVector<OpBase*>& GetCode();
+	inline bool IsStatic() const { return isStatic; }
 
-	void SetIsStatic(bool isStatic);
-	void SetAccessModifier(const AccessModifier& accessModifier);
-	void SetCode(const QVector<OpBase*>& code);
-	void AddOpCode(OpBase* opCode);
+	inline AccessModifier GetAccessModifier() const { return accessModifier; }
+	inline vector<OpBase*>& GetCode() { return this->code; }
+
+
+	inline void SetIsStatic(bool isStatic) { this->isStatic = isStatic; }
+	inline void SetAccessModifier(const AccessModifier& accessModifier) { this->accessModifier = accessModifier; }
+	inline void SetCode(const vector<OpBase*>& code) { this->code = code; }
+	inline void AddOpCode(OpBase* opCode) { this->code.push_back(opCode); }
 
 	bool operator==(Method& other) const;
 
@@ -29,6 +30,6 @@ public:
 private:
 	AccessModifier accessModifier;
 	bool isStatic;
-	QVector<OpBase*> code;
+	vector<OpBase*> code;
 };
 

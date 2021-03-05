@@ -236,6 +236,9 @@
     <ClCompile Include="Functions\GC.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Libs\String.cpp">
+      <Filter>Source Files\Core</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Program.h">
@@ -432,6 +435,9 @@
     </ClInclude>
     <ClInclude Include="Functions\GC.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Libs\String.h">
+      <Filter>Header Files\Core</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

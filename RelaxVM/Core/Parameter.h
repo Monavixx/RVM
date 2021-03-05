@@ -1,23 +1,23 @@
 #pragma once
-#include <QtCore>
+#include "../Libs/String.h"
 
 class Parameter
 {
 public:
-	Parameter(const QString& dataType, const QString& name = "");
+	Parameter(const String& dataType, const String& name = "");
 
-	QString GetDataType() const;
-	QString GetName() const;
+	String GetDataType() const;
+	String GetName() const;
 
-	void SetDataType(const QString& dataType);
-	void SetName(const QString& name);
+	void SetDataType(const String& dataType);
+	void SetName(const String& name);
 
 	bool operator==(const Parameter& other) const;
 	bool operator!=(const Parameter& other) const;
 
 
 private:
-	QString dataType;
-	QString name;
+	String dataType;
+	String name;
 };
 

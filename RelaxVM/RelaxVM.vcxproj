@@ -51,6 +51,7 @@
       <LanguageStandard>stdcpplatest</LanguageStandard>
       <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
+      <PreprocessorDefinitions>DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <AdditionalLibraryDirectories>D:\Programs\Visual Leak Detector\lib\Win64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
@@ -120,6 +121,7 @@
     <ClCompile Include="Functions\ExecuteMethod.cpp" />
     <ClCompile Include="Functions\Exit.cpp" />
     <ClCompile Include="Functions\GC.cpp" />
+    <ClCompile Include="Libs\String.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="OpCodes\OpAdd.cpp" />
     <ClCompile Include="OpCodes\OpBase.cpp" />
@@ -188,6 +190,7 @@
     <ClInclude Include="Functions\Exit.h" />
     <ClInclude Include="Functions\GC.h" />
     <ClInclude Include="GlobalVariables.h" />
+    <ClInclude Include="Libs\String.h" />
     <ClInclude Include="OpCodes\OpAdd.h" />
     <ClInclude Include="OpCodes\OpBase.h" />
     <ClInclude Include="OpCodes\OpCallm.h" />

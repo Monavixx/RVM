@@ -8,8 +8,14 @@ public:
 	Heap(int maxSize);
 
 	int push_back(Object* const& data);
-	Object*& operator[](int index);
-	int GetSize() { return size; }
+	inline Object*& operator[](int index)
+	{
+		return heap[index];
+	}
+	inline int GetSize()
+	{
+		return size;
+	}
 	void Delete(int address);
 
 private:

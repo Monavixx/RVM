@@ -1,26 +1,26 @@
 #include "Parameter.h"
 
-Parameter::Parameter(const QString& dataType, const QString& name) : dataType(dataType), name(name)
+Parameter::Parameter(const String& dataType, const String& name) : dataType(dataType), name(name)
 {
 }
 
-QString Parameter::GetDataType() const
+String Parameter::GetDataType() const
 {
 	return dataType;
 }
 
-QString Parameter::GetName() const
+String Parameter::GetName() const
 {
 	return name;
 }
 
 
-void Parameter::SetDataType(const QString& dataType)
+void Parameter::SetDataType(const String& dataType)
 {
 	this->dataType = dataType;
 }
 
-void Parameter::SetName(const QString& name)
+void Parameter::SetName(const String& name)
 {
 	this->name = name;
 }

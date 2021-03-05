@@ -1,36 +1,36 @@
 #pragma once
-#include <QtCore>
 #include "Parameter.h"
-
+#include <vector>
+using std::vector;
 
 class MethodSignature
 {
 public:
-	MethodSignature(const QString& name, const QString& dataType, const QString& nameClass, const QVector<Parameter>& parameters = {});
+	MethodSignature(const String& name, const String& dataType, const String& nameClass, const vector<Parameter>& parameters = {});
 	MethodSignature(const MethodSignature& other);
 
-	QString GetName() const;
-	QString GetDataType() const;
-	QString GetNameClass() const;
-	const QVector<Parameter>& GetParameters() const;
+	String GetName() const;
+	String GetDataType() const;
+	String GetNameClass() const;
+	const vector<Parameter>& GetParameters() const;
 
-	Parameter* GetParameter(const quint64& index);
+	Parameter* GetParameter(size_t index);
 
-	void SetName(const QString& name);
-	void SetDataType(const QString& dataType);
-	void SetNameClass(const QString& nameClass);
-	void SetParameters(const QVector<Parameter>& parameters);
-	void SetParameter(const quint64& index, const Parameter& parameter);
+	void SetName(const String& name);
+	void SetDataType(const String& dataType);
+	void SetNameClass(const String& nameClass);
+	void SetParameters(const vector<Parameter>& parameters);
+	void SetParameter(size_t index, const Parameter& parameter);
 	void AddParameter(const Parameter& parameter);
 
-	QString ToString() const;
+	String ToString() const;
 
 	bool operator==(const MethodSignature& other) const;
 
 private:
-	QString name;
-	QString dataType;
-	QString nameClass;
-	QVector<Parameter> parameters;
+	String name;
+	String dataType;
+	String nameClass;
+	vector<Parameter> parameters;
 };
 

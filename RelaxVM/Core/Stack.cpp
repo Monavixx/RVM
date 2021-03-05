@@ -42,17 +42,7 @@ int& Stack::topIndex()
 	return stack[currentSize - 1];
 }
 
-bool Stack::isEmpty()
-{
-	return currentSize <= 0;
-}
-
 Stack::~Stack()
 {
 	delete[] stack;
-}
-
-void Stack::SetMaxSize(int maxSize)
-{
-	this->maxSize = maxSize;
 }

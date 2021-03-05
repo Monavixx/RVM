@@ -1,6 +1,6 @@
 #include "MethodSignature.h"
 
-MethodSignature::MethodSignature(const QString& name, const QString& dataType, const QString& className, const QVector<Parameter>& parameters)
+MethodSignature::MethodSignature(const String& name, const String& dataType, const String& className, const vector<Parameter>& parameters)
 	: name(name), dataType(dataType), nameClass(className), parameters(parameters)
 {
 }
@@ -13,52 +13,52 @@ MethodSignature::MethodSignature(const MethodSignature& other)
 	this->parameters = other.GetParameters();
 }
 
-QString MethodSignature::GetName() const
+String MethodSignature::GetName() const
 {
 	return name;
 }
 
-QString MethodSignature::GetDataType() const
+String MethodSignature::GetDataType() const
 {
 	return dataType;
 }
 
-QString MethodSignature::GetNameClass() const
+String MethodSignature::GetNameClass() const
 {
 	return nameClass;
 }
 
-const QVector<Parameter>& MethodSignature::GetParameters() const
+const vector<Parameter>& MethodSignature::GetParameters() const
 {
 	return parameters;
 }
 
-Parameter* MethodSignature::GetParameter(const quint64& index)
+Parameter* MethodSignature::GetParameter(size_t index)
 {
 	return &(parameters[index]);
 }
 
-void MethodSignature::SetName(const QString& name)
+void MethodSignature::SetName(const String& name)
 {
 	this->name = name;
 }
 
-void MethodSignature::SetDataType(const QString& dataType)
+void MethodSignature::SetDataType(const String& dataType)
 {
 	this->dataType = dataType;
 }
 
-void MethodSignature::SetNameClass(const QString& className)
+void MethodSignature::SetNameClass(const String& className)
 {
 	this->nameClass = className;
 }
 
-void MethodSignature::SetParameters(const QVector<Parameter>& parameters)
+void MethodSignature::SetParameters(const vector<Parameter>& parameters)
 {
 	this->parameters = parameters;
 }
 
-void MethodSignature::SetParameter(const quint64& index, const Parameter& parameter)
+void MethodSignature::SetParameter(size_t index, const Parameter& parameter)
 {
 	parameters[index] = parameter;
 }
@@ -68,11 +68,11 @@ void MethodSignature::AddParameter(const Parameter& parameter)
 	parameters.push_back(parameter);
 }
 
-QString MethodSignature::ToString() const
+String MethodSignature::ToString() const
 {
-	QString signature = "";
+	String signature;
 	signature += dataType + " " + nameClass + "." + name + "(";
-	for (quint64 i = 0; i < parameters.size(); ++i)
+	for (size_t i = 0; i < parameters.size(); ++i)
 	{
 		signature += parameters[i].GetDataType();
 		if (i != parameters.size() - 1)

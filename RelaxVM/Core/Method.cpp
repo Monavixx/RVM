@@ -2,51 +2,17 @@
 #include "../Functions/ExecuteMethod.h"
 #include "Frame.h"
 
-Method::Method(const MethodSignature& signature, const QVector<OpBase*>& code, const AccessModifier& accessModifier, bool isStatic)
+Method::Method(const MethodSignature& signature, const vector<OpBase*>& code, const AccessModifier& accessModifier, bool isStatic)
 	: MethodSignature(signature), accessModifier(accessModifier), isStatic(isStatic), code(code)
 {
 }
 
-Method::Method(const QString& name, const QString& dataType, const QString& nameClass, const QVector<Parameter>& parameters,
-	const QVector<OpBase*>& code, const AccessModifier& accessModifier, bool isStatic)
+Method::Method(const String& name, const String& dataType, const String& nameClass, const vector<Parameter>& parameters,
+	const vector<OpBase*>& code, const AccessModifier& accessModifier, bool isStatic)
 	: MethodSignature(name, dataType, nameClass, parameters), accessModifier(accessModifier), isStatic(isStatic), code(code)
 {
 }
 
-bool Method::IsStatic() const
-{
-	return isStatic;
-}
-
-AccessModifier Method::GetAccessModifier() const
-{
-	return accessModifier;
-}
-
-QVector<OpBase*>& Method::GetCode()
-{
-	return (this->code);
-}
-
-void Method::SetIsStatic(bool isStatic)
-{
-	this->isStatic = isStatic;
-}
-
-void Method::SetAccessModifier(const AccessModifier& accessModifier)
-{
-	this->accessModifier = accessModifier;
-}
-
-void Method::SetCode(const QVector<OpBase*>& code)
-{
-	this->code = code;
-}
-
-void Method::AddOpCode(OpBase* opCode)
-{
-	this->code.push_back(opCode);
-}
 
 bool Method::operator==(Method& other) const
 {
@@ -60,7 +26,7 @@ void Method::CallMethod(Frame* frame)
 {
 	Frame* newFrame = new Frame(this);
 
-	int i = 0;
+	size_t i = 0;
 	for (auto& item : this->GetParameters())
 	{
 		Object* data = frame->GetStack().pop();
