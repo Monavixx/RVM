@@ -7,14 +7,14 @@
 class RelaxArray : public Object
 {
 public:
-	typedef int asizet;
+	typedef size_t asizet;
 
-	RelaxArray(const QString& dataType, asizet size);
+	RelaxArray(const String& dataType, asizet size);
 	~RelaxArray();
-	QString GetDataType() override;
-	int* GetArr();
-	void SetArr(int* arr);
-	void SetByIndex(asizet index, int address);
+	String GetDataType() override;
+	size_t* GetArr();
+	void SetArr(size_t* arr);
+	void SetByIndex(asizet index, size_t address);
 	int GetByIndex(asizet index);
 	RelaxInt32* GetSize() { return new RelaxInt32(size); }
 
@@ -23,8 +23,8 @@ public:
 	static inline class StdClass* metaClass = nullptr;
 
 private:
-	QString dataType;
+	String dataType;
 	asizet size;
-	int* arr;
+	size_t* arr;
 };
 

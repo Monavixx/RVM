@@ -6,6 +6,6 @@ void OpGc::Run()
 	GC();
 }
 
-void OpGc::Parse(QIODevice& device)
+void OpGc::Parse(HANDLE& device)
 {
 }

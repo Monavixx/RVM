@@ -12,7 +12,7 @@ void OpCallm::Run()
 	}
 }
 
-void OpCallm::Parse(QIODevice& device)
+void OpCallm::Parse(HANDLE& device)
 {
 	isStd = ByteArrayRead::ReadByte(device);
 	isStatic = ByteArrayRead::ReadByte(device);
@@ -22,7 +22,7 @@ void OpCallm::Parse(QIODevice& device)
 
 	for (int i = 0; i < amountParameters; ++i)
 	{
-		QString parameterDataType = ByteArrayRead::ReadSizeAndString(device);
+		String parameterDataType = ByteArrayRead::ReadSizeAndString(device);
 		Parameter parameter(parameterDataType);
 		parameters.push_back(parameter);
 	}

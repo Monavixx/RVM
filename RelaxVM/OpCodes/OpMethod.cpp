@@ -13,7 +13,7 @@ void OpMethod::Run()
 	_class->AddMethod(method);
 }
 
-void OpMethod::Parse(QIODevice& device)
+void OpMethod::Parse(HANDLE& device)
 {
 	accessModifier = static_cast<AccessModifier>(ByteArrayRead::ReadByte(device));
 	isStatic = ByteArrayRead::ReadByte(device);
@@ -26,10 +26,8 @@ void OpMethod::Parse(QIODevice& device)
 
 	for (int i = 0; i < amountParameters; ++i)
 	{
-		QString parameterDataType = ByteArrayRead::ReadSizeAndString(device);
-		QString parameterName = ByteArrayRead::ReadSizeAndString(device);
-		Parameter parameter(parameterDataType);
-		parameter.SetName(parameterName);
+		Parameter parameter(ByteArrayRead::ReadSizeAndString(device));
+		parameter.SetName(ByteArrayRead::ReadSizeAndString(device));
 		parameters.push_back(parameter);
 	}
 	code = ByteArrayRead::ReadSizeAndByteArray(device);
@@ -37,18 +35,23 @@ void OpMethod::Parse(QIODevice& device)
 
 void OpMethod::ParseCode()
 {
-	QBuffer buffer(&code);
-	buffer.open(QIODevice::ReadOnly);
+#ifdef _WIN32
+	HANDLE writeBufferMethodCode;
+	HANDLE readBufferMethodCode;
+	CreatePipe(&readBufferMethodCode, &writeBufferMethodCode, 0, 0);
+	WriteFile(writeBufferMethodCode, code.GetData(), code.size(), 0, 0);
 
-	while (buffer.bytesAvailable() > 0)
+	while (GetFileSize(readBufferMethodCode, 0) > 0)
 	{
-		Instruction instruction = static_cast<Instruction>(ByteArrayRead::ReadByte(buffer));
-		ParseOpCode(instruction, buffer);
+		Instruction instruction = static_cast<Instruction>(ByteArrayRead::ReadByte(readBufferMethodCode));
+		ParseOpCode(instruction, readBufferMethodCode);
 	}
+
+#endif
 	method->SetCode(methodCode);
 }
 
-void OpMethod::ParseOpCode(Instruction instruction, QIODevice& device)
+void OpMethod::ParseOpCode(Instruction instruction, HANDLE& device)
 {
 	OpBase* op;
 	switch (instruction)

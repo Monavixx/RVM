@@ -1,5 +1,6 @@
 #pragma once
-#include <QtCore>
+#include <vector>
+#include <functional>
 #include "../Core/MethodSignature.h"
 #include "../Enums/AccessModifier.h"
 #include "../Core/Stack.h"
@@ -9,7 +10,7 @@ class StdMethod : public MethodSignature
 public:
 	StdMethod(const MethodSignature& signature, std::function<Object* (Stack&)> function = {}, const AccessModifier& accessModifier = AccessModifier::PRIVATE, bool isStatic = false);
 
-	StdMethod(const QString& name, const QString& dataType, const QString& nameClass, const QVector<Parameter>& parameters = {},
+	StdMethod(const String& name, const String& dataType, const String& nameClass, const std::vector<Parameter>& parameters = {},
 		std::function<Object*(Stack&)> code = {}, const AccessModifier& accessModifier = AccessModifier::PRIVATE, bool isStatic = false);
 
 	bool IsStatic() const;

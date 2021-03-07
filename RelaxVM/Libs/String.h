@@ -1,6 +1,7 @@
 #pragma once
 #include <string>
-#include "../Functions/Exit.h"
+#include <iostream>
+
 
 #ifdef _WIN32
 #include <Windows.h>
@@ -10,25 +11,14 @@ class String
 {
 public:
 	String() {}
-	String(const char str[])
-	{
-		_size = strlen(str);
-		data = new unsigned short[capacity = _size + 10];
-		for (int i = 0; i < _size; ++i)
-		{
-			data[i] = str[i];
-		}
-	}
+	String(const char str[]);
+	String(const std::string& str);
+	String(long long num);
+	String(const char str[], size_t size);
 #ifdef _WIN32
-	String(const wchar_t str[])
-	{
-		_size = wcsnlen(str, -1);
-		data = new unsigned short[capacity = _size + 10];
-		for (int i = 0; i < _size; ++i)
-		{
-			data[i] = str[i];
-		}
-	}
+	String(const wchar_t str[]);
+	String(const wchar_t str[], size_t size);
+	static String FromWCharArray(wchar_t buf[], size_t bufsize);
 #endif
 	inline unsigned short* utf16() const
 	{
@@ -38,116 +28,49 @@ public:
 	{
 		return _size;
 	}
-#ifdef _WIN32
-	static String FromWCharArray(wchar_t buf[], size_t bufsize)
-	{
-		String res;
-		for (size_t i = 0; i < bufsize; ++i)
-		{
-			res.push_back(buf[i]);
-		}
-		return res;
-	}
-#endif
-	unsigned short& operator[](size_t index) const
+	inline unsigned short& operator[](size_t index) const
 	{
 #ifdef DEBUG
-		if (index >= _size) Exit("String. Index out of range");
+		if (index >= _size) std::cout << "String.... Index out of range\n";
 #endif
 		return data[index];
 	}
-	void push_back(unsigned short symbol)
+	void push_back(unsigned short symbol);
+	String& operator+=(const String& other);
+	void truncate(size_t index);
+	bool operator==(const String& other) const;
+	bool operator!=(const String& other) const;
+	String operator+(const String& other) const;
+	String operator+(long long num) const;
+	inline void SetSize(size_t newSize)
 	{
-		if (capacity > _size)
-			data[_size++] = symbol;
-		else
-		{
-			unsigned short* newData = new unsigned short[capacity = _size + 10];
-			for (size_t i = 0; i < _size; ++i)
-			{
-				newData[i] = data[i];
-			}
-			newData[_size++] = symbol;
-			delete[] data;
-			data = newData;
-		}
-	}
-	String& operator+=(const String& other)
-	{
-		size_t newSize = _size + other._size;
-		if (newSize < capacity)
-		{
-			for (size_t i = _size; i < newSize; ++i)
-			{
-				data[i] = other.data[i];
-			}
-		}
-		else
-		{
-			unsigned short* newData = new unsigned short[capacity = newSize + 10];
-			for (size_t i = 0; i < _size; ++i)
-			{
-				newData[i] = data[i];
-			}
-			
-			for (size_t i = _size; i < newSize; ++i)
-			{
-				newData[i] = other.data[i];
-			}
-			
-			delete[] data;
-			data = newData;
-		}
 		_size = newSize;
-
-		return *this;
+		capacity = newSize;
 	}
-	void truncate(size_t index)
+	bool startsWith(const String& other) const;
+	std::string toStdString() const;
+	int toInt(bool* isOk = nullptr) const
 	{
-		data[index] = '\0';
-		_size = index;
+		int num;
+		try
+		{
+			num = std::stoi(toStdString());
+		}
+		catch (...)
+		{
+			*isOk = false;
+			num = 0;
+		}
+		return num;
 	}
-	bool operator==(const String& other) const
+	wchar_t* toWCharArray() const
 	{
-		if (_size != other._size) return false;
+		wchar_t* res = new wchar_t[_size+1];
 		for (size_t i = 0; i < _size; ++i)
 		{
-			if (data[i] != other.data[i]) return false;
+			res[i] = (*this)[i];
 		}
-		return true;
-	}
-	bool operator!=(const String& other) const
-	{
-		return !operator==(other);
-	}
-	String operator+(const String& other) const
-	{
-		String res;
-		size_t newSize = _size + other._size;
-		if (newSize < capacity)
-		{
-			for (size_t i = _size; i < newSize; ++i)
-			{
-				res.data[i] = other.data[i];
-			}
-		}
-		else
-		{
-			unsigned short* newData = new unsigned short[res.capacity = newSize + 10];
-			for (size_t i = 0; i < _size; ++i)
-			{
-				newData[i] = data[i];
-			}
-
-			for (size_t i = _size; i < newSize; ++i)
-			{
-				newData[i] = other.data[i];
-			}
-
-			res.data = newData;
-		}
-		res._size = newSize;
-
+		res[_size] = '\0';
 		return res;
 	}
 private:
@@ -156,3 +79,23 @@ private:
 	unsigned short* data = nullptr;
 };
 
+String operator"" _ss(const char* str, size_t size);
+
+namespace std
+{
+	template<>
+	struct hash<String>
+	{
+		size_t operator()(const String& s) const
+		{
+			static const int A = 54059;
+			static const int B = 76963;
+			static const int FIRSTH = 37;
+			size_t h = FIRSTH;
+			for (size_t i = 0; i < s.size(); ++i) {
+				h = (h * A) ^ (int(s[0]) * B);
+			}
+			return h;
+		}
+	};
+}

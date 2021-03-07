@@ -1,27 +1,20 @@
 #pragma once
-#include <QtCore>
 #include "Variable.h"
 
 class Heap
 {
-public: 
-	Heap(int maxSize);
+public:
+	Heap(size_t maxSize);
 
 	int push_back(Object* const& data);
-	inline Object*& operator[](int index)
-	{
-		return heap[index];
-	}
-	inline int GetSize()
-	{
-		return size;
-	}
-	void Delete(int address);
+	inline Object*& operator[](size_t index) {return heap[index];}
+	inline size_t GetSize(){return size;}
+	void Delete(size_t address);
 
 private:
-	int currentIndex;
-	int size;
-	int maxSize;
+	size_t currentIndex;
+	size_t size;
+	size_t maxSize;
 	Object** heap;
 };
 

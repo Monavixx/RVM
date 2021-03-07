@@ -1,12 +1,14 @@
 #pragma once
-#include <QtCore>
 #include "Variable.h"
+#include <unordered_map>
 
-class VariableList : public QHash<int, Variable>
+using std::unordered_map;
+
+class VariableList : public unordered_map<int, Variable>
 {
 public:
 	VariableList();
-	VariableList(const QHash<int, Variable>& variables);
+	VariableList(const unordered_map<int, Variable>& variables);
 	VariableList(const VariableList& variables);
 };
 

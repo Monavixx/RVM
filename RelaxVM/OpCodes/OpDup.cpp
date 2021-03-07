@@ -7,6 +7,6 @@ void OpDup::Run()
 	frame->GetStack().push(data->GetAddress());
 }
 
-void OpDup::Parse(QIODevice& device)
+void OpDup::Parse(HANDLE& device)
 {
 }

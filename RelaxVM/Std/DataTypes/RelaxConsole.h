@@ -12,7 +12,7 @@ class RelaxConsole : public Object
 {
 public:
 	RelaxConsole() {}
-	QString GetDataType() override;
+	String GetDataType() override;
 
 	static Object* Write(RelaxString* data);
 	static Object* Write(RelaxInt32* data);

@@ -31,25 +31,28 @@
 #include "OpRef.h"
 #include "OpDeref.h"
 #include "OpSetpd.h"
+#include "../Core/Method.h"
+
+#include <vector>
 
 class OpMethod : public OpBase
 {
 public:
 	void Run() override;
-	void Parse(QIODevice& device) override;
+	void Parse(HANDLE& device) override;
 	void ParseCode();
 
 private:
-	void ParseOpCode(Instruction instruction, QIODevice& device);
+	void ParseOpCode(Instruction instruction, HANDLE& device);
 
 	AccessModifier accessModifier;
 	bool isStatic;
-	QString dataType;
-	QString declClassName;
-	QString name;
-	QVector<Parameter> parameters;
-	QVector<OpBase*> methodCode;
-	QByteArray code;
+	String dataType;
+	String declClassName;
+	String name;
+	std::vector<Parameter> parameters;
+	std::vector<OpBase*> methodCode;
+	ByteArray code;
 	Method* method;
 };
 

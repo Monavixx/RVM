@@ -9,7 +9,7 @@ void OpRef::Run()
 	frame->GetStack().push(GlobalVariables::heap.push_back(pointer));
 }
 
-void OpRef::Parse(QIODevice& device)
+void OpRef::Parse(HANDLE& device)
 {
 	dataType = ByteArrayRead::ReadSizeAndString(device);
 }

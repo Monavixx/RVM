@@ -1,16 +1,16 @@
 #include "Object.h"
 #include "../StdClass.h"
 
-Object::Object(int amountUsers) : amountUsers(amountUsers)
+Object::Object(size_t amountUsers) : amountUsers(amountUsers)
 {
 }
 
-void Object::SetAmountUsers(int amountUsers)
+void Object::SetAmountUsers(size_t amountUsers)
 {
 	this->amountUsers = amountUsers;
 }
 
-int Object::GetAmountUsers() const
+size_t Object::GetAmountUsers() const
 {
 	return amountUsers;
 }
@@ -25,12 +25,12 @@ void Object::DecAmountUsers()
 	--amountUsers;
 }
 
-void Object::SetAddress(int address)
+void Object::SetAddress(size_t address)
 {
 	this->address = address;
 }
 
-int Object::GetAddress() const
+size_t Object::GetAddress() const
 {
 	return address;
 }

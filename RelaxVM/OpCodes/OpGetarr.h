@@ -7,5 +7,5 @@ class OpGetarr : public OpBase
 {
 public:
 	void Run() override;
-	void Parse(QIODevice& device) override;
+	void Parse(HANDLE& device) override;
 };

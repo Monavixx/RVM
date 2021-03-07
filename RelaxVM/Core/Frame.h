@@ -1,5 +1,4 @@
 #pragma once
-#include <QtCore>
 #include "Method.h"
 #include "VariableList.h"
 #include "../Std/RelaxNull.h"
@@ -10,26 +9,26 @@ class Frame
 public:
 	Frame(Method* method = nullptr, const VariableList& variableList = {});
 
-	Variable* GetVariable(int id);
+	Variable* GetVariable(size_t id);
 
 	Method* GetMethod() const;
 	VariableList GetVariableList() const;
 
 	void SetMethod(Method* method);
 	void SetVariableList(const VariableList& variables);
-	void CreateVariable(int id, const QString& dataType);
+	void CreateVariable(size_t id, const String& dataType);
 
 	Stack& GetStack();
 	
 	class OpBase* Next();
 	bool IsEnd();
-	void SetIndex(int index);
+	void SetIndex(size_t index);
 
 private:
 	VariableList variables;
 	Method* method;
 	Stack stack;
 
-	int index = 0;
+	size_t index = 0;
 };
 

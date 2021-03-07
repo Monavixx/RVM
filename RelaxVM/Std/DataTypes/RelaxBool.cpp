@@ -5,7 +5,7 @@ RelaxBool::RelaxBool(bool data) : data(data)
 {
 }
 
-QString RelaxBool::GetDataType()
+String RelaxBool::GetDataType()
 {
 	return "Relax.Bool";
 }

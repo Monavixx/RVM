@@ -5,7 +5,7 @@ Frame::Frame(Method* method, const VariableList& variableList) : method(method),
 {
 }
 
-Variable* Frame::GetVariable(int id)
+Variable* Frame::GetVariable(size_t id)
 {
     return &variables[id];
 }
@@ -30,7 +30,7 @@ void Frame::SetVariableList(const VariableList& variables)
     this->variables = variables;
 }
 
-void Frame::CreateVariable(int id, const QString& dataType)
+void Frame::CreateVariable(size_t id, const String& dataType)
 {
     Object* data = new RelaxNull;
     data->IncAmountUsers();
@@ -52,7 +52,7 @@ bool Frame::IsEnd()
     return index >= method->GetCode().size();
 }
 
-void Frame::SetIndex(int index)
+void Frame::SetIndex(size_t index)
 {
     this->index = index;
 }

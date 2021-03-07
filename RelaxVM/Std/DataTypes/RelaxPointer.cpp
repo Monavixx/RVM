@@ -2,11 +2,11 @@
 #include "../../GlobalVariables.h"
 
 
-RelaxPointer::RelaxPointer(int pointerAddress, const QString& dataType) : pointerAddress(pointerAddress), dataType(dataType)
+RelaxPointer::RelaxPointer(int pointerAddress, const String& dataType) : pointerAddress(pointerAddress), dataType(dataType)
 {
 }
 
-QString RelaxPointer::GetDataType()
+String RelaxPointer::GetDataType()
 {
 	return "Relax.Pointer";
 }
@@ -35,12 +35,12 @@ Object* RelaxPointer::GetPointerData()
 	return GlobalVariables::heap[pointerAddress];
 }
 
-void RelaxPointer::SetPointerDataType(const QString& dataType)
+void RelaxPointer::SetPointerDataType(const String& dataType)
 {
 	this->dataType = dataType;
 }
 
-QString RelaxPointer::GetPointerDataType()
+String RelaxPointer::GetPointerDataType()
 {
 	return dataType;
 }

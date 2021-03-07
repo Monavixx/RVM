@@ -4,11 +4,7 @@
 class RelaxNull : public Object
 {
 public:
-	RelaxNull()
-	{
-
-	}
-	QString GetDataType() override
+	String GetDataType() override
 	{
 		return "Relax.Null";
 	}

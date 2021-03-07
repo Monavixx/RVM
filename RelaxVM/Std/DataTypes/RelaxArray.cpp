@@ -2,9 +2,9 @@
 #include "../StdClass.h"
 #include "../../GlobalVariables.h"
 
-RelaxArray::RelaxArray(const QString& dataType, asizet size) : dataType(dataType), size(size)
+RelaxArray::RelaxArray(const String& dataType, asizet size) : dataType(dataType), size(size)
 {
-	arr = new int[size];
+	arr = new size_t[size];
 	for (asizet i = 0; i < size; ++i)
 	{
 		Object* data = new RelaxNull;
@@ -18,22 +18,22 @@ RelaxArray::~RelaxArray()
 	delete[] arr;
 }
 
-QString RelaxArray::GetDataType()
+String RelaxArray::GetDataType()
 {
 	return "Relax.Array";
 }
 
-int* RelaxArray::GetArr()
+size_t* RelaxArray::GetArr()
 {
 	return arr;
 }
 
-void RelaxArray::SetArr(int* arr)
+void RelaxArray::SetArr(size_t* arr)
 {
 	this->arr = arr;
 }
 
-void RelaxArray::SetByIndex(asizet index, int address)
+void RelaxArray::SetByIndex(asizet index, size_t address)
 {
 	if (index >= size)
 		Exit("array index out of range");

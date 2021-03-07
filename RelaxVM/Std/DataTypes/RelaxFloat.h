@@ -6,7 +6,7 @@ class RelaxFloat : public Object
 {
 public:
 	RelaxFloat(float data);
-	QString GetDataType() override;
+	String GetDataType() override;
 	float GetData();
 	void SetData(float data);
 

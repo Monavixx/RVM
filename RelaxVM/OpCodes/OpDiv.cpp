@@ -17,6 +17,6 @@ void OpDiv::Run()
 	operatorDiv->CallFunction(frame);
 }
 
-void OpDiv::Parse(QIODevice& device)
+void OpDiv::Parse(HANDLE& device)
 {
 }

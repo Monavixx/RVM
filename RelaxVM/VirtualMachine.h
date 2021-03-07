@@ -11,6 +11,6 @@ public:
 	void ParseCode(Instruction instruction);
 
 private:
-	QVector<OpBase*> opCodes;
+	std::vector<OpBase*> opCodes;
 };
 

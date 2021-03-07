@@ -6,7 +6,7 @@ void OpPushStr::Run()
 	frame->GetStack().push(GlobalVariables::heap.push_back(pushingString));
 }
 
-void OpPushStr::Parse(QIODevice& device)
+void OpPushStr::Parse(HANDLE& device)
 {
 	data = ByteArrayRead::ReadSizeAndString(device);
 }

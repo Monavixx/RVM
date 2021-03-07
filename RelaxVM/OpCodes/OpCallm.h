@@ -3,20 +3,21 @@
 #include "../Std/StdClassList.h"
 #include "../Enums/Instruction.h"
 #include "../Functions/ExecuteMethod.h"
+#include <vector>
 
 
 class OpCallm : public OpBase
 {
 public:
 	void Run() override;
-	void Parse(QIODevice& device) override;
+	void Parse(HANDLE& device) override;
 
 private:
 	bool isStd;
 	bool isStatic;
-	QString declClassName;
-	QString name;
-	QVector<Parameter> parameters;
+	String declClassName;
+	String name;
+	std::vector<Parameter> parameters;
 	StdClass* stdClass;
 	StdMethod* callableStdMethod;
 	Class* declClass;

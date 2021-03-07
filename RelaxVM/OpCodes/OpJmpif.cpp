@@ -9,7 +9,7 @@ void OpJmpif::Run()
 	}
 }
 
-void OpJmpif::Parse(QIODevice& device)
+void OpJmpif::Parse(HANDLE& device)
 {
 	offset = ByteArrayRead::ReadInt(device);
 }

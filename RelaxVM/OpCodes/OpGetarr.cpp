@@ -7,6 +7,6 @@ void OpGetarr::Run()
 	frame->GetStack().push(arr->GetByIndex(index));
 }
 
-void OpGetarr::Parse(QIODevice& device)
+void OpGetarr::Parse(HANDLE& device)
 {
 }

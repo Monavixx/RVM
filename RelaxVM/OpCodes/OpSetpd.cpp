@@ -8,6 +8,6 @@ void OpSetpd::Run()
 	pointer->SetPointerData(data);
 }
 
-void OpSetpd::Parse(QIODevice& device)
+void OpSetpd::Parse(HANDLE& device)
 {
 }

@@ -5,10 +5,10 @@
 class RelaxString : public Object
 {
 public:
-	RelaxString(const QString& data);
-	QString GetDataType() override;
-	QString GetData();
-	void SetData(const QString& data);
+	RelaxString(const String& data);
+	String GetDataType() override;
+	String GetData();
+	void SetData(const String& data);
 
 	RelaxString* Concat(RelaxString* other);
 
@@ -19,6 +19,6 @@ public:
 	static inline class StdClass* metaClass = nullptr;
 
 private:
-	QString data;
+	String data;
 };
 

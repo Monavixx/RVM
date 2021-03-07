@@ -6,7 +6,7 @@ void OpPushFloat::Run()
 	frame->GetStack().push(GlobalVariables::heap.push_back(pushingData));
 }
 
-void OpPushFloat::Parse(QIODevice& device)
+void OpPushFloat::Parse(HANDLE& device)
 {
 	data = ByteArrayRead::ReadFloat(device);
 }

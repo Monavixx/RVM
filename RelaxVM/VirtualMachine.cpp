@@ -4,29 +4,29 @@ VirtualMachine::VirtualMachine()
 {
 	GlobalVariables::mainClass = nullptr;
 	GlobalVariables::filename = Args::args[1];
-	GlobalVariables::executableFile.setFileName(GlobalVariables::filename);
 }
 
 VirtualMachine::~VirtualMachine()
 {
-	GlobalVariables::executableFile.close();
+#ifdef _WIN32
+	CloseHandle(GlobalVariables::executableFile);
+#endif
 }
 
 void VirtualMachine::Start()
 {
-	if (!GlobalVariables::executableFile.open(QIODevice::ReadOnly))
-	{
-		Exit("File open error!");
-	}
-
+#ifdef _WIN32
+	GlobalVariables::executableFile = CreateFile(Args::args[1].toWCharArray(), GENERIC_READ, FILE_SHARE_READ, NULL, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, NULL);
+#endif
 	int versionCode = ByteArrayRead::ReadInt(GlobalVariables::executableFile);
 	if (versionCode != GlobalVariables::version)
-		Exit("version " + QString::number(GlobalVariables::version) + " is required to run this code");
-
-	while (GlobalVariables::executableFile.bytesAvailable() > 0)
+		Exit("version " + std::to_string(GlobalVariables::version) + " is required to run this code");
+	
+	Instruction instruction = static_cast<Instruction>(ByteArrayRead::ReadByte(GlobalVariables::executableFile));
+	while (instruction != 0)
 	{
-		Instruction instruction = static_cast<Instruction>(ByteArrayRead::ReadByte(GlobalVariables::executableFile));
 		ParseCode(instruction);
+		instruction = static_cast<Instruction>(ByteArrayRead::ReadByte(GlobalVariables::executableFile));
 	}
 
 	for (auto& item : opCodes)

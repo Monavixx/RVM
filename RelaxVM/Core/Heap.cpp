@@ -1,7 +1,7 @@
 #include "Heap.h"
 #include "../Functions/GC.h"
 
-Heap::Heap(int maxSize) : maxSize(maxSize), size(0), currentIndex(0)
+Heap::Heap(size_t maxSize) : maxSize(maxSize), size(0), currentIndex(0)
 {
 	heap = new Object*[maxSize] {nullptr};
 }
@@ -31,7 +31,7 @@ int Heap::push_back(Object* const& data)
 }
 
 
-void Heap::Delete(int address)
+void Heap::Delete(size_t address)
 {
 	if (heap[address] != nullptr)
 	{

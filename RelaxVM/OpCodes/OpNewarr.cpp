@@ -7,7 +7,7 @@ void OpNewarr::Run()
 	frame->GetStack().push(GlobalVariables::heap.push_back(newArray));
 }
 
-void OpNewarr::Parse(QIODevice& device)
+void OpNewarr::Parse(HANDLE& device)
 {
 	dataType = ByteArrayRead::ReadSizeAndString(device);
 }

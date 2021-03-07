@@ -6,7 +6,7 @@ void OpPushBool::Run()
 	frame->GetStack().push(GlobalVariables::heap.push_back(pushingData));
 }
 
-void OpPushBool::Parse(QIODevice& device)
+void OpPushBool::Parse(HANDLE& device)
 {
 	data = (bool)ByteArrayRead::ReadByte(device);
 }

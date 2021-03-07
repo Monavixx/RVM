@@ -7,7 +7,7 @@ StdMethod::StdMethod(const MethodSignature& signature, std::function<Object*(Sta
 {
 }
 
-StdMethod::StdMethod(const QString& name, const QString& dataType, const QString& nameClass, const QVector<Parameter>& parameters, std::function<Object*(Stack&)> function, const AccessModifier& accessModifier, bool isStatic)
+StdMethod::StdMethod(const String& name, const String& dataType, const String& nameClass, const std::vector<Parameter>& parameters, std::function<Object*(Stack&)> function, const AccessModifier& accessModifier, bool isStatic)
 	:MethodSignature(name, dataType, nameClass, parameters), function(function), accessModifier(accessModifier), isStatic(isStatic)
 {
 }

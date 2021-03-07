@@ -9,6 +9,6 @@ void OpSetarr::Run()
 	arr->SetByIndex(index, data->GetAddress());
 }
 
-void OpSetarr::Parse(QIODevice& device)
+void OpSetarr::Parse(HANDLE& device)
 {
 }

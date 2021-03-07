@@ -13,7 +13,7 @@ void OpNew::Run()
 	}
 }
 
-void OpNew::Parse(QIODevice& device)
+void OpNew::Parse(HANDLE& device)
 {
 	isStd = ByteArrayRead::ReadByte(device);
 	className = ByteArrayRead::ReadSizeAndString(device);
@@ -21,8 +21,7 @@ void OpNew::Parse(QIODevice& device)
 
 	for (int i = 0; i < amountParameters; ++i)
 	{
-		QString parameterDataType = ByteArrayRead::ReadSizeAndString(device);
-		Parameter parameter(parameterDataType);
+		Parameter parameter(ByteArrayRead::ReadSizeAndString(device));
 		parameters.push_back(parameter);
 	}
 

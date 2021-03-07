@@ -1,17 +1,18 @@
 #pragma once
 #include "OpBase.h"
 #include "../Std/StdClassList.h"
+#include <vector>
 
 class OpNew : public OpBase
 {
 public:
 	void Run() override;
-	void Parse(QIODevice& device) override;
+	void Parse(HANDLE& device) override;
 
 private:
 	bool isStd;
-	QString className;
-	QVector<Parameter> parameters;
+	String className;
+	std::vector<Parameter> parameters;
 	StdClass* stdClass;
 	StdMethod* stdMethodConstruction;
 	Class* usrClass;

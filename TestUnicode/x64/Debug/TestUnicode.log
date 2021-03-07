@@ -1,3 +1,0 @@
-﻿  Source.cpp
-D:\Projects\C++\Relax\RVM\RelaxVM\Libs\ConsoleTextStream.h(19,34): warning C4244: аргумент: преобразование "__int64" в "DWORD", возможна потеря данных
-  TestUnicode.vcxproj -> D:\Projects\C++\Relax\RVM\x64\Debug\TestUnicode.exe

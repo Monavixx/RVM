@@ -1,12 +1,12 @@
 #include "Stack.h"
 #include "../GlobalVariables.h"
 
-void Stack::push(int index)
+void Stack::push(size_t index)
 {
 	if (stack == nullptr)
-		stack = new int [maxSize];
+		stack = new size_t[maxSize];
 
-	if (currentSize+1 > maxSize)
+	if (currentSize + 1 > maxSize)
 		Exit("Stack is small");
 
 	GlobalVariables::heap[index]->IncAmountUsers();
@@ -23,9 +23,13 @@ Object* Stack::pop()
 	return poppedObject;
 }
 
-int Stack::popIndex()
+size_t Stack::popAddress()
 {
-	return 0;
+	if (currentSize <= 0)
+		Exit("Stack is empty");
+	Object* poppedObject = GlobalVariables::heap[stack[--currentSize]];
+	poppedObject->DecAmountUsers();
+	return poppedObject->GetAddress();
 }
 
 Object* Stack::top()
@@ -35,7 +39,7 @@ Object* Stack::top()
 	return GlobalVariables::heap[stack[currentSize - 1]];
 }
 
-int& Stack::topIndex()
+size_t& Stack::topAddress()
 {
 	if (currentSize <= 0)
 		Exit("Stack is empty");

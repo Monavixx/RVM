@@ -17,6 +17,6 @@ void OpMul::Run()
 	operatorMul->CallFunction(frame);
 }
 
-void OpMul::Parse(QIODevice& device)
+void OpMul::Parse(HANDLE& device)
 {
 }

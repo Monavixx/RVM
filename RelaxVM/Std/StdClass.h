@@ -1,26 +1,26 @@
 #pragma once
-#include <QtCore>
+#include <vector>
 #include "StdMethod.h"
 
 class StdClass
 {
 public:
-	StdClass(const QString& name, const QVector<StdMethod>& methods = {});
+	StdClass(const String& name, const std::vector<StdMethod>& methods = {});
 
-	QString GetName() const;
-	QVector<StdMethod> GetMethods() const;
+	String GetName() const;
+	std::vector<StdMethod> GetMethods() const;
 
 	StdMethod* GetMethod(const MethodSignature& signature);
-	StdMethod* GetMethod(const QString& name, const QVector<Parameter>& parameters);
-	StdMethod* GetMethod(int index);
+	StdMethod* GetMethod(const String& name, const std::vector<Parameter>& parameters);
+	StdMethod* GetMethod(size_t index);
 
 	void AddMethod(const StdMethod& method);
 
-	void SetName(const QString& name);
-	void SetMethods(const QVector<StdMethod>& methods);
-	void SetMethod(int index, const StdMethod& method);
+	void SetName(const String& name);
+	void SetMethods(const std::vector<StdMethod>& methods);
+	void SetMethod(size_t index, const StdMethod& method);
 private:
-	QString name;
-	QVector<StdMethod> methods;
+	String name;
+	std::vector<StdMethod> methods;
 };
 

@@ -17,6 +17,6 @@ void OpAdd::Run()
 	operatorAdd->CallFunction(frame);
 }
 
-void OpAdd::Parse(QIODevice& device)
+void OpAdd::Parse(HANDLE& device)
 {
 }

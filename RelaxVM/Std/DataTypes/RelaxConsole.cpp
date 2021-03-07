@@ -1,7 +1,7 @@
 #include "RelaxConsole.h"
 #include "../StdClassList.h"
 
-QString RelaxConsole::GetDataType()
+String RelaxConsole::GetDataType()
 {
     return "Relax.Console";
 }
@@ -38,13 +38,13 @@ Object* RelaxConsole::Print(RelaxString* data)
 
 Object* RelaxConsole::Print(RelaxInt32* data)
 {
-	qout << QString::number(data->GetData());
+	qout << data->GetData();
 	return nullptr;
 }
 
 Object* RelaxConsole::Print(RelaxFloat* data)
 {
-	qout << QString::number(data->GetData());
+	qout << data->GetData();
 	return nullptr;
 }
 
@@ -63,22 +63,22 @@ void RelaxConsole::GenerateMetaInfo()
 {
 	metaClass = new StdClass("Relax.Console", {
 		// Write
-		StdMethod("Write", "void", "Relax.Console", QVector<Parameter>{Parameter("Relax.String")}, [&](Stack& stack) -> Object*
+		StdMethod("Write", "void", "Relax.Console", {Parameter("Relax.String")}, [&](Stack& stack) -> Object*
 		{
 			return RelaxConsole::Write(dynamic_cast<RelaxString*>(stack.pop()));
 		},AccessModifier::PUBLIC, true),
 
-		StdMethod("Write", "void", "Relax.Console", QVector<Parameter>{Parameter("Relax.Int32")}, [&](Stack& stack) -> Object*
+		StdMethod("Write", "void", "Relax.Console", {Parameter("Relax.Int32")}, [&](Stack& stack) -> Object*
 		{
 			return RelaxConsole::Write(dynamic_cast<RelaxInt32*>(stack.pop()));
 		},AccessModifier::PUBLIC, true),
 
-		StdMethod("Write", "void", "Relax.Console", QVector<Parameter>{Parameter("Relax.Float")}, [&](Stack& stack) -> Object*
+		StdMethod("Write", "void", "Relax.Console", {Parameter("Relax.Float")}, [&](Stack& stack) -> Object*
 		{
 			return RelaxConsole::Write(dynamic_cast<RelaxFloat*>(stack.pop()));
 		},AccessModifier::PUBLIC, true),
 
-		StdMethod("Write", "void", "Relax.Console", QVector<Parameter>{Parameter("Relax.Bool")}, [&](Stack& stack) -> Object*
+		StdMethod("Write", "void", "Relax.Console", {Parameter("Relax.Bool")}, [&](Stack& stack) -> Object*
 		{
 			return RelaxConsole::Write(dynamic_cast<RelaxBool*>(stack.pop()));
 		},AccessModifier::PUBLIC, true),
@@ -90,46 +90,46 @@ void RelaxConsole::GenerateMetaInfo()
 		},AccessModifier::PUBLIC, true)
 	});
 
-	if (Args::args.contains("-print2write"))
+	if (Args::contains("-p2w"))
 	{
-		metaClass->AddMethod(StdMethod("Print", "void", "Relax.Console", QVector<Parameter>{Parameter("Relax.String")}, [&](Stack& stack) -> Object*
+		metaClass->AddMethod(StdMethod("Print", "void", "Relax.Console", {Parameter("Relax.String")}, [&](Stack& stack) -> Object*
 			{
 				return RelaxConsole::Write(dynamic_cast<RelaxString*>(stack.pop()));
 			}, AccessModifier::PUBLIC, true));
 
-		metaClass->AddMethod(StdMethod("Print", "void", "Relax.Console", QVector<Parameter>{Parameter("Relax.Int32")}, [&](Stack& stack) -> Object*
+		metaClass->AddMethod(StdMethod("Print", "void", "Relax.Console", {Parameter("Relax.Int32")}, [&](Stack& stack) -> Object*
 			{
 				return RelaxConsole::Write(dynamic_cast<RelaxInt32*>(stack.pop()));
 			}, AccessModifier::PUBLIC, true));
 
-		metaClass->AddMethod(StdMethod("Print", "void", "Relax.Console", QVector<Parameter>{Parameter("Relax.Float")}, [&](Stack& stack) -> Object*
+		metaClass->AddMethod(StdMethod("Print", "void", "Relax.Console", {Parameter("Relax.Float")}, [&](Stack& stack) -> Object*
 			{
 				return RelaxConsole::Write(dynamic_cast<RelaxFloat*>(stack.pop()));
 			}, AccessModifier::PUBLIC, true));
 
-		metaClass->AddMethod(StdMethod("Print", "void", "Relax.Console", QVector<Parameter>{Parameter("Relax.Bool")}, [&](Stack& stack) -> Object*
+		metaClass->AddMethod(StdMethod("Print", "void", "Relax.Console", {Parameter("Relax.Bool")}, [&](Stack& stack) -> Object*
 			{
 				return RelaxConsole::Write(dynamic_cast<RelaxBool*>(stack.pop()));
 			}, AccessModifier::PUBLIC, true));
 	}
 	else
 	{
-		metaClass->AddMethod(StdMethod("Print", "void", "Relax.Console", QVector<Parameter>{Parameter("Relax.String")}, [&](Stack& stack) -> Object*
+		metaClass->AddMethod(StdMethod("Print", "void", "Relax.Console", {Parameter("Relax.String")}, [&](Stack& stack) -> Object*
 			{
 				return RelaxConsole::Print(dynamic_cast<RelaxString*>(stack.pop()));
 			}, AccessModifier::PUBLIC, true));
 
-		metaClass->AddMethod(StdMethod("Print", "void", "Relax.Console", QVector<Parameter>{Parameter("Relax.Int32")}, [&](Stack& stack) -> Object*
+		metaClass->AddMethod(StdMethod("Print", "void", "Relax.Console", {Parameter("Relax.Int32")}, [&](Stack& stack) -> Object*
 			{
 				return RelaxConsole::Print(dynamic_cast<RelaxInt32*>(stack.pop()));
 			}, AccessModifier::PUBLIC, true));
 
-		metaClass->AddMethod(StdMethod("Print", "void", "Relax.Console", QVector<Parameter>{Parameter("Relax.Float")}, [&](Stack& stack) -> Object*
+		metaClass->AddMethod(StdMethod("Print", "void", "Relax.Console", {Parameter("Relax.Float")}, [&](Stack& stack) -> Object*
 			{
 				return RelaxConsole::Print(dynamic_cast<RelaxFloat*>(stack.pop()));
 			}, AccessModifier::PUBLIC, true));
 
-		metaClass->AddMethod(StdMethod("Print", "void", "Relax.Console", QVector<Parameter>{Parameter("Relax.Bool")}, [&](Stack& stack) -> Object*
+		metaClass->AddMethod(StdMethod("Print", "void", "Relax.Console", {Parameter("Relax.Bool")}, [&](Stack& stack) -> Object*
 			{
 				return RelaxConsole::Print(dynamic_cast<RelaxBool*>(stack.pop()));
 			}, AccessModifier::PUBLIC, true));

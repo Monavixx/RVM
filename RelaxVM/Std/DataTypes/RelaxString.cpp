@@ -1,21 +1,21 @@
 #include "RelaxString.h"
 #include "../StdClass.h"
 
-RelaxString::RelaxString(const QString& data) : data(data)
+RelaxString::RelaxString(const String& data) : data(data)
 {
 }
 
-QString RelaxString::GetDataType()
+String RelaxString::GetDataType()
 {
     return "Relax.String";
 }
 
-QString RelaxString::GetData()
+String RelaxString::GetData()
 {
     return this->data;
 }
 
-void RelaxString::SetData(const QString& data)
+void RelaxString::SetData(const String& data)
 {
     this->data = data;
 }
@@ -38,17 +38,17 @@ RelaxBool* RelaxString::operator==(RelaxString* other)
 void RelaxString::GenerateMetaInfo()
 {
 	metaClass = new StdClass("Relax.String", {
-		StdMethod("Concat", "Relax.String", "Relax.String", QVector<Parameter>{Parameter("Relax.String")}, [&](Stack& stack) -> Object*
+		StdMethod("Concat", "Relax.String", "Relax.String", {Parameter("Relax.String")}, [&](Stack& stack) -> Object*
 		{
 			RelaxString* thisObject = dynamic_cast<RelaxString*>(stack.pop());
 			return thisObject->Concat(dynamic_cast<RelaxString*>(stack.pop()));
 		}, AccessModifier::PUBLIC, false),
-		StdMethod("operator+", "Relax.String", "Relax.String", QVector<Parameter>{Parameter("Relax.String")}, [&](Stack& stack) -> Object*
+		StdMethod("operator+", "Relax.String", "Relax.String", {Parameter("Relax.String")}, [&](Stack& stack) -> Object*
 		{
 			RelaxString* thisObject = dynamic_cast<RelaxString*>(stack.pop());
 			return *thisObject + dynamic_cast<RelaxString*>(stack.pop());
 		}, AccessModifier::PUBLIC, false),
-		StdMethod("operator==", "Relax.Bool", "Relax.String", QVector<Parameter>{Parameter("Relax.String")}, [&](Stack& stack) -> Object*
+		StdMethod("operator==", "Relax.Bool", "Relax.String", {Parameter("Relax.String")}, [&](Stack& stack) -> Object*
 		{
 			RelaxString* thisObject = dynamic_cast<RelaxString*>(stack.pop());
 			return *thisObject == dynamic_cast<RelaxString*>(stack.pop());

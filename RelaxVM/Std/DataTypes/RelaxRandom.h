@@ -6,7 +6,7 @@ class RelaxRandom : public Object
 {
 public:
 	RelaxRandom() {}
-	QString GetDataType() override;
+	String GetDataType() override;
 	static RelaxInt32* GenerateInt32();
 	static RelaxInt32* GenerateInt32(int min, int max);
 

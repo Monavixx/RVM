@@ -4,7 +4,7 @@
 class ClassList : public vector<Class*>
 {
 public:
-	ClassList();
+	ClassList() {}
 	ClassList(const vector<Class*>& classList);
 	ClassList(const ClassList& classList);
 

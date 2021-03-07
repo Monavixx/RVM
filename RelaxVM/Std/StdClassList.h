@@ -10,8 +10,9 @@
 #include "DataTypes/RelaxConverter.h"
 #include "../Libs/ConsoleTextStream.h"
 #include "../Args.h"
+#include <unordered_map>
 
-class StdClassList : public QHash<QString, StdClass*>
+class StdClassList : public std::unordered_map<String, StdClass*>
 {
 public:
 	static StdClassList* GetInstance();

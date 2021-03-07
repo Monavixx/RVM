@@ -7,7 +7,7 @@ void OpMclass::Run()
 	GlobalVariables::mainClass = newClass;
 }
 
-void OpMclass::Parse(QIODevice& device)
+void OpMclass::Parse(HANDLE& device)
 {
 	className = ByteArrayRead::ReadSizeAndString(device);
 }

@@ -7,6 +7,6 @@ void OpDeref::Run()
 	frame->GetStack().push(pointer->GetPointerAddress());
 }
 
-void OpDeref::Parse(QIODevice& device)
+void OpDeref::Parse(HANDLE& device)
 {
 }

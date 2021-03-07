@@ -1,9 +1,5 @@
 #include "ClassList.h"
 
-ClassList::ClassList()
-{
-}
-
 ClassList::ClassList(const vector<Class*>& classList) : std::vector<Class*>(classList)
 {
 }

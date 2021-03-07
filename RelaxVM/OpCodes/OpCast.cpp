@@ -23,9 +23,9 @@ void OpCast::Run()
 	}
 }
 
-void OpCast::Parse(QIODevice& device)
+void OpCast::Parse(HANDLE& device)
 {
-	isStd = ByteArrayRead::ReadByte(device);
+	isStd = ByteArrayRead::ReadByte(GlobalVariables::executableFile);
 	dataType = ByteArrayRead::ReadSizeAndString(device);
 
 	if (isStd)

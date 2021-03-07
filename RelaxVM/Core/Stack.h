@@ -1,5 +1,4 @@
 #pragma once
-#include <QtCore>
 #include "../Std/DataTypes/Object.h"
 #include "../Functions/Exit.h"
 
@@ -8,13 +7,13 @@ class Stack
 {
 public:
 	Stack() : stack(nullptr) {}
-	void push(int index);
+	void push(size_t index);
 	Object* pop();
-	int popIndex();
+	size_t popAddress();
 
 	Object* top();
 
-	int& topIndex();
+	size_t& topAddress();
 
 	inline bool isEmpty()
 	{
@@ -23,14 +22,14 @@ public:
 
 	~Stack();
 
-	inline void SetMaxSize(int maxSize)
+	inline void SetMaxSize(size_t maxSize)
 	{
 		this->maxSize = maxSize;
 	}
 
 private:
-	int currentSize = 0;
-	int maxSize = 0;
-	int* stack;
+	size_t currentSize = 0;
+	size_t maxSize = 0;
+	size_t* stack;
 };
 

@@ -7,6 +7,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "RelaxVM", "RelaxVM\RelaxVM.
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TestUnicode", "TestUnicode\TestUnicode.vcxproj", "{365795DC-153B-455A-82B9-CBDF991789BE}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "test", "test\test.vcxproj", "{063B569C-FD22-4604-964F-6B95818D8AFC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -29,6 +31,12 @@ Global
 		{365795DC-153B-455A-82B9-CBDF991789BE}.Release|x64.Build.0 = Release|x64
 		{365795DC-153B-455A-82B9-CBDF991789BE}.Release|x86.ActiveCfg = Release|Win32
 		{365795DC-153B-455A-82B9-CBDF991789BE}.Release|x86.Build.0 = Release|Win32
+		{063B569C-FD22-4604-964F-6B95818D8AFC}.Debug|x64.ActiveCfg = Debug|x64
+		{063B569C-FD22-4604-964F-6B95818D8AFC}.Debug|x64.Build.0 = Debug|x64
+		{063B569C-FD22-4604-964F-6B95818D8AFC}.Debug|x86.ActiveCfg = Debug|x64
+		{063B569C-FD22-4604-964F-6B95818D8AFC}.Release|x64.ActiveCfg = Release|x64
+		{063B569C-FD22-4604-964F-6B95818D8AFC}.Release|x64.Build.0 = Release|x64
+		{063B569C-FD22-4604-964F-6B95818D8AFC}.Release|x86.ActiveCfg = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

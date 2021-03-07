@@ -5,7 +5,7 @@ class RelaxBool : public Object
 {
 public:
 	RelaxBool(bool data);
-	QString GetDataType() override;
+	String GetDataType() override;
 	bool GetData();
 	void SetData(bool data);
 

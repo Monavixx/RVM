@@ -17,6 +17,6 @@ void OpSub::Run()
 	operatorSub->CallFunction(frame);
 }
 
-void OpSub::Parse(QIODevice& device)
+void OpSub::Parse(HANDLE& device)
 {
 }

@@ -233,11 +233,17 @@
     <ClCompile Include="OpCodes\OpDeref.cpp">
       <Filter>Source Files\OpCodes</Filter>
     </ClCompile>
-    <ClCompile Include="Functions\GC.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Libs\String.cpp">
       <Filter>Source Files\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Exceptions\ExitException.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Exceptions\Exception.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Functions\GC.cpp">
+      <Filter>Source Files\Functions</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -433,11 +439,11 @@
     <ClInclude Include="OpCodes\OpSetpd.h">
       <Filter>Header Files\OpCodes</Filter>
     </ClInclude>
-    <ClInclude Include="Functions\GC.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Libs\String.h">
       <Filter>Header Files\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Functions\GC.h">
+      <Filter>Header Files\Functions</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

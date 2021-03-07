@@ -7,8 +7,8 @@ class OpNewarr : public OpBase
 {
 public:
 	void Run() override;
-	void Parse(QIODevice& device) override;
+	void Parse(HANDLE& device) override;
 
 private:
-	QString dataType;
+	String dataType;
 };

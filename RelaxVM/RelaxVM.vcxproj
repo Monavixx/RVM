@@ -118,6 +118,8 @@
     <ClCompile Include="Core\Stack.cpp" />
     <ClCompile Include="Core\Variable.cpp" />
     <ClCompile Include="Core\VariableList.cpp" />
+    <ClCompile Include="Exceptions\Exception.cpp" />
+    <ClCompile Include="Exceptions\ExitException.cpp" />
     <ClCompile Include="Functions\ExecuteMethod.cpp" />
     <ClCompile Include="Functions\Exit.cpp" />
     <ClCompile Include="Functions\GC.cpp" />
