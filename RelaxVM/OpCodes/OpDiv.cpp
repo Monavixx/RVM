@@ -7,14 +7,14 @@ void OpDiv::Run()
 	frame->GetStack().push(secondData->GetAddress());
 	frame->GetStack().push(firstData->GetAddress());
 
-	StdClass* declClass = (*StdClassList::GetInstance())[firstData->GetDataType()];
+	Class* declClass = GlobalVariables::classes[firstData->GetDataType()];
 	if (declClass == nullptr)
 		Exit("Div: decl class not found");
-	StdMethod* operatorDiv = declClass->GetMethod("operator/", { Parameter(secondData->GetDataType()) });
+	IMethod* operatorDiv = declClass->GetMethod("operator/", { Parameter(secondData->GetDataType()) });
 	if (operatorDiv == nullptr)
 		Exit("Div: operator/ not found");
 
-	operatorDiv->CallFunction(frame);
+	operatorDiv->CallMethod(frame);
 }
 
 void OpDiv::Parse(HANDLE& device)

@@ -1,5 +1,7 @@
 #include "RelaxFloat.h"
 #include "RelaxInt32.h"
+#include "../../Core/Class.h"
+#include "../../Core/StdMethod.h"
 
 RelaxFloat::RelaxFloat(float data) : data(data)
 {
@@ -47,44 +49,44 @@ RelaxFloat* RelaxFloat::cast(RelaxInt32* data)
 
 void RelaxFloat::GenerateMetaInfo()
 {
-	metaClass = new StdClass("Relax.Float", {
+	metaClass = new Class("Relax.Float", {
 		// operator==
-		StdMethod("operator==", "Relax.Bool", "Relax.Float", {Parameter("Relax.Float")}, [&](Stack& stack) -> Object*
+		new StdMethod("operator==", "Relax.Bool", "Relax.Float", {Parameter("Relax.Float")}, [&](Stack& stack) -> Object*
 		{
 			RelaxFloat* thisObject = dynamic_cast<RelaxFloat*>(stack.pop());
 			return *thisObject == dynamic_cast<RelaxFloat*>(stack.pop());
 		},AccessModifier::PUBLIC, false),
 
 		// operator+
-		StdMethod("operator+", "Relax.Float", "Relax.Float", {Parameter("Relax.Float")}, [&](Stack& stack) -> Object*
+		new StdMethod("operator+", "Relax.Float", "Relax.Float", {Parameter("Relax.Float")}, [&](Stack& stack) -> Object*
 		{
 			RelaxFloat* thisObject = dynamic_cast<RelaxFloat*>(stack.pop());
 			return *thisObject + dynamic_cast<RelaxFloat*>(stack.pop());
 		},AccessModifier::PUBLIC, false),
 
 		// operator-
-		StdMethod("operator-", "Relax.Float", "Relax.Float", {Parameter("Relax.Float")}, [&](Stack& stack) -> Object*
+		new StdMethod("operator-", "Relax.Float", "Relax.Float", {Parameter("Relax.Float")}, [&](Stack& stack) -> Object*
 		{
 			RelaxFloat* thisObject = dynamic_cast<RelaxFloat*>(stack.pop());
 			return *thisObject - dynamic_cast<RelaxFloat*>(stack.pop());
 		},AccessModifier::PUBLIC, false),
 
 		// operator*
-		StdMethod("operator*", "Relax.Float", "Relax.Float", {Parameter("Relax.Float")}, [&](Stack& stack) -> Object*
+		new StdMethod("operator*", "Relax.Float", "Relax.Float", {Parameter("Relax.Float")}, [&](Stack& stack) -> Object*
 		{
 			RelaxFloat* thisObject = dynamic_cast<RelaxFloat*>(stack.pop());
 			return *thisObject * dynamic_cast<RelaxFloat*>(stack.pop());
 		},AccessModifier::PUBLIC, false),
 
 		// operator/
-		StdMethod("operator/", "Relax.Float", "Relax.Float", {Parameter("Relax.Float")}, [&](Stack& stack) -> Object*
+		new StdMethod("operator/", "Relax.Float", "Relax.Float", {Parameter("Relax.Float")}, [&](Stack& stack) -> Object*
 		{
 			RelaxFloat* thisObject = dynamic_cast<RelaxFloat*>(stack.pop());
 			return *thisObject / dynamic_cast<RelaxFloat*>(stack.pop());
 		},AccessModifier::PUBLIC, false),
 
 		// cast
-		StdMethod("cast", "Relax.Float", "Relax.Float", {Parameter("Relax.Int32")}, [&](Stack& stack) -> Object*
+		new StdMethod("cast", "Relax.Float", "Relax.Float", {Parameter("Relax.Int32")}, [&](Stack& stack) -> Object*
 		{
 			RelaxInt32* data = dynamic_cast<RelaxInt32*>(stack.pop());
 			return RelaxFloat::cast(data);

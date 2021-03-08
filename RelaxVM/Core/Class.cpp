@@ -1,6 +1,6 @@
 #include "Class.h"
 
-Class::Class(const String& name, const vector<Method*>& methods, const std::unordered_map<String, Field*>& fields = {})
+Class::Class(const String& name, const vector<IMethod*>& methods, const std::unordered_map<String, Field*>& fields)
 	:name(name), methods(methods), fields(fields)
 {
 }
@@ -13,24 +13,14 @@ Class::~Class()
 	}
 }
 
-Method* Class::GetMethod(const String& name, const vector<Parameter>& parameters)
+IMethod* Class::GetMethod(const String& name, const vector<Parameter>& parameters)
 {
-	auto methodIterator = std::find_if(methods.begin(), methods.end(), [&](Method* method) {
+	auto methodIterator = std::find_if(methods.begin(), methods.end(), [&](IMethod* method) {
 		if (name != method->GetName()) return false;
 		if (parameters != method->GetParameters()) return false;
 		return true;
 	});
 	if(methodIterator == methods.end())
-		return nullptr;
-	return *methodIterator;
-}
-
-Method* Class::GetMethod(MethodSignature* signature)
-{
-	auto methodIterator = std::find_if(methods.begin(), methods.end(), [&](Method* method) {
-		return signature == dynamic_cast<MethodSignature*>(method);
-	});
-	if (methodIterator == methods.end())
 		return nullptr;
 	return *methodIterator;
 }

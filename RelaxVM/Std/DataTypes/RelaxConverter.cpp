@@ -1,4 +1,6 @@
 #include "RelaxConverter.h"
+#include "../../Core/Class.h"
+#include "../../Core/StdMethod.h"
 
 RelaxInt32* RelaxConverter::StringToInt32(RelaxString* data)
 {
@@ -16,15 +18,15 @@ RelaxString* RelaxConverter::Int32ToString(RelaxInt32* data)
 
 void RelaxConverter::GenerateMetaInfo()
 {
-    metaClass = new StdClass("Relax.Converter", {
+    metaClass = new Class("Relax.Converter", {
 		// Int32ToString
-		StdMethod("Int32ToString", "Relax.String", "Relax.Converter", {Parameter("Relax.Int32")}, [&](Stack& stack) -> Object*
+		new StdMethod("Int32ToString", "Relax.String", "Relax.Converter", {Parameter("Relax.Int32")}, [&](Stack& stack) -> Object*
 		{
 			return RelaxConverter::Int32ToString(dynamic_cast<RelaxInt32*>(stack.pop()));
 		},AccessModifier::PUBLIC, true),
 
 		// StringToInt32
-		StdMethod("StringToInt32", "Relax.Int32", "Relax.Converter", {Parameter("Relax.String")}, [&](Stack& stack) -> Object*
+		new StdMethod("StringToInt32", "Relax.Int32", "Relax.Converter", {Parameter("Relax.String")}, [&](Stack& stack) -> Object*
 		{
 			return RelaxConverter::StringToInt32(dynamic_cast<RelaxString*>(stack.pop()));
 		},AccessModifier::PUBLIC, true)

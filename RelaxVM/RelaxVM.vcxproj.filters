@@ -54,6 +54,9 @@
     <Filter Include="Source Files\Core">
       <UniqueIdentifier>{98524a45-76cd-499b-ba3c-b4398cd066a2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Exceptions">
+      <UniqueIdentifier>{cb9bdc6d-d883-4ce4-9cdd-49ca7cb4e2ec}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Program.cpp">
@@ -67,9 +70,6 @@
     </ClCompile>
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Core\MethodSignature.cpp">
-      <Filter>Source Files\Core</Filter>
     </ClCompile>
     <ClCompile Include="Core\Parameter.cpp">
       <Filter>Source Files\Core</Filter>
@@ -185,15 +185,6 @@
     <ClCompile Include="Std\RelaxNull.cpp">
       <Filter>Source Files\Std</Filter>
     </ClCompile>
-    <ClCompile Include="Std\StdClass.cpp">
-      <Filter>Source Files\Std</Filter>
-    </ClCompile>
-    <ClCompile Include="Std\StdClassList.cpp">
-      <Filter>Source Files\Std</Filter>
-    </ClCompile>
-    <ClCompile Include="Std\StdMethod.cpp">
-      <Filter>Source Files\Std</Filter>
-    </ClCompile>
     <ClCompile Include="Std\DataTypes\RelaxString.cpp">
       <Filter>Source Files\Std\DataTypes</Filter>
     </ClCompile>
@@ -236,17 +227,23 @@
     <ClCompile Include="Libs\String.cpp">
       <Filter>Source Files\Core</Filter>
     </ClCompile>
-    <ClCompile Include="Exceptions\ExitException.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Exceptions\Exception.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Functions\GC.cpp">
       <Filter>Source Files\Functions</Filter>
     </ClCompile>
     <ClCompile Include="Core\Field.cpp">
+      <Filter>Source Files\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Exceptions\Exception.cpp">
+      <Filter>Source Files\Exceptions</Filter>
+    </ClCompile>
+    <ClCompile Include="Exceptions\ExitException.cpp">
+      <Filter>Source Files\Exceptions</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\IMethod.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\StdMethod.cpp">
+      <Filter>Source Files\Core</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -296,9 +293,6 @@
       <Filter>Header Files\Core</Filter>
     </ClInclude>
     <ClInclude Include="Core\Method.h">
-      <Filter>Header Files\Core</Filter>
-    </ClInclude>
-    <ClInclude Include="Core\MethodSignature.h">
       <Filter>Header Files\Core</Filter>
     </ClInclude>
     <ClInclude Include="Enums\AccessModifier.h">
@@ -394,15 +388,6 @@
     <ClInclude Include="Std\RelaxNull.h">
       <Filter>Header Files\Std</Filter>
     </ClInclude>
-    <ClInclude Include="Std\StdClass.h">
-      <Filter>Header Files\Std</Filter>
-    </ClInclude>
-    <ClInclude Include="Std\StdClassList.h">
-      <Filter>Header Files\Std</Filter>
-    </ClInclude>
-    <ClInclude Include="Std\StdMethod.h">
-      <Filter>Header Files\Std</Filter>
-    </ClInclude>
     <ClInclude Include="Std\DataTypes\Object.h">
       <Filter>Header Files\Std\DataTypes</Filter>
     </ClInclude>
@@ -449,7 +434,13 @@
       <Filter>Header Files\Functions</Filter>
     </ClInclude>
     <ClInclude Include="Core\Field.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\StdMethod.h">
+      <Filter>Header Files\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\IMethod.h">
+      <Filter>Header Files\Core</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

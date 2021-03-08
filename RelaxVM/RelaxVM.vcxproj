@@ -113,10 +113,11 @@
     <ClCompile Include="Core\Field.cpp" />
     <ClCompile Include="Core\Frame.cpp" />
     <ClCompile Include="Core\Heap.cpp" />
+    <ClCompile Include="Core\IMethod.cpp" />
     <ClCompile Include="Core\Method.cpp" />
-    <ClCompile Include="Core\MethodSignature.cpp" />
     <ClCompile Include="Core\Parameter.cpp" />
     <ClCompile Include="Core\Stack.cpp" />
+    <ClCompile Include="Core\StdMethod.cpp" />
     <ClCompile Include="Core\Variable.cpp" />
     <ClCompile Include="Core\VariableList.cpp" />
     <ClCompile Include="Exceptions\Exception.cpp" />
@@ -168,9 +169,6 @@
     <ClCompile Include="Std\DataTypes\RelaxRandom.cpp" />
     <ClCompile Include="Std\DataTypes\RelaxString.cpp" />
     <ClCompile Include="Std\RelaxNull.cpp" />
-    <ClCompile Include="Std\StdClass.cpp" />
-    <ClCompile Include="Std\StdClassList.cpp" />
-    <ClCompile Include="Std\StdMethod.cpp" />
     <ClCompile Include="VirtualMachine.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -180,10 +178,11 @@
     <ClInclude Include="Core\Field.h" />
     <ClInclude Include="Core\Frame.h" />
     <ClInclude Include="Core\Heap.h" />
+    <ClInclude Include="Core\IMethod.h" />
     <ClInclude Include="Core\Method.h" />
-    <ClInclude Include="Core\MethodSignature.h" />
     <ClInclude Include="Core\Parameter.h" />
     <ClInclude Include="Core\Stack.h" />
+    <ClInclude Include="Core\StdMethod.h" />
     <ClInclude Include="Core\Variable.h" />
     <ClInclude Include="Core\VariableList.h" />
     <ClInclude Include="Enums\AccessModifier.h" />
@@ -237,9 +236,6 @@
     <ClInclude Include="Std\DataTypes\RelaxRandom.h" />
     <ClInclude Include="Std\DataTypes\RelaxString.h" />
     <ClInclude Include="Std\RelaxNull.h" />
-    <ClInclude Include="Std\StdClass.h" />
-    <ClInclude Include="Std\StdClassList.h" />
-    <ClInclude Include="Std\StdMethod.h" />
     <ClInclude Include="VirtualMachine.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

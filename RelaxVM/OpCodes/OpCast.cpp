@@ -4,40 +4,18 @@ void OpCast::Run()
 {
 	Object* data = frame->GetStack().top();
 	
-	if (isStd)
-	{
-		StdMethod* stdMethodCast = declStdClass->GetMethod("cast", { Parameter(data->GetDataType()) });
-		if (stdMethodCast == nullptr)
-			Exit("cast: cast not found");
+	IMethod* methodCast = declClass->GetMethod("cast", { Parameter(data->GetDataType()) });
+	if (methodCast == nullptr)
+		Exit("cast: method cast not found");
 
-		stdMethodCast->CallFunction(frame);
-	}
-	else
-	{
-		Method* methodCast = declClass->GetMethod("cast", { Parameter(data->GetDataType()) });
-		if (methodCast == nullptr)
-			Exit("cast: cast not found");
-
-
-		methodCast->CallMethod(frame);
-	}
+	methodCast->CallMethod(frame);
 }
 
 void OpCast::Parse(HANDLE& device)
 {
-	isStd = ByteArrayRead::ReadByte(GlobalVariables::executableFile);
 	dataType = ByteArrayRead::ReadSizeAndString(device);
-
-	if (isStd)
-	{
-		declStdClass = (*StdClassList::GetInstance())[dataType];
-		if (declStdClass == nullptr)
-			Exit("cast: decl class not found");
-	}
-	else
-	{
-		declClass = GlobalVariables::classes.FindClassByName(dataType);
-		if (declClass == nullptr)
-			Exit("cast: decl class not found");
-	}
+	
+	declClass = GlobalVariables::classes[dataType];
+	if (declClass == nullptr)
+		Exit("cast: decl class not found");
 }

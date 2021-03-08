@@ -1,5 +1,6 @@
 #include "Object.h"
-#include "../StdClass.h"
+#include "../../Core/Class.h"
+#include "../../Core/StdMethod.h"
 
 Object::Object(size_t amountUsers) : amountUsers(amountUsers)
 {
@@ -37,5 +38,5 @@ size_t Object::GetAddress() const
 
 void Object::GenerateMetaInfo()
 {
-	metaClass = new StdClass("Relax.Object");
+	metaClass = new Class("Relax.Object");
 }

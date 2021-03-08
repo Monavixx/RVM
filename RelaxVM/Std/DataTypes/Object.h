@@ -20,7 +20,7 @@ public:
 	size_t GetAddress() const;
 
 	static void GenerateMetaInfo();
-	static inline class StdClass* metaClass = nullptr;
+	static inline class Class* metaClass = nullptr;
 private:
 	size_t amountUsers = 0;
 	size_t address;

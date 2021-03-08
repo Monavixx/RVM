@@ -1,5 +1,6 @@
 #include "RelaxArray.h"
-#include "../StdClass.h"
+#include "../../Core/Class.h"
+#include "../../Core/StdMethod.h"
 #include "../../GlobalVariables.h"
 
 RelaxArray::RelaxArray(const String& dataType, asizet size) : dataType(dataType), size(size)
@@ -49,8 +50,8 @@ int RelaxArray::GetByIndex(asizet index)
 
 void RelaxArray::GenerateMetaInfo()
 {
-	metaClass = new StdClass("Relax.Array", {
-		StdMethod("Size", "Relax.Int32", "Relax.Array", {}, [&](Stack& stack) -> Object*
+	metaClass = new Class("Relax.Array", {
+		new StdMethod("Size", "Relax.Int32", "Relax.Array", {}, [&](Stack& stack) -> Object*
 		{
 			return dynamic_cast<RelaxArray*>(stack.pop())->GetSize();
 		},AccessModifier::PUBLIC, false),

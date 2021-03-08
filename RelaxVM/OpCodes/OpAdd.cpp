@@ -7,14 +7,14 @@ void OpAdd::Run()
 	frame->GetStack().push(secondData->GetAddress());
 	frame->GetStack().push(firstData->GetAddress());
 
-	StdClass* declClass = (*StdClassList::GetInstance())[firstData->GetDataType()];
+	Class* declClass = GlobalVariables::classes[firstData->GetDataType()];
 	if (declClass == nullptr)
 		Exit("Add: decl class not found");
-	StdMethod* operatorAdd = declClass->GetMethod("operator+", { Parameter(secondData->GetDataType()) });
+	IMethod* operatorAdd = declClass->GetMethod("operator+", { Parameter(secondData->GetDataType()) });
 	if (operatorAdd == nullptr)
 		Exit("Add: operator+ not found");
 
-	operatorAdd->CallFunction(frame);
+	operatorAdd->CallMethod(frame);
 }
 
 void OpAdd::Parse(HANDLE& device)

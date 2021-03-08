@@ -1,7 +1,8 @@
 #include "Frame.h"
 #include "../GlobalVariables.h"
+#include "Method.h"
 
-Frame::Frame(Method* method, const VariableList& variableList) : method(method), variables(variableList)
+Frame::Frame(IMethod* method, const VariableList& variableList) : method(method), variables(variableList)
 {
 }
 
@@ -10,7 +11,7 @@ Variable* Frame::GetVariable(size_t id)
     return &variables[id];
 }
 
-Method* Frame::GetMethod() const
+IMethod* Frame::GetMethod() const
 {
     return method;
 }
@@ -20,7 +21,7 @@ VariableList Frame::GetVariableList() const
     return variables;
 }
 
-void Frame::SetMethod(Method* method)
+void Frame::SetMethod(IMethod* method)
 {
     this->method = method;
 }
@@ -44,12 +45,12 @@ Stack& Frame::GetStack()
 
 OpBase* Frame::Next()
 {
-    return method->GetCode()[index++];
+    return dynamic_cast<Method*>(method)->GetCode()[index++];
 }
 
 bool Frame::IsEnd()
 {
-    return index >= method->GetCode().size();
+    return index >= dynamic_cast<Method*>(method)->GetCode().size();
 }
 
 void Frame::SetIndex(size_t index)

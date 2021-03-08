@@ -1,19 +1,30 @@
 #include "ClassList.h"
 
-ClassList::ClassList(const vector<Class*>& classList) : std::vector<Class*>(classList)
+ClassList::ClassList(const std::unordered_map<String, Class*>& classList) : std::unordered_map<String, Class*>(classList)
 {
 }
 
-ClassList::ClassList(const ClassList& classList) : std::vector<Class*>(classList)
+ClassList::ClassList(const ClassList& classList) : std::unordered_map<String, Class*>(classList)
 {
 }
 
-Class* ClassList::FindClassByName(const String& name)
+void ClassList::CreateStdClasses()
 {
-	auto classIterator = std::find_if(this->begin(), this->end(), [&](Class* _class) {
-		return _class->GetName() == name;
-	});
-	if(classIterator == this->end())
-		return nullptr;
-	return *classIterator;
+	RelaxConsole::GenerateMetaInfo();
+	RelaxString::GenerateMetaInfo();
+	RelaxArray::GenerateMetaInfo();
+	RelaxInt32::GenerateMetaInfo();
+	RelaxFloat::GenerateMetaInfo();
+	RelaxRandom::GenerateMetaInfo();
+	RelaxConverter::GenerateMetaInfo();
+	Object::GenerateMetaInfo();
+
+	AddClass(RelaxConsole::metaClass);
+	AddClass(RelaxString::metaClass);
+	AddClass(RelaxArray::metaClass);
+	AddClass(RelaxInt32::metaClass);
+	AddClass(RelaxFloat::metaClass);
+	AddClass(RelaxRandom::metaClass);
+	AddClass(RelaxConverter::metaClass);
+	AddClass(Object::metaClass);
 }

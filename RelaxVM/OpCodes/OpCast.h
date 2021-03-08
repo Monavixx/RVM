@@ -1,6 +1,5 @@
 #pragma once
 #include "OpBase.h"
-#include "../Std/StdClassList.h"
 #include "../Functions/ExecuteMethod.h"
 
 class OpCast : public OpBase
@@ -11,7 +10,5 @@ public:
 
 private:
 	String dataType;
-	bool isStd;
 	Class* declClass;
-	StdClass* declStdClass;
 };

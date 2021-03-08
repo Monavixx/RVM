@@ -20,7 +20,7 @@ public:
 	RelaxBool* operator==(RelaxString* other);
 	
 	static void GenerateMetaInfo();
-	static inline class StdClass* metaClass = nullptr;
+	static inline class Class* metaClass = nullptr;
 
 private:
 	String data;

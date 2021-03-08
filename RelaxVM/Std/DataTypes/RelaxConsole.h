@@ -31,6 +31,6 @@ public:
 	static RelaxString* Read();
 
 	static void GenerateMetaInfo();
-	static inline class StdClass* metaClass = nullptr;
+	static inline class Class* metaClass = nullptr;
 };
 

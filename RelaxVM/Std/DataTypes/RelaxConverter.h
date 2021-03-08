@@ -18,6 +18,6 @@ public:
 	static RelaxString* Int32ToString(RelaxInt32* data);
 
 	static void GenerateMetaInfo();
-	static inline class StdClass* metaClass = nullptr;
+	static inline class Class* metaClass = nullptr;
 };
 

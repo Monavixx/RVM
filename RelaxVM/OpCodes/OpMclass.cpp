@@ -3,7 +3,7 @@
 void OpMclass::Run()
 {
 	Class* newClass = new Class(className);
-	GlobalVariables::classes.push_back(newClass);
+	GlobalVariables::classes.AddClass(newClass);
 	GlobalVariables::mainClass = newClass;
 }
 

@@ -23,7 +23,7 @@ public:
 	static RelaxFloat* cast(class RelaxInt32* data);
 
 	static void GenerateMetaInfo();
-	static inline class StdClass* metaClass = nullptr;
+	static inline class Class* metaClass = nullptr;
 private:
 	float data;
 };

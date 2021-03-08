@@ -7,14 +7,14 @@ void OpSub::Run()
 	frame->GetStack().push(secondData->GetAddress());
 	frame->GetStack().push(firstData->GetAddress());
 
-	StdClass* declClass = (*StdClassList::GetInstance())[firstData->GetDataType()];
+	Class* declClass = GlobalVariables::classes[firstData->GetDataType()];
 	if (declClass == nullptr)
 		Exit("Sub: decl class not found");
-	StdMethod* operatorSub = declClass->GetMethod("operator-", { Parameter(secondData->GetDataType()) });
+	IMethod* operatorSub = declClass->GetMethod("operator-", { Parameter(secondData->GetDataType()) });
 	if (operatorSub == nullptr)
 		Exit("Sub: operator- not found");
 
-	operatorSub->CallFunction(frame);
+	operatorSub->CallMethod(frame);
 }
 
 void OpSub::Parse(HANDLE& device)

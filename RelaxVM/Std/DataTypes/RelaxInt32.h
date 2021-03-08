@@ -1,7 +1,8 @@
 #pragma once
 #include "Object.h"
 #include "RelaxBool.h"
-#include "../StdClass.h"
+#include "../../Core/Class.h"
+#include "../../Core/StdMethod.h"
 
 class RelaxInt32 : public Object
 {
@@ -25,7 +26,7 @@ public:
 	static RelaxInt32* cast(class RelaxFloat* data);
 
 	static void GenerateMetaInfo();
-	static inline class StdClass* metaClass = nullptr;
+	static inline class Class* metaClass = nullptr;
 private:
 	int data;
 };

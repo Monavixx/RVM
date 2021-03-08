@@ -1,5 +1,6 @@
 #include "RelaxString.h"
-#include "../StdClass.h"
+#include "../../Core/Class.h"
+#include "../../Core/StdMethod.h"
 
 RelaxString::RelaxString(const String& data) : data(data)
 {
@@ -32,18 +33,18 @@ RelaxBool* RelaxString::operator==(RelaxString* other)
 
 void RelaxString::GenerateMetaInfo()
 {
-	metaClass = new StdClass("Relax.String", {
-		StdMethod("Concat", "Relax.String", "Relax.String", {Parameter("Relax.String")}, [&](Stack& stack) -> Object*
+	metaClass = new Class("Relax.String", {
+		new StdMethod("Concat", "Relax.String", "Relax.String", {Parameter("Relax.String")}, [&](Stack& stack) -> Object*
 		{
 			RelaxString* thisObject = dynamic_cast<RelaxString*>(stack.pop());
 			return thisObject->Concat(dynamic_cast<RelaxString*>(stack.pop()));
 		}, AccessModifier::PUBLIC, false),
-		StdMethod("operator+", "Relax.String", "Relax.String", {Parameter("Relax.String")}, [&](Stack& stack) -> Object*
+		new StdMethod("operator+", "Relax.String", "Relax.String", {Parameter("Relax.String")}, [&](Stack& stack) -> Object*
 		{
 			RelaxString* thisObject = dynamic_cast<RelaxString*>(stack.pop());
 			return *thisObject + dynamic_cast<RelaxString*>(stack.pop());
 		}, AccessModifier::PUBLIC, false),
-		StdMethod("operator==", "Relax.Bool", "Relax.String", {Parameter("Relax.String")}, [&](Stack& stack) -> Object*
+		new StdMethod("operator==", "Relax.Bool", "Relax.String", {Parameter("Relax.String")}, [&](Stack& stack) -> Object*
 		{
 			RelaxString* thisObject = dynamic_cast<RelaxString*>(stack.pop());
 			return *thisObject == dynamic_cast<RelaxString*>(stack.pop());

@@ -1,5 +1,5 @@
 #pragma once
-#include "Method.h"
+#include "IMethod.h"
 #include "VariableList.h"
 #include "../Std/RelaxNull.h"
 #include "Stack.h"
@@ -7,14 +7,14 @@
 class Frame
 {
 public:
-	Frame(Method* method = nullptr, const VariableList& variableList = {});
+	Frame(IMethod* method = nullptr, const VariableList& variableList = {});
 
 	Variable* GetVariable(size_t id);
 
-	Method* GetMethod() const;
+	IMethod* GetMethod() const;
 	VariableList GetVariableList() const;
 
-	void SetMethod(Method* method);
+	void SetMethod(IMethod* method);
 	void SetVariableList(const VariableList& variables);
 	void CreateVariable(size_t id, const String& dataType);
 
@@ -26,7 +26,7 @@ public:
 
 private:
 	VariableList variables;
-	Method* method;
+	IMethod* method;
 	Stack stack;
 
 	size_t index = 0;

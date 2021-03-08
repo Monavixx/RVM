@@ -4,7 +4,7 @@ void OpMethod::Run()
 {
 	method = new Method(name, dataType, declClassName, parameters, {}, accessModifier, isStatic);
 
-	Class* _class = GlobalVariables::classes.FindClassByName(declClassName);
+	Class* _class = GlobalVariables::classes[declClassName];
 	if (_class == nullptr)
 	{
 		Exit("method: decl class not found");

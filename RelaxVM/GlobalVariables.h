@@ -15,6 +15,6 @@ struct GlobalVariables
 	static inline Heap heap = Heap(1000000);
 	static inline std::stack<Frame*> frameStack;
 
-	static inline const int version = 5;
+	static inline const int version = 6;
 	static inline const int opCodesForGC = 20;
 };

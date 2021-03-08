@@ -1,25 +1,24 @@
 #pragma once
-#include "Method.h"
+#include "IMethod.h"
 #include "Field.h"
 #include <unordered_map>
 
 class Class
 {
 public:
-	Class(const String& name, const vector<Method*>& methods = {}, const std::unordered_map<String, Field*>& fields = {});
+	Class(const String& name, const vector<IMethod*>& methods = {}, const std::unordered_map<String, Field*>& fields = {});
 	~Class();
 
 	inline String GetName() const
 	{
 		return name;
 	}
-	inline vector<Method*> GetMethods() const
+	inline vector<IMethod*> GetMethods() const
 	{
 		return methods;
 	}
 	inline std::unordered_map<String, Field*> GetFields() const { return fields; }
-	Method* GetMethod(const String& name, const vector<Parameter>& parameters);
-	Method* GetMethod(MethodSignature* signature);
+	IMethod* GetMethod(const String& name, const vector<Parameter>& parameters);
 	inline Field* GetField(const String& name) { return fields[name]; }
 
 	inline void SetName(const String& name)
@@ -27,15 +26,15 @@ public:
 		this->name = name;
 	}
 
-	inline void SetMethods(const vector<Method*>& methods)
+	inline void SetMethods(const vector<IMethod*>& methods)
 	{
 		this->methods = methods;
 	}
-	inline void SetMethod(int index, Method* method)
+	inline void SetMethod(int index, IMethod* method)
 	{
 		methods[index] = method;
 	}
-	inline void AddMethod(Method* method)
+	inline void AddMethod(IMethod* method)
 	{
 		methods.push_back(method);
 	}
@@ -45,7 +44,7 @@ public:
 
 private:
 	String name;
-	vector<Method*> methods;
+	vector<IMethod*> methods;
 	std::unordered_map<String, Field*> fields;
 };
 

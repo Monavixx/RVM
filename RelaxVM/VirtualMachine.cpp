@@ -22,6 +22,8 @@ void VirtualMachine::Start()
 	if (versionCode != GlobalVariables::version)
 		Exit("version " + std::to_string(GlobalVariables::version) + " is required to run this code");
 	
+	GlobalVariables::classes.CreateStdClasses();
+
 	Instruction instruction = static_cast<Instruction>(ByteArrayRead::ReadByte(GlobalVariables::executableFile));
 	while (instruction != 0)
 	{
@@ -43,7 +45,7 @@ void VirtualMachine::Start()
 		Exit("main class not found");
 	}
 
-	Method* mainMethod = GlobalVariables::mainClass->GetMethod("Main", {});
+	IMethod* mainMethod = GlobalVariables::mainClass->GetMethod("Main", {});
 	Frame* frame = new Frame(mainMethod);
 	GlobalVariables::frameStack.push(frame);
 
