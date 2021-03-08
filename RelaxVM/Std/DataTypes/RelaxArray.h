@@ -11,7 +11,10 @@ public:
 
 	RelaxArray(const String& dataType, asizet size);
 	~RelaxArray();
-	String GetDataType() override;
+	inline String GetDataType() override
+	{
+		return "Relax.Array<"_ss + dataType + ">";
+	}
 	size_t* GetArr();
 	void SetArr(size_t* arr);
 	void SetByIndex(asizet index, size_t address);

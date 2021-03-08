@@ -13,16 +13,6 @@ Class::~Class()
 	}
 }
 
-String Class::GetName() const
-{
-	return name;
-}
-
-vector<Method*> Class::GetMethods() const
-{
-	return methods;
-}
-
 Method* Class::GetMethod(const String& name, const vector<Parameter>& parameters)
 {
 	auto methodIterator = std::find_if(methods.begin(), methods.end(), [&](Method* method) {
@@ -43,26 +33,6 @@ Method* Class::GetMethod(MethodSignature* signature)
 	if (methodIterator == methods.end())
 		return nullptr;
 	return *methodIterator;
-}
-
-void Class::SetName(const String& name)
-{
-	this->name = name;
-}
-
-void Class::SetMethods(const vector<Method*>& methods)
-{
-	this->methods = methods;
-}
-
-void Class::SetMethod(int index, Method* method)
-{
-	methods[index] = method;
-}
-
-void Class::AddMethod(Method* method)
-{
-	methods.push_back(method);
 }
 
 bool Class::operator==(const Class& other) const

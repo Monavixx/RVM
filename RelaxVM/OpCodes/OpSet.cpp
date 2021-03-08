@@ -8,7 +8,6 @@ void OpSet::Run()
 	if (variable == nullptr)
 		Exit("set: local variable with id " + std::to_string(id) + " not exists");
 
-	
 	if (data->GetDataType() != variable->GetDataType() && data->GetDataType() != "Relax.Null")
 		Exit("set: data types do not match");
 

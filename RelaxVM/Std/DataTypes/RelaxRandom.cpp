@@ -1,11 +1,6 @@
 #include "RelaxRandom.h"
 #include <random>
 
-String RelaxRandom::GetDataType()
-{
-    return "Relax.Random";
-}
-
 RelaxInt32* RelaxRandom::GenerateInt32()
 {
 	std::random_device r;
@@ -14,11 +9,11 @@ RelaxInt32* RelaxRandom::GenerateInt32()
     return new RelaxInt32(uniform_dist(e1));
 }
 
-RelaxInt32* RelaxRandom::GenerateInt32(int min, int max)
+RelaxInt32* RelaxRandom::GenerateInt32(RelaxInt32* min, RelaxInt32* max)
 {
 	std::random_device r;
 	std::default_random_engine e1(r());
-	std::uniform_int_distribution<int> uniform_dist(min, max);
+	std::uniform_int_distribution<int> uniform_dist(min->GetData(), max->GetData());
 	return new RelaxInt32(uniform_dist(e1));
 }
 
@@ -35,7 +30,7 @@ void RelaxRandom::GenerateMetaInfo()
 		{
 			RelaxInt32* min = dynamic_cast<RelaxInt32*>(stack.pop());
 			RelaxInt32* max = dynamic_cast<RelaxInt32*>(stack.pop());
-			return RelaxRandom::GenerateInt32(min->GetData(), max->GetData());
+			return RelaxRandom::GenerateInt32(min, max);
 		},AccessModifier::PUBLIC, true)
 	});
 }

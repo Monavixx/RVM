@@ -5,9 +5,10 @@ class Object
 {
 public:
 	Object(size_t amountUsers = 0);
-	virtual String GetDataType()
+	virtual inline String GetDataType()
 	{
-		return "Relax.Object";
+		static String dataType = "Relax.Object";
+		return dataType;
 	}
 	virtual ~Object() {}
 

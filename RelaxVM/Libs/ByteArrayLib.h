@@ -80,20 +80,19 @@ public:
     {
         if (data == nullptr)
         {
-            data = new unsigned char[_size = capacity = size] {0};
+            data = new unsigned char[capacity = _isCapacity ? size + 10 : size] {0};
         }
         else
         {
-            unsigned char* newData = new unsigned char[capacity = _isCapacity ? _size + 10 : _size];
-            size_t newSize = (_size >= size) ? size : _size;
-            for (size_t i = 0; i < newSize; ++i)
+            unsigned char* newData = new unsigned char[capacity = _isCapacity ? size + 10 : size];
+            for (size_t i = 0; i < _size; ++i)
             {
                 newData[i] = data[i];
             }
             delete[] data;
             data = newData;
-            _size = newSize;
         }
+        _size = size;
     }
 
     inline void isCapacity(bool value) { _isCapacity = value; }

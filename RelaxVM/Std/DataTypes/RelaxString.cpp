@@ -5,11 +5,6 @@ RelaxString::RelaxString(const String& data) : data(data)
 {
 }
 
-String RelaxString::GetDataType()
-{
-    return "Relax.String";
-}
-
 String RelaxString::GetData()
 {
     return this->data;

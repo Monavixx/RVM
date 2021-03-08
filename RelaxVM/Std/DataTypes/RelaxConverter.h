@@ -8,7 +8,11 @@ class RelaxConverter : public Object
 {
 public:
 	RelaxConverter() {}
-	String GetDataType() override;
+	inline String GetDataType() override
+	{
+		static String dataType = "Relax.Converter";
+		return dataType;
+	}
 
 	static RelaxInt32* StringToInt32(RelaxString* data);
 	static RelaxString* Int32ToString(RelaxInt32* data);

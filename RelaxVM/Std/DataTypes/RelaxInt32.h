@@ -7,7 +7,11 @@ class RelaxInt32 : public Object
 {
 public:
 	RelaxInt32(int data);
-	String GetDataType() override;
+	inline String GetDataType() override
+	{
+		static String dataType = "Relax.Int32";
+		return dataType;
+	}
 	int GetData();
 	void SetData(int data);
 	

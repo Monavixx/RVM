@@ -5,7 +5,10 @@ class RelaxPointer : public Object
 {
 public:
 	RelaxPointer(int pointerAddress, const String& dataType);
-	String GetDataType() override;
+	inline String GetDataType() override
+	{
+		return "Relax.Pointer<"_ss + dataType + ">";
+	}
 	int GetPointerAddress();
 	void SetPointerAddress(int pointerAddress);
 	void SetPointerData(Object* data);

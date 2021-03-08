@@ -1,10 +1,5 @@
 #include "RelaxConverter.h"
 
-String RelaxConverter::GetDataType()
-{
-    return "Relax.Converter";
-}
-
 RelaxInt32* RelaxConverter::StringToInt32(RelaxString* data)
 {
     bool isOk;

@@ -12,7 +12,11 @@ class RelaxConsole : public Object
 {
 public:
 	RelaxConsole() {}
-	String GetDataType() override;
+	inline String GetDataType() override
+	{
+		static String dataType = "Relax.Console";
+		return dataType;
+	}
 
 	static Object* Write(RelaxString* data);
 	static Object* Write(RelaxInt32* data);

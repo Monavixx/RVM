@@ -6,7 +6,11 @@ class RelaxString : public Object
 {
 public:
 	RelaxString(const String& data);
-	String GetDataType() override;
+	inline String GetDataType() override
+	{
+		static String dataType = "Relax.String";
+		return dataType;
+	}
 	String GetData();
 	void SetData(const String& data);
 

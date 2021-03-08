@@ -7,15 +7,34 @@ public:
 	Class(const String& name, const vector<Method*>& methods = {});
 	~Class();
 
-	String GetName() const;
-	vector<Method*> GetMethods() const;
+	inline String GetName() const
+	{
+		return name;
+	}
+	vector<Method*> GetMethods() const
+	{
+		return methods;
+	}
 	Method* GetMethod(const String& name, const vector<Parameter>& parameters);
 	Method* GetMethod(MethodSignature* signature);
 
-	void SetName(const String& name);
-	void SetMethods(const vector<Method*>& methods);
-	void SetMethod(int index, Method* method);
-	void AddMethod(Method* method);
+	inline void SetName(const String& name)
+	{
+		this->name = name;
+	}
+
+	inline void SetMethods(const vector<Method*>& methods)
+	{
+		this->methods = methods;
+	}
+	inline void SetMethod(int index, Method* method)
+	{
+		methods[index] = method;
+	}
+	inline void AddMethod(Method* method)
+	{
+		methods.push_back(method);
+	}
 
 	bool operator==(const Class& other) const;
 

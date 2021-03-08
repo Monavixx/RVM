@@ -18,11 +18,6 @@ RelaxArray::~RelaxArray()
 	delete[] arr;
 }
 
-String RelaxArray::GetDataType()
-{
-	return "Relax.Array";
-}
-
 size_t* RelaxArray::GetArr()
 {
 	return arr;

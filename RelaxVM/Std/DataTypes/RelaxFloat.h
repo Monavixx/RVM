@@ -6,7 +6,11 @@ class RelaxFloat : public Object
 {
 public:
 	RelaxFloat(float data);
-	String GetDataType() override;
+	inline String GetDataType() override
+	{
+		static String dataType = "Relax.Float";
+		return dataType;
+	}
 	float GetData();
 	void SetData(float data);
 

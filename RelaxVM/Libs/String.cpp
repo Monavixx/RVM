@@ -38,7 +38,7 @@ String::String(const char str[], size_t size)
 	data = new unsigned short[capacity = _size + 10];
 	for (int i = 0; i < _size; ++i)
 	{
-		data[i] = str[i] + 127;
+		data[i] = str[i];
 	}
 }
 
@@ -145,29 +145,16 @@ String String::operator+(const String& other) const
 {
 	String res;
 	size_t newSize = _size + other._size;
-	if (newSize < capacity)
-	{
-		for (size_t i = _size; i < newSize; ++i)
-		{
-			res.data[i] = other.data[i];
-		}
-	}
-	else
-	{
-		unsigned short* newData = new unsigned short[res.capacity = newSize + 10];
-		for (size_t i = 0; i < _size; ++i)
-		{
-			newData[i] = data[i];
-		}
+	res.Resize(newSize);
 
-		for (size_t i = _size; i < newSize; ++i)
-		{
-			newData[i] = other.data[i];
-		}
-
-		res.data = newData;
+	for (size_t i = 0; i < _size; ++i)
+	{
+		res.data[i] = data[i];
 	}
-	res._size = newSize;
+	for (size_t i = _size; i < newSize; ++i)
+	{
+		res.data[i] = other.data[i - _size];
+	}
 
 	return res;
 }

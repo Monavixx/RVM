@@ -5,11 +5,6 @@ RelaxFloat::RelaxFloat(float data) : data(data)
 {
 }
 
-String RelaxFloat::GetDataType()
-{
-	return "Relax.Float";
-}
-
 float RelaxFloat::GetData()
 {
 	return data;

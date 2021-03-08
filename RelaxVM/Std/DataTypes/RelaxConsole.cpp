@@ -1,11 +1,6 @@
 #include "RelaxConsole.h"
 #include "../StdClassList.h"
 
-String RelaxConsole::GetDataType()
-{
-    return "Relax.Console";
-}
-
 Object* RelaxConsole::Write(RelaxString* data)
 {
 	std::cout << data->GetData().toStdString();

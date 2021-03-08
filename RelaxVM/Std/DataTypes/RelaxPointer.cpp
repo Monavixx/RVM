@@ -6,11 +6,6 @@ RelaxPointer::RelaxPointer(int pointerAddress, const String& dataType) : pointer
 {
 }
 
-String RelaxPointer::GetDataType()
-{
-	return "Relax.Pointer";
-}
-
 int RelaxPointer::GetPointerAddress()
 {
 	return pointerAddress;

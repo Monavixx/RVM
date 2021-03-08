@@ -5,7 +5,11 @@ class RelaxBool : public Object
 {
 public:
 	RelaxBool(bool data);
-	String GetDataType() override;
+	inline String GetDataType() override
+	{
+		static String dataType = "Relax.Bool";
+		return dataType;
+	}
 	bool GetData();
 	void SetData(bool data);
 

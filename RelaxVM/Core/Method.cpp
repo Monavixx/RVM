@@ -30,6 +30,7 @@ void Method::CallMethod(Frame* frame)
 	for (auto& item : this->GetParameters())
 	{
 		Object* data = frame->GetStack().pop();
+		data->IncAmountUsers();
 		if (data->GetDataType() != item.GetDataType())
 			Exit("Error parameters type");
 		newFrame->CreateVariable(i, item.GetDataType());

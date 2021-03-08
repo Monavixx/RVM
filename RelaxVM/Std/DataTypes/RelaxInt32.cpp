@@ -5,11 +5,6 @@ RelaxInt32::RelaxInt32(int data) : data(data)
 {
 }
 
-String RelaxInt32::GetDataType()
-{
-    return "Relax.Int32";
-}
-
 int RelaxInt32::GetData()
 {
     return data;

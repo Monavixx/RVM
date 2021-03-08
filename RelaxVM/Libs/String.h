@@ -73,6 +73,25 @@ public:
 		res[_size] = '\0';
 		return res;
 	}
+
+	void Resize(size_t size)
+	{
+		if (data == nullptr)
+		{
+			data = new unsigned short[capacity = size + 10]{ 0 };
+		}
+		else
+		{
+			unsigned short* newData = new unsigned short[capacity = size + 10];
+			for (size_t i = 0; i < _size; ++i)
+			{
+				newData[i] = data[i];
+			}
+			delete[] data;
+			data = newData;
+		}
+		_size = size;
+	}
 private:
 	size_t _size = 0;
 	size_t capacity = 0;

@@ -5,11 +5,6 @@ RelaxBool::RelaxBool(bool data) : data(data)
 {
 }
 
-String RelaxBool::GetDataType()
-{
-	return "Relax.Bool";
-}
-
 bool RelaxBool::GetData()
 {
 	return data;
