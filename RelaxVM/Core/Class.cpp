@@ -1,7 +1,7 @@
 #include "Class.h"
 
-Class::Class(const String& name, const vector<Method*>& methods)
-	:name(name), methods(methods)
+Class::Class(const String& name, const vector<Method*>& methods, const std::unordered_map<String, Field*>& fields = {})
+	:name(name), methods(methods), fields(fields)
 {
 }
 
@@ -37,7 +37,8 @@ Method* Class::GetMethod(MethodSignature* signature)
 
 bool Class::operator==(const Class& other) const
 {
-	if (other.GetName() != name) return false;
-	if (other.GetMethods() != methods) return false;
+	if (other.name != name) return false;
+	if (other.methods != methods) return false;
+	if (other.fields != fields) return false;
 	return true;
 }

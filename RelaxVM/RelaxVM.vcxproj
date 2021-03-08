@@ -110,6 +110,7 @@
   <ItemGroup>
     <ClCompile Include="Core\Class.cpp" />
     <ClCompile Include="Core\ClassList.cpp" />
+    <ClCompile Include="Core\Field.cpp" />
     <ClCompile Include="Core\Frame.cpp" />
     <ClCompile Include="Core\Heap.cpp" />
     <ClCompile Include="Core\Method.cpp" />
@@ -176,6 +177,7 @@
     <ClInclude Include="Args.h" />
     <ClInclude Include="Core\Class.h" />
     <ClInclude Include="Core\ClassList.h" />
+    <ClInclude Include="Core\Field.h" />
     <ClInclude Include="Core\Frame.h" />
     <ClInclude Include="Core\Heap.h" />
     <ClInclude Include="Core\Method.h" />
