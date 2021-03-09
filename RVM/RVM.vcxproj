@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>16.0</VCProjectVersion>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectGuid>{c1db40fc-d0c5-4386-a6cb-05c894833592}</ProjectGuid>
+    <RootNamespace>RVM</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <LanguageStandard_C>stdc17</LanguageStandard_C>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <LanguageStandard_C>stdc17</LanguageStandard_C>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="Args.h" />
+    <ClInclude Include="Core\Class.h" />
+    <ClInclude Include="Core\ClassList.h" />
+    <ClInclude Include="Core\Field.h" />
+    <ClInclude Include="Core\Frame.h" />
+    <ClInclude Include="Core\Heap.h" />
+    <ClInclude Include="Core\IMethod.h" />
+    <ClInclude Include="Core\Method.h" />
+    <ClInclude Include="Core\Parameter.h" />
+    <ClInclude Include="Core\Stack.h" />
+    <ClInclude Include="Core\StdMethod.h" />
+    <ClInclude Include="Core\Variable.h" />
+    <ClInclude Include="Core\VariableList.h" />
+    <ClInclude Include="Enums\AccessModifier.h" />
+    <ClInclude Include="Enums\Instruction.h" />
+    <ClInclude Include="Exceptions\Exception.h" />
+    <ClInclude Include="Exceptions\ExitException.h" />
+    <ClInclude Include="Functions\ExecuteMethod.h" />
+    <ClInclude Include="Functions\Exit.h" />
+    <ClInclude Include="Functions\GC.h" />
+    <ClInclude Include="GlobalVariables.h" />
+    <ClInclude Include="Libs\ByteArrayLib.h" />
+    <ClInclude Include="Libs\ConsoleTextStream.h" />
+    <ClInclude Include="Libs\String.h" />
+    <ClInclude Include="OpCodes\OpAdd.h" />
+    <ClInclude Include="OpCodes\OpBase.h" />
+    <ClInclude Include="OpCodes\OpCallm.h" />
+    <ClInclude Include="OpCodes\OpCast.h" />
+    <ClInclude Include="OpCodes\OpClass.h" />
+    <ClInclude Include="OpCodes\OpDeref.h" />
+    <ClInclude Include="OpCodes\OpDiv.h" />
+    <ClInclude Include="OpCodes\OpDup.h" />
+    <ClInclude Include="OpCodes\OpGc.h" />
+    <ClInclude Include="OpCodes\OpGet.h" />
+    <ClInclude Include="OpCodes\OpGetarr.h" />
+    <ClInclude Include="OpCodes\OpJmp.h" />
+    <ClInclude Include="OpCodes\OpJmpif.h" />
+    <ClInclude Include="OpCodes\OpLocal.h" />
+    <ClInclude Include="OpCodes\OpMaxStack.h" />
+    <ClInclude Include="OpCodes\OpMclass.h" />
+    <ClInclude Include="OpCodes\OpMethod.h" />
+    <ClInclude Include="OpCodes\OpMul.h" />
+    <ClInclude Include="OpCodes\OpNew.h" />
+    <ClInclude Include="OpCodes\OpNewarr.h" />
+    <ClInclude Include="OpCodes\OpPushBool.h" />
+    <ClInclude Include="OpCodes\OpPushFloat.h" />
+    <ClInclude Include="OpCodes\OpPushInt32.h" />
+    <ClInclude Include="OpCodes\OpPushStr.h" />
+    <ClInclude Include="OpCodes\OpRef.h" />
+    <ClInclude Include="OpCodes\OpReturn.h" />
+    <ClInclude Include="OpCodes\OpSet.h" />
+    <ClInclude Include="OpCodes\OpSetarr.h" />
+    <ClInclude Include="OpCodes\OpSetpd.h" />
+    <ClInclude Include="OpCodes\OpSub.h" />
+    <ClInclude Include="Program.h" />
+    <ClInclude Include="Std\Classes\Object.h" />
+    <ClInclude Include="Std\Classes\RelaxArray.h" />
+    <ClInclude Include="Std\Classes\RelaxBool.h" />
+    <ClInclude Include="Std\Classes\RelaxConsole.h" />
+    <ClInclude Include="Std\Classes\RelaxConverter.h" />
+    <ClInclude Include="Std\Classes\RelaxFloat.h" />
+    <ClInclude Include="Std\Classes\RelaxInt32.h" />
+    <ClInclude Include="Std\Classes\RelaxPointer.h" />
+    <ClInclude Include="Std\Classes\RelaxRandom.h" />
+    <ClInclude Include="Std\Classes\RelaxString.h" />
+    <ClInclude Include="Std\RelaxNull.h" />
+    <ClInclude Include="VirtualMachine.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Core\Class.cpp" />
+    <ClCompile Include="Core\ClassList.cpp" />
+    <ClCompile Include="Core\Field.cpp" />
+    <ClCompile Include="Core\Frame.cpp" />
+    <ClCompile Include="Core\Heap.cpp" />
+    <ClCompile Include="Core\IMethod.cpp" />
+    <ClCompile Include="Core\Method.cpp" />
+    <ClCompile Include="Core\Parameter.cpp" />
+    <ClCompile Include="Core\Stack.cpp" />
+    <ClCompile Include="Core\StdMethod.cpp" />
+    <ClCompile Include="Core\Variable.cpp" />
+    <ClCompile Include="Core\VariableList.cpp" />
+    <ClCompile Include="Exceptions\Exception.cpp" />
+    <ClCompile Include="Exceptions\ExitException.cpp" />
+    <ClCompile Include="Functions\ExecuteMethod.cpp" />
+    <ClCompile Include="Functions\Exit.cpp" />
+    <ClCompile Include="Functions\GC.cpp" />
+    <ClCompile Include="Libs\String.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="OpCodes\OpAdd.cpp" />
+    <ClCompile Include="OpCodes\OpBase.cpp" />
+    <ClCompile Include="OpCodes\OpCallm.cpp" />
+    <ClCompile Include="OpCodes\OpCast.cpp" />
+    <ClCompile Include="OpCodes\OpClass.cpp" />
+    <ClCompile Include="OpCodes\OpDeref.cpp" />
+    <ClCompile Include="OpCodes\OpDiv.cpp" />
+    <ClCompile Include="OpCodes\OpDup.cpp" />
+    <ClCompile Include="OpCodes\OpGc.cpp" />
+    <ClCompile Include="OpCodes\OpGet.cpp" />
+    <ClCompile Include="OpCodes\OpGetarr.cpp" />
+    <ClCompile Include="OpCodes\OpJmp.cpp" />
+    <ClCompile Include="OpCodes\OpJmpif.cpp" />
+    <ClCompile Include="OpCodes\OpLocal.cpp" />
+    <ClCompile Include="OpCodes\OpMaxStack.cpp" />
+    <ClCompile Include="OpCodes\OpMclass.cpp" />
+    <ClCompile Include="OpCodes\OpMethod.cpp" />
+    <ClCompile Include="OpCodes\OpMul.cpp" />
+    <ClCompile Include="OpCodes\OpNew.cpp" />
+    <ClCompile Include="OpCodes\OpNewarr.cpp" />
+    <ClCompile Include="OpCodes\OpPushBool.cpp" />
+    <ClCompile Include="OpCodes\OpPushFloat.cpp" />
+    <ClCompile Include="OpCodes\OpPushInt32.cpp" />
+    <ClCompile Include="OpCodes\OpPushStr.cpp" />
+    <ClCompile Include="OpCodes\OpRef.cpp" />
+    <ClCompile Include="OpCodes\OpReturn.cpp" />
+    <ClCompile Include="OpCodes\OpSet.cpp" />
+    <ClCompile Include="OpCodes\OpSetarr.cpp" />
+    <ClCompile Include="OpCodes\OpSetpd.cpp" />
+    <ClCompile Include="OpCodes\OpSub.cpp" />
+    <ClCompile Include="Program.cpp" />
+    <ClCompile Include="Std\Classes\Object.cpp" />
+    <ClCompile Include="Std\Classes\RelaxArray.cpp" />
+    <ClCompile Include="Std\Classes\RelaxBool.cpp" />
+    <ClCompile Include="Std\Classes\RelaxConsole.cpp" />
+    <ClCompile Include="Std\Classes\RelaxConverter.cpp" />
+    <ClCompile Include="Std\Classes\RelaxFloat.cpp" />
+    <ClCompile Include="Std\Classes\RelaxInt32.cpp" />
+    <ClCompile Include="Std\Classes\RelaxPointer.cpp" />
+    <ClCompile Include="Std\Classes\RelaxRandom.cpp" />
+    <ClCompile Include="Std\Classes\RelaxString.cpp" />
+    <ClCompile Include="Std\RelaxNull.cpp" />
+    <ClCompile Include="VirtualMachine.cpp" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

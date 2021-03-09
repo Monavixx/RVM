@@ -1,6 +1,6 @@
 .vs/
 x64/Debug/
-RelaxVM/x64/
+RVM/x64/
 TestTime/
 UnitTest/x64/
 *.vcxproj.user

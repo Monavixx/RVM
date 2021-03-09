@@ -1,0 +1,459 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Исходные файлы">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Файлы заголовков">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Файлы ресурсов">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Файлы заголовков\Core">
+      <UniqueIdentifier>{c493cef4-f66f-4e25-a023-46e6556935a8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\Core\Interfaces">
+      <UniqueIdentifier>{6b90dc72-6ede-4002-a100-04e681437422}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\Core">
+      <UniqueIdentifier>{acae4d56-fa00-4481-ae4e-5d99348f5eb9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\Core\Interfaces">
+      <UniqueIdentifier>{418fe34f-e9f6-4f94-9d65-3c7242b5992a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Enums">
+      <UniqueIdentifier>{2b07b71f-d4c0-4f94-805d-79274cfc2336}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\Exceptions">
+      <UniqueIdentifier>{52cc72ca-4e63-4eaf-9f0d-3ed1d4faeab4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\Exceptions">
+      <UniqueIdentifier>{ed57c6a2-fe5c-44f1-a0f7-696107f51d8e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\Functions">
+      <UniqueIdentifier>{add42b83-4b37-4a4d-a18c-72a868198558}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\Functions">
+      <UniqueIdentifier>{823a2408-8500-4d7d-83b9-ab02a395fa87}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\Libs">
+      <UniqueIdentifier>{e386d37b-33ee-41d8-aef9-269f931be727}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\Libs">
+      <UniqueIdentifier>{5503a91e-78c8-4f60-bf2d-f61006b288f1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\OpCodes">
+      <UniqueIdentifier>{3c99ad34-4079-4d44-b54e-30ffd730d673}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\OpCodes">
+      <UniqueIdentifier>{a42e5bd4-e8be-46fa-8a17-8f8a2c0cf146}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\Std">
+      <UniqueIdentifier>{3bfbe5e2-1785-442f-9c8f-8eb122407948}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\Std\Classes">
+      <UniqueIdentifier>{f01a1791-a416-4845-b7f8-35e393adb386}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\Std">
+      <UniqueIdentifier>{8bfaed25-f4d4-4007-82b6-8dd93adbc891}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\Std\Classes">
+      <UniqueIdentifier>{a5d72a5c-625a-4d15-ad22-674897003955}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Core\IMethod.h">
+      <Filter>Файлы заголовков\Core\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Method.h">
+      <Filter>Файлы заголовков\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Parameter.h">
+      <Filter>Файлы заголовков\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Stack.h">
+      <Filter>Файлы заголовков\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\StdMethod.h">
+      <Filter>Файлы заголовков\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Variable.h">
+      <Filter>Файлы заголовков\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\VariableList.h">
+      <Filter>Файлы заголовков\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Class.h">
+      <Filter>Файлы заголовков\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\ClassList.h">
+      <Filter>Файлы заголовков\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Field.h">
+      <Filter>Файлы заголовков\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Frame.h">
+      <Filter>Файлы заголовков\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Heap.h">
+      <Filter>Файлы заголовков\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Enums\AccessModifier.h">
+      <Filter>Enums</Filter>
+    </ClInclude>
+    <ClInclude Include="Enums\Instruction.h">
+      <Filter>Enums</Filter>
+    </ClInclude>
+    <ClInclude Include="Exceptions\Exception.h">
+      <Filter>Файлы заголовков\Exceptions</Filter>
+    </ClInclude>
+    <ClInclude Include="Exceptions\ExitException.h">
+      <Filter>Файлы заголовков\Exceptions</Filter>
+    </ClInclude>
+    <ClInclude Include="Functions\Exit.h">
+      <Filter>Файлы заголовков\Functions</Filter>
+    </ClInclude>
+    <ClInclude Include="Functions\GC.h">
+      <Filter>Файлы заголовков\Functions</Filter>
+    </ClInclude>
+    <ClInclude Include="Functions\ExecuteMethod.h">
+      <Filter>Файлы заголовков\Functions</Filter>
+    </ClInclude>
+    <ClInclude Include="Libs\ByteArrayLib.h">
+      <Filter>Файлы заголовков\Libs</Filter>
+    </ClInclude>
+    <ClInclude Include="Libs\ConsoleTextStream.h">
+      <Filter>Файлы заголовков\Libs</Filter>
+    </ClInclude>
+    <ClInclude Include="Libs\String.h">
+      <Filter>Файлы заголовков\Libs</Filter>
+    </ClInclude>
+    <ClInclude Include="OpCodes\OpSet.h">
+      <Filter>Файлы заголовков\OpCodes</Filter>
+    </ClInclude>
+    <ClInclude Include="OpCodes\OpSetarr.h">
+      <Filter>Файлы заголовков\OpCodes</Filter>
+    </ClInclude>
+    <ClInclude Include="OpCodes\OpSetpd.h">
+      <Filter>Файлы заголовков\OpCodes</Filter>
+    </ClInclude>
+    <ClInclude Include="OpCodes\OpSub.h">
+      <Filter>Файлы заголовков\OpCodes</Filter>
+    </ClInclude>
+    <ClInclude Include="OpCodes\OpAdd.h">
+      <Filter>Файлы заголовков\OpCodes</Filter>
+    </ClInclude>
+    <ClInclude Include="OpCodes\OpBase.h">
+      <Filter>Файлы заголовков\OpCodes</Filter>
+    </ClInclude>
+    <ClInclude Include="OpCodes\OpCallm.h">
+      <Filter>Файлы заголовков\OpCodes</Filter>
+    </ClInclude>
+    <ClInclude Include="OpCodes\OpCast.h">
+      <Filter>Файлы заголовков\OpCodes</Filter>
+    </ClInclude>
+    <ClInclude Include="OpCodes\OpClass.h">
+      <Filter>Файлы заголовков\OpCodes</Filter>
+    </ClInclude>
+    <ClInclude Include="OpCodes\OpDeref.h">
+      <Filter>Файлы заголовков\OpCodes</Filter>
+    </ClInclude>
+    <ClInclude Include="OpCodes\OpDiv.h">
+      <Filter>Файлы заголовков\OpCodes</Filter>
+    </ClInclude>
+    <ClInclude Include="OpCodes\OpDup.h">
+      <Filter>Файлы заголовков\OpCodes</Filter>
+    </ClInclude>
+    <ClInclude Include="OpCodes\OpGc.h">
+      <Filter>Файлы заголовков\OpCodes</Filter>
+    </ClInclude>
+    <ClInclude Include="OpCodes\OpGet.h">
+      <Filter>Файлы заголовков\OpCodes</Filter>
+    </ClInclude>
+    <ClInclude Include="OpCodes\OpGetarr.h">
+      <Filter>Файлы заголовков\OpCodes</Filter>
+    </ClInclude>
+    <ClInclude Include="OpCodes\OpJmp.h">
+      <Filter>Файлы заголовков\OpCodes</Filter>
+    </ClInclude>
+    <ClInclude Include="OpCodes\OpJmpif.h">
+      <Filter>Файлы заголовков\OpCodes</Filter>
+    </ClInclude>
+    <ClInclude Include="OpCodes\OpLocal.h">
+      <Filter>Файлы заголовков\OpCodes</Filter>
+    </ClInclude>
+    <ClInclude Include="OpCodes\OpMaxStack.h">
+      <Filter>Файлы заголовков\OpCodes</Filter>
+    </ClInclude>
+    <ClInclude Include="OpCodes\OpMclass.h">
+      <Filter>Файлы заголовков\OpCodes</Filter>
+    </ClInclude>
+    <ClInclude Include="OpCodes\OpMethod.h">
+      <Filter>Файлы заголовков\OpCodes</Filter>
+    </ClInclude>
+    <ClInclude Include="OpCodes\OpMul.h">
+      <Filter>Файлы заголовков\OpCodes</Filter>
+    </ClInclude>
+    <ClInclude Include="OpCodes\OpNew.h">
+      <Filter>Файлы заголовков\OpCodes</Filter>
+    </ClInclude>
+    <ClInclude Include="OpCodes\OpNewarr.h">
+      <Filter>Файлы заголовков\OpCodes</Filter>
+    </ClInclude>
+    <ClInclude Include="OpCodes\OpPushBool.h">
+      <Filter>Файлы заголовков\OpCodes</Filter>
+    </ClInclude>
+    <ClInclude Include="OpCodes\OpPushFloat.h">
+      <Filter>Файлы заголовков\OpCodes</Filter>
+    </ClInclude>
+    <ClInclude Include="OpCodes\OpPushInt32.h">
+      <Filter>Файлы заголовков\OpCodes</Filter>
+    </ClInclude>
+    <ClInclude Include="OpCodes\OpPushStr.h">
+      <Filter>Файлы заголовков\OpCodes</Filter>
+    </ClInclude>
+    <ClInclude Include="OpCodes\OpRef.h">
+      <Filter>Файлы заголовков\OpCodes</Filter>
+    </ClInclude>
+    <ClInclude Include="OpCodes\OpReturn.h">
+      <Filter>Файлы заголовков\OpCodes</Filter>
+    </ClInclude>
+    <ClInclude Include="Std\RelaxNull.h">
+      <Filter>Файлы заголовков\Std</Filter>
+    </ClInclude>
+    <ClInclude Include="Std\Classes\RelaxFloat.h">
+      <Filter>Файлы заголовков\Std\Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="Std\Classes\RelaxInt32.h">
+      <Filter>Файлы заголовков\Std\Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="Std\Classes\RelaxPointer.h">
+      <Filter>Файлы заголовков\Std\Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="Std\Classes\RelaxRandom.h">
+      <Filter>Файлы заголовков\Std\Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="Std\Classes\RelaxString.h">
+      <Filter>Файлы заголовков\Std\Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="Std\Classes\Object.h">
+      <Filter>Файлы заголовков\Std\Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="Std\Classes\RelaxArray.h">
+      <Filter>Файлы заголовков\Std\Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="Std\Classes\RelaxBool.h">
+      <Filter>Файлы заголовков\Std\Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="Std\Classes\RelaxConsole.h">
+      <Filter>Файлы заголовков\Std\Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="Std\Classes\RelaxConverter.h">
+      <Filter>Файлы заголовков\Std\Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="Args.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="GlobalVariables.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="Program.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="VirtualMachine.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Core\VariableList.cpp">
+      <Filter>Исходные файлы\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\Class.cpp">
+      <Filter>Исходные файлы\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\ClassList.cpp">
+      <Filter>Исходные файлы\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\Field.cpp">
+      <Filter>Исходные файлы\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\Frame.cpp">
+      <Filter>Исходные файлы\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\Heap.cpp">
+      <Filter>Исходные файлы\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\Method.cpp">
+      <Filter>Исходные файлы\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\Parameter.cpp">
+      <Filter>Исходные файлы\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\Stack.cpp">
+      <Filter>Исходные файлы\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\StdMethod.cpp">
+      <Filter>Исходные файлы\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\Variable.cpp">
+      <Filter>Исходные файлы\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\IMethod.cpp">
+      <Filter>Исходные файлы\Core\Interfaces</Filter>
+    </ClCompile>
+    <ClCompile Include="Exceptions\Exception.cpp">
+      <Filter>Исходные файлы\Exceptions</Filter>
+    </ClCompile>
+    <ClCompile Include="Exceptions\ExitException.cpp">
+      <Filter>Исходные файлы\Exceptions</Filter>
+    </ClCompile>
+    <ClCompile Include="Functions\ExecuteMethod.cpp">
+      <Filter>Исходные файлы\Functions</Filter>
+    </ClCompile>
+    <ClCompile Include="Functions\Exit.cpp">
+      <Filter>Исходные файлы\Functions</Filter>
+    </ClCompile>
+    <ClCompile Include="Functions\GC.cpp">
+      <Filter>Исходные файлы\Functions</Filter>
+    </ClCompile>
+    <ClCompile Include="Libs\String.cpp">
+      <Filter>Исходные файлы\Libs</Filter>
+    </ClCompile>
+    <ClCompile Include="OpCodes\OpAdd.cpp">
+      <Filter>Исходные файлы\OpCodes</Filter>
+    </ClCompile>
+    <ClCompile Include="OpCodes\OpBase.cpp">
+      <Filter>Исходные файлы\OpCodes</Filter>
+    </ClCompile>
+    <ClCompile Include="OpCodes\OpCallm.cpp">
+      <Filter>Исходные файлы\OpCodes</Filter>
+    </ClCompile>
+    <ClCompile Include="OpCodes\OpCast.cpp">
+      <Filter>Исходные файлы\OpCodes</Filter>
+    </ClCompile>
+    <ClCompile Include="OpCodes\OpClass.cpp">
+      <Filter>Исходные файлы\OpCodes</Filter>
+    </ClCompile>
+    <ClCompile Include="OpCodes\OpDeref.cpp">
+      <Filter>Исходные файлы\OpCodes</Filter>
+    </ClCompile>
+    <ClCompile Include="OpCodes\OpDiv.cpp">
+      <Filter>Исходные файлы\OpCodes</Filter>
+    </ClCompile>
+    <ClCompile Include="OpCodes\OpDup.cpp">
+      <Filter>Исходные файлы\OpCodes</Filter>
+    </ClCompile>
+    <ClCompile Include="OpCodes\OpGc.cpp">
+      <Filter>Исходные файлы\OpCodes</Filter>
+    </ClCompile>
+    <ClCompile Include="OpCodes\OpGet.cpp">
+      <Filter>Исходные файлы\OpCodes</Filter>
+    </ClCompile>
+    <ClCompile Include="OpCodes\OpGetarr.cpp">
+      <Filter>Исходные файлы\OpCodes</Filter>
+    </ClCompile>
+    <ClCompile Include="OpCodes\OpJmp.cpp">
+      <Filter>Исходные файлы\OpCodes</Filter>
+    </ClCompile>
+    <ClCompile Include="OpCodes\OpJmpif.cpp">
+      <Filter>Исходные файлы\OpCodes</Filter>
+    </ClCompile>
+    <ClCompile Include="OpCodes\OpLocal.cpp">
+      <Filter>Исходные файлы\OpCodes</Filter>
+    </ClCompile>
+    <ClCompile Include="OpCodes\OpMaxStack.cpp">
+      <Filter>Исходные файлы\OpCodes</Filter>
+    </ClCompile>
+    <ClCompile Include="OpCodes\OpMclass.cpp">
+      <Filter>Исходные файлы\OpCodes</Filter>
+    </ClCompile>
+    <ClCompile Include="OpCodes\OpMethod.cpp">
+      <Filter>Исходные файлы\OpCodes</Filter>
+    </ClCompile>
+    <ClCompile Include="OpCodes\OpMul.cpp">
+      <Filter>Исходные файлы\OpCodes</Filter>
+    </ClCompile>
+    <ClCompile Include="OpCodes\OpNew.cpp">
+      <Filter>Исходные файлы\OpCodes</Filter>
+    </ClCompile>
+    <ClCompile Include="OpCodes\OpNewarr.cpp">
+      <Filter>Исходные файлы\OpCodes</Filter>
+    </ClCompile>
+    <ClCompile Include="OpCodes\OpPushBool.cpp">
+      <Filter>Исходные файлы\OpCodes</Filter>
+    </ClCompile>
+    <ClCompile Include="OpCodes\OpPushFloat.cpp">
+      <Filter>Исходные файлы\OpCodes</Filter>
+    </ClCompile>
+    <ClCompile Include="OpCodes\OpPushInt32.cpp">
+      <Filter>Исходные файлы\OpCodes</Filter>
+    </ClCompile>
+    <ClCompile Include="OpCodes\OpPushStr.cpp">
+      <Filter>Исходные файлы\OpCodes</Filter>
+    </ClCompile>
+    <ClCompile Include="OpCodes\OpRef.cpp">
+      <Filter>Исходные файлы\OpCodes</Filter>
+    </ClCompile>
+    <ClCompile Include="OpCodes\OpReturn.cpp">
+      <Filter>Исходные файлы\OpCodes</Filter>
+    </ClCompile>
+    <ClCompile Include="OpCodes\OpSet.cpp">
+      <Filter>Исходные файлы\OpCodes</Filter>
+    </ClCompile>
+    <ClCompile Include="OpCodes\OpSetarr.cpp">
+      <Filter>Исходные файлы\OpCodes</Filter>
+    </ClCompile>
+    <ClCompile Include="OpCodes\OpSetpd.cpp">
+      <Filter>Исходные файлы\OpCodes</Filter>
+    </ClCompile>
+    <ClCompile Include="OpCodes\OpSub.cpp">
+      <Filter>Исходные файлы\OpCodes</Filter>
+    </ClCompile>
+    <ClCompile Include="Std\RelaxNull.cpp">
+      <Filter>Исходные файлы\Std</Filter>
+    </ClCompile>
+    <ClCompile Include="Std\Classes\RelaxRandom.cpp">
+      <Filter>Исходные файлы\Std\Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="Std\Classes\RelaxString.cpp">
+      <Filter>Исходные файлы\Std\Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="Std\Classes\Object.cpp">
+      <Filter>Исходные файлы\Std\Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="Std\Classes\RelaxArray.cpp">
+      <Filter>Исходные файлы\Std\Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="Std\Classes\RelaxBool.cpp">
+      <Filter>Исходные файлы\Std\Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="Std\Classes\RelaxConsole.cpp">
+      <Filter>Исходные файлы\Std\Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="Std\Classes\RelaxConverter.cpp">
+      <Filter>Исходные файлы\Std\Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="Std\Classes\RelaxFloat.cpp">
+      <Filter>Исходные файлы\Std\Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="Std\Classes\RelaxInt32.cpp">
+      <Filter>Исходные файлы\Std\Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="Std\Classes\RelaxPointer.cpp">
+      <Filter>Исходные файлы\Std\Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="Program.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="VirtualMachine.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
