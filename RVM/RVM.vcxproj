@@ -118,6 +118,8 @@
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
+      <MultiProcessorCompilation>false</MultiProcessorCompilation>
+      <AdditionalOptions>/MP6 %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -126,7 +128,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
-      <WarningLevel>Level3</WarningLevel>
+      <WarningLevel>Level2</WarningLevel>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
@@ -135,6 +137,7 @@
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
+      <AdditionalOptions>/MP6 %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -176,9 +179,11 @@
     <ClInclude Include="OpCodes\OpDeref.h" />
     <ClInclude Include="OpCodes\OpDiv.h" />
     <ClInclude Include="OpCodes\OpDup.h" />
+    <ClInclude Include="OpCodes\OpField.h" />
     <ClInclude Include="OpCodes\OpGc.h" />
     <ClInclude Include="OpCodes\OpGet.h" />
     <ClInclude Include="OpCodes\OpGetarr.h" />
+    <ClInclude Include="OpCodes\OpGetfield.h" />
     <ClInclude Include="OpCodes\OpJmp.h" />
     <ClInclude Include="OpCodes\OpJmpif.h" />
     <ClInclude Include="OpCodes\OpLocal.h" />
@@ -196,6 +201,7 @@
     <ClInclude Include="OpCodes\OpReturn.h" />
     <ClInclude Include="OpCodes\OpSet.h" />
     <ClInclude Include="OpCodes\OpSetarr.h" />
+    <ClInclude Include="OpCodes\OpSetfield.h" />
     <ClInclude Include="OpCodes\OpSetpd.h" />
     <ClInclude Include="OpCodes\OpSub.h" />
     <ClInclude Include="Program.h" />
@@ -240,9 +246,11 @@
     <ClCompile Include="OpCodes\OpDeref.cpp" />
     <ClCompile Include="OpCodes\OpDiv.cpp" />
     <ClCompile Include="OpCodes\OpDup.cpp" />
+    <ClCompile Include="OpCodes\OpField.cpp" />
     <ClCompile Include="OpCodes\OpGc.cpp" />
     <ClCompile Include="OpCodes\OpGet.cpp" />
     <ClCompile Include="OpCodes\OpGetarr.cpp" />
+    <ClCompile Include="OpCodes\OpGetfield.cpp" />
     <ClCompile Include="OpCodes\OpJmp.cpp" />
     <ClCompile Include="OpCodes\OpJmpif.cpp" />
     <ClCompile Include="OpCodes\OpLocal.cpp" />
@@ -260,6 +268,7 @@
     <ClCompile Include="OpCodes\OpReturn.cpp" />
     <ClCompile Include="OpCodes\OpSet.cpp" />
     <ClCompile Include="OpCodes\OpSetarr.cpp" />
+    <ClCompile Include="OpCodes\OpSetfield.cpp" />
     <ClCompile Include="OpCodes\OpSetpd.cpp" />
     <ClCompile Include="OpCodes\OpSub.cpp" />
     <ClCompile Include="Program.cpp" />

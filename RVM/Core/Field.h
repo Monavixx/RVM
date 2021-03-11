@@ -5,11 +5,8 @@
 class Field
 {
 public:
-	Field(const String& name, const String& declClassName, const String& dataType = "Relax.Object", AccessModifier accessModifier = AccessModifier::PRIVATE)
-		: dataType(dataType), accessModifier(accessModifier), name(name), declClassName(declClassName) {}
-
-	inline size_t GetAddress() const { return address; }
-	inline void SetAddress(size_t address) { this->address = address; }
+	Field(AccessModifier accessModifier, bool isStatic, const String& dataType, const String& declClassName, const String& name)
+		: dataType(dataType), accessModifier(accessModifier), name(name), declClassName(declClassName), isStatic(isStatic) {}
 
 	inline String GetDataType() const { return dataType; }
 	inline void SetDataType(const String& dataType) { this->dataType = dataType; }
@@ -23,10 +20,12 @@ public:
 	inline String GetDeclClassName() const { return declClassName; }
 	inline void SetDeclClassName(const String& declClassName) { this->declClassName = declClassName; }
 
+	inline bool IsStatic() const { return isStatic; }
+	inline void IsStatic(bool isStatic) { this->isStatic = isStatic; }
 private:
-	size_t address = 0;
 	String dataType;
 	AccessModifier accessModifier;
+	bool isStatic;
 	String name;
 	String declClassName;
 };

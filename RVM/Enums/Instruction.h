@@ -29,5 +29,8 @@ enum Instruction
 	MAX_STACK,
 	REF,
 	DEREF,
-	SETPD
+	SETPD,
+	FIELD,
+	GETFIELD,
+	SETFIELD
 };

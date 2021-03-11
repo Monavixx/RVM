@@ -24,5 +24,6 @@ public:
 private:
 	size_t amountUsers = 0;
 	size_t address;
+	vector<Object*> fields;
 };
 

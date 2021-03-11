@@ -267,6 +267,15 @@
     <ClInclude Include="VirtualMachine.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
+    <ClInclude Include="OpCodes\OpField.h">
+      <Filter>Файлы заголовков\OpCodes</Filter>
+    </ClInclude>
+    <ClInclude Include="OpCodes\OpGetfield.h">
+      <Filter>Файлы заголовков\OpCodes</Filter>
+    </ClInclude>
+    <ClInclude Include="OpCodes\OpSetfield.h">
+      <Filter>Файлы заголовков\OpCodes</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Core\VariableList.cpp">
@@ -453,6 +462,15 @@
       <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="VirtualMachine.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="OpCodes\OpField.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="OpCodes\OpGetfield.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="OpCodes\OpSetfield.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>

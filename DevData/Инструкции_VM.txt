@@ -27,3 +27,6 @@
 27 - ref
 28 - deref
 29 - setpd
+30 - field
+31 - getfield
+32 - setfield
