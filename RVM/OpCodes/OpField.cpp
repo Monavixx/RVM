@@ -8,6 +8,8 @@ void OpField::Run()
 
 void OpField::Parse(HANDLE& device)
 {
+	accessModifier = static_cast<AccessModifier>(ByteArrayRead::ReadByte(device));
+	isStatic = ByteArrayRead::ReadByte(device);
 	dataType = ByteArrayRead::ReadSizeAndString(device);
 	declClassName = ByteArrayRead::ReadSizeAndString(device);
 	name = ByteArrayRead::ReadSizeAndString(device);

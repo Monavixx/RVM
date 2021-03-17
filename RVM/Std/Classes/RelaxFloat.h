@@ -6,10 +6,9 @@ class RelaxFloat : public Object
 {
 public:
 	RelaxFloat(float data);
-	inline String GetDataType() override
+	constexpr String GetDataType() override
 	{
-		static String dataType = "Relax.Float";
-		return dataType;
+		return "Relax.Float"_ss;
 	}
 	float GetData();
 	void SetData(float data);

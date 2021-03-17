@@ -5,10 +5,9 @@ class RelaxBool : public Object
 {
 public:
 	RelaxBool(bool data);
-	inline String GetDataType() override
+	constexpr String GetDataType() override
 	{
-		static String dataType = "Relax.Bool";
-		return dataType;
+		return "Relax.Bool"_ss;
 	}
 	bool GetData();
 	void SetData(bool data);

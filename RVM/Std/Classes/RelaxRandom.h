@@ -7,10 +7,9 @@ class RelaxRandom : public Object
 {
 public:
 	RelaxRandom() {}
-	inline String GetDataType() override
+	constexpr String GetDataType() override
 	{
-		static String dataType = "Relax.Random";
-		return dataType;
+		return "Relax.Random"_ss;
 	}
 	static RelaxInt32* GenerateInt32();
 	static RelaxInt32* GenerateInt32(RelaxInt32* min, RelaxInt32* max);

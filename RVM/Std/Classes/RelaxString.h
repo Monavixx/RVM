@@ -6,10 +6,9 @@ class RelaxString : public Object
 {
 public:
 	RelaxString(const String& data);
-	inline String GetDataType() override
+	constexpr String GetDataType() override
 	{
-		static String dataType = "Relax.String";
-		return dataType;
+		return "Relax.String"_ss;
 	}
 	String GetData();
 	void SetData(const String& data);

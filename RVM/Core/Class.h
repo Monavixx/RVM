@@ -17,7 +17,7 @@ public:
 	{
 		return methods;
 	}
-	inline std::unordered_map<String, Field*> GetFields() const { return fields; }
+	inline std::unordered_map<String, Field*>& GetFields() { return fields; }
 	IMethod* GetMethod(const String& name, const vector<Parameter>& parameters);
 	inline Field* GetField(const String& name) { return fields[name]; }
 

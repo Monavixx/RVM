@@ -4,8 +4,8 @@
 class RelaxNull : public Object
 {
 public:
-	String GetDataType() override
+	constexpr String GetDataType() override
 	{
-		return "Relax.Null";
+		return "Relax.Null"_ss;
 	}
 };

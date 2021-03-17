@@ -15,7 +15,15 @@ public:
 	String(const char str[]);
 	String(const std::string& str);
 	String(long long num);
-	String(const char str[], size_t size);
+	constexpr String(const char* str, size_t size)
+	{
+		_size = size;
+		data = new unsigned short[capacity = _size + 10];
+		for (int i = 0; i < _size; ++i)
+		{
+			data[i] = str[i];
+		}
+	}
 #ifdef _WIN32
 	String(const wchar_t str[]);
 	String(const wchar_t str[], size_t size);
@@ -99,7 +107,10 @@ private:
 	unsigned short* data = nullptr;
 };
 
-String operator"" _ss(const char* str, size_t size);
+constexpr String operator"" _ss(const char* str, size_t size)
+{
+	return String(str, size);
+}
 
 namespace std
 {

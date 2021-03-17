@@ -8,10 +8,9 @@ class RelaxInt32 : public Object
 {
 public:
 	RelaxInt32(int data);
-	inline String GetDataType() override
+	constexpr String GetDataType() override
 	{
-		static String dataType = "Relax.Int32";
-		return dataType;
+		return "Relax.Int32"_ss;
 	}
 	int GetData();
 	void SetData(int data);

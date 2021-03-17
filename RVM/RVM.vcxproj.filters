@@ -276,6 +276,9 @@
     <ClInclude Include="OpCodes\OpSetfield.h">
       <Filter>Файлы заголовков\OpCodes</Filter>
     </ClInclude>
+    <ClInclude Include="Std\Classes\CustomObject.h">
+      <Filter>Файлы заголовков\Std\Classes</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Core\VariableList.cpp">
@@ -471,6 +474,9 @@
       <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="OpCodes\OpSetfield.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="Std\Classes\CustomObject.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>

@@ -13,7 +13,7 @@ public:
 	~RelaxArray();
 	inline String GetDataType() override
 	{
-		return "Relax.Array<"_ss + dataType + ">";
+		return "Relax.Array<"_ss + dataType + ">"_ss;
 	}
 	size_t* GetArr();
 	void SetArr(size_t* arr);

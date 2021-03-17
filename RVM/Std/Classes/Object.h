@@ -1,16 +1,17 @@
 #pragma once
 #include "../../Libs/String.h"
+#include <unordered_map>
 
 class Object
 {
 public:
 	Object(size_t amountUsers = 0);
-	virtual inline String GetDataType()
+	constexpr virtual String GetDataType()
 	{
-		static String dataType = "Relax.Object";
-		return dataType;
+		return "Relax.Object"_ss;
 	}
 	virtual ~Object() {}
+	void CreateFields();
 
 	void SetAmountUsers(size_t amountUsers);
 	size_t GetAmountUsers() const;
@@ -21,9 +22,19 @@ public:
 
 	static void GenerateMetaInfo();
 	static inline class Class* metaClass = nullptr;
+
+	struct FieldObject
+	{
+		size_t address;
+		class Field* field;
+	};
+
+	std::unordered_map<String, FieldObject>& GetFields();
+	FieldObject& GetField(const String& name);
+	void SetField(const String& name, size_t address);
 private:
 	size_t amountUsers = 0;
 	size_t address;
-	vector<Object*> fields;
+	std::unordered_map<String, FieldObject> fields;
 };
 

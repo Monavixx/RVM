@@ -116,7 +116,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <LanguageStandard>stdcpp17</LanguageStandard>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
       <MultiProcessorCompilation>false</MultiProcessorCompilation>
       <AdditionalOptions>/MP6 %(AdditionalOptions)</AdditionalOptions>
@@ -135,7 +135,7 @@
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
-      <LanguageStandard>stdcpp17</LanguageStandard>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
       <AdditionalOptions>/MP6 %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
@@ -205,6 +205,7 @@
     <ClInclude Include="OpCodes\OpSetpd.h" />
     <ClInclude Include="OpCodes\OpSub.h" />
     <ClInclude Include="Program.h" />
+    <ClInclude Include="Std\Classes\CustomObject.h" />
     <ClInclude Include="Std\Classes\Object.h" />
     <ClInclude Include="Std\Classes\RelaxArray.h" />
     <ClInclude Include="Std\Classes\RelaxBool.h" />
@@ -272,6 +273,7 @@
     <ClCompile Include="OpCodes\OpSetpd.cpp" />
     <ClCompile Include="OpCodes\OpSub.cpp" />
     <ClCompile Include="Program.cpp" />
+    <ClCompile Include="Std\Classes\CustomObject.cpp" />
     <ClCompile Include="Std\Classes\Object.cpp" />
     <ClCompile Include="Std\Classes\RelaxArray.cpp" />
     <ClCompile Include="Std\Classes\RelaxBool.cpp" />

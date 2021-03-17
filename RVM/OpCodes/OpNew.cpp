@@ -22,5 +22,6 @@ void OpNew::Parse(HANDLE& device)
 
 	methodConstruction = declClass->GetMethod(className, parameters);
 	if (methodConstruction == nullptr)
-		Exit("new: constructor not exists");
+	{
+	}
 }

@@ -32,16 +32,6 @@ String::String(long long num)
 	}
 }
 
-String::String(const char str[], size_t size)
-{
-	_size = size;
-	data = new unsigned short[capacity = _size + 10];
-	for (int i = 0; i < _size; ++i)
-	{
-		data[i] = str[i];
-	}
-}
-
 String::String(const wchar_t str[])
 {
 	_size = wcsnlen(str, -1);
@@ -183,9 +173,4 @@ std::string String::toStdString() const
 		res.push_back(data[i]);
 	}
 	return res;
-}
-
-String operator""_ss(const char* str, size_t size)
-{
-	return String(str, size);
 }
