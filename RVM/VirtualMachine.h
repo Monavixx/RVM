@@ -1,5 +1,6 @@
 #pragma once
 #include "OpCodes/OpMethod.h"
+#include "OpCodes/OpField.h"
 
 class VirtualMachine
 {

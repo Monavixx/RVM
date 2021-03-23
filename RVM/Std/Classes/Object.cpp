@@ -48,7 +48,7 @@ size_t Object::GetAddress() const
 
 void Object::GenerateMetaInfo()
 {
-	metaClass = new Class("Relax.Object");
+	metaClass = new Class("Relax.Object", true);
 }
 
 std::unordered_map<String, Object::FieldObject>& Object::GetFields()
@@ -63,5 +63,7 @@ Object::FieldObject& Object::GetField(const String& name)
 
 void Object::SetField(const String& name, size_t address)
 {
+	if (!fields.contains(name))
+		Exit("field not found");
 	fields[name].address = address;
 }

@@ -13,6 +13,14 @@ void Method::CallMethod(Frame* frame)
 {
 	Frame* newFrame = new Frame(this);
 
+	if (!isStatic)
+	{
+		Object* objectThis = frame->GetStack().pop();
+		if (objectThis->GetDataType() != newFrame->GetMethod()->GetDeclClassName())
+			Exit("call method: data types do not match");
+		newFrame->SetObjectThis(objectThis->GetAddress());
+	}
+
 	size_t i = 0;
 	for (auto& item : this->GetParameters())
 	{

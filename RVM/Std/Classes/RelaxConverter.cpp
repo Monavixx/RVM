@@ -18,7 +18,7 @@ RelaxString* RelaxConverter::Int32ToString(RelaxInt32* data)
 
 void RelaxConverter::GenerateMetaInfo()
 {
-    metaClass = new Class("Relax.Converter", {
+    metaClass = new Class("Relax.Converter", true, {
 		// Int32ToString
 		new StdMethod("Int32ToString", "Relax.String", "Relax.Converter", {Parameter("Relax.Int32")}, [&](Stack& stack) -> Object*
 		{

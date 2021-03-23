@@ -17,5 +17,5 @@ void RelaxBool::SetData(bool data)
 
 void RelaxBool::GenerateMetaInfo()
 {
-	metaClass = new Class("Relax.Bool");
+	metaClass = new Class("Relax.Bool", true);
 }

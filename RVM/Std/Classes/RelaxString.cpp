@@ -33,7 +33,7 @@ RelaxBool* RelaxString::operator==(RelaxString* other)
 
 void RelaxString::GenerateMetaInfo()
 {
-	metaClass = new Class("Relax.String", {
+	metaClass = new Class("Relax.String", true, {
 		new StdMethod("Concat", "Relax.String", "Relax.String", {Parameter("Relax.String")}, [&](Stack& stack) -> Object*
 		{
 			RelaxString* thisObject = dynamic_cast<RelaxString*>(stack.pop());

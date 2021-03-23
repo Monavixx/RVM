@@ -35,6 +35,8 @@ public:
 private:
 	size_t amountUsers = 0;
 	size_t address;
+
+protected:
 	std::unordered_map<String, FieldObject> fields;
 };
 

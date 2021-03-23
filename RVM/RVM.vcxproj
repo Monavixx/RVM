@@ -204,6 +204,7 @@
     <ClInclude Include="OpCodes\OpSetfield.h" />
     <ClInclude Include="OpCodes\OpSetpd.h" />
     <ClInclude Include="OpCodes\OpSub.h" />
+    <ClInclude Include="OpCodes\OpThis.h" />
     <ClInclude Include="Program.h" />
     <ClInclude Include="Std\Classes\CustomObject.h" />
     <ClInclude Include="Std\Classes\Object.h" />
@@ -272,6 +273,7 @@
     <ClCompile Include="OpCodes\OpSetfield.cpp" />
     <ClCompile Include="OpCodes\OpSetpd.cpp" />
     <ClCompile Include="OpCodes\OpSub.cpp" />
+    <ClCompile Include="OpCodes\OpThis.cpp" />
     <ClCompile Include="Program.cpp" />
     <ClCompile Include="Std\Classes\CustomObject.cpp" />
     <ClCompile Include="Std\Classes\Object.cpp" />

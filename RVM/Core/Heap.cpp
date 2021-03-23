@@ -8,6 +8,7 @@ Heap::Heap(size_t maxSize) : maxSize(maxSize), size(0), currentIndex(0)
 
 size_t Heap::push_back(Object* const& data)
 {
+	bool updateSize = true;
 	while (true)
 	{
 		if (heap[currentIndex] == nullptr)
@@ -15,6 +16,7 @@ size_t Heap::push_back(Object* const& data)
 		else if (heap[currentIndex]->GetAmountUsers() <= 0)
 		{
 			Delete(currentIndex);
+			updateSize = false;
 			break;
 		}
 		++currentIndex;
@@ -26,7 +28,7 @@ size_t Heap::push_back(Object* const& data)
 	data->SetAddress(currentIndex);
 	heap[currentIndex] = data;
 
-	if(size != maxSize) ++size;
+	if(size != maxSize && updateSize) ++size;
 	return currentIndex;
 }
 

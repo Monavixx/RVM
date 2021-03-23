@@ -7,27 +7,59 @@
 class Frame
 {
 public:
-	Frame(IMethod* method = nullptr, const VariableList& variableList = {});
+	Frame(IMethod* method = nullptr, size_t objectThis = 0, const VariableList& variableList = {});
 
-	Variable* GetVariable(size_t id);
+	inline Variable* GetVariable(size_t id)
+	{
+		return &variables[id];
+	}
 
-	IMethod* GetMethod() const;
-	VariableList GetVariableList() const;
+	inline IMethod* GetMethod() const
+	{
+		return method;
+	}
+	inline VariableList GetVariableList() const
+	{
+		return variables;
+	}
 
-	void SetMethod(IMethod* method);
-	void SetVariableList(const VariableList& variables);
+	inline void SetMethod(IMethod* method)
+	{
+		this->method = method;
+	}
+	inline void SetVariableList(const VariableList& variables)
+	{
+		this->variables = variables;
+	}
 	void CreateVariable(size_t id, const String& dataType);
 
-	Stack& GetStack();
+	inline Stack& GetStack()
+	{
+		return stack;
+	}
 	
 	class OpBase* Next();
 	bool IsEnd();
-	void SetIndex(size_t index);
+	
+	inline void SetIndex(size_t index)
+	{
+		this->index = index;
+	}
+
+	inline size_t GetObjectThis() const
+	{
+		return objectThis;
+	}
+	inline void SetObjectThis(size_t objectThis)
+	{
+		this->objectThis = objectThis;
+	}
 
 private:
 	VariableList variables;
 	IMethod* method;
 	Stack stack;
+	size_t objectThis;
 
 	size_t index = 0;
 };

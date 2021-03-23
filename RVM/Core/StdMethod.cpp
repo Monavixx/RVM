@@ -12,7 +12,6 @@ void StdMethod::CallMethod(Frame* frame)
 	Object* returnedObject = function(frame->GetStack());
 	if (returnedObject != nullptr)
 	{
-		GlobalVariables::heap.push_back(returnedObject);
-		frame->GetStack().push(returnedObject->GetAddress());
+		frame->GetStack().push(GlobalVariables::heap.push_back(returnedObject));
 	}
 }

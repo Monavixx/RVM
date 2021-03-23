@@ -3,11 +3,19 @@
 #include "RelaxBool.h"
 #include "../../Core/Class.h"
 #include "../../Core/StdMethod.h"
+#include "../../GlobalVariables.h"
+
 
 class CustomObject : public Object
 {
 public:
-	inline CustomObject(Class* declClass) :declClass(declClass) {}
+	inline CustomObject(Class* declClass) : declClass(declClass)
+	{
+		for (auto& [name,field] : declClass->GetFields())
+		{
+			fields[name] = FieldObject{ GlobalVariables::heap.push_back(new RelaxNull), field };
+		}
+	}
 
 	inline String GetDataType() override
 	{

@@ -50,7 +50,7 @@ size_t RelaxArray::GetByIndex(asizet index)
 
 void RelaxArray::GenerateMetaInfo()
 {
-	metaClass = new Class("Relax.Array", {
+	metaClass = new Class("Relax.Array", true, {
 		new StdMethod("Size", "Relax.Int32", "Relax.Array", {}, [&](Stack& stack) -> Object*
 		{
 			return dynamic_cast<RelaxArray*>(stack.pop())->GetSize();

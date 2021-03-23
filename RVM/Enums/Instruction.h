@@ -32,5 +32,6 @@ enum Instruction
 	SETPD,
 	FIELD,
 	GETFIELD,
-	SETFIELD
+	SETFIELD,
+	_THIS
 };

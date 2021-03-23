@@ -31,6 +31,9 @@
 #include "OpRef.h"
 #include "OpDeref.h"
 #include "OpSetpd.h"
+#include "OpThis.h"
+#include "OpSetfield.h"
+#include "OpGetfield.h"
 #include "../Core/Method.h"
 
 #include <vector>

@@ -39,3 +39,8 @@ String RelaxPointer::GetPointerDataType()
 {
 	return dataType;
 }
+
+void RelaxPointer::GenerateMetaInfo()
+{
+	metaClass = new Class("Relax.Pointer", true);
+}

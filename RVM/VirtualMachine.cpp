@@ -77,6 +77,11 @@ void VirtualMachine::ParseCode(Instruction instruction)
 		op = new OpMethod;
 		break;
 	}
+	case FIELD:
+	{
+		op = new OpField;
+		break;
+	}
 	default:
 		Exit("Opcode not exists!");
 	}

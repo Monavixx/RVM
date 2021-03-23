@@ -49,7 +49,7 @@ RelaxInt32* RelaxInt32::cast(RelaxFloat* data)
 
 void RelaxInt32::GenerateMetaInfo()
 {
-    metaClass = new Class("Relax.Int32", {
+    metaClass = new Class("Relax.Int32", true, {
 		// operator==
 		new StdMethod("operator==", "Relax.Bool", "Relax.Int32", {Parameter("Relax.Int32")}, [&](Stack& stack) -> Object*
 		{

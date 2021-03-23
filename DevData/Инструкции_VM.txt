@@ -30,3 +30,4 @@
 30 - field
 31 - getfield
 32 - setfield
+33 - this

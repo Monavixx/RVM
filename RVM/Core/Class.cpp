@@ -1,7 +1,7 @@
 #include "Class.h"
 
-Class::Class(const String& name, const vector<IMethod*>& methods, const std::unordered_map<String, Field*>& fields)
-	:name(name), methods(methods), fields(fields)
+Class::Class(const String& name, bool isStd, const vector<IMethod*>& methods, const std::unordered_map<String, Field*>& fields)
+	:name(name), methods(methods), fields(fields), isStd(isStd)
 {
 }
 

@@ -12,7 +12,7 @@ void ExecuteMethod(bool gc)
 		Exit("main method not found");
 	}
 
-	int i = 0;
+	size_t i = 0;
 	while (!frame->IsEnd())
 	{
 		OpBase* op = frame->Next();
@@ -21,8 +21,8 @@ void ExecuteMethod(bool gc)
 		op->Run();
 		if (dynamic_cast<OpReturn*>(op) != nullptr) return;
 
-		if (i >= GlobalVariables::opCodesForGC)
+		/*if (i >= GlobalVariables::opCodesForGC)
 			GC();
-		++i;
+		++i;*/
 	}
 }

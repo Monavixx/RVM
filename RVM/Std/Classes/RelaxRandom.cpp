@@ -19,7 +19,7 @@ RelaxInt32* RelaxRandom::GenerateInt32(RelaxInt32* min, RelaxInt32* max)
 
 void RelaxRandom::GenerateMetaInfo()
 {
-	metaClass = new Class("Relax.Random", {
+	metaClass = new Class("Relax.Random", true, {
 		// GenerateInt32
 		new StdMethod("GenerateInt32", "Relax.Int32", "Relax.Random", {}, [&](Stack& stack) -> Object*
 		{

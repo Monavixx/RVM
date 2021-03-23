@@ -6,12 +6,16 @@
 class Class
 {
 public:
-	Class(const String& name, const vector<IMethod*>& methods = {}, const std::unordered_map<String, Field*>& fields = {});
+	Class(const String& name, bool isStd = false, const vector<IMethod*>& methods = {}, const std::unordered_map<String, Field*>& fields = {});
 	~Class();
 
 	inline String GetName() const
 	{
 		return name;
+	}
+	inline bool IsStd() const
+	{
+		return isStd;
 	}
 	inline vector<IMethod*> GetMethods() const
 	{
@@ -24,6 +28,10 @@ public:
 	inline void SetName(const String& name)
 	{
 		this->name = name;
+	}
+	inline void IsStd(bool isStd)
+	{
+		this->isStd = isStd;
 	}
 
 	inline void SetMethods(const vector<IMethod*>& methods)
@@ -46,5 +54,6 @@ private:
 	String name;
 	vector<IMethod*> methods;
 	std::unordered_map<String, Field*> fields;
+	bool isStd;
 };
 

@@ -186,6 +186,21 @@ void OpMethod::ParseOpCode(Instruction instruction, HANDLE& device)
 		op = new OpSetpd;
 		break;
 	}
+	case GETFIELD:
+	{
+		op = new OpGetfield;
+		break;
+	}
+	case SETFIELD:
+	{
+		op = new OpSetfield;
+		break;
+	}
+	case _THIS:
+	{
+		op = new OpThis;
+		break;
+	}
 	default:
 		Exit("Opcode not exists!");
 	}

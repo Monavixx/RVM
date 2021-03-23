@@ -1,8 +1,14 @@
 #include "OpNew.h"
+#include "../Std/Classes/CustomObject.h"
 
 void OpNew::Run()
 {
-	methodConstruction->CallMethod(frame);
+	if(declClass->IsStd())
+		methodConstruction->CallMethod(frame);
+	else
+	{
+		frame->GetStack().push(GlobalVariables::heap.push_back(new CustomObject(declClass)));
+	}
 }
 
 void OpNew::Parse(HANDLE& device)
@@ -21,7 +27,6 @@ void OpNew::Parse(HANDLE& device)
 		Exit("new: class not exists");
 
 	methodConstruction = declClass->GetMethod(className, parameters);
-	if (methodConstruction == nullptr)
-	{
-	}
+	/*if (methodConstruction == nullptr)
+		Exit("new: constructor not found!");*/
 }

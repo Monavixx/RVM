@@ -57,7 +57,7 @@ RelaxString* RelaxConsole::Read()
 
 void RelaxConsole::GenerateMetaInfo()
 {
-	metaClass = new Class("Relax.Console", {
+	metaClass = new Class("Relax.Console", true, {
 		// Write
 		new StdMethod("Write", "void", "Relax.Console", {Parameter("Relax.String")}, [&](Stack& stack) -> Object*
 		{

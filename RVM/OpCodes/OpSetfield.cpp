@@ -3,8 +3,11 @@
 void OpSetfield::Run()
 {
 	Object* target = frame->GetStack().pop();
-	size_t valueAddress = frame->GetStack().popAddress();
-	target->SetField(name, valueAddress);
+	Object* value = frame->GetStack().pop();
+	if (target->GetField(name).field->GetDataType() != value->GetDataType())
+		Exit("setfield: data types do not match");
+	value->IncAmountUsers();
+	target->SetField(name, value->GetAddress());
 }
 
 void OpSetfield::Parse(HANDLE& device)
