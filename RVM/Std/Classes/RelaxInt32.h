@@ -12,17 +12,14 @@ public:
 	{
 		return "Relax.Int32"_ss;
 	}
-	int GetData();
-	void SetData(int data);
-	
-	RelaxBool* operator==(RelaxInt32* other);
-
-	RelaxInt32* operator+(RelaxInt32* other);
-	RelaxInt32* operator-(RelaxInt32* other);
-	RelaxInt32* operator*(RelaxInt32* other);
-	RelaxInt32* operator/(RelaxInt32* other);
-
-	static RelaxInt32* cast(class RelaxFloat* data);
+	inline int GetData()
+	{
+		return data;
+	}
+	inline void SetData(int data)
+	{
+		this->data = data;
+	}
 
 	static void GenerateMetaInfo();
 	static inline class Class* metaClass = nullptr;

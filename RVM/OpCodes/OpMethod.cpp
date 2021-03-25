@@ -38,7 +38,7 @@ void OpMethod::ParseCode()
 #ifdef _WIN32
 	HANDLE writeBufferMethodCode;
 	HANDLE readBufferMethodCode;
-	CreatePipe(&readBufferMethodCode, &writeBufferMethodCode, 0, 0);
+	CreatePipe(&readBufferMethodCode, &writeBufferMethodCode, 0, code.size());
 	WriteFile(writeBufferMethodCode, code.GetData(), code.size(), 0, 0);
 
 	while (GetFileSize(readBufferMethodCode, 0) > 0)

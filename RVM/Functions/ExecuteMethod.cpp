@@ -13,16 +13,27 @@ void ExecuteMethod(bool gc)
 	}
 
 	size_t i = 0;
+	bool isReturn = false;
 	while (!frame->IsEnd())
 	{
 		OpBase* op = frame->Next();
 		op->SetFrame(frame);
 
 		op->Run();
-		if (dynamic_cast<OpReturn*>(op) != nullptr) return;
+		if (dynamic_cast<OpReturn*>(op) != nullptr)
+		{
+			isReturn = true;
+			return;
+		}
 
-		/*if (i >= GlobalVariables::opCodesForGC)
+		if (i >= GlobalVariables::opCodesForGC)
 			GC();
-		++i;*/
+		++i;
 	}
+	if (!isReturn)
+	{
+		delete frame;
+		GlobalVariables::frameStack.pop();
+	}
+
 }
