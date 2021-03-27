@@ -10,5 +10,5 @@ public:
 
 private:
 	String dataType;
-	Class* declClass = nullptr;
+	ValueType newValueType;
 };

@@ -1,9 +1,9 @@
 #include "OpPushInt32.h"
+#include "../Core/FieldObject.h"
 
 void OpPushInt32::Run()
 {
-	RelaxInt32* pushingInt32 = new RelaxInt32(data);
-	frame->GetStack().push(GlobalVariables::heap.push_back(pushingInt32));
+	frame->GetStack().push(frame->AddValue(new Value(ValueType::INT32, UValue{ .inum = data })));
 }
 
 void OpPushInt32::Parse(HANDLE& device)

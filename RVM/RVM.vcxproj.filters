@@ -222,31 +222,16 @@
     <ClInclude Include="OpCodes\OpReturn.h">
       <Filter>Файлы заголовков\OpCodes</Filter>
     </ClInclude>
-    <ClInclude Include="Std\RelaxNull.h">
-      <Filter>Файлы заголовков\Std</Filter>
-    </ClInclude>
-    <ClInclude Include="Std\Classes\RelaxFloat.h">
-      <Filter>Файлы заголовков\Std\Classes</Filter>
-    </ClInclude>
-    <ClInclude Include="Std\Classes\RelaxInt32.h">
-      <Filter>Файлы заголовков\Std\Classes</Filter>
-    </ClInclude>
     <ClInclude Include="Std\Classes\RelaxPointer.h">
       <Filter>Файлы заголовков\Std\Classes</Filter>
     </ClInclude>
     <ClInclude Include="Std\Classes\RelaxRandom.h">
       <Filter>Файлы заголовков\Std\Classes</Filter>
     </ClInclude>
-    <ClInclude Include="Std\Classes\RelaxString.h">
-      <Filter>Файлы заголовков\Std\Classes</Filter>
-    </ClInclude>
     <ClInclude Include="Std\Classes\Object.h">
       <Filter>Файлы заголовков\Std\Classes</Filter>
     </ClInclude>
     <ClInclude Include="Std\Classes\RelaxArray.h">
-      <Filter>Файлы заголовков\Std\Classes</Filter>
-    </ClInclude>
-    <ClInclude Include="Std\Classes\RelaxBool.h">
       <Filter>Файлы заголовков\Std\Classes</Filter>
     </ClInclude>
     <ClInclude Include="Std\Classes\RelaxConsole.h">
@@ -281,6 +266,15 @@
     </ClInclude>
     <ClInclude Include="OpCodes\OpThis.h">
       <Filter>Файлы заголовков\OpCodes</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Value.h">
+      <Filter>Файлы заголовков\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="OpCodes\OpEqual.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\FieldObject.h">
+      <Filter>Файлы заголовков\Core</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -428,13 +422,7 @@
     <ClCompile Include="OpCodes\OpSub.cpp">
       <Filter>Исходные файлы\OpCodes</Filter>
     </ClCompile>
-    <ClCompile Include="Std\RelaxNull.cpp">
-      <Filter>Исходные файлы\Std</Filter>
-    </ClCompile>
     <ClCompile Include="Std\Classes\RelaxRandom.cpp">
-      <Filter>Исходные файлы\Std\Classes</Filter>
-    </ClCompile>
-    <ClCompile Include="Std\Classes\RelaxString.cpp">
       <Filter>Исходные файлы\Std\Classes</Filter>
     </ClCompile>
     <ClCompile Include="Std\Classes\Object.cpp">
@@ -443,19 +431,10 @@
     <ClCompile Include="Std\Classes\RelaxArray.cpp">
       <Filter>Исходные файлы\Std\Classes</Filter>
     </ClCompile>
-    <ClCompile Include="Std\Classes\RelaxBool.cpp">
-      <Filter>Исходные файлы\Std\Classes</Filter>
-    </ClCompile>
     <ClCompile Include="Std\Classes\RelaxConsole.cpp">
       <Filter>Исходные файлы\Std\Classes</Filter>
     </ClCompile>
     <ClCompile Include="Std\Classes\RelaxConverter.cpp">
-      <Filter>Исходные файлы\Std\Classes</Filter>
-    </ClCompile>
-    <ClCompile Include="Std\Classes\RelaxFloat.cpp">
-      <Filter>Исходные файлы\Std\Classes</Filter>
-    </ClCompile>
-    <ClCompile Include="Std\Classes\RelaxInt32.cpp">
       <Filter>Исходные файлы\Std\Classes</Filter>
     </ClCompile>
     <ClCompile Include="Std\Classes\RelaxPointer.cpp">
@@ -484,6 +463,15 @@
     </ClCompile>
     <ClCompile Include="Std\Classes\CustomObject.cpp">
       <Filter>Исходные файлы\Std\Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\Value.cpp">
+      <Filter>Исходные файлы\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\FieldObject.cpp">
+      <Filter>Исходные файлы\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="OpCodes\OpEqual.cpp">
+      <Filter>Исходные файлы\OpCodes</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

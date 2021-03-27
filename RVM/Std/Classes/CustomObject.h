@@ -1,10 +1,9 @@
 #pragma once
 #include "Object.h"
-#include "RelaxBool.h"
 #include "../../Core/Class.h"
 #include "../../Core/StdMethod.h"
 #include "../../GlobalVariables.h"
-
+#include "../../Core/FieldObject.h"
 
 class CustomObject : public Object
 {
@@ -13,7 +12,7 @@ public:
 	{
 		for (auto& [name,field] : declClass->GetFields())
 		{
-			fields[name] = FieldObject{ GlobalVariables::heap.push_back(new RelaxNull), field };
+			fields[name] = FieldObject{ nullptr, field };
 		}
 	}
 

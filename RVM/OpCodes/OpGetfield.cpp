@@ -1,9 +1,10 @@
 #include "OpGetfield.h"
+#include "../Core/FieldObject.h"
 
 void OpGetfield::Run()
 {
-	Object* data = frame->GetStack().pop();
-	frame->GetStack().push(data->GetField(name).address);
+	Value* data = frame->GetStack().pop();
+	frame->GetStack().push(data->value.object->GetField(name).value);
 }
 
 void OpGetfield::Parse(HANDLE& device)

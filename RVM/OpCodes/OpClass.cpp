@@ -1,4 +1,5 @@
 #include "OpClass.h"
+#include "../Core/FieldObject.h"
 
 void OpClass::Run()
 {

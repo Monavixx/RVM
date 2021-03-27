@@ -151,6 +151,7 @@
     <ClInclude Include="Core\Class.h" />
     <ClInclude Include="Core\ClassList.h" />
     <ClInclude Include="Core\Field.h" />
+    <ClInclude Include="Core\FieldObject.h" />
     <ClInclude Include="Core\Frame.h" />
     <ClInclude Include="Core\Heap.h" />
     <ClInclude Include="Core\IMethod.h" />
@@ -158,6 +159,7 @@
     <ClInclude Include="Core\Parameter.h" />
     <ClInclude Include="Core\Stack.h" />
     <ClInclude Include="Core\StdMethod.h" />
+    <ClInclude Include="Core\Value.h" />
     <ClInclude Include="Core\Variable.h" />
     <ClInclude Include="Core\VariableList.h" />
     <ClInclude Include="Enums\AccessModifier.h" />
@@ -179,6 +181,7 @@
     <ClInclude Include="OpCodes\OpDeref.h" />
     <ClInclude Include="OpCodes\OpDiv.h" />
     <ClInclude Include="OpCodes\OpDup.h" />
+    <ClInclude Include="OpCodes\OpEqual.h" />
     <ClInclude Include="OpCodes\OpField.h" />
     <ClInclude Include="OpCodes\OpGc.h" />
     <ClInclude Include="OpCodes\OpGet.h" />
@@ -209,21 +212,17 @@
     <ClInclude Include="Std\Classes\CustomObject.h" />
     <ClInclude Include="Std\Classes\Object.h" />
     <ClInclude Include="Std\Classes\RelaxArray.h" />
-    <ClInclude Include="Std\Classes\RelaxBool.h" />
     <ClInclude Include="Std\Classes\RelaxConsole.h" />
     <ClInclude Include="Std\Classes\RelaxConverter.h" />
-    <ClInclude Include="Std\Classes\RelaxFloat.h" />
-    <ClInclude Include="Std\Classes\RelaxInt32.h" />
     <ClInclude Include="Std\Classes\RelaxPointer.h" />
     <ClInclude Include="Std\Classes\RelaxRandom.h" />
-    <ClInclude Include="Std\Classes\RelaxString.h" />
-    <ClInclude Include="Std\RelaxNull.h" />
     <ClInclude Include="VirtualMachine.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Core\Class.cpp" />
     <ClCompile Include="Core\ClassList.cpp" />
     <ClCompile Include="Core\Field.cpp" />
+    <ClCompile Include="Core\FieldObject.cpp" />
     <ClCompile Include="Core\Frame.cpp" />
     <ClCompile Include="Core\Heap.cpp" />
     <ClCompile Include="Core\IMethod.cpp" />
@@ -231,6 +230,7 @@
     <ClCompile Include="Core\Parameter.cpp" />
     <ClCompile Include="Core\Stack.cpp" />
     <ClCompile Include="Core\StdMethod.cpp" />
+    <ClCompile Include="Core\Value.cpp" />
     <ClCompile Include="Core\Variable.cpp" />
     <ClCompile Include="Core\VariableList.cpp" />
     <ClCompile Include="Exceptions\Exception.cpp" />
@@ -248,6 +248,7 @@
     <ClCompile Include="OpCodes\OpDeref.cpp" />
     <ClCompile Include="OpCodes\OpDiv.cpp" />
     <ClCompile Include="OpCodes\OpDup.cpp" />
+    <ClCompile Include="OpCodes\OpEqual.cpp" />
     <ClCompile Include="OpCodes\OpField.cpp" />
     <ClCompile Include="OpCodes\OpGc.cpp" />
     <ClCompile Include="OpCodes\OpGet.cpp" />
@@ -278,15 +279,10 @@
     <ClCompile Include="Std\Classes\CustomObject.cpp" />
     <ClCompile Include="Std\Classes\Object.cpp" />
     <ClCompile Include="Std\Classes\RelaxArray.cpp" />
-    <ClCompile Include="Std\Classes\RelaxBool.cpp" />
     <ClCompile Include="Std\Classes\RelaxConsole.cpp" />
     <ClCompile Include="Std\Classes\RelaxConverter.cpp" />
-    <ClCompile Include="Std\Classes\RelaxFloat.cpp" />
-    <ClCompile Include="Std\Classes\RelaxInt32.cpp" />
     <ClCompile Include="Std\Classes\RelaxPointer.cpp" />
     <ClCompile Include="Std\Classes\RelaxRandom.cpp" />
-    <ClCompile Include="Std\Classes\RelaxString.cpp" />
-    <ClCompile Include="Std\RelaxNull.cpp" />
     <ClCompile Include="VirtualMachine.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

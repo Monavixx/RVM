@@ -1,133 +1,94 @@
 #include "RelaxConsole.h"
+#include "../../Core/FieldObject.h"
 #include "../../Core/Class.h"
 #include "../../Core/StdMethod.h"
-
-Object* RelaxConsole::Write(RelaxString* data)
-{
-	std::cout << data->GetData().toStdString();
-	return nullptr;
-}
-
-Object* RelaxConsole::Write(RelaxInt32* data)
-{
-	std::cout << data->GetData();
-	return nullptr;
-}
-
-Object* RelaxConsole::Write(RelaxFloat* data)
-{
-	std::cout << data->GetData();
-	return nullptr;
-}
-
-Object* RelaxConsole::Write(RelaxBool* data)
-{
-	std::cout << (data->GetData() ? "true" : "false");
-	return nullptr;
-}
-
-Object* RelaxConsole::Print(RelaxString* data)
-{
-	qout << data->GetData();
-	return nullptr;
-}
-
-Object* RelaxConsole::Print(RelaxInt32* data)
-{
-	qout << data->GetData();
-	return nullptr;
-}
-
-Object* RelaxConsole::Print(RelaxFloat* data)
-{
-	qout << data->GetData();
-	return nullptr;
-}
-
-Object* RelaxConsole::Print(RelaxBool* data)
-{
-	qout << (data->GetData() ? "true" : "false");
-	return nullptr;
-}
-
-RelaxString* RelaxConsole::Read()
-{
-	return new RelaxString(qin.readLine());
-}
+#include "../../Core/Value.h"
 
 void RelaxConsole::GenerateMetaInfo()
 {
 	metaClass = new Class("Relax.Console", true, {
 		// Write
-		new StdMethod("Write", "void", "Relax.Console", {Parameter("Relax.String")}, [&](Stack& stack) -> Object*
+		new StdMethod("Write", "void", "Relax.Console", {Parameter("Relax.String")}, [&](Stack& stack) -> Value*
 		{
-			return RelaxConsole::Write(dynamic_cast<RelaxString*>(stack.pop()));
+			std::cout << stack.pop()->value.str.toStdString();
+			return new Value(ValueType::_VOID);
 		},AccessModifier::PUBLIC, true),
 
-		new StdMethod("Write", "void", "Relax.Console", {Parameter("Relax.Int32")}, [&](Stack& stack) -> Object*
+		new StdMethod("Write", "void", "Relax.Console", {Parameter("Relax.Int32")}, [&](Stack& stack) -> Value*
 		{
-			return RelaxConsole::Write(dynamic_cast<RelaxInt32*>(stack.pop()));
+			std::cout << stack.pop()->value.inum;
+			return new Value(ValueType::_VOID);
 		},AccessModifier::PUBLIC, true),
 
-		new StdMethod("Write", "void", "Relax.Console", {Parameter("Relax.Float")}, [&](Stack& stack) -> Object*
+		new StdMethod("Write", "void", "Relax.Console", {Parameter("Relax.Float")}, [&](Stack& stack) -> Value*
 		{
-			return RelaxConsole::Write(dynamic_cast<RelaxFloat*>(stack.pop()));
+			std::cout << stack.pop()->value.fnum;
+			return new Value(ValueType::_VOID);
 		},AccessModifier::PUBLIC, true),
 
-		new StdMethod("Write", "void", "Relax.Console", {Parameter("Relax.Bool")}, [&](Stack& stack) -> Object*
+		new StdMethod("Write", "void", "Relax.Console", {Parameter("Relax.Bool")}, [&](Stack& stack) -> Value*
 		{
-			return RelaxConsole::Write(dynamic_cast<RelaxBool*>(stack.pop()));
+			std::cout << stack.pop()->value.boolean ? "true" : "false";
+			return new Value(ValueType::_VOID);
 		},AccessModifier::PUBLIC, true),
 
 		// Read
-		new StdMethod("Read", "Relax.String", "Relax.Console", {}, [&](Stack& stack) -> Object*
+		new StdMethod("Read", "Relax.String", "Relax.Console", {}, [&](Stack& stack) -> Value*
 		{
-			return RelaxConsole::Read();
+			return new Value(ValueType::STR,  UValue{.str = qin.readLine()});
 		},AccessModifier::PUBLIC, true)
 	});
 
 	if (Args::contains("-p2w"))
 	{
-		metaClass->AddMethod(new StdMethod("Print", "void", "Relax.Console", {Parameter("Relax.String")}, [&](Stack& stack) -> Object*
+		metaClass->AddMethod(new StdMethod("Print", "void", "Relax.Console", {Parameter("Relax.String")}, [&](Stack& stack) -> Value*
 			{
-				return RelaxConsole::Write(dynamic_cast<RelaxString*>(stack.pop()));
+				std::cout << stack.pop()->value.str.toStdString();
+				return new Value(ValueType::_VOID);
 			}, AccessModifier::PUBLIC, true));
 
-		metaClass->AddMethod(new StdMethod("Print", "void", "Relax.Console", {Parameter("Relax.Int32")}, [&](Stack& stack) -> Object*
+		metaClass->AddMethod(new StdMethod("Print", "void", "Relax.Console", {Parameter("Relax.Int32")}, [&](Stack& stack) -> Value*
 			{
-				return RelaxConsole::Write(dynamic_cast<RelaxInt32*>(stack.pop()));
+				std::cout << stack.pop()->value.inum;
+				return new Value(ValueType::_VOID);
 			}, AccessModifier::PUBLIC, true));
 
-		metaClass->AddMethod(new StdMethod("Print", "void", "Relax.Console", {Parameter("Relax.Float")}, [&](Stack& stack) -> Object*
+		metaClass->AddMethod(new StdMethod("Print", "void", "Relax.Console", {Parameter("Relax.Float")}, [&](Stack& stack) -> Value*
 			{
-				return RelaxConsole::Write(dynamic_cast<RelaxFloat*>(stack.pop()));
+				std::cout << stack.pop()->value.fnum;
+				return new Value(ValueType::_VOID);
 			}, AccessModifier::PUBLIC, true));
 
-		metaClass->AddMethod(new StdMethod("Print", "void", "Relax.Console", {Parameter("Relax.Bool")}, [&](Stack& stack) -> Object*
+		metaClass->AddMethod(new StdMethod("Print", "void", "Relax.Console", {Parameter("Relax.Bool")}, [&](Stack& stack) -> Value*
 			{
-				return RelaxConsole::Write(dynamic_cast<RelaxBool*>(stack.pop()));
+				std::cout << stack.pop()->value.boolean ? "true" : "false";
+				return new Value(ValueType::_VOID);
 			}, AccessModifier::PUBLIC, true));
 	}
 	else
 	{
-		metaClass->AddMethod(new StdMethod("Print", "void", "Relax.Console", {Parameter("Relax.String")}, [&](Stack& stack) -> Object*
+		metaClass->AddMethod(new StdMethod("Print", "void", "Relax.Console", {Parameter("Relax.String")}, [&](Stack& stack) -> Value*
 			{
-				return RelaxConsole::Print(dynamic_cast<RelaxString*>(stack.pop()));
+				qout << stack.pop()->value.str;
+				return new Value(ValueType::_VOID);
 			}, AccessModifier::PUBLIC, true));
 
-		metaClass->AddMethod(new StdMethod("Print", "void", "Relax.Console", {Parameter("Relax.Int32")}, [&](Stack& stack) -> Object*
+		metaClass->AddMethod(new StdMethod("Print", "void", "Relax.Console", {Parameter("Relax.Int32")}, [&](Stack& stack) -> Value*
 			{
-				return RelaxConsole::Print(dynamic_cast<RelaxInt32*>(stack.pop()));
+				qout << stack.pop()->value.inum;
+				return new Value(ValueType::_VOID);
 			}, AccessModifier::PUBLIC, true));
 
-		metaClass->AddMethod(new StdMethod("Print", "void", "Relax.Console", {Parameter("Relax.Float")}, [&](Stack& stack) -> Object*
+		metaClass->AddMethod(new StdMethod("Print", "void", "Relax.Console", {Parameter("Relax.Float")}, [&](Stack& stack) -> Value*
 			{
-				return RelaxConsole::Print(dynamic_cast<RelaxFloat*>(stack.pop()));
+				qout << std::to_string(stack.pop()->value.fnum);
+				return new Value(ValueType::_VOID);
 			}, AccessModifier::PUBLIC, true));
 
-		metaClass->AddMethod(new StdMethod("Print", "void", "Relax.Console", {Parameter("Relax.Bool")}, [&](Stack& stack) -> Object*
+		metaClass->AddMethod(new StdMethod("Print", "void", "Relax.Console", {Parameter("Relax.Bool")}, [&](Stack& stack) -> Value*
 			{
-				return RelaxConsole::Print(dynamic_cast<RelaxBool*>(stack.pop()));
+				qout << (stack.pop()->value.boolean ? "true" : "false");
+				return new Value(ValueType::_VOID);
 			}, AccessModifier::PUBLIC, true));
 	}
 }

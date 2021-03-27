@@ -34,6 +34,7 @@
 #include "OpThis.h"
 #include "OpSetfield.h"
 #include "OpGetfield.h"
+#include "OpEqual.h"
 #include "../Core/Method.h"
 
 #include <vector>

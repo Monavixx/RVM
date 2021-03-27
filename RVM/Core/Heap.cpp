@@ -1,5 +1,6 @@
 #include "Heap.h"
 #include "../Functions/GC.h"
+#include "FieldObject.h"
 
 Heap::Heap(size_t maxSize) : maxSize(maxSize), size(0), currentIndex(0)
 {

@@ -1,8 +1,6 @@
 #pragma once
 #include "Object.h"
 #include "../../Functions/Exit.h"
-#include "../RelaxNull.h"
-#include "RelaxInt32.h"
 
 class RelaxArray : public Object
 {
@@ -15,11 +13,11 @@ public:
 	{
 		return "Relax.Array<"_ss + dataType + ">"_ss;
 	}
-	size_t* GetArr();
-	void SetArr(size_t* arr);
-	void SetByIndex(asizet index, size_t address);
-	size_t GetByIndex(asizet index);
-	RelaxInt32* GetSize() { return new RelaxInt32(size); }
+	Value** GetArr();
+	void SetArr(Value** arr);
+	void SetByIndex(asizet index, Value* value);
+	Value* GetByIndex(asizet index);
+	int GetSize() { return size; }
 
 
 	static void GenerateMetaInfo();
@@ -28,6 +26,6 @@ public:
 private:
 	String dataType;
 	asizet size;
-	size_t* arr;
+	Value** arr;
 };
 

@@ -1,4 +1,5 @@
 #include "OpLocal.h"
+#include "../Core/FieldObject.h"
 
 void OpLocal::Run()
 {

@@ -1,7 +1,9 @@
 #include "Object.h"
+#include "../../Core/FieldObject.h"
 #include "../../Core/Class.h"
 #include "../../Core/StdMethod.h"
 #include "../../GlobalVariables.h"
+#include "../../Core/FieldObject.h"
 
 Object::Object(size_t amountUsers) : amountUsers(amountUsers), address(0)
 {
@@ -10,9 +12,9 @@ Object::Object(size_t amountUsers) : amountUsers(amountUsers), address(0)
 void Object::CreateFields()
 {
 	Class* dataTypeClass = GlobalVariables::classes[GetDataType()];
-	for (auto& [name,field] : dataTypeClass->GetFields())
+	for (auto& [name, field] : dataTypeClass->GetFields())
 	{
-		fields[name] = FieldObject{ GlobalVariables::heap.push_back(new RelaxNull), field };
+		fields[name] = FieldObject{ nullptr, field };
 	}
 }
 
@@ -51,19 +53,19 @@ void Object::GenerateMetaInfo()
 	metaClass = new Class("Relax.Object", true);
 }
 
-std::unordered_map<String, Object::FieldObject>& Object::GetFields()
+std::unordered_map<String, FieldObject>& Object::GetFields()
 {
 	return fields;
 }
 
-Object::FieldObject& Object::GetField(const String& name)
+FieldObject& Object::GetField(const String& name)
 {
 	return fields[name];
 }
 
-void Object::SetField(const String& name, size_t address)
+void Object::SetField(const String& name, Value* value)
 {
 	if (!fields.contains(name))
 		Exit("field not found");
-	fields[name].address = address;
+	fields[name].value = value;
 }

@@ -1,9 +1,9 @@
 #include "OpPushStr.h"
+#include "../Core/FieldObject.h"
 
 void OpPushStr::Run()
 {
-	RelaxString* pushingString = new RelaxString(data);
-	frame->GetStack().push(GlobalVariables::heap.push_back(pushingString));
+	frame->GetStack().push(frame->AddValue(new Value(ValueType::STR,  UValue{.str = data} )));
 }
 
 void OpPushStr::Parse(HANDLE& device)

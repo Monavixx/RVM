@@ -1,8 +1,9 @@
 #include "OpJmpif.h"
+#include "../Core/FieldObject.h"
 
 void OpJmpif::Run()
 {
-	bool isTrue = dynamic_cast<RelaxBool*>(frame->GetStack().pop())->GetData();
+	bool isTrue = frame->GetStack().pop()->value.boolean;
 	if (isTrue)
 	{
 		frame->SetIndex(offset);

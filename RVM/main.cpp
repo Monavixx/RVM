@@ -1,4 +1,5 @@
 #include "Program.h"
+#include "Core/FieldObject.h"
 
 int main(int argc, char *argv[])
 {

@@ -1,4 +1,5 @@
 #include "VirtualMachine.h"
+#include "Core/FieldObject.h"
 
 VirtualMachine::VirtualMachine()
 {
@@ -49,12 +50,12 @@ void VirtualMachine::Start()
 	Frame* frame = new Frame(mainMethod);
 	GlobalVariables::frameStack.push(frame);
 
-	/*clock_t start, end, ReResult;
-	start = clock();*/
+	clock_t start, end, ReResult;
+	start = clock();
 	ExecuteMethod();
-	/*end = clock();
+	end = clock();
 	ReResult = end - start;
-	std::cout << "\n\n\nRelax: " << ReResult << "ms\n";*/
+	std::cout << "\n\n\nRelax: " << ReResult << "ms\n";
 }
 
 void VirtualMachine::ParseCode(Instruction instruction)

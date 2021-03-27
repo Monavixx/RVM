@@ -1,9 +1,5 @@
 #pragma once
 #include "Class.h"
-#include "../Std/Classes/RelaxString.h"
-#include "../Std/Classes/RelaxInt32.h"
-#include "../Std/Classes/RelaxBool.h"
-#include "../Std/Classes/RelaxFloat.h"
 #include "../Std/Classes/RelaxArray.h"
 #include "../Std/Classes/RelaxRandom.h"
 #include "../Std/Classes/RelaxConsole.h"

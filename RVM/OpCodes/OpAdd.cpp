@@ -1,20 +1,25 @@
 #include "OpAdd.h"
+#include "../Core/FieldObject.h"
 
 void OpAdd::Run()
 {
-	Object* firstData = frame->GetStack().pop();
-	Object* secondData = frame->GetStack().pop();
-	frame->GetStack().push(secondData->GetAddress());
-	frame->GetStack().push(firstData->GetAddress());
+	Value* firstData = frame->GetStack().pop();
+	Value* secondData = frame->GetStack().pop();
 
-	Class* declClass = GlobalVariables::classes[firstData->GetDataType()];
-	if (declClass == nullptr)
-		Exit("Add: decl class not found");
-	IMethod* operatorAdd = declClass->GetMethod("operator+", { Parameter(secondData->GetDataType()) });
-	if (operatorAdd == nullptr)
-		Exit("Add: operator+ not found");
+	switch (firstData->valueType)
+	{
+	case ValueType::INT32:
+		frame->GetStack().push(frame->AddValue(new Value(ValueType::INT32, UValue{ .inum = firstData->value.inum + secondData->value.inum })));
+		break;
 
-	operatorAdd->CallMethod(frame);
+	case ValueType::FLOAT:
+		frame->GetStack().push(frame->AddValue(new Value(ValueType::FLOAT, UValue{ .fnum = firstData->value.fnum + secondData->value.fnum })));
+		break;
+
+	default:
+		Exit("add: data type is not a number");
+	}
+	
 }
 
 void OpAdd::Parse(HANDLE& device)

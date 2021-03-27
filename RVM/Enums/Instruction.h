@@ -33,5 +33,6 @@ enum Instruction
 	FIELD,
 	GETFIELD,
 	SETFIELD,
-	_THIS
+	_THIS,
+	EQUAL
 };

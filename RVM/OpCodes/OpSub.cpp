@@ -1,20 +1,24 @@
 #include "OpSub.h"
+#include "../Core/FieldObject.h"
 
 void OpSub::Run()
 {
-	Object* firstData = frame->GetStack().pop();
-	Object* secondData = frame->GetStack().pop();
-	frame->GetStack().push(secondData->GetAddress());
-	frame->GetStack().push(firstData->GetAddress());
+	Value* firstData = frame->GetStack().pop();
+	Value* secondData = frame->GetStack().pop();
 
-	Class* declClass = GlobalVariables::classes[firstData->GetDataType()];
-	if (declClass == nullptr)
-		Exit("Sub: decl class not found");
-	IMethod* operatorSub = declClass->GetMethod("operator-", { Parameter(secondData->GetDataType()) });
-	if (operatorSub == nullptr)
-		Exit("Sub: operator- not found");
+	switch (firstData->valueType)
+	{
+	case ValueType::INT32:
+		frame->GetStack().push(frame->AddValue(new Value(ValueType::INT32,  UValue{.inum = firstData->value.inum - secondData->value.inum } )));
+		break;
 
-	operatorSub->CallMethod(frame);
+	case ValueType::FLOAT:
+		frame->GetStack().push(frame->AddValue(new Value(ValueType::FLOAT,  UValue{.fnum = firstData->value.fnum - secondData->value.fnum } )));
+		break;
+
+	default:
+		Exit("sub: data type is not a number");
+	}
 }
 
 void OpSub::Parse(HANDLE& device)

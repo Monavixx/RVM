@@ -1,33 +1,41 @@
 #include "RelaxPointer.h"
+#include "../../Core/FieldObject.h"
 #include "../../GlobalVariables.h"
 
 
-RelaxPointer::RelaxPointer(int pointerAddress, const String& dataType) : pointerAddress(pointerAddress), dataType(dataType)
+RelaxPointer::RelaxPointer(Value* data, const String& dataType) : dataType(dataType)
 {
+	if (data->valueType == ValueType::OBJECT)
+	{
+		this->data.isAddress = true;
+		this->data.data.address = data->value.object->GetAddress();
+	}
+	else
+	{
+		this->data.isAddress = false;
+		this->data.data.value = data;
+	}
 }
 
-int RelaxPointer::GetPointerAddress()
+RelaxPointer::RelaxPointerData& RelaxPointer::GetData()
 {
-	return pointerAddress;
+	return data;
 }
 
-void RelaxPointer::SetPointerAddress(int pointerAddress)
+void RelaxPointer::SetData(Value* data)
 {
-	if (GlobalVariables::heap[pointerAddress]->GetDataType() != dataType)
+	if (Value::GetDataType(data) != dataType)
 		Exit("Pointer data type not equal value data type");
-	this->pointerAddress = pointerAddress;
-}
-
-void RelaxPointer::SetPointerData(Object* data)
-{
-	if (data->GetDataType() != dataType)
-		Exit("Pointer data type not equal value data type");
-	GlobalVariables::heap[pointerAddress] = data;
-}
-
-Object* RelaxPointer::GetPointerData()
-{
-	return GlobalVariables::heap[pointerAddress];
+	if (data->valueType == ValueType::OBJECT)
+	{
+		this->data.data.address = data->value.object->GetAddress();
+		this->data.isAddress = true;
+	}
+	else
+	{
+		*(this->data.data.value) = *data;
+		this->data.isAddress = false;
+	}
 }
 
 void RelaxPointer::SetPointerDataType(const String& dataType)

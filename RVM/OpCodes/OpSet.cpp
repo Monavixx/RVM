@@ -1,21 +1,23 @@
 #include "OpSet.h"
+#include "../Core/FieldObject.h"
 #include "../Libs/ConsoleTextStream.h"
 
 void OpSet::Run()
 {
-	Object* data = frame->GetStack().pop();
+	Value* data = frame->GetStack().pop();
 	Variable* variable = frame->GetVariable(id);
 	if (variable == nullptr)
 		Exit("set: local variable with id " + std::to_string(id) + " not exists");
 
-	if (data->GetDataType() != variable->GetDataType() && data->GetDataType() != "Relax.Null")
+	String dataType = Value::GetDataType(data);
+	if (dataType != variable->GetDataType() && dataType != "Relax.Null")
 		Exit("set: data types do not match");
 
-	Object* oldData = GlobalVariables::heap[variable->GetAddress()];
-	if(oldData != nullptr) oldData->DecAmountUsers();
+	Value* oldData = variable->GetValue();
+	if(oldData != nullptr && oldData->valueType == ValueType::OBJECT) oldData->value.object->DecAmountUsers();
 
-	data->IncAmountUsers();
-	variable->SetAddress(data->GetAddress());
+	if (oldData != nullptr && data->valueType == ValueType::OBJECT) data->value.object->IncAmountUsers();
+	variable->SetValue(data);
 }
 
 void OpSet::Parse(HANDLE& device)

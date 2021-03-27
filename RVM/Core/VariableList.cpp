@@ -1,4 +1,5 @@
 #include "VariableList.h"
+#include "FieldObject.h"
 
 VariableList::VariableList()
 {

@@ -1,25 +1,35 @@
 #pragma once
-#include "Object.h"
+#include "../../Core/Value.h"
+#include "../../Core/Variable.h"
 
 class RelaxPointer : public Object
 {
+	union URelaxPointerData
+	{
+		Value* value;
+		size_t address;
+	};
+	struct RelaxPointerData
+	{
+		URelaxPointerData data;
+		bool isAddress;
+	};
 public:
-	RelaxPointer(int pointerAddress, const String& dataType);
+	RelaxPointer(Value* data, const String& dataType);
 	inline String GetDataType() override
 	{
 		return "Relax.Pointer<"_ss + dataType + ">";
 	}
-	int GetPointerAddress();
-	void SetPointerAddress(int pointerAddress);
-	void SetPointerData(Object* data);
-	Object* GetPointerData();
+	RelaxPointerData& GetData();
+	void SetData(Value* data);
 	void SetPointerDataType(const String& dataType);
 	String GetPointerDataType();
 
 	static void GenerateMetaInfo();
 	static inline class Class* metaClass = nullptr;
 private:
-	int pointerAddress;
+	
+	RelaxPointerData data;
 	String dataType;
 };
 

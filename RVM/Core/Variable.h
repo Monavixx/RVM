@@ -1,19 +1,33 @@
 #pragma once
-#include "../Std/Classes/Object.h"
+#include "Value.h"
 
 class Variable
 {
 public:
-	Variable(size_t address = 0, const String& dataType = "Relax.Object");
+	Variable(Value* value = nullptr, const String& dataType = "Relax.Object") : value(value), dataType(dataType)
+	{
+	}
 
-	size_t GetAddress() const;
-	void SetAddress(size_t address);
+	inline void SetValue(Value* value)
+	{
+		this->value = value;
+	}
+	inline Value* GetValue()
+	{
+		return value;
+	}
 
-	String GetDataType() const;
-	void SetDataType(const String& dataType);
+	inline String GetDataType() const
+	{
+		return dataType;
+	}
+	inline void SetDataType(const String& dataType)
+	{
+		this->dataType = dataType;
+	}
 
 private:
-	size_t address;
+	Value* value;
 	String dataType;
 };
 

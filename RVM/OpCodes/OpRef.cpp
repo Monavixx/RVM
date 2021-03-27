@@ -1,12 +1,12 @@
 #include "OpRef.h"
+#include "../Core/FieldObject.h"
 #include "../Std/Classes/RelaxPointer.h"
 
 void OpRef::Run()
 {
-	Object* data = frame->GetStack().pop();
-
-	RelaxPointer* pointer = new RelaxPointer(data->GetAddress(), dataType);
-	frame->GetStack().push(GlobalVariables::heap.push_back(pointer));
+	RelaxPointer* pointer = new RelaxPointer(frame->GetStack().pop(), dataType);
+	GlobalVariables::heap.push_back(pointer);
+	frame->GetStack().push(frame->AddValue(new Value(ValueType::OBJECT,  UValue{.object = pointer} )));
 }
 
 void OpRef::Parse(HANDLE& device)

@@ -1,4 +1,5 @@
 #include "OpMethod.h"
+#include "../Core/FieldObject.h"
 
 void OpMethod::Run()
 {
@@ -199,6 +200,11 @@ void OpMethod::ParseOpCode(Instruction instruction, HANDLE& device)
 	case _THIS:
 	{
 		op = new OpThis;
+		break;
+	}
+	case EQUAL:
+	{
+		op = new OpEqual;
 		break;
 	}
 	default:

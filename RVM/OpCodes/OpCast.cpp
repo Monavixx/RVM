@@ -1,21 +1,42 @@
 #include "OpCast.h"
+#include "../Core/FieldObject.h"
 
 void OpCast::Run()
 {
-	Object* data = frame->GetStack().top();
+	Value* data = frame->GetStack().pop();
 	
-	IMethod* methodCast = declClass->GetMethod("cast", { Parameter(data->GetDataType()) });
-	if (methodCast == nullptr)
-		Exit("cast: method cast not found");
-
-	methodCast->CallMethod(frame);
+	switch (newValueType)
+	{
+	case ValueType::FLOAT:
+	{
+		switch (data->valueType)
+		{
+		case ValueType::INT32:
+		{
+			frame->GetStack().push(frame->AddValue(new Value(Value::GetValueType(dataType), UValue{ .fnum = static_cast<float>(data->value.inum) })));
+			break;
+		}
+		}
+		break;
+	}
+	
+	case ValueType::INT32:
+	{
+		switch (data->valueType)
+		{
+		case ValueType::FLOAT:
+		{
+			frame->GetStack().push(frame->AddValue(new Value(Value::GetValueType(dataType), UValue{ .inum = static_cast<int>(data->value.fnum) })));
+			break;
+		}
+		}
+		break;
+	}
+	}
 }
 
 void OpCast::Parse(HANDLE& device)
 {
 	dataType = ByteArrayRead::ReadSizeAndString(device);
-	
-	declClass = GlobalVariables::classes[dataType];
-	if (declClass == nullptr)
-		Exit("cast: decl class not found");
+	newValueType = Value::GetValueType(dataType);
 }

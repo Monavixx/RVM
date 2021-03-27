@@ -2,6 +2,7 @@
 #include "../Libs/ConsoleTextStream.h"
 #include "../Core/Method.h"
 #include "GC.h"
+#include "../Core/FieldObject.h"
 
 void ExecuteMethod(bool gc)
 {
@@ -12,7 +13,7 @@ void ExecuteMethod(bool gc)
 		Exit("main method not found");
 	}
 
-	size_t i = 0;
+	static size_t i = 0;
 	bool isReturn = false;
 	while (!frame->IsEnd())
 	{
@@ -27,7 +28,10 @@ void ExecuteMethod(bool gc)
 		}
 
 		if (i >= GlobalVariables::opCodesForGC)
+		{
 			GC();
+			i = 0;
+		}
 		++i;
 	}
 	if (!isReturn)

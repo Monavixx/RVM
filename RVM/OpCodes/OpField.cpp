@@ -1,4 +1,5 @@
 #include "OpField.h"
+#include "../Core/FieldObject.h"
 
 void OpField::Run()
 {

@@ -1,9 +1,9 @@
 #include "OpPushFloat.h"
+#include "../Core/FieldObject.h"
 
 void OpPushFloat::Run()
 {
-	RelaxFloat* pushingData = new RelaxFloat(data);
-	frame->GetStack().push(GlobalVariables::heap.push_back(pushingData));
+	frame->GetStack().push(frame->AddValue(new Value(ValueType::FLOAT, UValue{ .fnum = data })));
 }
 
 void OpPushFloat::Parse(HANDLE& device)

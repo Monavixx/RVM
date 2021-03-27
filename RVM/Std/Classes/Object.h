@@ -2,6 +2,9 @@
 #include "../../Libs/String.h"
 #include <unordered_map>
 
+struct Value;
+struct FieldObject;
+
 class Object
 {
 public:
@@ -23,15 +26,9 @@ public:
 	static void GenerateMetaInfo();
 	static inline class Class* metaClass = nullptr;
 
-	struct FieldObject
-	{
-		size_t address;
-		class Field* field;
-	};
-
 	std::unordered_map<String, FieldObject>& GetFields();
 	FieldObject& GetField(const String& name);
-	void SetField(const String& name, size_t address);
+	void SetField(const String& name, Value* value);
 private:
 	size_t amountUsers = 0;
 	size_t address;

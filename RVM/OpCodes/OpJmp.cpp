@@ -1,4 +1,5 @@
 #include "OpJmp.h"
+#include "../Core/FieldObject.h"
 
 void OpJmp::Run()
 {

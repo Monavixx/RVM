@@ -31,3 +31,4 @@
 31 - getfield
 32 - setfield
 33 - this
+34 - equal

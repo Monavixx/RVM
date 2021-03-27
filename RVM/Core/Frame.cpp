@@ -1,16 +1,15 @@
 #include "Frame.h"
 #include "../GlobalVariables.h"
 #include "Method.h"
+#include "FieldObject.h"
 
-Frame::Frame(IMethod* method, size_t objectThis, const VariableList& variableList) : method(method), variables(variableList), objectThis(objectThis)
+Frame::Frame(IMethod* method, Object* objectThis, const VariableList& variableList) : method(method), variables(variableList), objectThis(objectThis)
 {
 }
 
 void Frame::CreateVariable(size_t id, const String& dataType)
 {
-    Object* data = new RelaxNull;
-    data->IncAmountUsers();
-    variables[id] = Variable(GlobalVariables::heap.push_back(data), dataType);
+    variables[id] = Variable(nullptr, dataType);
 }
 
 OpBase* Frame::Next()

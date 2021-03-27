@@ -1,4 +1,5 @@
 #include "OpMaxStack.h"
+#include "../Core/FieldObject.h"
 
 void OpMaxStack::Run()
 {

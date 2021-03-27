@@ -1,10 +1,12 @@
 #include "OpNewarr.h"
+#include "../Core/FieldObject.h"
 
 void OpNewarr::Run()
 {
-	int arraySize = dynamic_cast<RelaxInt32*>(frame->GetStack().pop())->GetData();
+	int arraySize = frame->GetStack().pop()->value.inum;
 	RelaxArray* newArray = new RelaxArray(dataType, arraySize);
-	frame->GetStack().push(GlobalVariables::heap.push_back(newArray));
+	GlobalVariables::heap.push_back(newArray);
+	frame->GetStack().push(new Value(ValueType::OBJECT, UValue{ .object = newArray }));
 }
 
 void OpNewarr::Parse(HANDLE& device)

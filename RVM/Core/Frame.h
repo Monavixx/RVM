@@ -1,13 +1,19 @@
 #pragma once
 #include "IMethod.h"
 #include "VariableList.h"
-#include "../Std/RelaxNull.h"
 #include "Stack.h"
 
 class Frame
 {
 public:
-	Frame(IMethod* method = nullptr, size_t objectThis = 0, const VariableList& variableList = {});
+	Frame(IMethod* method = nullptr, Object* objectThis = 0, const VariableList& variableList = {});
+	~Frame()
+	{
+		for (auto& item : values)
+		{
+			delete item;
+		}
+	}
 
 	inline Variable* GetVariable(size_t id)
 	{
@@ -46,20 +52,26 @@ public:
 		this->index = index;
 	}
 
-	inline size_t GetObjectThis() const
+	inline Object* GetObjectThis() const
 	{
 		return objectThis;
 	}
-	inline void SetObjectThis(size_t objectThis)
+	inline void SetObjectThis(Object* objectThis)
 	{
 		this->objectThis = objectThis;
+	}
+	inline Value* AddValue(Value* value)
+	{
+		values.push_back(value);
+		return value;
 	}
 
 private:
 	VariableList variables;
 	IMethod* method;
 	Stack stack;
-	size_t objectThis;
+	Object* objectThis;
+	vector<Value*> values;
 
 	size_t index = 0;
 };

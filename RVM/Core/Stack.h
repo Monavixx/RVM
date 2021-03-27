@@ -1,5 +1,5 @@
 #pragma once
-#include "../Std/Classes/Object.h"
+#include "Value.h"
 #include "../Functions/Exit.h"
 
 
@@ -7,13 +7,10 @@ class Stack
 {
 public:
 	Stack() : stack(nullptr) {}
-	void push(size_t index);
-	Object* pop();
-	size_t popAddress();
+	void push(Value* value);
+	Value* pop();
 
-	Object* top();
-
-	size_t& topAddress();
+	Value* top();
 
 	inline bool isEmpty()
 	{
@@ -30,6 +27,6 @@ public:
 private:
 	size_t currentSize = 0;
 	size_t maxSize = 0;
-	size_t* stack;
+	Value** stack;
 };
 

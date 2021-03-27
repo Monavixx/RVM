@@ -1,45 +1,33 @@
 #include "Stack.h"
 #include "../GlobalVariables.h"
+#include "FieldObject.h"
 
-void Stack::push(size_t index)
+void Stack::push(Value* value)
 {
 	if (stack == nullptr)
-		stack = new size_t[maxSize];
+		stack = new Value*[maxSize];
 
 	if (currentSize + 1 > maxSize)
 		Exit("Stack is small");
 
-	GlobalVariables::heap[index]->IncAmountUsers();
+	if(value->valueType == ValueType::OBJECT && value->value.object != nullptr)
+		value->value.object->IncAmountUsers();
 	
-	stack[currentSize++] = index;
+	stack[currentSize++] = value;
 }
 
-Object* Stack::pop()
+Value* Stack::pop()
 {
 	if (currentSize <= 0)
 		Exit("Stack is empty");
-	Object* poppedObject = GlobalVariables::heap[stack[--currentSize]];
-	poppedObject->DecAmountUsers();
-	return poppedObject;
+	Value* value = stack[--currentSize];
+	if(value->valueType == ValueType::OBJECT)
+		value->value.object->DecAmountUsers();
+	return value;
 }
 
-size_t Stack::popAddress()
-{
-	if (currentSize <= 0)
-		Exit("Stack is empty");
-	Object* poppedObject = GlobalVariables::heap[stack[--currentSize]];
-	poppedObject->DecAmountUsers();
-	return poppedObject->GetAddress();
-}
 
-Object* Stack::top()
-{
-	if (currentSize <= 0)
-		Exit("Stack is empty");
-	return GlobalVariables::heap[stack[currentSize - 1]];
-}
-
-size_t& Stack::topAddress()
+Value* Stack::top()
 {
 	if (currentSize <= 0)
 		Exit("Stack is empty");

@@ -1,4 +1,5 @@
 #include "OpGet.h"
+#include "../Core/FieldObject.h"
 
 void OpGet::Run()
 {
@@ -6,7 +7,7 @@ void OpGet::Run()
 	if (variable == nullptr)
 		Exit("get: local variable with id " + std::to_string(id) + " not exists");
 
-	frame->GetStack().push(variable->GetAddress());
+	frame->GetStack().push(variable->GetValue());
 }
 
 void OpGet::Parse(HANDLE& device)

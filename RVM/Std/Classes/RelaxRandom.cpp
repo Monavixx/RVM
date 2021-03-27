@@ -1,36 +1,36 @@
 #include "RelaxRandom.h"
+#include "../../Core/FieldObject.h"
 #include <random>
 #include "../../Core/Class.h"
 #include "../../Core/StdMethod.h"
+#include "../../Core/FieldObject.h"
 
-RelaxInt32* RelaxRandom::GenerateInt32()
+int RelaxRandom::GenerateInt32()
 {
-	std::default_random_engine e1(r());
+	static std::default_random_engine e1(r());
 	std::uniform_int_distribution<int> uniform_dist;
-    return new RelaxInt32(uniform_dist(e1));
+    return uniform_dist(e1);
 }
 
-RelaxInt32* RelaxRandom::GenerateInt32(RelaxInt32* min, RelaxInt32* max)
+int RelaxRandom::GenerateInt32(int min, int max)
 {
-	std::default_random_engine e1(r());
-	std::uniform_int_distribution<int> uniform_dist(min->GetData(), max->GetData());
-	return new RelaxInt32(uniform_dist(e1));
+	static std::default_random_engine e1(r());
+	std::uniform_int_distribution<int> uniform_dist(min, max);
+	return uniform_dist(e1);
 }
 
 void RelaxRandom::GenerateMetaInfo()
 {
 	metaClass = new Class("Relax.Random", true, {
 		// GenerateInt32
-		new StdMethod("GenerateInt32", "Relax.Int32", "Relax.Random", {}, [&](Stack& stack) -> Object*
+		new StdMethod("GenerateInt32", "Relax.Int32", "Relax.Random", {}, [&](Stack& stack) -> Value*
 		{
-			return RelaxRandom::GenerateInt32();
+			return new Value(ValueType::INT32,  UValue{.inum = RelaxRandom::GenerateInt32()});
 		},AccessModifier::PUBLIC, true),
 
-		new StdMethod("GenerateInt32", "Relax.Int32", "Relax.Random", {Parameter("Relax.Int32"), Parameter("Relax.Int32")}, [&](Stack& stack)->Object*
+		new StdMethod("GenerateInt32", "Relax.Int32", "Relax.Random", {Parameter("Relax.Int32"), Parameter("Relax.Int32")},[&](Stack& stack)->Value*
 		{
-			RelaxInt32* min = dynamic_cast<RelaxInt32*>(stack.pop());
-			RelaxInt32* max = dynamic_cast<RelaxInt32*>(stack.pop());
-			return RelaxRandom::GenerateInt32(min, max);
+			return new Value(ValueType::INT32,  UValue{.inum = RelaxRandom::GenerateInt32(stack.pop()->value.inum, stack.pop()->value.inum)});
 		},AccessModifier::PUBLIC, true)
 	});
 }

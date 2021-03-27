@@ -1,9 +1,9 @@
 #include "OpPushBool.h"
+#include "../Core/FieldObject.h"
 
 void OpPushBool::Run()
 {
-	RelaxBool* pushingData = new RelaxBool(data);
-	frame->GetStack().push(GlobalVariables::heap.push_back(pushingData));
+	frame->GetStack().push(frame->AddValue(new Value(ValueType::BOOL, UValue{ .boolean = data })));
 }
 
 void OpPushBool::Parse(HANDLE& device)

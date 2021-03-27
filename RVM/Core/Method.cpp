@@ -1,6 +1,7 @@
 #include "Method.h"
 #include "../Functions/ExecuteMethod.h"
 #include "Frame.h"
+#include "FieldObject.h"
 
 
 Method::Method(const String& name, const String& dataType, const String& declClassName, const vector<Parameter>& parameters,
@@ -15,21 +16,24 @@ void Method::CallMethod(Frame* frame)
 
 	if (!isStatic)
 	{
-		Object* objectThis = frame->GetStack().pop();
+		Object* objectThis = frame->GetStack().pop()->value.object;
 		if (objectThis->GetDataType() != newFrame->GetMethod()->GetDeclClassName())
 			Exit("call method: data types do not match");
-		newFrame->SetObjectThis(objectThis->GetAddress());
+		newFrame->SetObjectThis(objectThis);
 	}
 
 	size_t i = 0;
 	for (auto& item : this->GetParameters())
 	{
-		Object* data = frame->GetStack().pop();
-		data->IncAmountUsers();
-		if (data->GetDataType() != item.GetDataType())
+		Value* data = frame->GetStack().pop();
+		if(data->valueType==ValueType::OBJECT)
+			data->value.object->IncAmountUsers();
+
+		if (Value::GetDataType(data) != item.GetDataType())
 			Exit("Error parameters type");
+
 		newFrame->CreateVariable(i, item.GetDataType());
-		newFrame->GetVariable(i)->SetAddress(data->GetAddress());
+		newFrame->GetVariable(i)->SetValue(data);
 		++i;
 	}
 

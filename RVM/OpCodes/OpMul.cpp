@@ -1,20 +1,24 @@
 #include "OpMul.h"
+#include "../Core/FieldObject.h"
 
 void OpMul::Run()
 {
-	Object* firstData = frame->GetStack().pop();
-	Object* secondData = frame->GetStack().pop();
-	frame->GetStack().push(secondData->GetAddress());
-	frame->GetStack().push(firstData->GetAddress());
+	Value* firstData = frame->GetStack().pop();
+	Value* secondData = frame->GetStack().pop();
 
-	Class* declClass = GlobalVariables::classes[firstData->GetDataType()];
-	if (declClass == nullptr)
-		Exit("Mul: decl class not found");
-	IMethod* operatorMul = declClass->GetMethod("operator*", { Parameter(secondData->GetDataType()) });
-	if (operatorMul == nullptr)
-		Exit("Mul: operator* not found");
+	switch (firstData->valueType)
+	{
+	case ValueType::INT32:
+		frame->GetStack().push(frame->AddValue(new Value(ValueType::INT32, UValue{.inum = firstData->value.inum * secondData->value.inum } )));
+		break;
 
-	operatorMul->CallMethod(frame);
+	case ValueType::FLOAT:
+		frame->GetStack().push(frame->AddValue(new Value(ValueType::FLOAT, UValue{.fnum = firstData->value.fnum * secondData->value.fnum } )));
+		break;
+
+	default:
+		Exit("mul: data type is not a number");
+	}
 }
 
 void OpMul::Parse(HANDLE& device)
