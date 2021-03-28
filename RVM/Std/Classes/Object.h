@@ -13,7 +13,8 @@ public:
 	{
 		return "Relax.Object"_ss;
 	}
-	virtual ~Object() {}
+	virtual ~Object();
+
 	void CreateFields();
 
 	void SetAmountUsers(size_t amountUsers);
@@ -26,14 +27,14 @@ public:
 	static void GenerateMetaInfo();
 	static inline class Class* metaClass = nullptr;
 
-	std::unordered_map<String, FieldObject>& GetFields();
-	FieldObject& GetField(const String& name);
+	std::unordered_map<String, FieldObject*>& GetFields();
+	FieldObject* GetField(const String& name);
 	void SetField(const String& name, Value* value);
 private:
 	size_t amountUsers = 0;
 	size_t address;
 
 protected:
-	std::unordered_map<String, FieldObject> fields;
+	std::unordered_map<String, FieldObject*> fields;
 };
 

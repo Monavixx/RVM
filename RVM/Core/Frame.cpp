@@ -7,6 +7,14 @@ Frame::Frame(IMethod* method, Object* objectThis, const VariableList& variableLi
 {
 }
 
+Frame::~Frame()
+{
+	for (auto& item : values)
+	{
+		delete item;
+	}
+}
+
 void Frame::CreateVariable(size_t id, const String& dataType)
 {
     variables[id] = Variable(nullptr, dataType);

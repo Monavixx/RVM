@@ -12,7 +12,7 @@ public:
 	{
 		for (auto& [name,field] : declClass->GetFields())
 		{
-			fields[name] = FieldObject{ nullptr, field };
+			fields[name] = new FieldObject{ nullptr, field };
 		}
 	}
 

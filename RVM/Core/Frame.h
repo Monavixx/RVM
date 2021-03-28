@@ -2,18 +2,13 @@
 #include "IMethod.h"
 #include "VariableList.h"
 #include "Stack.h"
+#include "../Libs/ConsoleTextStream.h"
 
 class Frame
 {
 public:
 	Frame(IMethod* method = nullptr, Object* objectThis = 0, const VariableList& variableList = {});
-	~Frame()
-	{
-		for (auto& item : values)
-		{
-			delete item;
-		}
-	}
+	~Frame();
 
 	inline Variable* GetVariable(size_t id)
 	{

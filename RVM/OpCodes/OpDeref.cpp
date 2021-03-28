@@ -9,7 +9,9 @@ void OpDeref::Run()
 	if (pointer->GetData().isAddress)
 		frame->GetStack().push(frame->AddValue(new Value(ValueType::OBJECT, UValue{ .object = GlobalVariables::heap[pointer->GetData().data.address] })));
 	else
+	{
 		frame->GetStack().push(pointer->GetData().data.value);
+	}
 }
 
 void OpDeref::Parse(HANDLE& device)

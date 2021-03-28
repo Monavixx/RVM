@@ -5,6 +5,7 @@
 #include <iostream>
 #include "String.h"
 #include "../Functions/Exit.h"
+#include <math.h>
 
 using std::ifstream;
 

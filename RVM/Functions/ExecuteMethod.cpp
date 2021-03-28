@@ -24,6 +24,7 @@ void ExecuteMethod(bool gc)
 		if (dynamic_cast<OpReturn*>(op) != nullptr)
 		{
 			isReturn = true;
+			delete frame;
 			return;
 		}
 

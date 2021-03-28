@@ -4,7 +4,7 @@
 void OpGetfield::Run()
 {
 	Value* data = frame->GetStack().pop();
-	frame->GetStack().push(data->value.object->GetField(name).value);
+	frame->GetStack().push(data->value.object->GetField(name)->value);
 }
 
 void OpGetfield::Parse(HANDLE& device)

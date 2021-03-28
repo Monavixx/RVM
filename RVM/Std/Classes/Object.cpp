@@ -9,12 +9,20 @@ Object::Object(size_t amountUsers) : amountUsers(amountUsers), address(0)
 {
 }
 
+Object::~Object()
+{
+	for (auto& [name, fo] : fields)
+	{
+		delete fo;
+	}
+}
+
 void Object::CreateFields()
 {
 	Class* dataTypeClass = GlobalVariables::classes[GetDataType()];
 	for (auto& [name, field] : dataTypeClass->GetFields())
 	{
-		fields[name] = FieldObject{ nullptr, field };
+		fields[name] = new FieldObject{ nullptr, field };
 	}
 }
 
@@ -53,12 +61,12 @@ void Object::GenerateMetaInfo()
 	metaClass = new Class("Relax.Object", true);
 }
 
-std::unordered_map<String, FieldObject>& Object::GetFields()
+std::unordered_map<String, FieldObject*>& Object::GetFields()
 {
 	return fields;
 }
 
-FieldObject& Object::GetField(const String& name)
+FieldObject* Object::GetField(const String& name)
 {
 	return fields[name];
 }
@@ -67,5 +75,5 @@ void Object::SetField(const String& name, Value* value)
 {
 	if (!fields.contains(name))
 		Exit("field not found");
-	fields[name].value = value;
+	fields[name]->value = value;
 }

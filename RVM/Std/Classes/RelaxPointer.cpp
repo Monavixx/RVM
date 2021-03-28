@@ -33,7 +33,7 @@ void RelaxPointer::SetData(Value* data)
 	}
 	else
 	{
-		*(this->data.data.value) = *data;
+		this->data.data.value = data;
 		this->data.isAddress = false;
 	}
 }
