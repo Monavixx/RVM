@@ -28,12 +28,12 @@ void RelaxPointer::SetData(Value* data)
 		Exit("Pointer data type not equal value data type");
 	if (data->valueType == ValueType::OBJECT)
 	{
-		this->data.data.address = data->value.object->GetAddress();
+		this->data.data.value->value.object = data->value.object;
 		this->data.isAddress = true;
 	}
 	else
 	{
-		this->data.data.value = data;
+		*this->data.data.value = *data;
 		this->data.isAddress = false;
 	}
 }
