@@ -14,6 +14,6 @@ void OpDeref::Run()
 	}
 }
 
-void OpDeref::Parse(HANDLE& device)
+void OpDeref::Parse(ifstream& device)
 {
 }

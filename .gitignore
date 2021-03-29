@@ -4,3 +4,4 @@ RVM/x64/
 TestTime/
 UnitTest/x64/
 *.vcxproj.user
+RVM/ReleaseBuild/

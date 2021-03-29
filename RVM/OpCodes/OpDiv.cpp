@@ -21,6 +21,6 @@ void OpDiv::Run()
 	}
 }
 
-void OpDiv::Parse(HANDLE& device)
+void OpDiv::Parse(ifstream& device)
 {
 }

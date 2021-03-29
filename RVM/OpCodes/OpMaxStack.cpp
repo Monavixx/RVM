@@ -6,7 +6,7 @@ void OpMaxStack::Run()
 	frame->GetStack().SetMaxSize(size);
 }
 
-void OpMaxStack::Parse(HANDLE& device)
+void OpMaxStack::Parse(ifstream& device)
 {
 	size = ByteArrayRead::ReadInt(device);
 }

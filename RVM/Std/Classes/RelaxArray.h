@@ -9,10 +9,18 @@ public:
 
 	RelaxArray(const String& dataType, asizet size);
 	~RelaxArray();
-	inline String GetDataType() override
+#ifdef _WIN321
+	inline String GetDataType() const override
 	{
 		return "Relax.Array<"_ss + dataType + ">"_ss;
 	}
+#else
+	virtual inline String GetDataType() const
+	{
+		static String dataTypearr = "Relax.Array<";
+		return dataTypearr + dataType + ">";
+	}
+#endif
 	Value** GetArr();
 	void SetArr(Value** arr);
 	void SetByIndex(asizet index, Value* value);

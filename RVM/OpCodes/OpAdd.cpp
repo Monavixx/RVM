@@ -22,6 +22,6 @@ void OpAdd::Run()
 	
 }
 
-void OpAdd::Parse(HANDLE& device)
+void OpAdd::Parse(ifstream& device)
 {
 }

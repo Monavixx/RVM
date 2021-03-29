@@ -7,7 +7,7 @@ void OpField::Run()
 	declClass->AddField(field);
 }
 
-void OpField::Parse(HANDLE& device)
+void OpField::Parse(ifstream& device)
 {
 	accessModifier = static_cast<AccessModifier>(ByteArrayRead::ReadByte(device));
 	isStatic = ByteArrayRead::ReadByte(device);

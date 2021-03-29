@@ -21,6 +21,6 @@ void OpSub::Run()
 	}
 }
 
-void OpSub::Parse(HANDLE& device)
+void OpSub::Parse(ifstream& device)
 {
 }

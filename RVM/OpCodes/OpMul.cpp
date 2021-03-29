@@ -21,6 +21,6 @@ void OpMul::Run()
 	}
 }
 
-void OpMul::Parse(HANDLE& device)
+void OpMul::Parse(ifstream& device)
 {
 }

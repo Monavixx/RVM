@@ -7,7 +7,7 @@ void OpGetfield::Run()
 	frame->GetStack().push(data->value.object->GetField(name)->value);
 }
 
-void OpGetfield::Parse(HANDLE& device)
+void OpGetfield::Parse(ifstream& device)
 {
 	name = ByteArrayRead::ReadSizeAndString(device);
 }

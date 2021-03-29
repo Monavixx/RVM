@@ -9,7 +9,7 @@ void OpRef::Run()
 	frame->GetStack().push(frame->AddValue(new Value(ValueType::OBJECT,  UValue{.object = pointer} )));
 }
 
-void OpRef::Parse(HANDLE& device)
+void OpRef::Parse(ifstream& device)
 {
 	dataType = ByteArrayRead::ReadSizeAndString(device);
 }

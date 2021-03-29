@@ -3,10 +3,9 @@
 #include <iostream>
 #include "../Functions/Exit.h"
 
-
 #ifdef _WIN32
 #include <Windows.h>
-#endif
+
 
 class String
 {
@@ -24,11 +23,18 @@ public:
 			data[i] = str[i];
 		}
 	}
-#ifdef _WIN32
 	String(const wchar_t str[]);
-	String(const wchar_t str[], size_t size);
+	constexpr String(const wchar_t str[], size_t size)
+	{
+		_size = size;
+		data = new unsigned short[capacity = _size + 10];
+		for (int i = 0; i < _size; ++i)
+		{
+			data[i] = str[i];
+		}
+	}
 	static String FromWCharArray(wchar_t buf[], size_t bufsize);
-#endif
+
 	inline unsigned short* utf16() const
 	{
 		return data;
@@ -92,7 +98,7 @@ public:
 		else
 		{
 			unsigned short* newData = new unsigned short[capacity = size + 10];
-			for (size_t i = 0; i < _size; ++i)
+			for (size_t i = 0; i < (_size > size ? size : _size); ++i)
 			{
 				newData[i] = data[i];
 			}
@@ -100,6 +106,24 @@ public:
 			data = newData;
 		}
 		_size = size;
+	}
+
+	void reserve(size_t capacitySize)
+	{
+		if (data == nullptr)
+		{
+			data = new unsigned short[capacity = capacitySize]{ 0 };
+		}
+		else
+		{
+			unsigned short* newData = new unsigned short[capacity = capacitySize];
+			for (size_t i = 0; i < _size; ++i)
+			{
+				newData[i] = data[i];
+			}
+			delete[] data;
+			data = newData;
+		}
 	}
 private:
 	size_t _size = 0;
@@ -112,6 +136,10 @@ constexpr String operator"" _ss(const char* str, size_t size)
 	return String(str, size);
 }
 
+constexpr String operator"" _ss(const wchar_t* str, size_t size)
+{
+	return String(str, size);
+}
 namespace std
 {
 	template<>
@@ -130,3 +158,6 @@ namespace std
 		}
 	};
 }
+#else
+typedef std::string String;
+#endif

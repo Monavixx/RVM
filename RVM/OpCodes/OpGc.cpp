@@ -7,6 +7,6 @@ void OpGc::Run()
 	GC();
 }
 
-void OpGc::Parse(HANDLE& device)
+void OpGc::Parse(ifstream& device)
 {
 }

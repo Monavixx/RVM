@@ -7,10 +7,18 @@ class RelaxConsole : public Object
 {
 public:
 	RelaxConsole() {}
-	constexpr String GetDataType() override
+#ifdef _WIN321
+	constexpr String GetDataType() const override
 	{
 		return "Relax.Console"_ss;
 	}
+#else
+	virtual inline String GetDataType() const
+	{
+		static String dataType = "Relax.Console";
+		return dataType;
+	}
+#endif
 
 	static void GenerateMetaInfo();
 	static inline class Class* metaClass = nullptr;

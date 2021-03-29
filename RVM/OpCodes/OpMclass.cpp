@@ -8,7 +8,7 @@ void OpMclass::Run()
 	GlobalVariables::mainClass = newClass;
 }
 
-void OpMclass::Parse(HANDLE& device)
+void OpMclass::Parse(ifstream& device)
 {
 	className = ByteArrayRead::ReadSizeAndString(device);
 }

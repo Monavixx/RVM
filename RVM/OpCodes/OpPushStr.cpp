@@ -6,7 +6,7 @@ void OpPushStr::Run()
 	frame->GetStack().push(frame->AddValue(new Value(ValueType::STR,  UValue{.str = data} )));
 }
 
-void OpPushStr::Parse(HANDLE& device)
+void OpPushStr::Parse(ifstream& device)
 {
 	data = ByteArrayRead::ReadSizeAndString(device);
 }

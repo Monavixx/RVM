@@ -6,10 +6,18 @@ class RelaxConverter : public Object
 {
 public:
 	RelaxConverter() {}
-	constexpr String GetDataType() override
+#ifdef _WIN321
+	constexpr String GetDataType() const override
 	{
 		return "Relax.Converter"_ss;
 	}
+#else
+	virtual inline String GetDataType() const
+	{
+		static String dataType = "Relax.Converter";
+		return dataType;
+	}
+#endif
 
 	static int StringToInt32(const String& data);
 

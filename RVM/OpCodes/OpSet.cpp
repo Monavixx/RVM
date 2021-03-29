@@ -29,7 +29,7 @@ void OpSet::Run()
 	}
 }
 
-void OpSet::Parse(HANDLE& device)
+void OpSet::Parse(ifstream& device)
 {
 	id = ByteArrayRead::ReadInt(device);
 }

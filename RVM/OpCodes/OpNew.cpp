@@ -14,7 +14,7 @@ void OpNew::Run()
 	}
 }
 
-void OpNew::Parse(HANDLE& device)
+void OpNew::Parse(ifstream& device)
 {
 	className = ByteArrayRead::ReadSizeAndString(device);
 	int amountParameters = ByteArrayRead::ReadInt(device);

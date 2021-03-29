@@ -6,7 +6,7 @@ void OpPushInt32::Run()
 	frame->GetStack().push(frame->AddValue(new Value(ValueType::INT32, UValue{ .inum = data })));
 }
 
-void OpPushInt32::Parse(HANDLE& device)
+void OpPushInt32::Parse(ifstream& device)
 {
 	data = ByteArrayRead::ReadInt(device);
 }

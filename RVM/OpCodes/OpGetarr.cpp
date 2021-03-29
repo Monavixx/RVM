@@ -8,6 +8,6 @@ void OpGetarr::Run()
 	frame->GetStack().push(arr->GetByIndex(index));
 }
 
-void OpGetarr::Parse(HANDLE& device)
+void OpGetarr::Parse(ifstream& device)
 {
 }

@@ -9,23 +9,17 @@
 #else
 #include <locale.h>
 #endif
-
 class ConsoleTextStreamOutput {
 public:
     ConsoleTextStreamOutput& operator<<(const String& str)
     {
-        #ifdef _WIN32
-            WriteConsoleW(GetStdHandle(STD_OUTPUT_HANDLE),
+#ifdef _WIN32
+        WriteConsoleW(GetStdHandle(STD_OUTPUT_HANDLE),
             str.utf16(), str.size(), NULL, NULL);
-        #else
-            std::string str;
-            for (long long i = 0; i < str.size(); ++i)
-            {
-                str += (unsigned char)str[i];
-            }
-            std::cout << str;
-        #endif
-            return *this;
+#else
+        std::cout << str;
+#endif
+        return *this;
     }
 
 };
@@ -35,7 +29,7 @@ class ConsoleTextStreamInput {
 public:
     String readLine()
     {
-        #ifdef _WIN32
+        #ifdef _WIN321
             const int bufsize = 1024;
             wchar_t buf[bufsize];
             DWORD read;

@@ -6,7 +6,7 @@ void OpClass::Run()
 	GlobalVariables::classes.AddClass(new Class(className));
 }
 
-void OpClass::Parse(HANDLE& device)
+void OpClass::Parse(ifstream& device)
 {
 	className = ByteArrayRead::ReadSizeAndString(device);
 }

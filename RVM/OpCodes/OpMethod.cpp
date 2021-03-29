@@ -14,7 +14,7 @@ void OpMethod::Run()
 	_class->AddMethod(method);
 }
 
-void OpMethod::Parse(HANDLE& device)
+void OpMethod::Parse(ifstream& device)
 {
 	accessModifier = static_cast<AccessModifier>(ByteArrayRead::ReadByte(device));
 	isStatic = ByteArrayRead::ReadByte(device);
@@ -31,28 +31,25 @@ void OpMethod::Parse(HANDLE& device)
 		parameter.SetName(ByteArrayRead::ReadSizeAndString(device));
 		parameters.push_back(parameter);
 	}
-	code = ByteArrayRead::ReadSizeAndByteArray(device);
+	sizeCode = ByteArrayRead::ReadInt(device);
+	peekCode = device.tellg();
+	device.seekg(sizeCode, std::ios_base::cur);
 }
 
-void OpMethod::ParseCode()
+void OpMethod::ParseCode(ifstream& device)
 {
-#ifdef _WIN32
-	HANDLE writeBufferMethodCode;
-	HANDLE readBufferMethodCode;
-	CreatePipe(&readBufferMethodCode, &writeBufferMethodCode, 0, code.size());
-	WriteFile(writeBufferMethodCode, code.GetData(), code.size(), 0, 0);
-
-	while (GetFileSize(readBufferMethodCode, 0) > 0)
+	size_t endCodePeek = sizeCode + peekCode;
+	device.seekg(peekCode, std::ios_base::beg);
+	while (device.tellg() < endCodePeek)
 	{
-		Instruction instruction = static_cast<Instruction>(ByteArrayRead::ReadByte(readBufferMethodCode));
-		ParseOpCode(instruction, readBufferMethodCode);
+		Instruction instruction = static_cast<Instruction>(ByteArrayRead::ReadByte(device));
+		ParseOpCode(instruction, device);
 	}
 
-#endif
 	method->SetCode(methodCode);
 }
 
-void OpMethod::ParseOpCode(Instruction instruction, HANDLE& device)
+void OpMethod::ParseOpCode(Instruction instruction, ifstream& device)
 {
 	OpBase* op = nullptr;
 	switch (instruction)

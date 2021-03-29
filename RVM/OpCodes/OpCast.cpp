@@ -35,7 +35,7 @@ void OpCast::Run()
 	}
 }
 
-void OpCast::Parse(HANDLE& device)
+void OpCast::Parse(ifstream& device)
 {
 	dataType = ByteArrayRead::ReadSizeAndString(device);
 	newValueType = Value::GetValueType(dataType);

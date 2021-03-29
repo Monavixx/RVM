@@ -6,5 +6,5 @@ class OpSetarr : public OpBase
 {
 public:
 	void Run() override;
-	void Parse(HANDLE& device) override;
+	void Parse(ifstream& device) override;
 };

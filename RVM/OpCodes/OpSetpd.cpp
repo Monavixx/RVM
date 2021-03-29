@@ -9,6 +9,6 @@ void OpSetpd::Run()
 	pointer->SetData(data);
 }
 
-void OpSetpd::Parse(HANDLE& device)
+void OpSetpd::Parse(ifstream& device)
 {
 }

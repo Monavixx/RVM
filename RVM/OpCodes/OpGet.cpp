@@ -10,7 +10,7 @@ void OpGet::Run()
 	frame->GetStack().push(variable->GetValue());
 }
 
-void OpGet::Parse(HANDLE& device)
+void OpGet::Parse(ifstream& device)
 {
 	id = ByteArrayRead::ReadInt(device);
 }

@@ -16,7 +16,7 @@ public:
 		}
 	}
 
-	inline String GetDataType() override
+	inline String GetDataType() const override
 	{
 		return declClass->GetName();
 	}

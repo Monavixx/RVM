@@ -6,7 +6,7 @@ void OpLocal::Run()
 	frame->CreateVariable(id, dataType);
 }
 
-void OpLocal::Parse(HANDLE& device)
+void OpLocal::Parse(ifstream& device)
 {
 	id = ByteArrayRead::ReadInt(device);
 	dataType = ByteArrayRead::ReadSizeAndString(device);

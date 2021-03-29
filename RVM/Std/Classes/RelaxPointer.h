@@ -16,10 +16,18 @@ class RelaxPointer : public Object
 	};
 public:
 	RelaxPointer(Value* data, const String& dataType);
-	inline String GetDataType() override
+#ifdef _WIN321
+	inline String GetDataType() const override
 	{
 		return "Relax.Pointer<"_ss + dataType + ">";
 	}
+#else
+	virtual inline String GetDataType() const
+	{
+		static String dataTypePointer = "Relax.Pointer<";
+		return dataTypePointer + dataType + ">";
+	}
+#endif
 	RelaxPointerData& GetData();
 	void SetData(Value* data);
 	void SetPointerDataType(const String& dataType);

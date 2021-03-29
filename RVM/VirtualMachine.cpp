@@ -9,15 +9,19 @@ VirtualMachine::VirtualMachine()
 
 VirtualMachine::~VirtualMachine()
 {
-#ifdef _WIN32
+#ifdef _WIN321
 	CloseHandle(GlobalVariables::executableFile);
+#else
+	GlobalVariables::executableFile.close();
 #endif
 }
 
 void VirtualMachine::Start()
 {
 #ifdef _WIN32
-	GlobalVariables::executableFile = CreateFile(Args::args[1].toWCharArray(), GENERIC_READ, FILE_SHARE_READ, NULL, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, NULL);
+	GlobalVariables::executableFile.open(Args::args[1].toStdString(), std::ios::in | std::ios::binary);
+#else
+	GlobalVariables::executableFile.open(Args::args[1], std::ios::in | std::ios::binary);
 #endif
 	int versionCode = ByteArrayRead::ReadInt(GlobalVariables::executableFile);
 	if (versionCode != GlobalVariables::version)
@@ -32,11 +36,14 @@ void VirtualMachine::Start()
 		instruction = static_cast<Instruction>(ByteArrayRead::ReadByte(GlobalVariables::executableFile));
 	}
 
+	GlobalVariables::executableFile.clear();
+	int a = GlobalVariables::executableFile.tellg();
+
 	for (auto& item : opCodes)
 	{
 		OpMethod* method = dynamic_cast<OpMethod*>(item);
 		if (method != nullptr)
-			method->ParseCode();
+			method->ParseCode(GlobalVariables::executableFile);
 		delete item;
 	}
 	opCodes.clear();
@@ -50,12 +57,16 @@ void VirtualMachine::Start()
 	Frame* frame = new Frame(mainMethod);
 	GlobalVariables::frameStack.push(frame);
 
+#ifdef _DEBUG
 	clock_t start, end, ReResult;
 	start = clock();
+#endif
 	ExecuteMethod();
+#ifdef _DEBUG
 	end = clock();
 	ReResult = end - start;
 	std::cout << "\n\n\nRelax: " << ReResult << "ms\n";
+#endif
 }
 
 void VirtualMachine::ParseCode(Instruction instruction)

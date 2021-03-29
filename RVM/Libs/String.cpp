@@ -1,6 +1,6 @@
 #include "String.h"
 #include "../Functions/Exit.h"
-
+#ifdef _WIN32
 String::String(const char str[])
 {
 	_size = strlen(str);
@@ -35,16 +35,6 @@ String::String(long long num)
 String::String(const wchar_t str[])
 {
 	_size = wcsnlen(str, -1);
-	data = new unsigned short[capacity = _size + 10];
-	for (int i = 0; i < _size; ++i)
-	{
-		data[i] = str[i];
-	}
-}
-
-String::String(const wchar_t str[], size_t size)
-{
-	_size = size;
 	data = new unsigned short[capacity = _size + 10];
 	for (int i = 0; i < _size; ++i)
 	{
@@ -174,3 +164,4 @@ std::string String::toStdString() const
 	}
 	return res;
 }
+#endif

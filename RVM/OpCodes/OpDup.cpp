@@ -8,6 +8,6 @@ void OpDup::Run()
 	frame->GetStack().push(data);
 }
 
-void OpDup::Parse(HANDLE& device)
+void OpDup::Parse(ifstream& device)
 {
 }

@@ -6,7 +6,7 @@ void OpCallm::Run()
 	callableMethod->CallMethod(frame);
 }
 
-void OpCallm::Parse(HANDLE& device)
+void OpCallm::Parse(ifstream& device)
 {
 	isStatic = ByteArrayRead::ReadByte(device);
 	declClassName = ByteArrayRead::ReadSizeAndString(device);

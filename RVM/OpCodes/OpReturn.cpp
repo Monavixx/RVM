@@ -12,6 +12,6 @@ void OpReturn::Run()
 	GlobalVariables::frameStack.top()->GetStack().push(GlobalVariables::frameStack.top()->AddValue(data));
 }
 
-void OpReturn::Parse(HANDLE& device)
+void OpReturn::Parse(ifstream& device)
 {
 }

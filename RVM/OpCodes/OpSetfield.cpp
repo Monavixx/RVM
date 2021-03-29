@@ -12,7 +12,7 @@ void OpSetfield::Run()
 	target->SetField(name, value);
 }
 
-void OpSetfield::Parse(HANDLE& device)
+void OpSetfield::Parse(ifstream& device)
 {
 	name = ByteArrayRead::ReadSizeAndString(device);
 }

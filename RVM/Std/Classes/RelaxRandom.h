@@ -6,10 +6,18 @@ class RelaxRandom : public Object
 {
 public:
 	RelaxRandom() {}
+#ifdef _WIN321
 	constexpr String GetDataType() override
 	{
 		return "Relax.Random"_ss;
 	}
+#else
+	virtual inline String GetDataType() const
+	{
+		static String dataType = "Relax.Random";
+		return dataType;
+	}
+#endif
 	static int GenerateInt32();
 	static int GenerateInt32(int min, int max);
 

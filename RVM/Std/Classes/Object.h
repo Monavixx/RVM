@@ -9,10 +9,18 @@ class Object
 {
 public:
 	Object(size_t amountUsers = 0);
-	constexpr virtual String GetDataType()
+#ifdef _WIN321
+	constexpr virtual String GetDataType() const
 	{
 		return "Relax.Object"_ss;
 	}
+#else
+	virtual inline String GetDataType() const
+	{
+		static String dataType = "Relax.Object";
+		return dataType;
+	}
+#endif
 	virtual ~Object();
 
 	void CreateFields();

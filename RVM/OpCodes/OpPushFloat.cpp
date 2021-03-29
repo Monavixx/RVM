@@ -6,7 +6,7 @@ void OpPushFloat::Run()
 	frame->GetStack().push(frame->AddValue(new Value(ValueType::FLOAT, UValue{ .fnum = data })));
 }
 
-void OpPushFloat::Parse(HANDLE& device)
+void OpPushFloat::Parse(ifstream& device)
 {
 	data = ByteArrayRead::ReadFloat(device);
 }

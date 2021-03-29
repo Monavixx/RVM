@@ -21,6 +21,6 @@ void OpEqual::Run()
 	}
 }
 
-void OpEqual::Parse(HANDLE& device)
+void OpEqual::Parse(ifstream& device)
 {
 }

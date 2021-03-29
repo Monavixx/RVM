@@ -6,7 +6,7 @@ void OpJmp::Run()
 	frame->SetIndex(offset);
 }
 
-void OpJmp::Parse(HANDLE& device)
+void OpJmp::Parse(ifstream& device)
 {
 	offset = ByteArrayRead::ReadInt(device);
 }

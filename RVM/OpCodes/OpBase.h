@@ -6,7 +6,7 @@ class OpBase
 {
 public:
 	virtual void Run() = 0;
-	virtual void Parse(HANDLE& device) = 0;
+	virtual void Parse(ifstream& device) = 0;
 	inline void SetFrame(Frame* frame)
 	{
 		this->frame = frame;

@@ -5,7 +5,7 @@ class OpPushFloat : public OpBase
 {
 public:
 	void Run() override;
-	void Parse(HANDLE& device) override;
+	void Parse(ifstream& device) override;
 private:
 	float data = 0.f;
 };

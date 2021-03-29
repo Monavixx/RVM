@@ -9,7 +9,7 @@ void OpNewarr::Run()
 	frame->GetStack().push(new Value(ValueType::OBJECT, UValue{ .object = newArray }));
 }
 
-void OpNewarr::Parse(HANDLE& device)
+void OpNewarr::Parse(ifstream& device)
 {
 	dataType = ByteArrayRead::ReadSizeAndString(device);
 }

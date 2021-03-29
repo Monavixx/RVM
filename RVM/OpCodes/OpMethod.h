@@ -43,11 +43,11 @@ class OpMethod : public OpBase
 {
 public:
 	void Run() override;
-	void Parse(HANDLE& device) override;
-	void ParseCode();
+	void Parse(ifstream& device) override;
+	void ParseCode(ifstream& device);
 
 private:
-	void ParseOpCode(Instruction instruction, HANDLE& device);
+	void ParseOpCode(Instruction instruction, ifstream& device);
 
 	AccessModifier accessModifier;
 	bool isStatic;
@@ -56,7 +56,8 @@ private:
 	String name;
 	std::vector<Parameter> parameters;
 	std::vector<OpBase*> methodCode;
-	ByteArray code;
+	size_t peekCode;
+	size_t sizeCode;
 	Method* method;
 };
 

@@ -10,6 +10,6 @@ void OpSetarr::Run()
 	arr->SetByIndex(index, data);
 }
 
-void OpSetarr::Parse(HANDLE& device)
+void OpSetarr::Parse(ifstream& device)
 {
 }

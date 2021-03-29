@@ -99,6 +99,7 @@ public:
     inline void isCapacity(bool value) { _isCapacity = value; }
     inline bool isCapacity() const { return _isCapacity; }
     inline unsigned char* GetData() const { return data; }
+    inline void SetData(unsigned char* data) { this->data = data; }
 
 private:
     size_t _size = 0;
@@ -177,20 +178,20 @@ public:
 class ByteArrayRead
 {
 public:
-#ifdef _WIN32
-    static String ReadSizeAndString(HANDLE& device, short bytesSize = 4)
+    static String ReadSizeAndString(ifstream& device, short bytesSize = 4)
     {
         ByteArray bsize;
         bsize.isCapacity(false);
         bsize.Resize(bytesSize);
-        ReadFile(device, &bsize[0], bytesSize, nullptr, nullptr);
+        device.read((char*)bsize.GetData(), bytesSize);
         int size = ByteArrayConvert::byteArrayToInt(bsize);
 
         String str;
         ByteArray bstr;
         bstr.Resize(size);
-        ReadFile(device, &bstr[0], size, nullptr, nullptr);
-        
+        str.reserve(size);
+        device.read((char*)bstr.GetData(), size);
+
         for (size_t i = 0; i < size; i += 2)
         {
             unsigned short res = bstr[i];
@@ -198,61 +199,61 @@ public:
             res |= bstr[i + 1];
             str.push_back(res);
         }
+
         return str;
     }
 
-    static ByteArray ReadSizeAndByteArray(HANDLE& device, short bytesSize = 4)
+    static ByteArray ReadSizeAndByteArray(ifstream& device, short bytesSize = 4)
     {
         ByteArray bsize;
         bsize.isCapacity(false);
         bsize.Resize(bytesSize);
-        ReadFile(device, &bsize[0], bytesSize, nullptr, nullptr);
+        device.read((char*)bsize.GetData(), bytesSize);
         int size = ByteArrayConvert::byteArrayToInt(bsize);
 
         ByteArray ba;
         ba.Resize(size);
-        ReadFile(device, &ba[0], size, nullptr, nullptr);
+        device.read((char*)ba.GetData(), size);
 
         return ba;
     }
 
-    static unsigned char ReadByte(HANDLE& device)
+    static unsigned char ReadByte(ifstream& device)
     {
         unsigned char res = 0;
-        ReadFile(device, &res, 1, nullptr, nullptr);
+        device.read((char*)&res, sizeof(unsigned char));
         return res;
     }
 
-    static short ReadShort(HANDLE& device)
+    static short ReadShort(ifstream& device)
     {
         ByteArray ba;
         ba.Resize(2);
-        ReadFile(device, ba.GetData(), 2, nullptr, nullptr);
+        device.read((char*)ba.GetData(), sizeof(short));
         return ByteArrayConvert::byteArrayToShort(ba);
     }
 
-    static int ReadInt(HANDLE& device)
+    static int ReadInt(ifstream& device)
     {
         ByteArray ba;
         ba.Resize(4);
-        ReadFile(device, ba.GetData(), 4, nullptr, nullptr);
+        device.read((char*)ba.GetData(), sizeof(int));
         return ByteArrayConvert::byteArrayToInt(ba);
     }
 
-    static float ReadFloat(HANDLE& device)
+    static float ReadFloat(ifstream& device)
     {
         ByteArray ba;
         ba.Resize(8);
-        ReadFile(device, ba.GetData(), 8, nullptr, nullptr);
+        device.read((char*)ba.GetData(), 8);
         return ByteArrayConvert::byteArrayToFloat(ba);
     }
 
-    static long long ReadLongLong(HANDLE& device)
+    static long long ReadLongLong(ifstream& device)
     {
         ByteArray ba;
         ba.Resize(8);
-        ReadFile(device, ba.GetData(), 8, nullptr, nullptr);
+        device.read((char*)ba.GetData(), sizeof(long long));
         return ByteArrayConvert::byteArrayToLongLong(ba);
     }
-#endif
 };
