@@ -10,8 +10,8 @@ void Stack::push(Value* value)
 	if (currentSize + 1 > maxSize)
 		Exit("Stack is small");
 
-	if(value->valueType == ValueType::OBJECT && value->value.object != nullptr)
-		value->value.object->IncAmountUsers();
+	if(Object* obj; value->valueType == ValueType::OBJECT && (obj = get<Object*>(value->value)) != nullptr)
+		obj->IncAmountUsers();
 	
 	stack[currentSize++] = value;
 }
@@ -22,7 +22,7 @@ Value* Stack::pop()
 		Exit("Stack is empty");
 	Value* value = stack[--currentSize];
 	if(value->valueType == ValueType::OBJECT)
-		value->value.object->DecAmountUsers();
+		get<Object*>(value->value)->DecAmountUsers();
 	return value;
 }
 

@@ -16,7 +16,7 @@ void Method::CallMethod(Frame* frame)
 
 	if (!isStatic)
 	{
-		Object* objectThis = frame->GetStack().pop()->value.object;
+		Object* objectThis = get<Object*>(frame->GetStack().pop()->value);
 		if (objectThis->GetDataType() != newFrame->GetMethod()->GetDeclClassName())
 			Exit("call method: data types do not match");
 		newFrame->SetObjectThis(objectThis);
@@ -27,7 +27,7 @@ void Method::CallMethod(Frame* frame)
 	{
 		Value* data = frame->GetStack().pop();
 		if(data->valueType==ValueType::OBJECT)
-			data->value.object->IncAmountUsers();
+			get<Object*>(data->value)->IncAmountUsers();
 
 		if (Value::GetDataType(data) != item.GetDataType())
 			Exit("Error parameters type");

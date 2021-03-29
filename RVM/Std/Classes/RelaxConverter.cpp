@@ -7,7 +7,7 @@
 int RelaxConverter::StringToInt32(const String& data)
 {
     bool isOk;
-    int num = data.toInt(&isOk);
+    int num = toInt(data, &isOk);
     if (!isOk)
         Exit("StringToInt32: error convertation");
     return num;
@@ -20,13 +20,13 @@ void RelaxConverter::GenerateMetaInfo()
 		// Int32ToString
 		new StdMethod("Int32ToString", "Relax.String", "Relax.Converter", {Parameter("Relax.Int32")}, [&](Stack& stack) -> Value*
 		{
-			return new Value(ValueType::STR, UValue{.str = String(stack.pop()->value.inum)});
+			return new Value(ValueType::STR, UValue(String(to_string(get<int>(stack.pop()->value)))));
 		},AccessModifier::PUBLIC, true),
 
 		// StringToInt32
 		new StdMethod("StringToInt32", "Relax.Int32", "Relax.Converter", {Parameter("Relax.String")}, [&](Stack& stack) -> Value*
 		{
-			return new Value(ValueType::INT32, UValue{.inum = StringToInt32(stack.pop()->value.str)});
+			return new Value(ValueType::INT32, UValue(StringToInt32(get<String>(stack.pop()->value))));
 		},AccessModifier::PUBLIC, true)
 	});
 }

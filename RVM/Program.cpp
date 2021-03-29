@@ -20,5 +20,5 @@ void Program::Start()
 
 bool Program::IsLaunch()
 {
-	return !Args::args[1].startsWith("-");
+	return !Args::args[1].starts_with("-");
 }

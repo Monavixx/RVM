@@ -31,7 +31,7 @@ void RelaxArray::SetByIndex(asizet index, Value* value)
 	if (Value::GetDataType(value) == dataType)
 	{
 		if(value->valueType == ValueType::OBJECT)
-			value->value.object->IncAmountUsers();
+			get<Object*>(value->value)->IncAmountUsers();
 		this->arr[index] = value;
 	}
 }
@@ -48,7 +48,7 @@ void RelaxArray::GenerateMetaInfo()
 	metaClass = new Class("Relax.Array", true, {
 		new StdMethod("Size", "Relax.Int32", "Relax.Array", {}, [&](Stack& stack) -> Value*
 		{
-			return new Value(ValueType::INT32, UValue{.inum = dynamic_cast<RelaxArray*>(stack.pop()->value.object)->GetSize()});
+			return new Value(ValueType::INT32, UValue(dynamic_cast<RelaxArray*>(get<Object*>(stack.pop()->value))->GetSize()));
 		},AccessModifier::PUBLIC, false),
 	});
 }

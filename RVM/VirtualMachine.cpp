@@ -16,7 +16,7 @@ void VirtualMachine::Start()
 {
 #ifdef _WIN32
 	GlobalVariables::executableFile.open(Args::args[1].toStdString(), std::ios::in | std::ios::binary);
-#else
+#else 
 	GlobalVariables::executableFile.open(Args::args[1], std::ios::in | std::ios::binary);
 #endif
 	int versionCode = ByteArrayRead::ReadInt(GlobalVariables::executableFile);

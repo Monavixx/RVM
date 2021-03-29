@@ -1,5 +1,6 @@
 #include "String.h"
 #include "../Functions/Exit.h"
+
 #ifdef _WIN32
 String::String(const char str[])
 {
@@ -144,7 +145,7 @@ String String::operator+(long long num) const
 	return *this + std::to_string(num);
 }
 
-bool String::startsWith(const String& other) const
+bool String::starts_with(const String& other) const
 {
 	if (other.size() > _size) return false;
 	for (size_t i = 0; i < other.size(); ++i)
@@ -165,3 +166,28 @@ std::string String::toStdString() const
 	return res;
 }
 #endif
+
+std::ostream& operator<<(std::ostream& os, const String& str)
+{
+	os << str.toStdString();
+	return os;
+}
+
+int toInt(const String& str, bool* isOk)
+{
+	int num;
+	try
+	{
+#ifdef _WIN32
+		num = std::stoi(str.toStdString());
+#else
+		num = std::stoi(str);
+#endif
+	}
+	catch (...)
+	{
+		*isOk = false;
+		num = 0;
+	}
+	return num;
+}

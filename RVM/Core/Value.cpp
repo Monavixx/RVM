@@ -35,7 +35,7 @@ String Value::GetDataType(Value* value)
 		return "Relax.Null";
 	if (value->valueType == ValueType::OBJECT)
 	{
-		return value->value.object->GetDataType();
+		return get<Object*>(value->value)->GetDataType();
 	}
 	else
 	{

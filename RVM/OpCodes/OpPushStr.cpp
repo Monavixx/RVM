@@ -3,7 +3,7 @@
 
 void OpPushStr::Run()
 {
-	frame->GetStack().push(frame->AddValue(new Value(ValueType::STR,  UValue{.str = data} )));
+	frame->GetStack().push(frame->AddValue(new Value(ValueType::STR,  UValue(data))));
 }
 
 void OpPushStr::Parse(ifstream& device)

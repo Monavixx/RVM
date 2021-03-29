@@ -2,15 +2,10 @@
 #include "../Std/Classes/Object.h"
 #include "../Libs/String.h"
 #include <unordered_map>
+#include <variant>
 
-union UValue
-{
-	Object* object;
-	String str;
-	int inum;
-	float fnum;
-	bool boolean;
-};
+typedef std::variant<Object*, String, int, float, bool> UValue;
+
 enum class ValueType
 {
 	OBJECT,

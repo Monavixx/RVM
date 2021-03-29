@@ -9,11 +9,11 @@ void OpDiv::Run()
 	switch (firstData->valueType)
 	{
 	case ValueType::INT32:
-		frame->GetStack().push(frame->AddValue(new Value(ValueType::INT32, UValue{.inum = firstData->value.inum / secondData->value.inum } )));
+		frame->GetStack().push(frame->AddValue(new Value(ValueType::INT32, UValue(get<int>(firstData->value) / get<int>(secondData->value)))));
 		break;
 
 	case ValueType::FLOAT:
-		frame->GetStack().push(frame->AddValue(new Value(ValueType::FLOAT, UValue{.fnum = firstData->value.fnum / secondData->value.fnum } )));
+		frame->GetStack().push(frame->AddValue(new Value(ValueType::FLOAT, UValue(get<float>(firstData->value) / get<float>(secondData->value)))));
 		break;
 
 	default:

@@ -3,7 +3,7 @@
 
 void OpPushInt32::Run()
 {
-	frame->GetStack().push(frame->AddValue(new Value(ValueType::INT32, UValue{ .inum = data })));
+	frame->GetStack().push(frame->AddValue(new Value(ValueType::INT32, UValue(data))));
 }
 
 void OpPushInt32::Parse(ifstream& device)

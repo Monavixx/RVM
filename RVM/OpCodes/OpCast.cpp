@@ -13,7 +13,7 @@ void OpCast::Run()
 		{
 		case ValueType::INT32:
 		{
-			frame->GetStack().push(frame->AddValue(new Value(Value::GetValueType(dataType), UValue{ .fnum = static_cast<float>(data->value.inum) })));
+			frame->GetStack().push(frame->AddValue(new Value(Value::GetValueType(dataType), UValue(static_cast<float>(get<int>(data->value))))));
 			break;
 		}
 		}
@@ -26,7 +26,7 @@ void OpCast::Run()
 		{
 		case ValueType::FLOAT:
 		{
-			frame->GetStack().push(frame->AddValue(new Value(Value::GetValueType(dataType), UValue{ .inum = static_cast<int>(data->value.fnum) })));
+			frame->GetStack().push(frame->AddValue(new Value(Value::GetValueType(dataType), UValue(static_cast<int>(get<float>(data->value))))));
 			break;
 		}
 		}

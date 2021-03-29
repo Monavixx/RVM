@@ -4,7 +4,7 @@
 
 void OpSetpd::Run()
 {
-	RelaxPointer* pointer = dynamic_cast<RelaxPointer*>(frame->GetStack().pop()->value.object);
+	RelaxPointer* pointer = dynamic_cast<RelaxPointer*>(get<Object*>(frame->GetStack().pop()->value));
 	Value* data = frame->GetStack().pop();
 	pointer->SetData(data);
 }

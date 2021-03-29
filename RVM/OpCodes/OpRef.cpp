@@ -6,7 +6,7 @@ void OpRef::Run()
 {
 	RelaxPointer* pointer = new RelaxPointer(frame->GetStack().pop(), dataType);
 	GlobalVariables::heap.push_back(pointer);
-	frame->GetStack().push(frame->AddValue(new Value(ValueType::OBJECT,  UValue{.object = pointer} )));
+	frame->GetStack().push(frame->AddValue(new Value(ValueType::OBJECT,  UValue(pointer))));
 }
 
 void OpRef::Parse(ifstream& device)

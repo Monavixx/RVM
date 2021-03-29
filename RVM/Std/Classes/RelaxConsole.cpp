@@ -10,32 +10,32 @@ void RelaxConsole::GenerateMetaInfo()
 		// Write
 		new StdMethod("Write", "void", "Relax.Console", {Parameter("Relax.String")}, [&](Stack& stack) -> Value*
 		{
-			std::cout << stack.pop()->value.str.toStdString();
+			std::cout << get<String>(stack.pop()->value);
 			return new Value(ValueType::_VOID);
 		},AccessModifier::PUBLIC, true),
 
 		new StdMethod("Write", "void", "Relax.Console", {Parameter("Relax.Int32")}, [&](Stack& stack) -> Value*
 		{
-			std::cout << stack.pop()->value.inum;
+			std::cout << get<int>(stack.pop()->value);
 			return new Value(ValueType::_VOID);
 		},AccessModifier::PUBLIC, true),
 
 		new StdMethod("Write", "void", "Relax.Console", {Parameter("Relax.Float")}, [&](Stack& stack) -> Value*
 		{
-			std::cout << stack.pop()->value.fnum;
+			std::cout << get<float>(stack.pop()->value);
 			return new Value(ValueType::_VOID);
 		},AccessModifier::PUBLIC, true),
 
 		new StdMethod("Write", "void", "Relax.Console", {Parameter("Relax.Bool")}, [&](Stack& stack) -> Value*
 		{
-			std::cout << stack.pop()->value.boolean ? "true" : "false";
+			std::cout << get<bool>(stack.pop()->value) ? "true" : "false";
 			return new Value(ValueType::_VOID);
 		},AccessModifier::PUBLIC, true),
 
 		// Read
 		new StdMethod("Read", "Relax.String", "Relax.Console", {}, [&](Stack& stack) -> Value*
 		{
-			return new Value(ValueType::STR,  UValue{.str = qin.readLine()});
+			return new Value(ValueType::STR,  UValue(qin.readLine()));
 		},AccessModifier::PUBLIC, true)
 	});
 
@@ -43,25 +43,25 @@ void RelaxConsole::GenerateMetaInfo()
 	{
 		metaClass->AddMethod(new StdMethod("Print", "void", "Relax.Console", {Parameter("Relax.String")}, [&](Stack& stack) -> Value*
 			{
-				std::cout << stack.pop()->value.str.toStdString();
+				std::cout << get<String>(stack.pop()->value);
 				return new Value(ValueType::_VOID);
 			}, AccessModifier::PUBLIC, true));
 
 		metaClass->AddMethod(new StdMethod("Print", "void", "Relax.Console", {Parameter("Relax.Int32")}, [&](Stack& stack) -> Value*
 			{
-				std::cout << stack.pop()->value.inum;
+				std::cout << get<int>(stack.pop()->value);
 				return new Value(ValueType::_VOID);
 			}, AccessModifier::PUBLIC, true));
 
 		metaClass->AddMethod(new StdMethod("Print", "void", "Relax.Console", {Parameter("Relax.Float")}, [&](Stack& stack) -> Value*
 			{
-				std::cout << stack.pop()->value.fnum;
+				std::cout << get<float>(stack.pop()->value);
 				return new Value(ValueType::_VOID);
 			}, AccessModifier::PUBLIC, true));
 
 		metaClass->AddMethod(new StdMethod("Print", "void", "Relax.Console", {Parameter("Relax.Bool")}, [&](Stack& stack) -> Value*
 			{
-				std::cout << stack.pop()->value.boolean ? "true" : "false";
+				std::cout << get<bool>(stack.pop()->value) ? "true" : "false";
 				return new Value(ValueType::_VOID);
 			}, AccessModifier::PUBLIC, true));
 	}
@@ -69,25 +69,25 @@ void RelaxConsole::GenerateMetaInfo()
 	{
 		metaClass->AddMethod(new StdMethod("Print", "void", "Relax.Console", {Parameter("Relax.String")}, [&](Stack& stack) -> Value*
 			{
-				qout << stack.pop()->value.str;
+				qout << get<String>(stack.pop()->value);
 				return new Value(ValueType::_VOID);
 			}, AccessModifier::PUBLIC, true));
 
 		metaClass->AddMethod(new StdMethod("Print", "void", "Relax.Console", {Parameter("Relax.Int32")}, [&](Stack& stack) -> Value*
 			{
-				qout << stack.pop()->value.inum;
+				qout << std::to_string(get<int>(stack.pop()->value));
 				return new Value(ValueType::_VOID);
 			}, AccessModifier::PUBLIC, true));
 
 		metaClass->AddMethod(new StdMethod("Print", "void", "Relax.Console", {Parameter("Relax.Float")}, [&](Stack& stack) -> Value*
 			{
-				qout << std::to_string(stack.pop()->value.fnum);
+				qout << std::to_string(get<float>(stack.pop()->value));
 				return new Value(ValueType::_VOID);
 			}, AccessModifier::PUBLIC, true));
 
 		metaClass->AddMethod(new StdMethod("Print", "void", "Relax.Console", {Parameter("Relax.Bool")}, [&](Stack& stack) -> Value*
 			{
-				qout << (stack.pop()->value.boolean ? "true" : "false");
+				qout << (get<bool>(stack.pop()->value) ? "true" : "false");
 				return new Value(ValueType::_VOID);
 			}, AccessModifier::PUBLIC, true));
 	}

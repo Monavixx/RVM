@@ -3,8 +3,8 @@
 
 void OpGetarr::Run()
 {
-	RelaxArray* arr = dynamic_cast<RelaxArray*>(frame->GetStack().pop()->value.object);
-	int index = frame->GetStack().pop()->value.inum;
+	RelaxArray* arr = dynamic_cast<RelaxArray*>(get<Object*>(frame->GetStack().pop()->value));
+	int index = get<int>(frame->GetStack().pop()->value);
 	frame->GetStack().push(arr->GetByIndex(index));
 }
 

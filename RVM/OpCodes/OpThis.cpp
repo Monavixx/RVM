@@ -3,7 +3,7 @@
 
 void OpThis::Run()
 {
-	frame->GetStack().push(frame->AddValue(new Value(ValueType::OBJECT,  UValue{.object = frame->GetObjectThis()} )));
+	frame->GetStack().push(frame->AddValue(new Value(ValueType::OBJECT,  UValue(frame->GetObjectThis()))));
 }
 
 void OpThis::Parse(ifstream& device)

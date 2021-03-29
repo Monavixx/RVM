@@ -3,7 +3,7 @@
 
 void OpJmpif::Run()
 {
-	bool isTrue = frame->GetStack().pop()->value.boolean;
+	bool isTrue = get<bool>(frame->GetStack().pop()->value);
 	if (isTrue)
 	{
 		frame->SetIndex(offset);

@@ -3,7 +3,7 @@
 
 void OpPushFloat::Run()
 {
-	frame->GetStack().push(frame->AddValue(new Value(ValueType::FLOAT, UValue{ .fnum = data })));
+	frame->GetStack().push(frame->AddValue(new Value(ValueType::FLOAT, UValue(data))));
 }
 
 void OpPushFloat::Parse(ifstream& device)

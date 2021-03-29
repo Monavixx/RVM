@@ -62,22 +62,9 @@ public:
 		_size = newSize;
 		capacity = newSize;
 	}
-	bool startsWith(const String& other) const;
+	bool starts_with(const String& other) const;
 	std::string toStdString() const;
-	int toInt(bool* isOk = nullptr) const
-	{
-		int num;
-		try
-		{
-			num = std::stoi(toStdString());
-		}
-		catch (...)
-		{
-			*isOk = false;
-			num = 0;
-		}
-		return num;
-	}
+	
 	wchar_t* toWCharArray() const
 	{
 		wchar_t* res = new wchar_t[_size+1];
@@ -158,6 +145,10 @@ namespace std
 		}
 	};
 }
+
+std::ostream& operator<<(std::ostream& os, const String& str);
 #else
 typedef std::string String;
 #endif
+
+int toInt(const String& str, bool* isOk = nullptr);

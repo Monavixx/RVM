@@ -2,6 +2,8 @@
 #include "../../Libs/String.h"
 #include <unordered_map>
 
+using namespace std;
+
 struct Value;
 struct FieldObject;
 

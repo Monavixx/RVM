@@ -3,7 +3,7 @@
 
 void OpPushBool::Run()
 {
-	frame->GetStack().push(frame->AddValue(new Value(ValueType::BOOL, UValue{ .boolean = data })));
+	frame->GetStack().push(frame->AddValue(new Value(ValueType::BOOL, UValue(data))));
 }
 
 void OpPushBool::Parse(ifstream& device)

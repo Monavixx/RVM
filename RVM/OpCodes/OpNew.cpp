@@ -10,7 +10,7 @@ void OpNew::Run()
 	{
 		Object* newObject = new CustomObject(declClass);
 		GlobalVariables::heap.push_back(newObject);
-		frame->GetStack().push(new Value(ValueType::OBJECT, UValue{ .object = newObject }));
+		frame->GetStack().push(new Value(ValueType::OBJECT, UValue(newObject)));
 	}
 }
 

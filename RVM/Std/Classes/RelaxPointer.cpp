@@ -8,7 +8,7 @@ RelaxPointer::RelaxPointer(Value* data, const String& dataType) : dataType(dataT
 	if (data->valueType == ValueType::OBJECT)
 	{
 		this->data.isAddress = true;
-		this->data.data.address = data->value.object->GetAddress();
+		this->data.data.address = get<Object*>(data->value)->GetAddress();
 	}
 	else
 	{
@@ -28,7 +28,7 @@ void RelaxPointer::SetData(Value* data)
 		Exit("Pointer data type not equal value data type");
 	if (data->valueType == ValueType::OBJECT)
 	{
-		this->data.data.value->value.object = data->value.object;
+		get<Object*>(this->data.data.value->value) = get<Object*>(data->value);
 		this->data.isAddress = true;
 	}
 	else

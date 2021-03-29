@@ -25,12 +25,12 @@ void RelaxRandom::GenerateMetaInfo()
 		// GenerateInt32
 		new StdMethod("GenerateInt32", "Relax.Int32", "Relax.Random", {}, [&](Stack& stack) -> Value*
 		{
-			return new Value(ValueType::INT32,  UValue{.inum = RelaxRandom::GenerateInt32()});
+			return new Value(ValueType::INT32,  UValue(RelaxRandom::GenerateInt32()));
 		},AccessModifier::PUBLIC, true),
 
 		new StdMethod("GenerateInt32", "Relax.Int32", "Relax.Random", {Parameter("Relax.Int32"), Parameter("Relax.Int32")},[&](Stack& stack)->Value*
 		{
-			return new Value(ValueType::INT32,  UValue{.inum = RelaxRandom::GenerateInt32(stack.pop()->value.inum, stack.pop()->value.inum)});
+			return new Value(ValueType::INT32,  UValue(RelaxRandom::GenerateInt32(get<int>(stack.pop()->value), get<int>(stack.pop()->value))));
 		},AccessModifier::PUBLIC, true)
 	});
 }
