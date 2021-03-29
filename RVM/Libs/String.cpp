@@ -165,13 +165,13 @@ std::string String::toStdString() const
 	}
 	return res;
 }
-#endif
-
 std::ostream& operator<<(std::ostream& os, const String& str)
 {
 	os << str.toStdString();
 	return os;
 }
+#endif
+
 
 int toInt(const String& str, bool* isOk)
 {
