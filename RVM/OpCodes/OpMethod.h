@@ -20,7 +20,7 @@
 #include "OpNewarr.h"
 #include "OpPushBool.h"
 #include "OpPushFloat.h"
-#include "OpPushint32.h"
+#include "OpPushInt32.h"
 #include "OpPushStr.h"
 #include "OpReturn.h"
 #include "OpSet.h"
