@@ -9,7 +9,7 @@ public:
 
 	RelaxArray(const String& dataType, asizet size);
 	~RelaxArray();
-#ifdef _WIN321
+#ifdef _WIN32
 	inline String GetDataType() const override
 	{
 		return "Relax.Array<"_ss + dataType + ">"_ss;

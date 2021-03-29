@@ -8,11 +8,7 @@
 struct GlobalVariables
 {
 	static inline String filename;
-#ifdef _WIN321
-	static inline ifstream executableFile;
-#else
 	static inline std::ifstream executableFile;
-#endif
 	static inline Class* mainClass = nullptr;
 	static inline ClassList classes;
 	static inline Heap heap = Heap(1000000);

@@ -6,7 +6,7 @@ class RelaxConverter : public Object
 {
 public:
 	RelaxConverter() {}
-#ifdef _WIN321
+#ifdef _WIN32
 	constexpr String GetDataType() const override
 	{
 		return "Relax.Converter"_ss;

@@ -29,7 +29,7 @@ class ConsoleTextStreamInput {
 public:
     String readLine()
     {
-        #ifdef _WIN321
+        #ifdef _WIN32
             const int bufsize = 1024;
             wchar_t buf[bufsize];
             DWORD read;

@@ -9,11 +9,7 @@ VirtualMachine::VirtualMachine()
 
 VirtualMachine::~VirtualMachine()
 {
-#ifdef _WIN321
-	CloseHandle(GlobalVariables::executableFile);
-#else
 	GlobalVariables::executableFile.close();
-#endif
 }
 
 void VirtualMachine::Start()

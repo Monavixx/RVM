@@ -16,7 +16,7 @@ class RelaxPointer : public Object
 	};
 public:
 	RelaxPointer(Value* data, const String& dataType);
-#ifdef _WIN321
+#ifdef _WIN32
 	inline String GetDataType() const override
 	{
 		return "Relax.Pointer<"_ss + dataType + ">";

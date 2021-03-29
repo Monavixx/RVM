@@ -70,7 +70,7 @@ release = true
 
 buildname = ReleaseBuild/RVM.exe
 
-os = windows
+os = linux
 cores = 6
-unicode = true
+unicode = false
 march = native

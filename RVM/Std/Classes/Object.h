@@ -9,7 +9,7 @@ class Object
 {
 public:
 	Object(size_t amountUsers = 0);
-#ifdef _WIN321
+#ifdef _WIN32
 	constexpr virtual String GetDataType() const
 	{
 		return "Relax.Object"_ss;

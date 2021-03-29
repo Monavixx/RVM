@@ -6,8 +6,8 @@ class RelaxRandom : public Object
 {
 public:
 	RelaxRandom() {}
-#ifdef _WIN321
-	constexpr String GetDataType() override
+#ifdef _WIN32
+	constexpr String GetDataType() const override
 	{
 		return "Relax.Random"_ss;
 	}

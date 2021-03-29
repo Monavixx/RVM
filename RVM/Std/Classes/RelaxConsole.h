@@ -7,7 +7,7 @@ class RelaxConsole : public Object
 {
 public:
 	RelaxConsole() {}
-#ifdef _WIN321
+#ifdef _WIN32
 	constexpr String GetDataType() const override
 	{
 		return "Relax.Console"_ss;
