@@ -6,9 +6,10 @@
 #ifdef _WIN32
 #include <Windows.h>
 #include <iostream>
-#else
-#include <locale.h>
 #endif
+
+#include <iostream>
+
 class ConsoleTextStreamOutput {
 public:
     ConsoleTextStreamOutput& operator<<(const String& str)

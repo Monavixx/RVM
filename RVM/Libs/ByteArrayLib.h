@@ -3,6 +3,8 @@
 #include <fstream>
 #include <vector>
 #include <iostream>
+#include <codecvt>
+#include <locale>
 #include "String.h"
 #include "../Functions/Exit.h"
 #include <math.h>
@@ -185,22 +187,32 @@ public:
         bsize.Resize(bytesSize);
         device.read((char*)bsize.GetData(), bytesSize);
         int size = ByteArrayConvert::byteArrayToInt(bsize);
-
-        String str;
+        
         ByteArray bstr;
         bstr.Resize(size);
-        str.reserve(size);
         device.read((char*)bstr.GetData(), size);
 
+#ifdef _WIN32
+        String str;
+#else
+        std::u16string str;
+#endif
+        str.resize(size/2);
         for (size_t i = 0; i < size; i += 2)
         {
             unsigned short res = bstr[i];
             res <<= 8;
             res |= bstr[i + 1];
-            str.push_back(res);
+            str[i/2] = res;
         }
 
+#ifdef _WIN32
         return str;
+#else
+        std::wstring_convert<std::codecvt_utf8_utf16<char16_t>,char16_t> convert; 
+        std::string res = convert.to_bytes(str);
+        return res;
+#endif
     }
 
     static ByteArray ReadSizeAndByteArray(ifstream& device, short bytesSize = 4)
