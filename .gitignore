@@ -1,6 +1,6 @@
 .vs/
-x64/
-RVM/x64/Debug/
+x64/Debug/
+RVM/x64/
 TestTime/
 UnitTest/x64/
 *.vcxproj.user
