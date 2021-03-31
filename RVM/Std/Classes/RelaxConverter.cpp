@@ -3,6 +3,7 @@
 #include "../../Core/Class.h"
 #include "../../Core/StdMethod.h"
 #include "../../Core/FieldObject.h"
+#include <math.h>
 
 int RelaxConverter::ToInt32(const String& data)
 {

@@ -9,7 +9,7 @@ VirtualMachine::VirtualMachine()
 #ifdef _WIN32
 	GlobalVariables::path = filesystem::path(GlobalVariables::filename.toWCharArray()).parent_path().wstring().data();
 #else
-	GlobalVariables::path = filesystem::path(GlobalVariables::filename.toStdString()).parent_path().string();
+	GlobalVariables::path = filesystem::path(GlobalVariables::filename).parent_path().string();
 #endif
 }
 
