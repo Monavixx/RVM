@@ -34,7 +34,11 @@
 #include "OpThis.h"
 #include "OpSetfield.h"
 #include "OpGetfield.h"
-#include "OpEqual.h"
+#include "OpCe.h"
+#include "OpCl.h"
+#include "OpCb.h"
+#include "OpCle.h"
+#include "OpCbe.h"
 #include "../Core/Method.h"
 
 #include <vector>

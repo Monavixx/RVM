@@ -1,7 +1,7 @@
-#include "OpEqual.h"
+#include "OpCe.h"
 #include "../Core/FieldObject.h"
 
-void OpEqual::Run()
+void OpCe::Run()
 {
 	Value* firstData = frame->GetStack().pop();
 	Value* secondData = frame->GetStack().pop();
@@ -16,11 +16,19 @@ void OpEqual::Run()
 		frame->GetStack().push(frame->AddValue(new Value(ValueType::BOOL, UValue(get<float>(firstData->value) == get<float>(secondData->value)))));
 		break;
 
+	case ValueType::BOOL:
+		frame->GetStack().push(frame->AddValue(new Value(ValueType::BOOL, UValue(get<bool>(firstData->value) == get<bool>(secondData->value)))));
+		break;
+
+	case ValueType::STR:
+		frame->GetStack().push(frame->AddValue(new Value(ValueType::BOOL, UValue(get<String>(firstData->value) == get<String>(secondData->value)))));
+		break;
+
 	default:
-		Exit("equal: data type is not a number");
+		Exit("ce: data type not supported");
 	}
 }
 
-void OpEqual::Parse(ifstream& device)
+void OpCe::Parse(ifstream& device)
 {
 }

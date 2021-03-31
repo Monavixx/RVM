@@ -1,5 +1,4 @@
 #include "ClassList.h"
-#include "FieldObject.h"
 
 ClassList::ClassList(const std::unordered_map<String, Class*>& classList) : std::unordered_map<String, Class*>(classList)
 {
@@ -16,10 +15,12 @@ void ClassList::CreateStdClasses()
 	RelaxRandom::GenerateMetaInfo();
 	RelaxConverter::GenerateMetaInfo();
 	Object::GenerateMetaInfo();
+	RelaxFile::GenerateMetaInfo();
 
 	AddClass(RelaxConsole::metaClass);
 	AddClass(RelaxArray::metaClass);
 	AddClass(RelaxRandom::metaClass);
 	AddClass(RelaxConverter::metaClass);
 	AddClass(Object::metaClass);
+	AddClass(RelaxFile::metaClass);
 }

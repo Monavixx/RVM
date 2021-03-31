@@ -1,6 +1,7 @@
 #pragma once
 #include <string>
 #include <iostream>
+#include <vector>
 #include "../Functions/Exit.h"
 
 #ifdef _WIN32
@@ -45,7 +46,7 @@ public:
 	}
 	inline unsigned short& operator[](size_t index) const
 	{
-#ifdef _DEBUG
+#ifdef DEBUG
 		if (index >= _size) Exit("String. Index out of range\n");
 #endif
 		return data[index];
@@ -76,7 +77,7 @@ public:
 		return res;
 	}
 
-	void Resize(size_t size)
+	void resize(size_t size)
 	{
 		if (data == nullptr)
 		{
@@ -152,3 +153,4 @@ typedef std::string String;
 #endif
 
 int toInt(const String& str, bool* isOk = nullptr);
+std::vector<String> split(const String& source, char sep);

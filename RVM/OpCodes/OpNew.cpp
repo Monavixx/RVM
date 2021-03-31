@@ -4,13 +4,18 @@
 
 void OpNew::Run()
 {
-	if(declClass->IsStd())
+	if (declClass->IsStd())
+	{
 		methodConstruction->CallMethod(frame);
+	}
 	else
 	{
 		Object* newObject = new CustomObject(declClass);
 		GlobalVariables::heap.push_back(newObject);
-		frame->GetStack().push(new Value(ValueType::OBJECT, UValue(newObject)));
+		Value* value = new Value(ValueType::OBJECT, UValue(newObject));
+		frame->GetStack().push(value);
+		methodConstruction->CallMethod(frame);
+		frame->GetStack().push(value);
 	}
 }
 
@@ -30,4 +35,6 @@ void OpNew::Parse(ifstream& device)
 		Exit("new: class not exists");
 
 	methodConstruction = declClass->GetMethod(className, parameters);
+	if (methodConstruction == nullptr)
+		Exit("new: Constructor not found!");
 }

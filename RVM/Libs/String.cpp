@@ -126,7 +126,7 @@ String String::operator+(const String& other) const
 {
 	String res;
 	size_t newSize = _size + other._size;
-	res.Resize(newSize);
+	res.resize(newSize);
 
 	for (size_t i = 0; i < _size; ++i)
 	{
@@ -189,5 +189,26 @@ int toInt(const String& str, bool* isOk)
 		*isOk = false;
 		num = 0;
 	}
+	*isOk = true;
 	return num;
+}
+
+std::vector<String> split(const String& source, char sep)
+{
+	std::vector<String> res(1);
+	size_t cur = 0;
+	for (size_t i = 0; i < source.size(); ++i)
+	{
+		if (source[i] == sep)
+		{
+			++cur;
+			res.push_back({});
+		}
+		else
+		{
+			res[cur].push_back(source[i]);
+		}
+	}
+
+	return res;
 }

@@ -19,7 +19,8 @@ public:
 	}
 #endif
 
-	static int StringToInt32(const String& data);
+	static int ToInt32(const String& data);
+	static float ToFloat(const String& data);
 
 	static void GenerateMetaInfo();
 	static inline class Class* metaClass = nullptr;

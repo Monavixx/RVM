@@ -4,6 +4,7 @@
 #include "../Std/Classes/RelaxRandom.h"
 #include "../Std/Classes/RelaxConsole.h"
 #include "../Std/Classes/RelaxConverter.h"
+#include "../Std/Classes/RelaxFile.h"
 
 class ClassList : public std::unordered_map<String, Class*>
 {

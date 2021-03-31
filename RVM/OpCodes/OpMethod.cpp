@@ -199,9 +199,29 @@ void OpMethod::ParseOpCode(Instruction instruction, ifstream& device)
 		op = new OpThis;
 		break;
 	}
-	case EQUAL:
+	case CE:
 	{
-		op = new OpEqual;
+		op = new OpCe;
+		break;
+	}
+	case CL:
+	{
+		op = new OpCl;
+		break;
+	}
+	case CB:
+	{
+		op = new OpCb;
+		break;
+	}
+	case CLE:
+	{
+		op = new OpCle;
+		break;
+	}
+	case CBE:
+	{
+		op = new OpCbe;
 		break;
 	}
 	default:

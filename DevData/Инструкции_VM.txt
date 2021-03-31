@@ -31,4 +31,8 @@
 31 - getfield
 32 - setfield
 33 - this
-34 - equal
+34 - ce
+35 - cl
+36 - cb
+37 - cle
+38 - cbe

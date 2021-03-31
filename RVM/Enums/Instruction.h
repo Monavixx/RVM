@@ -34,5 +34,9 @@ enum Instruction
 	GETFIELD,
 	SETFIELD,
 	_THIS,
-	EQUAL
+	CE,
+	CL,
+	CB,
+	CLE,
+	CBE
 };

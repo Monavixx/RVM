@@ -32,10 +32,15 @@ void RelaxConsole::GenerateMetaInfo()
 			return new Value(ValueType::_VOID);
 		},AccessModifier::PUBLIC, true),
 
-		// Read
 		new StdMethod("Read", "Relax.String", "Relax.Console", {}, [&](Stack& stack) -> Value*
 		{
-			return new Value(ValueType::STR,  UValue(qin.readLine()));
+			std::string str;
+			cin >> str;
+#ifdef _WIN32
+			return new Value(ValueType::STR,  UValue(String(str)));
+#else
+			return new Value(ValueType::STR, UValue(str));
+#endif
 		},AccessModifier::PUBLIC, true)
 	});
 
@@ -89,6 +94,27 @@ void RelaxConsole::GenerateMetaInfo()
 			{
 				qout << (get<bool>(stack.pop()->value) ? "true" : "false");
 				return new Value(ValueType::_VOID);
+			}, AccessModifier::PUBLIC, true));
+	}
+
+	if (Args::contains("-i2r"))
+	{
+		metaClass->AddMethod(new StdMethod("Input", "Relax.String", "Relax.Console", {}, [&](Stack& stack) -> Value*
+			{
+				std::string str;
+				cin >> str;
+#ifdef _WIN32
+				return new Value(ValueType::STR, UValue(String(str)));
+#else
+				return new Value(ValueType::STR, UValue(str));
+#endif
+			}, AccessModifier::PUBLIC, true));
+	}
+	else
+	{
+		metaClass->AddMethod(new StdMethod("Input", "Relax.String", "Relax.Console", {}, [&](Stack& stack) -> Value*
+			{
+				return new Value(ValueType::STR, UValue(qin.readLine()));
 			}, AccessModifier::PUBLIC, true));
 	}
 }

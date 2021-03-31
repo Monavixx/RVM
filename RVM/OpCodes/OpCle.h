@@ -1,7 +1,7 @@
 #pragma once
 #include "OpBase.h"
 
-class OpEqual : public OpBase
+class OpCle : public OpBase
 {
 public:
 	void Run() override;

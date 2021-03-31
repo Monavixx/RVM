@@ -1,10 +1,16 @@
 #include "VirtualMachine.h"
 #include "Core/FieldObject.h"
+#include <filesystem>
 
 VirtualMachine::VirtualMachine()
 {
 	GlobalVariables::mainClass = nullptr;
 	GlobalVariables::filename = Args::args[1];
+#ifdef _WIN32
+	GlobalVariables::path = filesystem::path(GlobalVariables::filename.toWCharArray()).parent_path().wstring().data();
+#else
+	GlobalVariables::path = filesystem::path(GlobalVariables::filename.toStdString()).parent_path().string();
+#endif
 }
 
 VirtualMachine::~VirtualMachine()
@@ -33,7 +39,6 @@ void VirtualMachine::Start()
 	}
 
 	GlobalVariables::executableFile.clear();
-	int a = GlobalVariables::executableFile.tellg();
 
 	for (auto& item : opCodes)
 	{
@@ -53,12 +58,12 @@ void VirtualMachine::Start()
 	Frame* frame = new Frame(mainMethod);
 	GlobalVariables::frameStack.push(frame);
 
-#ifdef _DEBUG
+#ifdef DEBUG
 	clock_t start, end, ReResult;
 	start = clock();
 #endif
 	ExecuteMethod();
-#ifdef _DEBUG
+#ifdef DEBUG
 	end = clock();
 	ReResult = end - start;
 	std::cout << "\n\n\nRelax: " << ReResult << "ms\n";

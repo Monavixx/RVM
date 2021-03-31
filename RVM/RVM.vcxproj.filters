@@ -270,11 +270,26 @@
     <ClInclude Include="Core\Value.h">
       <Filter>Файлы заголовков\Core</Filter>
     </ClInclude>
-    <ClInclude Include="OpCodes\OpEqual.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
     <ClInclude Include="Core\FieldObject.h">
       <Filter>Файлы заголовков\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="OpCodes\OpCe.h">
+      <Filter>Файлы заголовков\OpCodes</Filter>
+    </ClInclude>
+    <ClInclude Include="OpCodes\OpCl.h">
+      <Filter>Файлы заголовков\OpCodes</Filter>
+    </ClInclude>
+    <ClInclude Include="OpCodes\OpCb.h">
+      <Filter>Файлы заголовков\OpCodes</Filter>
+    </ClInclude>
+    <ClInclude Include="OpCodes\OpCbe.h">
+      <Filter>Файлы заголовков\OpCodes</Filter>
+    </ClInclude>
+    <ClInclude Include="OpCodes\OpCle.h">
+      <Filter>Файлы заголовков\OpCodes</Filter>
+    </ClInclude>
+    <ClInclude Include="Std\Classes\RelaxFile.h">
+      <Filter>Файлы заголовков\Std\Classes</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -470,7 +485,22 @@
     <ClCompile Include="Core\FieldObject.cpp">
       <Filter>Исходные файлы\Core</Filter>
     </ClCompile>
-    <ClCompile Include="OpCodes\OpEqual.cpp">
+    <ClCompile Include="OpCodes\OpCe.cpp">
+      <Filter>Исходные файлы\OpCodes</Filter>
+    </ClCompile>
+    <ClCompile Include="Std\Classes\RelaxFile.cpp">
+      <Filter>Исходные файлы\Std\Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="OpCodes\OpCle.cpp">
+      <Filter>Исходные файлы\OpCodes</Filter>
+    </ClCompile>
+    <ClCompile Include="OpCodes\OpCb.cpp">
+      <Filter>Исходные файлы\OpCodes</Filter>
+    </ClCompile>
+    <ClCompile Include="OpCodes\OpCbe.cpp">
+      <Filter>Исходные файлы\OpCodes</Filter>
+    </ClCompile>
+    <ClCompile Include="OpCodes\OpCl.cpp">
       <Filter>Исходные файлы\OpCodes</Filter>
     </ClCompile>
   </ItemGroup>
