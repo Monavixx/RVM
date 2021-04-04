@@ -119,7 +119,7 @@ bool String::operator==(const String& other) const
 
 bool String::operator!=(const String& other) const
 {
-	return !operator==(other);
+	return operator!=(other);
 }
 
 String String::operator+(const String& other) const
@@ -175,7 +175,9 @@ std::ostream& operator<<(std::ostream& os, const String& str)
 
 int toInt(const String& str, bool* isOk)
 {
-	int num;
+	int num = 0;
+	*isOk = true;
+	
 	try
 	{
 #ifdef _WIN32
@@ -189,7 +191,7 @@ int toInt(const String& str, bool* isOk)
 		*isOk = false;
 		num = 0;
 	}
-	*isOk = true;
+	
 	return num;
 }
 
