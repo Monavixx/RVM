@@ -118,8 +118,15 @@ bool String::operator==(const String& other) const
 }
 
 bool String::operator!=(const String& other) const
-{
-	return operator!=(other);
+{	
+	if (_size != other._size)
+		return true;
+	
+	for (size_t i = 0; i < _size; ++i)
+		if (data[i] != other.data[i])
+			return true;
+	
+	return false;
 }
 
 String String::operator+(const String& other) const
