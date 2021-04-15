@@ -6,21 +6,22 @@
 class RelaxConsole : public Object
 {
 public:
-	RelaxConsole() {}
+	RelaxConsole():Object(metaClass) {}
 #ifdef _WIN32
 	constexpr String GetDataType() const override
 	{
-		return "Relax.Console"_ss;
+		return "Console"_ss;
 	}
 #else
 	virtual inline String GetDataType() const
 	{
-		static String dataType = "Relax.Console";
+		static String dataType = "Console";
 		return dataType;
 	}
 #endif
 
-	static void GenerateMetaInfo();
-	static inline class Class* metaClass = nullptr;
+	static void GenerateMetaMethods();
+	static void GenerateMetaClass();
+	static inline class Class* metaClass;
 };
 

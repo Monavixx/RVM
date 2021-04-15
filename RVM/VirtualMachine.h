@@ -1,6 +1,7 @@
 #pragma once
 #include "OpCodes/OpMethod.h"
 #include "OpCodes/OpField.h"
+#include "OpCodes/OpNamespace.h"
 #include <time.h>
 
 class VirtualMachine

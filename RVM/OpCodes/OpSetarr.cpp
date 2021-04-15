@@ -3,10 +3,9 @@
 
 void OpSetarr::Run()
 {
-	RelaxArray* arr = dynamic_cast<RelaxArray*>(get<Object*>(frame->GetStack().pop()->value));
+	RelaxArray* arr = dynamic_cast<RelaxArray*>(GlobalVariables::heap[get<size_t>(frame->GetStack().pop()->value)]);
 	int index = get<int>(frame->GetStack().pop()->value);
 	Value* data = frame->GetStack().pop();
-
 	arr->SetByIndex(index, data);
 }
 

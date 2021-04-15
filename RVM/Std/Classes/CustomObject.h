@@ -8,9 +8,9 @@
 class CustomObject : public Object
 {
 public:
-	inline CustomObject(Class* declClass) : declClass(declClass)
+	inline CustomObject(Class* dataTypeClass) : Object(dataTypeClass)
 	{
-		for (auto& [name,field] : declClass->GetFields())
+		for (auto& [name,field] : dataTypeClass->GetFields())
 		{
 			fields[name] = new FieldObject{ nullptr, field };
 		}
@@ -18,13 +18,7 @@ public:
 
 	inline String GetDataType() const override
 	{
-		return declClass->GetName();
+		return dataTypeClass->GetName();
 	}
-
-	inline void SetDeclClass(Class* declClass) { this->declClass = declClass; }
-	inline Class* GetDeclClass() const { return declClass; }
-
-private:
-	Class* declClass;
 };
 

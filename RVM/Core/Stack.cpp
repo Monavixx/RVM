@@ -10,8 +10,8 @@ void Stack::push(Value* value)
 	if (currentSize + 1 > maxSize)
 		Exit("Stack is small");
 
-	if(Object* obj; value->valueType == ValueType::OBJECT && (obj = get<Object*>(value->value)) != nullptr)
-		obj->IncAmountUsers();
+	if(size_t address; value->valueType == ValueType::OBJECT && GlobalVariables::heap[(address = get<size_t>(value->value))] != nullptr)
+		GlobalVariables::heap[address]->IncAmountUsers();
 	
 	stack[currentSize++] = value;
 }
@@ -22,7 +22,7 @@ Value* Stack::pop()
 		Exit("Stack is empty");
 	Value* value = stack[--currentSize];
 	if(value->valueType == ValueType::OBJECT)
-		get<Object*>(value->value)->DecAmountUsers();
+		GlobalVariables::heap[get<size_t>(value->value)]->DecAmountUsers();
 	return value;
 }
 

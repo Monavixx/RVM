@@ -8,6 +8,7 @@ public:
 	void Parse(ifstream& device) override;
 
 private:
+	String namespaceName;
 	String className;
 };
 

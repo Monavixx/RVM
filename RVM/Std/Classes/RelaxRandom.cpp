@@ -16,16 +16,21 @@ int RelaxRandom::GenerateInt32(int min, int max)
 	return uniform_dist(e1);
 }
 
-void RelaxRandom::GenerateMetaInfo()
+void RelaxRandom::GenerateMetaClass()
 {
-	metaClass = new Class("Relax.Random", true, {
+	metaClass = new Class("Random", true);
+}
+
+void RelaxRandom::GenerateMetaMethods()
+{
+	metaClass->AddMethods({
 		// GenerateInt32
-		new StdMethod("GenerateInt32", "Relax.Int32", "Relax.Random", {}, [&](Stack& stack) -> Value*
+		new StdMethod("GenerateInt32", "Relax.Int32", {}, [&](Stack& stack) -> Value*
 		{
 			return new Value(ValueType::INT32,  UValue(RelaxRandom::GenerateInt32()));
 		},AccessModifier::PUBLIC, true),
 
-		new StdMethod("GenerateInt32", "Relax.Int32", "Relax.Random", {Parameter("Relax.Int32"), Parameter("Relax.Int32")},[&](Stack& stack)->Value*
+		new StdMethod("GenerateInt32", "Relax.Int32", {Parameter("Relax", "Int32"), Parameter("Relax", "Int32")},[&](Stack& stack)->Value*
 		{
 			return new Value(ValueType::INT32,  UValue(RelaxRandom::GenerateInt32(get<int>(stack.pop()->value), get<int>(stack.pop()->value))));
 		},AccessModifier::PUBLIC, true)

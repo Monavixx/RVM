@@ -1,7 +1,7 @@
 #pragma once
 #include "OpBase.h"
 
-class OpClass : public OpBase
+class OpNamespace : public OpBase
 {
 public:
 	void Run() override;
@@ -9,6 +9,5 @@ public:
 
 private:
 	String namespaceName;
-	String className;
 };
 

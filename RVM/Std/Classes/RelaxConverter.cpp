@@ -28,34 +28,39 @@ float RelaxConverter::ToFloat(const String& data)
 	return res;
 }
 
-
-void RelaxConverter::GenerateMetaInfo()
+void RelaxConverter::GenerateMetaClass()
 {
-    metaClass = new Class("Relax.Converter", true, {
+	metaClass = new Class("Converter", true);
+}
+
+
+void RelaxConverter::GenerateMetaMethods()
+{
+	metaClass->AddMethods({
 		// ToString
-		new StdMethod("ToString", "Relax.String", "Relax.Converter", {Parameter("Relax.Int32")}, [&](Stack& stack) -> Value*
+		new StdMethod("ToString", "Relax.String", {Parameter("Relax", "Int32")}, [&](Stack& stack) -> Value*
 		{
 			return new Value(ValueType::STR, UValue(String(to_string(get<int>(stack.pop()->value)))));
 		},AccessModifier::PUBLIC, true),
 
-		new StdMethod("ToString", "Relax.String", "Relax.Converter", {Parameter("Relax.Float")}, [&](Stack& stack) -> Value*
+		new StdMethod("ToString", "Relax.String", {Parameter("Relax", "Float")}, [&](Stack& stack) -> Value*
 		{
 			return new Value(ValueType::STR, UValue(String(to_string(get<float>(stack.pop()->value)))));
 		},AccessModifier::PUBLIC, true),
 
-		new StdMethod("ToString", "Relax.String", "Relax.Converter", {Parameter("Relax.Bool")}, [&](Stack& stack) -> Value*
+		new StdMethod("ToString", "Relax.String", {Parameter("Relax", "Bool")}, [&](Stack& stack) -> Value*
 		{
 			return new Value(ValueType::STR, UValue(String(get<bool>(stack.pop()->value) == true ? "true" : "false")));
 		},AccessModifier::PUBLIC, true),
 
 		// ToInt32
-		new StdMethod("ToInt32", "Relax.Int32", "Relax.Converter", {Parameter("Relax.String")}, [&](Stack& stack) -> Value*
+		new StdMethod("ToInt32", "Relax.Int32", {Parameter("Relax", "String")}, [&](Stack& stack) -> Value*
 		{
 			return new Value(ValueType::INT32, UValue(ToInt32(get<String>(stack.pop()->value))));
 		},AccessModifier::PUBLIC, true),
 
 		// ToBool
-		new StdMethod("ToBool", "Relax.Bool", "Relax.Converter", {Parameter("Relax.String")}, [&](Stack& stack) -> Value*
+		new StdMethod("ToBool", "Relax.Bool", {Parameter("Relax", "String")}, [&](Stack& stack) -> Value*
 		{
 			String str = get<String>(stack.pop()->value);
 			if (str == "true") return new Value(ValueType::BOOL, UValue(true));
@@ -64,7 +69,7 @@ void RelaxConverter::GenerateMetaInfo()
 		},AccessModifier::PUBLIC, true),
 
 		// ToFloat
-		new StdMethod("ToFloat", "Relax.Float", "Relax.Converter", {Parameter("Relax.String")}, [&](Stack& stack) -> Value*
+		new StdMethod("ToFloat", "Relax.Float", {Parameter("Relax", "String")}, [&](Stack& stack) -> Value*
 		{
 			String str = get<String>(stack.pop()->value);
 			return new Value(ValueType::FLOAT, UValue(ToFloat(str)));

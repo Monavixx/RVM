@@ -3,9 +3,12 @@
 
 void OpMethod::Run()
 {
-	method = new Method(name, dataType, declClassName, parameters, {}, accessModifier, isStatic);
+	method = new Method(name, dataType, parameters, {}, accessModifier, isStatic);
 
-	Class* _class = GlobalVariables::classes[declClassName];
+	Namespace* declNamespace = GlobalVariables::namespaces[namespaceName];
+	if (declNamespace == nullptr)
+		Exit("method: namespace not found");
+	Class* _class = declNamespace->GetClass(declClassName);
 	if (_class == nullptr)
 	{
 		Exit("method: decl class not found");
@@ -20,14 +23,15 @@ void OpMethod::Parse(ifstream& device)
 	isStatic = ByteArrayRead::ReadByte(device);
 
 	dataType = ByteArrayRead::ReadSizeAndString(device);
+	namespaceName = ByteArrayRead::ReadSizeAndString(device);
 	declClassName = ByteArrayRead::ReadSizeAndString(device);
 	name = ByteArrayRead::ReadSizeAndString(device);
 
-	int amountParameters = ByteArrayRead::ReadInt(device);
+	size_t amountParameters = ByteArrayRead::ReadInt(device);
 
-	for (int i = 0; i < amountParameters; ++i)
+	for (size_t i = 0; i < amountParameters; ++i)
 	{
-		Parameter parameter(ByteArrayRead::ReadSizeAndString(device));
+		Parameter parameter(ByteArrayRead::ReadSizeAndString(device), ByteArrayRead::ReadSizeAndString(device));
 		parameter.SetName(ByteArrayRead::ReadSizeAndString(device));
 		parameters.push_back(parameter);
 	}

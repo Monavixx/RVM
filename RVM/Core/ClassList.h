@@ -13,7 +13,6 @@ public:
 	ClassList(const std::unordered_map<String, Class*>& classList);
 	ClassList(const ClassList& classList);
 
-	void CreateStdClasses();
 	inline void AddClass(Class* _class){ (*this)[_class->GetName()] = _class; }
 };
 

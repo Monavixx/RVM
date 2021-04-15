@@ -13,7 +13,6 @@ void ExecuteMethod(bool gc)
 		Exit("main method not found");
 	}
 
-	static size_t i = 0;
 	bool isReturn = false;
 	while (!frame->IsEnd())
 	{
@@ -27,13 +26,6 @@ void ExecuteMethod(bool gc)
 			delete frame;
 			return;
 		}
-
-		if (i >= GlobalVariables::opCodesForGC)
-		{
-			GC();
-			i = 0;
-		}
-		++i;
 	}
 	if (!isReturn)
 	{

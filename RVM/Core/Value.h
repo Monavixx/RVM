@@ -4,7 +4,7 @@
 #include <unordered_map>
 #include <variant>
 
-typedef std::variant<Object*, String, int, float, bool> UValue;
+typedef std::variant<size_t, String, int, float, bool, char> UValue;
 
 enum class ValueType
 {
@@ -13,7 +13,8 @@ enum class ValueType
 	INT32,
 	FLOAT,
 	_VOID,
-	BOOL
+	BOOL,
+	CHAR
 };
 struct Value
 {

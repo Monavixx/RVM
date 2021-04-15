@@ -13,10 +13,10 @@ public:
 
 private:
 	bool isStatic;
+	String namespaceName;
 	String declClassName;
 	String name;
 	std::vector<Parameter> parameters;
-	Class* declClass = nullptr;
 	IMethod* callableMethod = nullptr;
 };
 

@@ -9,7 +9,7 @@
 class StdMethod : public IMethod
 {
 public:
-	StdMethod(const String& name, const String& dataType, const String& declClassName, const std::vector<Parameter>& parameters = {},
+	StdMethod(const String& name, const String& dataType, const std::vector<Parameter>& parameters = {},
 		std::function<Value*(Stack&)> code = {}, const AccessModifier& accessModifier = AccessModifier::PRIVATE, bool isStatic = false);
 
 	inline std::function<Value* (Stack&)> GetFunction() const { return function; }

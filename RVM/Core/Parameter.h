@@ -4,23 +4,16 @@
 class Parameter
 {
 public:
-	Parameter(const String& dataType, const String& name = "") : dataType(dataType), name(name)
-	{
-	}
+	Parameter(const String& namespaceName, const String& dataType, const String& name = "");
 
-	String GetDataType() const
-	{
-		return dataType;
-	}
+	class Class* GetDataType() const;
 	String GetName() const
 	{
 		return name;
 	}
 
-	void SetDataType(const String& dataType)
-	{
-		this->dataType = dataType;
-	}
+	void SetDataType(class Class* dataType);
+	
 	void SetName(const String& name)
 	{
 		this->name = name;
@@ -38,7 +31,7 @@ public:
 
 
 private:
-	String dataType;
+	class Class* dataType;
 	String name;
 };
 

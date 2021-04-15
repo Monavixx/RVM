@@ -4,7 +4,7 @@
 class Variable
 {
 public:
-	Variable(Value* value = nullptr, const String& dataType = "Relax.Object") : value(value), dataType(dataType)
+	Variable(Value* value = nullptr, class Class* dataType = nullptr) : value(value), dataType(dataType)
 	{
 	}
 
@@ -17,17 +17,14 @@ public:
 		return value;
 	}
 
-	inline String GetDataType() const
-	{
-		return dataType;
-	}
-	inline void SetDataType(const String& dataType)
+	String GetDataType() const;
+	inline void SetDataType(Class* dataType)
 	{
 		this->dataType = dataType;
 	}
 
 private:
 	Value* value;
-	String dataType;
+	class Class* dataType;
 };
 

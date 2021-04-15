@@ -1,4 +1,5 @@
 #include "Class.h"
+#include "Namespace.h"
 
 Class::Class(const String& name, bool isStd, const vector<IMethod*>& methods, const std::unordered_map<String, Field*>& fields)
 	:name(name), methods(methods), fields(fields), isStd(isStd)
@@ -31,4 +32,19 @@ bool Class::operator==(const Class& other) const
 	if (other.methods != methods) return false;
 	if (other.fields != fields) return false;
 	return true;
+}
+
+void Class::SetNamespace(Namespace* _namespace)
+{
+	declNamespace = _namespace;
+}
+
+Namespace* Class::GetNamespace()
+{
+	return declNamespace;
+}
+
+String Class::GetFullName() const
+{
+	return declNamespace->GetName() + '.' + name;
 }

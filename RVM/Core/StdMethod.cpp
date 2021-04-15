@@ -3,8 +3,8 @@
 #include "../GlobalVariables.h"
 #include "FieldObject.h"
 
-StdMethod::StdMethod(const String& name, const String& dataType, const String& declClassName, const std::vector<Parameter>& parameters, std::function<Value*(Stack&)> function, const AccessModifier& accessModifier, bool isStatic)
-	:IMethod(name, dataType, declClassName, parameters, accessModifier, isStatic), function(function)
+StdMethod::StdMethod(const String& name, const String& dataType, const std::vector<Parameter>& parameters, std::function<Value*(Stack&)> function, const AccessModifier& accessModifier, bool isStatic)
+	:IMethod(name, dataType, parameters, accessModifier, isStatic), function(function)
 {
 }
 

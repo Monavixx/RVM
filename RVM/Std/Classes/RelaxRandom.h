@@ -5,16 +5,16 @@
 class RelaxRandom : public Object
 {
 public:
-	RelaxRandom() {}
+	RelaxRandom() : Object(metaClass) {}
 #ifdef _WIN32
 	constexpr String GetDataType() const override
 	{
-		return "Relax.Random"_ss;
+		return "Random"_ss;
 	}
 #else
 	virtual inline String GetDataType() const
 	{
-		static String dataType = "Relax.Random";
+		static String dataType = "Random";
 		return dataType;
 	}
 #endif
@@ -23,7 +23,8 @@ public:
 
 	static inline std::random_device r;
 
-	static void GenerateMetaInfo();
+	static void GenerateMetaClass();
+	static void GenerateMetaMethods();
 	static inline class Class* metaClass = nullptr;
 };
 

@@ -32,7 +32,7 @@ public:
 	{
 		this->variables = variables;
 	}
-	void CreateVariable(size_t id, const String& dataType);
+	void CreateVariable(size_t id, Class* dataType);
 
 	inline Stack& GetStack()
 	{

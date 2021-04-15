@@ -4,7 +4,7 @@
 void OpGetfield::Run()
 {
 	Value* data = frame->GetStack().pop();
-	frame->GetStack().push(get<Object*>(data->value)->GetField(name)->value);
+	frame->GetStack().push(GlobalVariables::heap[get<size_t>(data->value)]->GetField(name)->value);
 }
 
 void OpGetfield::Parse(ifstream& device)

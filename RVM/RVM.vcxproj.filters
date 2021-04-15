@@ -5,19 +5,9 @@
       <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
       <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
-    <Filter Include="Файлы заголовков">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
-    </Filter>
     <Filter Include="Файлы ресурсов">
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
-    </Filter>
-    <Filter Include="Файлы заголовков\Core">
-      <UniqueIdentifier>{c493cef4-f66f-4e25-a023-46e6556935a8}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Файлы заголовков\Core\Interfaces">
-      <UniqueIdentifier>{6b90dc72-6ede-4002-a100-04e681437422}</UniqueIdentifier>
     </Filter>
     <Filter Include="Исходные файлы\Core">
       <UniqueIdentifier>{acae4d56-fa00-4481-ae4e-5d99348f5eb9}</UniqueIdentifier>
@@ -28,41 +18,51 @@
     <Filter Include="Enums">
       <UniqueIdentifier>{2b07b71f-d4c0-4f94-805d-79274cfc2336}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Файлы заголовков\Exceptions">
-      <UniqueIdentifier>{52cc72ca-4e63-4eaf-9f0d-3ed1d4faeab4}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Исходные файлы\Exceptions">
       <UniqueIdentifier>{ed57c6a2-fe5c-44f1-a0f7-696107f51d8e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Файлы заголовков\Functions">
-      <UniqueIdentifier>{add42b83-4b37-4a4d-a18c-72a868198558}</UniqueIdentifier>
     </Filter>
     <Filter Include="Исходные файлы\Functions">
       <UniqueIdentifier>{823a2408-8500-4d7d-83b9-ab02a395fa87}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Файлы заголовков\Libs">
-      <UniqueIdentifier>{e386d37b-33ee-41d8-aef9-269f931be727}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Исходные файлы\Libs">
       <UniqueIdentifier>{5503a91e-78c8-4f60-bf2d-f61006b288f1}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Файлы заголовков\OpCodes">
-      <UniqueIdentifier>{3c99ad34-4079-4d44-b54e-30ffd730d673}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Исходные файлы\OpCodes">
       <UniqueIdentifier>{a42e5bd4-e8be-46fa-8a17-8f8a2c0cf146}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Файлы заголовков\Std">
-      <UniqueIdentifier>{3bfbe5e2-1785-442f-9c8f-8eb122407948}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Файлы заголовков\Std\Classes">
-      <UniqueIdentifier>{f01a1791-a416-4845-b7f8-35e393adb386}</UniqueIdentifier>
     </Filter>
     <Filter Include="Исходные файлы\Std">
       <UniqueIdentifier>{8bfaed25-f4d4-4007-82b6-8dd93adbc891}</UniqueIdentifier>
     </Filter>
     <Filter Include="Исходные файлы\Std\Classes">
       <UniqueIdentifier>{a5d72a5c-625a-4d15-ad22-674897003955}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Файлы заголовков\Core">
+      <UniqueIdentifier>{c493cef4-f66f-4e25-a023-46e6556935a8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\Core\Interfaces">
+      <UniqueIdentifier>{6b90dc72-6ede-4002-a100-04e681437422}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\Exceptions">
+      <UniqueIdentifier>{52cc72ca-4e63-4eaf-9f0d-3ed1d4faeab4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\Functions">
+      <UniqueIdentifier>{add42b83-4b37-4a4d-a18c-72a868198558}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\Libs">
+      <UniqueIdentifier>{e386d37b-33ee-41d8-aef9-269f931be727}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\OpCodes">
+      <UniqueIdentifier>{3c99ad34-4079-4d44-b54e-30ffd730d673}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\Std">
+      <UniqueIdentifier>{3bfbe5e2-1785-442f-9c8f-8eb122407948}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\Std\Classes">
+      <UniqueIdentifier>{f01a1791-a416-4845-b7f8-35e393adb386}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -291,6 +291,18 @@
     <ClInclude Include="Std\Classes\RelaxFile.h">
       <Filter>Файлы заголовков\Std\Classes</Filter>
     </ClInclude>
+    <ClInclude Include="Std\StdGenerator.h">
+      <Filter>Файлы заголовков\Std</Filter>
+    </ClInclude>
+    <ClInclude Include="OpCodes\OpNamespace.h">
+      <Filter>Файлы заголовков\OpCodes</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Namespace.h">
+      <Filter>Файлы заголовков\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\NamespaceList.h">
+      <Filter>Файлы заголовков\Core</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Core\VariableList.cpp">
@@ -502,6 +514,18 @@
     </ClCompile>
     <ClCompile Include="OpCodes\OpCl.cpp">
       <Filter>Исходные файлы\OpCodes</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\NamespaceList.cpp">
+      <Filter>Исходные файлы\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\Namespace.cpp">
+      <Filter>Исходные файлы\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="OpCodes\OpNamespace.cpp">
+      <Filter>Исходные файлы\OpCodes</Filter>
+    </ClCompile>
+    <ClCompile Include="Std\StdGenerator.cpp">
+      <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

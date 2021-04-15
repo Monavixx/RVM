@@ -1,5 +1,6 @@
 #include "VirtualMachine.h"
 #include "Core/FieldObject.h"
+#include "Std/StdGenerator.h"
 #include <filesystem>
 
 VirtualMachine::VirtualMachine()
@@ -28,8 +29,10 @@ void VirtualMachine::Start()
 	int versionCode = ByteArrayRead::ReadInt(GlobalVariables::executableFile);
 	if (versionCode != GlobalVariables::version)
 		Exit("version " + std::to_string(GlobalVariables::version) + " is required to run this code");
-	
-	GlobalVariables::classes.CreateStdClasses();
+
+	StdGenerator::GenerateNamespaces();
+	StdGenerator::GenerateClasses();
+	StdGenerator::GenerateMethods();
 
 	Instruction instruction = static_cast<Instruction>(ByteArrayRead::ReadByte(GlobalVariables::executableFile));
 	while (instruction != 0)
@@ -95,8 +98,13 @@ void VirtualMachine::ParseCode(Instruction instruction)
 		op = new OpField;
 		break;
 	}
+	case NAMESPACE:
+	{
+		op = new OpNamespace;
+		break;
+	}
 	default:
-		Exit("Opcode not exists!");
+		Exit("Opcode doesn't exist!");
 	}
 
 	op->Parse(GlobalVariables::executableFile);

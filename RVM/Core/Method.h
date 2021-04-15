@@ -7,7 +7,7 @@ class OpBase;
 class Method : public IMethod
 {
 public:
-	Method(const String& name, const String& dataType, const String& declClassName, const vector<Parameter>& parameters = {},
+	Method(const String& name, const String& dataType, const vector<Parameter>& parameters = {},
 		const vector<OpBase*>& code = {}, const AccessModifier& accessModifier = AccessModifier::PRIVATE, bool isStatic = false);
 
 	inline vector<OpBase*>& GetCode() { return this->code; }

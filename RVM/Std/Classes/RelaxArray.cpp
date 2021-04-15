@@ -4,7 +4,7 @@
 #include "../../Core/StdMethod.h"
 #include "../../GlobalVariables.h"
 
-RelaxArray::RelaxArray(const String& dataType, asizet size) : dataType(dataType), size(size)
+RelaxArray::RelaxArray(const String& dataType, asizet size) : Object(metaClass), dataType(dataType), size(size)
 {
 	arr = new Value * [size] {nullptr};
 }
@@ -31,7 +31,7 @@ void RelaxArray::SetByIndex(asizet index, Value* value)
 	if (Value::GetDataType(value) == dataType)
 	{
 		if(value->valueType == ValueType::OBJECT)
-			get<Object*>(value->value)->IncAmountUsers();
+			GlobalVariables::heap[get<size_t>(value->value)]->IncAmountUsers();
 		this->arr[index] = value;
 	}
 }
@@ -43,12 +43,17 @@ Value* RelaxArray::GetByIndex(asizet index)
 	return arr[index];
 }
 
-void RelaxArray::GenerateMetaInfo()
+void RelaxArray::GenerateMetaClass()
 {
-	metaClass = new Class("Relax.Array", true, {
-		new StdMethod("Size", "Relax.Int32", "Relax.Array", {}, [&](Stack& stack) -> Value*
+	metaClass = new Class("Array", true);
+}
+
+void RelaxArray::GenerateMetaMethods()
+{
+	metaClass->AddMethods({
+		new StdMethod("Size", "Relax.Int32", {}, [&](Stack& stack) -> Value*
 		{
-			return new Value(ValueType::INT32, UValue(dynamic_cast<RelaxArray*>(get<Object*>(stack.pop()->value))->GetSize()));
+			return new Value(ValueType::INT32, UValue(dynamic_cast<RelaxArray*>(GlobalVariables::heap[get<size_t>(stack.pop()->value)])->GetSize()));
 		},AccessModifier::PUBLIC, false),
 	});
 }

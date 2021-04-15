@@ -4,9 +4,9 @@
 #include "FieldObject.h"
 
 
-Method::Method(const String& name, const String& dataType, const String& declClassName, const vector<Parameter>& parameters,
+Method::Method(const String& name, const String& dataType, const vector<Parameter>& parameters,
 	const vector<OpBase*>& code, const AccessModifier& accessModifier, bool isStatic)
-	: IMethod(name, dataType, declClassName, parameters, accessModifier, isStatic), code(code)
+	: IMethod(name, dataType, parameters, accessModifier, isStatic), code(code)
 {
 }
 
@@ -16,9 +16,8 @@ void Method::CallMethod(Frame* frame)
 
 	if (!isStatic)
 	{
-		Object* objectThis = get<Object*>(frame->GetStack().pop()->value);
-		if (objectThis->GetDataType() != newFrame->GetMethod()->GetDeclClassName())
-			Exit("call method: data types do not match");
+		Object* objectThis = GlobalVariables::heap[get<size_t>(frame->GetStack().pop()->value)];
+		objectThis->IncAmountUsers();
 		newFrame->SetObjectThis(objectThis);
 	}
 
@@ -27,10 +26,7 @@ void Method::CallMethod(Frame* frame)
 	{
 		Value* data = frame->GetStack().pop();
 		if(data->valueType==ValueType::OBJECT)
-			get<Object*>(data->value)->IncAmountUsers();
-
-		if (Value::GetDataType(data) != item.GetDataType())
-			Exit("Error parameters type");
+			GlobalVariables::heap[get<size_t>(data->value)]->IncAmountUsers();
 
 		newFrame->CreateVariable(i, item.GetDataType());
 		newFrame->GetVariable(i)->SetValue(data);

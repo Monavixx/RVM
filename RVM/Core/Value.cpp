@@ -1,5 +1,6 @@
 #include "Value.h"
 #include "FieldObject.h"
+#include "../GlobalVariables.h"
 
 ValueType Value::GetValueType(const String& dataType)
 {
@@ -35,7 +36,7 @@ String Value::GetDataType(Value* value)
 		return "Relax.Null";
 	if (value->valueType == ValueType::OBJECT)
 	{
-		return get<Object*>(value->value)->GetDataType();
+		return GlobalVariables::heap[get<size_t>(value->value)]->GetDataTypeClass()->GetFullName();
 	}
 	else
 	{

@@ -56,6 +56,7 @@ private:
 	AccessModifier accessModifier;
 	bool isStatic;
 	String dataType;
+	String namespaceName;
 	String declClassName;
 	String name;
 	std::vector<Parameter> parameters;

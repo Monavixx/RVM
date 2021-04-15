@@ -15,7 +15,7 @@ Frame::~Frame()
 	}
 }
 
-void Frame::CreateVariable(size_t id, const String& dataType)
+void Frame::CreateVariable(size_t id, Class* dataType)
 {
     variables[id] = Variable(nullptr, dataType);
 }

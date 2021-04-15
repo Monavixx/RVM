@@ -12,12 +12,12 @@ public:
 #ifdef _WIN32
 	inline String GetDataType() const override
 	{
-		return "Relax.Array<"_ss + dataType + ">"_ss;
+		return "Array<"_ss + dataType + ">"_ss;
 	}
 #else
 	virtual inline String GetDataType() const
 	{
-		static String dataTypearr = "Relax.Array<";
+		static String dataTypearr = "Array<";
 		return dataTypearr + dataType + ">";
 	}
 #endif
@@ -28,7 +28,8 @@ public:
 	int GetSize() { return size; }
 
 
-	static void GenerateMetaInfo();
+	static void GenerateMetaMethods();
+	static void GenerateMetaClass();
 	static inline class Class* metaClass = nullptr;
 
 private:

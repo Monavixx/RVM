@@ -36,11 +36,15 @@ String RelaxFile::ReadAll(const String& filename)
 	return ss.str();
 #endif
 }
-
-void RelaxFile::GenerateMetaInfo()
+void RelaxFile::GenerateMetaClass()
 {
-	metaClass = new Class("Relax.File", true, {
-		new StdMethod("ReadAll", "Relax.String", "Relax.File", {Parameter("Relax.String")}, [&](Stack& stack) -> Value*
+	metaClass = new Class("File", true);
+}
+
+void RelaxFile::GenerateMetaMethods()
+{
+	metaClass->AddMethods({
+		new StdMethod("ReadAll", "Relax.String", {Parameter("Relax", "String")}, [&](Stack& stack) -> Value*
 		{
 			return new Value(ValueType::STR, UValue(ReadAll(get<String>(stack.pop()->value))));
 		},AccessModifier::PUBLIC, true)

@@ -3,38 +3,30 @@
 #include "../../GlobalVariables.h"
 
 
-RelaxPointer::RelaxPointer(Value* data, const String& dataType) : dataType(dataType)
+RelaxPointer::RelaxPointer(Value* data, const String& dataType) : Object(metaClass), dataType(dataType), data(data)
 {
-	if (data->valueType == ValueType::OBJECT)
-	{
-		this->data.isAddress = true;
-		this->data.data.address = get<Object*>(data->value)->GetAddress();
-	}
-	else
-	{
-		this->data.isAddress = false;
-		this->data.data.value = data;
-	}
 }
 
-RelaxPointer::RelaxPointerData& RelaxPointer::GetData()
+Value* RelaxPointer::GetData()
 {
 	return data;
 }
 
 void RelaxPointer::SetData(Value* data)
 {
-	if (Value::GetDataType(data) != dataType)
-		Exit("Pointer data type not equal value data type");
 	if (data->valueType == ValueType::OBJECT)
 	{
-		get<Object*>(this->data.data.value->value) = get<Object*>(data->value);
-		this->data.isAddress = true;
+		Object*& old = GlobalVariables::heap[get<size_t>(this->data->value)];
+		Object*& newData = GlobalVariables::heap[get<size_t>(data->value)];
+		for (auto&[name,field] : newData->GetFields())
+		{
+			old->SetField(name, field->value);
+		}
 	}
 	else
 	{
-		*this->data.data.value = *data;
-		this->data.isAddress = false;
+		this->data->value = data->value;
+		this->data->valueType = data->valueType;
 	}
 }
 
@@ -48,7 +40,11 @@ String RelaxPointer::GetPointerDataType()
 	return dataType;
 }
 
-void RelaxPointer::GenerateMetaInfo()
+void RelaxPointer::GenerateMetaClass()
 {
-	metaClass = new Class("Relax.Pointer", true);
+	metaClass = new Class("Pointer", true);
+}
+
+void RelaxPointer::GenerateMetaMethods()
+{
 }

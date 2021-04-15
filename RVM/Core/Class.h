@@ -44,14 +44,29 @@ public:
 	}
 	inline void AddMethod(IMethod* method)
 	{
+		method->SetDeclClass(this);
 		methods.push_back(method);
+	}
+	inline void AddMethods(const vector<IMethod*>& methods)
+	{
+		for (auto& item : methods)
+		{
+			item->SetDeclClass(this);
+			this->methods.push_back(item);
+		}
 	}
 	inline void AddField(Field* field) { fields[field->GetName()] = field; }
 
 	bool operator==(const Class& other) const;
 
+	void SetNamespace(class Namespace* _namespace);
+	Namespace* GetNamespace();
+
+	String GetFullName() const;
+
 private:
 	String name;
+	class Namespace* declNamespace;
 	vector<IMethod*> methods;
 	std::unordered_map<String, Field*> fields;
 	bool isStd;

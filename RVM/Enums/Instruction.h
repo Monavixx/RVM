@@ -38,5 +38,6 @@ enum Instruction
 	CL,
 	CB,
 	CLE,
-	CBE
+	CBE,
+	NAMESPACE
 };

@@ -15,18 +15,10 @@ void OpSet::Run()
 		return;
 	}
 
-	String dataType = Value::GetDataType(data);
-	if (dataType != variable->GetDataType() && dataType != "Relax.Null")
-		Exit("set: data types do not match");
-
 	Value* oldData = variable->GetValue();
-	if(oldData == nullptr)
-		variable->SetValue(data);
-	else
-	{
-		oldData->value = data->value;
-		oldData->valueType = data->valueType;
-	}
+	if (data->valueType == ValueType::OBJECT)
+		GlobalVariables::heap[get<size_t>(data->value)]->IncAmountUsers();
+	variable->SetValue(data);
 }
 
 void OpSet::Parse(ifstream& device)

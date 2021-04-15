@@ -5,9 +5,7 @@
 #include "../../GlobalVariables.h"
 #include "../../Core/FieldObject.h"
 
-Object::Object(size_t amountUsers) : amountUsers(amountUsers), address(0)
-{
-}
+Object::Object(Class* dataTypeClass) : dataTypeClass(dataTypeClass), address(0) {}
 
 Object::~Object()
 {
@@ -19,7 +17,6 @@ Object::~Object()
 
 void Object::CreateFields()
 {
-	Class* dataTypeClass = GlobalVariables::classes[GetDataType()];
 	for (auto& [name, field] : dataTypeClass->GetFields())
 	{
 		fields[name] = new FieldObject{ nullptr, field };
@@ -56,9 +53,13 @@ size_t Object::GetAddress() const
 	return address;
 }
 
-void Object::GenerateMetaInfo()
+void Object::GenerateMetaClass()
 {
-	metaClass = new Class("Relax.Object", true);
+	metaClass = new Class("Object", true);
+}
+
+void Object::GenerateMetaMethods()
+{
 }
 
 std::unordered_map<String, FieldObject*>& Object::GetFields()
@@ -75,5 +76,6 @@ void Object::SetField(const String& name, Value* value)
 {
 	if (!fields.contains(name))
 		Exit("field not found");
-	fields[name]->value = value;
+	if (fields[name]->value != nullptr) delete fields[name]->value;
+	fields[name]->value = new Value(value->valueType, value->value);
 }
