@@ -8,5 +8,9 @@ public:
 	void Parse(ifstream& device) override;
 
 private:
-	String name;
+	bool isStatic;
+	String namespaceName;
+	String className;
+	Class* declClass = nullptr;
+	String fieldName;
 };

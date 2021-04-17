@@ -64,11 +64,18 @@ public:
 
 	String GetFullName() const;
 
+	std::unordered_map<String, struct FieldObject*>& GetStaticFields();
+	struct FieldObject* GetStaticField(const String& name);
+	std::unordered_map<String, struct FieldObject*> GetStaticFields() const;
+	void SetStaticFields(const std::unordered_map<String, struct FieldObject*>& staticFields);
+	void SetStaticField(const String& name, struct Value* value);
+
 private:
 	String name;
 	class Namespace* declNamespace;
 	vector<IMethod*> methods;
 	std::unordered_map<String, Field*> fields;
+	std::unordered_map<String, struct FieldObject*> staticFields;
 	bool isStd;
 };
 

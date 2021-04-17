@@ -10,10 +10,7 @@ class CustomObject : public Object
 public:
 	inline CustomObject(Class* dataTypeClass) : Object(dataTypeClass)
 	{
-		for (auto& [name,field] : dataTypeClass->GetFields())
-		{
-			fields[name] = new FieldObject{ nullptr, field };
-		}
+		CreateFields();
 	}
 
 	inline String GetDataType() const override

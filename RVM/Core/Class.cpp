@@ -1,5 +1,7 @@
 #include "Class.h"
 #include "Namespace.h"
+#include "FieldObject.h"
+#include "Value.h"
 
 Class::Class(const String& name, bool isStd, const vector<IMethod*>& methods, const std::unordered_map<String, Field*>& fields)
 	:name(name), methods(methods), fields(fields), isStd(isStd)
@@ -47,4 +49,32 @@ Namespace* Class::GetNamespace()
 String Class::GetFullName() const
 {
 	return declNamespace->GetName() + '.' + name;
+}
+
+std::unordered_map<String, FieldObject*>& Class::GetStaticFields()
+{
+	return staticFields;
+}
+
+FieldObject* Class::GetStaticField(const String& name)
+{
+	return staticFields[name] == nullptr ? staticFields[name] = new FieldObject{ nullptr, GetField(name) } : staticFields[name];
+}
+
+std::unordered_map<String, FieldObject*> Class::GetStaticFields() const
+{
+	return staticFields;
+}
+
+void Class::SetStaticFields(const std::unordered_map<String, FieldObject*>& staticFields)
+{
+	this->staticFields = staticFields;
+}
+
+void Class::SetStaticField(const String& name, Value* value)
+{
+	if (staticFields[name] == nullptr)
+		staticFields[name] = new FieldObject{ value, GetField(name) };
+	else
+		staticFields[name]->value = value;
 }

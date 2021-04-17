@@ -19,7 +19,8 @@ void Object::CreateFields()
 {
 	for (auto& [name, field] : dataTypeClass->GetFields())
 	{
-		fields[name] = new FieldObject{ nullptr, field };
+		if(!field->IsStatic())
+			fields[name] = new FieldObject{ nullptr, field };
 	}
 }
 
