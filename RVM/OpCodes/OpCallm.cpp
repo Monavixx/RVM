@@ -23,13 +23,14 @@ void OpCallm::Parse(ifstream& device)
 	}
 	Namespace* declNamespace = GlobalVariables::namespaces[namespaceName];
 	if(declNamespace == nullptr)
-		Exit("callm: namespace not found");
+		Exit("callm: namespace not found. Namespace: "_ss + namespaceName, 6);
 
 	Class* declClass = declNamespace->GetClass(declClassName);
 	if (declClass == nullptr)
-		Exit("callm: class not found");
+		Exit("callm: class not found. Class: "_ss + declClassName, 7);
 
 	callableMethod = declClass->GetMethod(name, parameters);
 	if (callableMethod == nullptr)
-		Exit("callm: method not found");
+		Exit("callm: method not found. Method: "_ss + name + ([&]() {String res; for (auto& item : parameters) { res += item.GetDataType()->GetFullName() + " "_ss; }; return res; })(), 8);
+
 }

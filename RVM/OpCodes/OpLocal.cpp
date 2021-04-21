@@ -14,8 +14,8 @@ void OpLocal::Parse(ifstream& device)
 
 	Namespace* declNamespace = GlobalVariables::namespaces[namespaceName];
 	if (declNamespace == nullptr)
-		Exit("local: namespace not found");
+		Exit("local: namespace not found. Namespace: "_ss + namespaceName, 22);
 	dataTypeClass = declNamespace->GetClass(dataType);
 	if (dataTypeClass == nullptr)
-		Exit("local: class not found");
+		Exit("local: class not found. Class: "_ss + dataType, 23);
 }

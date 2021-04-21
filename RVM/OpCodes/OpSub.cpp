@@ -17,7 +17,7 @@ void OpSub::Run()
 		break;
 
 	default:
-		Exit("sub: data type is not a number");
+		Exit("sub: data type not supported", 34);
 	}
 }
 

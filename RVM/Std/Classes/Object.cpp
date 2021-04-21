@@ -76,7 +76,7 @@ FieldObject* Object::GetField(const String& name)
 void Object::SetField(const String& name, Value* value)
 {
 	if (!fields.contains(name))
-		Exit("field not found");
+		Exit("object SetField: field not found", 35);
 	if (fields[name]->value != nullptr) delete fields[name]->value;
 	fields[name]->value = new Value(value->valueType, value->value);
 }

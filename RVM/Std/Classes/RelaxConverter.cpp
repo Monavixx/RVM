@@ -10,7 +10,7 @@ int RelaxConverter::ToInt32(const String& data)
     bool isOk;
     int num = toInt(data, &isOk);
     if (!isOk)
-        Exit("Relax.Converter.ToInt32: conversion error");
+        Exit("Relax.Converter.ToInt32: conversion error", 38);
     return num;
 }
 
@@ -18,10 +18,10 @@ float RelaxConverter::ToFloat(const String& data)
 {
 	float res;
 	vector<String> splitData = split(data, '.');
-	if (splitData.size() != 2) Exit("Relax.Converter.ToFloat: conversion error");
+	if (splitData.size() != 2) Exit("Relax.Converter.ToFloat: conversion error", 39);
 	bool errNum, errFrac;
 	int num = toInt(splitData[0], &errNum), fracPart = toInt(splitData[1], &errFrac);
-	if (!(errNum && errFrac)) Exit("Relax.Converter.ToFloat: conversion error");
+	if (!(errNum && errFrac)) Exit("Relax.Converter.ToFloat: conversion error", 40);
 
 	short numberOfDigitsInFractionalPart = (fracPart == 0 ? 1 : short(log10(fracPart) + 1));
 	res = num + float(fracPart) / float(pow(10, numberOfDigitsInFractionalPart));
@@ -65,7 +65,7 @@ void RelaxConverter::GenerateMetaMethods()
 			String str = get<String>(stack.pop()->value);
 			if (str == "true") return new Value(ValueType::BOOL, UValue(true));
 			else if (str == "false") return new Value(ValueType::BOOL, UValue(false));
-			else Exit("Relax.Converter.ToBool: conversion error");
+			else Exit("Relax.Converter.ToBool: conversion error", 41);
 		},AccessModifier::PUBLIC, true),
 
 		// ToFloat

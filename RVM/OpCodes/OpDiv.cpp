@@ -17,7 +17,7 @@ void OpDiv::Run()
 		break;
 
 	default:
-		Exit("div: data type is not a number");
+		Exit("div: data type not supported", 15);
 	}
 }
 

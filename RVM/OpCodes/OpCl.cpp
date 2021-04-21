@@ -16,7 +16,7 @@ void OpCl::Run()
 		break;
 
 	default:
-		Exit("cl: data type not supported");
+		Exit("cl: data type not supported", 13);
 	}
 }
 

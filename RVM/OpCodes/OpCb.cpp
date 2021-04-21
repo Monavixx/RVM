@@ -16,7 +16,7 @@ void OpCb::Run()
 		break;
 
 	default:
-		Exit("cb: data type not supported");
+		Exit("cb: data type not supported", 10);
 	}
 }
 

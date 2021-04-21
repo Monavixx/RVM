@@ -33,13 +33,13 @@ void OpNew::Parse(ifstream& device)
 	Namespace* declNamespace = GlobalVariables::namespaces[namespaceName];
 	if (declNamespace == nullptr)
 	{
-		Exit("new: namespace not found");
+		Exit("new: namespace not found. Namespace: "_ss + namespaceName, 28);
 	}
 	declClass = declNamespace->GetClass(className);
 	if (declClass == nullptr)
-		Exit("new: class not found");
+		Exit("new: class not found. Class: "_ss + className, 29);
 
 	methodConstruction = declClass->GetMethod(className, parameters);
 	if (methodConstruction == nullptr)
-		Exit("new: constructor not found");
+		Exit("new: constructor not found. Constructor: "_ss + ([&]() {String res; for (auto& item : parameters) { res += item.GetDataType()->GetFullName() + " "_ss; }; return res; })(), 30);
 }

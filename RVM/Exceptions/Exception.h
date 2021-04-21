@@ -1,13 +1,13 @@
 #pragma once
-#include <string>
+#include "../Libs/String.h"
 
 class Exception
 {
 public:
-	Exception(const std::string& message);
+	Exception(const String& message);
 
-	std::string What() const;
+	String What() const;
 
 protected:
-	std::string message;
+	String message;
 };

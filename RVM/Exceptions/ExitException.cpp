@@ -1,4 +1,5 @@
 #include "ExitException.h"
+#include "../Libs/String.h"
 
 
-ExitException::ExitException(const std::string& message) : Exception(message) {}
+ExitException::ExitException(const String& message) : Exception(message) {}

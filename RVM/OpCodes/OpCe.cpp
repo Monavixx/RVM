@@ -25,7 +25,7 @@ void OpCe::Run()
 		break;
 
 	default:
-		Exit("ce: data type not supported");
+		Exit("ce: data type not supported", 18);
 	}
 }
 

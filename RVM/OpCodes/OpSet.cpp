@@ -7,7 +7,7 @@ void OpSet::Run()
 	Value* data = frame->GetStack().pop();
 	Variable* variable = frame->GetVariable(id);
 	if (variable == nullptr)
-		Exit("set: local variable with id " + std::to_string(id) + " not exists");
+		Exit("set: local variable with id "_ss + id + " not exists"_ss, 31);
 
 	if (data == nullptr)
 	{

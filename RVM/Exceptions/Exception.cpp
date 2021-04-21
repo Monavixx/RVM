@@ -1,10 +1,10 @@
 #include "Exception.h"
 
-Exception::Exception(const std::string& message) : message(message)
+Exception::Exception(const String& message) : message(message)
 {
 }
 
-std::string Exception::What() const
+String Exception::What() const
 {
 	return message;
 }

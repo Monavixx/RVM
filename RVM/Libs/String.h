@@ -2,7 +2,6 @@
 #include <string>
 #include <iostream>
 #include <vector>
-#include "../Functions/Exit.h"
 
 #ifdef _WIN32
 #include <Windows.h>
@@ -46,8 +45,8 @@ public:
 	}
 	inline unsigned short& operator[](size_t index) const
 	{
-#ifdef DEBUG
-		if (index >= _size) Exit("String. Index out of range\n");
+#ifdef _DEBUG
+		if (index >= _size) exit(9);
 #endif
 		return data[index];
 	}

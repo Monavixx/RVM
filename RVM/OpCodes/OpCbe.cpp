@@ -16,7 +16,7 @@ void OpCbe::Run()
 		break;
 
 	default:
-		Exit("cbe: data type not supported");
+		Exit("cbe: data type not supported", 11);
 	}
 }
 

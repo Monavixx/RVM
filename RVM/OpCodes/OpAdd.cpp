@@ -16,8 +16,12 @@ void OpAdd::Run()
 		frame->GetStack().push(frame->AddValue(new Value(ValueType::FLOAT, UValue(get<float>(firstData->value) + get<float>(secondData->value)))));
 		break;
 
+	case ValueType::STR:
+		frame->GetStack().push(frame->AddValue(new Value(ValueType::STR, UValue(get<String>(firstData->value) + get<String>(secondData->value)))));
+		break;
+
 	default:
-		Exit("add: data type is not a number");
+		Exit("add: data type not supported. Data type: "_ss + Value::GetDataType(firstData), 5);
 	}
 	
 }

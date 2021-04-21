@@ -27,7 +27,7 @@ void RelaxArray::SetArr(Value** arr)
 void RelaxArray::SetByIndex(asizet index, Value* value)
 {
 	if (index >= size)
-		Exit("array index out of range");
+		Exit("set by index: array index out of range", 36);
 	if (Value::GetDataType(value) == dataType)
 	{
 		if(value->valueType == ValueType::OBJECT)
@@ -39,7 +39,7 @@ void RelaxArray::SetByIndex(asizet index, Value* value)
 Value* RelaxArray::GetByIndex(asizet index)
 {
 	if (index >= size)
-		Exit("array index out of range");
+		Exit("get by index: array index out of range", 37);
 	return arr[index];
 }
 

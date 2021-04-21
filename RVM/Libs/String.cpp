@@ -188,6 +188,7 @@ int toInt(const String& str, bool* isOk)
 	{
 		*isOk = false;
 		num = 0;
+		return num;
 	}
 	*isOk = true;
 	return num;

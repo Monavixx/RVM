@@ -16,7 +16,7 @@ void OpCle::Run()
 		break;
 
 	default:
-		Exit("cle: data type not supported");
+		Exit("cle: data type not supported", 14);
 	}
 }
 

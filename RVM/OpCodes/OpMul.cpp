@@ -17,7 +17,7 @@ void OpMul::Run()
 		break;
 
 	default:
-		Exit("mul: data type is not a number");
+		Exit("mul: data type not supported", 27);
 	}
 }
 

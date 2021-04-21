@@ -5,7 +5,7 @@ void OpClass::Run()
 {
 	Namespace* declNamespace = GlobalVariables::namespaces[namespaceName];
 	if (declNamespace == nullptr)
-		Exit("class: namespace not found");
+		Exit("class: namespace not found. Namespace: "_ss + namespaceName, 12);
 	declNamespace->AddClass(new Class(className));
 }
 

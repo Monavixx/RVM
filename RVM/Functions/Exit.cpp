@@ -1,7 +1,8 @@
 #include "Exit.h"
 #include "../Libs/String.h"
 
-void Exit(const std::string& message)
+
+void ExitFunc(const String& message)
 {
 	throw ExitException(message);
 }

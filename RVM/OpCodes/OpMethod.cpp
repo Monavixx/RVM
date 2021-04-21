@@ -7,11 +7,11 @@ void OpMethod::Run()
 
 	Namespace* declNamespace = GlobalVariables::namespaces[namespaceName];
 	if (declNamespace == nullptr)
-		Exit("method: namespace not found");
+		Exit("method: namespace not found. Namespace: "_ss + namespaceName, 24);
 	Class* _class = declNamespace->GetClass(declClassName);
 	if (_class == nullptr)
 	{
-		Exit("method: decl class not found");
+		Exit("method: class not found. Class: "_ss + declClassName, 25);
 	}
 
 	_class->AddMethod(method);
@@ -31,8 +31,10 @@ void OpMethod::Parse(ifstream& device)
 
 	for (size_t i = 0; i < amountParameters; ++i)
 	{
-		Parameter parameter(ByteArrayRead::ReadSizeAndString(device), ByteArrayRead::ReadSizeAndString(device));
-		parameter.SetName(ByteArrayRead::ReadSizeAndString(device));
+		String namespaceName = ByteArrayRead::ReadSizeAndString(device);
+		String className = ByteArrayRead::ReadSizeAndString(device);
+		String name = ByteArrayRead::ReadSizeAndString(device);
+		Parameter parameter(namespaceName, className, name);
 		parameters.push_back(parameter);
 	}
 	sizeCode = ByteArrayRead::ReadInt(device);
@@ -229,7 +231,7 @@ void OpMethod::ParseOpCode(Instruction instruction, ifstream& device)
 		break;
 	}
 	default:
-		Exit("Opcode not exists!");
+		Exit("method: opcode not exists!", 26);
 	}
 
 	op->Parse(device);

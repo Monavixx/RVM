@@ -1,4 +1,10 @@
 #pragma once
 #include "../Exceptions/ExitException.h"
 
-void Exit(const std::string& message);
+#ifdef _DEBUG
+#define Exit(data, code) (ExitFunc(data))
+#else
+#define Exit(data, code) exit(code);
+#endif
+
+void ExitFunc(const class String& message);

@@ -11,7 +11,7 @@ ValueType Value::GetValueType(const String& dataType)
 		{"void", ValueType::_VOID},
 		{"Relax.Bool", ValueType::BOOL}
 	};
-
+	
 	if (dataTypes.contains(dataType))
 	{
 		return dataTypes[dataType];

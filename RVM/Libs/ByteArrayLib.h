@@ -47,7 +47,7 @@ public:
     }
     inline unsigned char& operator[](size_t index) const
     {
-#ifdef DEBUG
+#ifdef _DEBUG
         if (index >= _size) Exit("String. Index out of range");
 #endif
         return data[index];

@@ -28,7 +28,7 @@ void VirtualMachine::Start()
 #endif
 	int versionCode = ByteArrayRead::ReadInt(GlobalVariables::executableFile);
 	if (versionCode != GlobalVariables::version)
-		Exit("version " + std::to_string(GlobalVariables::version) + " is required to run this code");
+		Exit("version "_ss + GlobalVariables::version + " is required to run this code"_ss, 43);
 
 	StdGenerator::GenerateNamespaces();
 	StdGenerator::GenerateClasses();
@@ -54,19 +54,19 @@ void VirtualMachine::Start()
 
 	if (GlobalVariables::mainClass == nullptr)
 	{
-		Exit("main class not found");
+		Exit("main class not found", 44);
 	}
 
 	IMethod* mainMethod = GlobalVariables::mainClass->GetMethod("Main", {});
 	Frame* frame = new Frame(mainMethod);
 	GlobalVariables::frameStack.push(frame);
 
-#ifdef DEBUG
+#ifdef _DEBUG
 	clock_t start, end, ReResult;
 	start = clock();
 #endif
 	ExecuteMethod();
-#ifdef DEBUG
+#ifdef _DEBUG
 	end = clock();
 	ReResult = end - start;
 	std::cout << "\n\n\nRelax: " << ReResult << "ms\n";
@@ -104,7 +104,7 @@ void VirtualMachine::ParseCode(Instruction instruction)
 		break;
 	}
 	default:
-		Exit("Opcode doesn't exist!");
+		Exit("VM: Opcode does not exist!", 45);
 	}
 
 	op->Parse(GlobalVariables::executableFile);

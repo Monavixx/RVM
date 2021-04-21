@@ -5,10 +5,10 @@ void OpField::Run()
 {
 	Namespace* declNamespace = GlobalVariables::namespaces[namespaceName];
 	if (declNamespace == nullptr)
-		Exit("field: namespace not found");
+		Exit("field: namespace not found. Namespace: "_ss + namespaceName, 16);
 	Class* declClass = declNamespace->GetClass(declClassName);
 	if (declClass == nullptr)
-		Exit("field: class not found");
+		Exit("field: class not found. Class: "_ss + declClassName, 17);
 
 	Field* field = new Field(accessModifier, isStatic, dataType, declClassName, name);
 	declClass->AddField(field);

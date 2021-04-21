@@ -17,7 +17,7 @@ String RelaxFile::ReadAll(const String& filename)
 	else
 		wif.open((GlobalVariables::path + filename).toWCharArray());
 	if (!wif.is_open())
-		Exit("Relax.File.ReadAll: could not open file");
+		Exit("Relax.File.ReadAll: could not open file", 42);
 #pragma warning(suppress : 4996)
 	wif.imbue(std::locale(std::locale::empty(), codec));
 	std::wstringstream wss;
@@ -30,7 +30,7 @@ String RelaxFile::ReadAll(const String& filename)
 	else
 		fin.open(GlobalVariables::path + filename);
 	if (!fin.is_open())
-		Exit("Relax.File.ReadAll: could not open file");
+		Exit("Relax.File.ReadAll: could not open file", 42);
 	std::stringstream ss;
 	ss << fin.rdbuf();
 	return ss.str();
