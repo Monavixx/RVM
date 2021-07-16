@@ -1,7 +1,8 @@
 .vs/
 x64/Debug/
 RVM/x64/
-TestTime/
-UnitTest/x64/
 *.vcxproj.user
-RVM/ReleaseBuild/
+.vscode/
+bin/
+Emake
+Flags_for_release.txt
