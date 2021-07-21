@@ -2,19 +2,22 @@
 #include <filesystem>
 #include <fstream>
 #include <string>
+#include <vector>
 
 #include <boost/program_options.hpp>
+
+#include "vm.h"
 
 namespace bpo = boost::program_options;
 namespace fs = std::filesystem;
 
 
-unsigned char* readFile(fs::path path)
+std::vector<unsigned char> readFile(fs::path&& path)
 {
     std::ifstream f(path, std::ios::in | std::ios::binary);
     const auto sz = fs::file_size(path);
-    unsigned char* bytes;
-    f.read((char*)bytes, sz);
+    std::vector<unsigned char> bytes;
+    f.read((char*)bytes.data(), sz);
 
     return bytes;
 }
@@ -38,7 +41,10 @@ int main(int argc, char* argv[])
 
     if (vm.contains("run")) {
         std::string filename = vm["run"].as<std::string>();
-        unsigned char* bytes = readFile(filename);
+        std::vector<unsigned char> bytes = readFile(filename);
+        VirtualMachine vm{move(bytes)};
+        vm.parse();
+        vm.run();
     }
 
     return 0;
