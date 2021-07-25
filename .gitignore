@@ -1,8 +1,10 @@
 .vs/
-x64/Debug/
+x64/
 RVM/x64/
 *.vcxproj.user
 .vscode/
 bin/
-Emake
-Flags_for_release.txt
+*.sln
+*.vcxproj
+*.vcxproj.filters
+packages/

@@ -1,13 +1,14 @@
 #pragma once
 
-#include <iostream>
 #include <string>
 #include <vector>
+
+#include "bytearray_reader.h"
 
 class VirtualMachine
 {
 public:
-    VirtualMachine(std::vector<unsigned char>&& bytes) : bytes{std::move(bytes)}
+    VirtualMachine(std::vector<unsigned char>&& bytes) : reader{std::move(bytes)}
     {
     }
 
@@ -21,8 +22,8 @@ public:
     };
 
 private:
-    constexpr static inline size_t version = 1;
-    std::vector<unsigned char> bytes;
+    constexpr static inline int version = 1;
+    ByteArrayReader reader;
 
     _Assembly assembly;
 };
