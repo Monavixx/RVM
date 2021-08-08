@@ -3,6 +3,7 @@
 #include <string>
 #include <vector>
 #include "frame.h"
+#include "bytearray_reader.h"
 
 class OpCode
 {
@@ -18,7 +19,7 @@ public:
 	{
 	}
 
-	virtual void parse(const std::vector<unsigned char>& data) = 0;
+	virtual void parse(const ByteArrayReader& reader) = 0;
 	virtual void run(Frame* frame) = 0;
 
 	Type get_type() const noexcept { return type; }

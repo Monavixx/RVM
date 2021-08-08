@@ -20,7 +20,7 @@ public:
 		}
 	}
 
-	void call() const override;
+	void call(Frame* frame) const override;
 
 private:
 	std::vector<OpCode*> opcodes;
