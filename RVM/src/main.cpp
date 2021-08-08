@@ -12,11 +12,11 @@ namespace bpo = boost::program_options;
 namespace fs = std::filesystem;
 
 
-std::vector<unsigned char> readFile(fs::path&& path)
+std::vector<byte> readFile(fs::path&& path)
 {
     std::ifstream f(path, std::ios::in | std::ios::binary);
     const auto sz = fs::file_size(path);
-    std::vector<unsigned char> bytes(sz, 0);
+    std::vector<byte> bytes(sz, 0);
     f.read((char*)bytes.data(), sz);
 
     return bytes;
@@ -41,17 +41,18 @@ int main(int argc, char* argv[])
 
     if (vm.contains("run")) {
         std::string filename = vm["run"].as<std::string>();
-        std::vector<unsigned char> bytes = readFile(filename);
-        VirtualMachine vm{move(bytes)};
+        std::vector<byte> bytes = readFile(filename);
+        VirtualMachine::construct_instance(move(bytes));
 
         try {
-            vm.parse();
-            vm.run();
+            VirtualMachine::get_instance().parse();
+            VirtualMachine::get_instance().run();
         }
-        catch (const char* str) {
-            std::cerr << str;
+        catch (const bytecode_exception& e) {
+            print(stderr, e.what());
             return 1;
         }
+        VirtualMachine::free();
     }
 
     return 0;
